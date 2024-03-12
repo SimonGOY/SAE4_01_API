@@ -14,7 +14,7 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdTaille { get; set; }
 
         [Key]
-        [Column("col_id")]
+        [Column("cls_id")]
         public int IdColoris { get; set; }
 
         [Key]
