@@ -18,9 +18,9 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdPresentation { get; set; }
 
         [Column("pre_idequipement")]
-        public int? IdEquipement { get; set; }
+        public int IdEquipement { get; set; }
 
         [Column("pre_idcoloris")]
-        public int? IdColoris { get; set; }
+        public int IdColoris { get; set; }
     }
 }

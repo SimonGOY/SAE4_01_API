@@ -19,6 +19,6 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("gam_libelle")]
         [StringLength(75)]
-        public string? LibelleGamme { get; set; }
+        public string LibelleGamme { get; set; } = null!;
     }
 }

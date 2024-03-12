@@ -18,16 +18,16 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdCaracteristique { get; set; }
 
         [Column("car_idmoto")]
-        public int? IdMoto { get; set; }
+        public int IdMoto { get; set; }
 
         [Column("car_idcat")]
-        public int? IdCatCaracteristique { get; set; }
+        public int IdCatCaracteristique { get; set; }
 
         [Column("car_nom")]
         [StringLength(50)]
-        public string? NomCaracteristique { get; set; }
+        public string NomCaracteristique { get; set; } = null!;
 
         [Column("car_valeur")]
-        public string? ValeurCaracteristique { get; set; }
+        public string ValeurCaracteristique { get; set; } = null!;
     }
 }.

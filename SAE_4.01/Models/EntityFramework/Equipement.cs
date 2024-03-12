@@ -18,33 +18,33 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdEquipement { get; set; }
 
         [Column("equ_idcollection")]
-        public int? IdCollection { get; set; }
+        public int IdCollection { get; set; }
 
         [Column("equ_idcatequipement")]
-        public int? IdCatEquipement { get; set; }
+        public int IdCatEquipement { get; set; }
 
         [Column("equ_nom")]
         [StringLength(50)]
-        public string? NomEquipement { get; set; }
+        public string NomEquipement { get; set; } = null!;
 
         [Column("equ_desc")]
-        public string? DescriptionEquipement { get; set; }
+        public string DescriptionEquipement { get; set; } = null!;
 
         [Column("equ_sexe")]
         [StringLength(10)]
-        public string? SexeEquipement { get; set; }
+        public string SexeEquipement { get; set; } = null!;
 
         [Column("equ_prix")]
-        public float? PrixEquipement { get; set; }
+        public float PrixEquipement { get; set; }
 
         [Column("equ_dureegarantie")]
-        public int? DureeGarantie { get; set; }
+        public int DureeGarantie { get; set; }
 
         [Column("equ_tendance")]
-        public bool? Tendance { get; set; }
+        public bool Tendance { get; set; }
 
         [Column("equ_segment")]
         [StringLength(30)]
-        public string? Segment { get; set; }
+        public string Segment { get; set; } = null!;
     }
 }

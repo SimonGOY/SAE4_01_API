@@ -19,6 +19,6 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("col_nom")]
         [StringLength(50)]
-        public string? NomCollection { get; set; }
+        public string NomCollection { get; set; } = null!;
     }
 }
