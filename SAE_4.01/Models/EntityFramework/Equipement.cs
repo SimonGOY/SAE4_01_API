@@ -50,7 +50,8 @@ namespace SAE_4._01.Models.EntityFramework
         [InverseProperty(nameof(Stock.EquipementStock))]
         public virtual ICollection<Stock> StockEquipement { get; set; }
 
-        //[InverseProperty(nameof(Media.nom))]
-        //public virtual ICollection<Media> Medias { get; set; }
+
+        [InverseProperty(nameof(Media.EquipementMedia))]
+        public virtual ICollection<Media> MediaEquipement { get; set; }
     }
 }

@@ -28,5 +28,18 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("med_lienmedia")]
         public string LienMedia { get; set; } = null!;
+
+
+        [ForeignKey(nameof(IdEquipement))]
+        [InverseProperty(nameof(Equipement.MediaEquipement))]
+        public virtual Equipement EquipementMedia { get; set; } = null!;
+
+        [ForeignKey(nameof(IdMoto))]
+        [InverseProperty(nameof(ModeleMoto.MediaModeleMoto))]
+        public virtual ModeleMoto ModeleMotoMedia { get; set; } = null!;
+
+        [ForeignKey(nameof(IdPresentation))]
+        [InverseProperty(nameof(PresentationEquipement.MediaPresentationEquipement))]
+        public virtual PresentationEquipement PresentationEquipementMedia { get; set; } = null!;
     }
 }

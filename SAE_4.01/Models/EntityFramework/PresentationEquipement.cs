@@ -23,7 +23,8 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("col_idcoloris")]
         public int IdColoris { get; set; }
 
-        //[InverseProperty(nameof(Media.nom))]
-        //public virtual ICollection<Media> Medias { get; set; }
+
+        [InverseProperty(nameof(Media.PresentationEquipementMedia))]
+        public virtual ICollection<Media> MediaPresentationEquipement { get; set; }
     }
 }
