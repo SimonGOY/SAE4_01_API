@@ -8,11 +8,6 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_collection_col")]
     public partial class Collection
     {
-        public Collection()
-        {
-            
-        }
-
         [Key]
         [Column("col_id")]
         public int IdCollection { get; set; }
@@ -23,6 +18,6 @@ namespace SAE_4._01.Models.EntityFramework
 
 
         [InverseProperty(nameof(Equipement.CollectionEquipement))]
-        public virtual ICollection<Equipement> EquipementCollection { get; set; }
+        public virtual ICollection<Equipement>? EquipementCollection { get; set; }
     }
 }

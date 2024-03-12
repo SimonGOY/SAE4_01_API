@@ -9,11 +9,6 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_modelemoto_mod")]
     public partial class ModeleMoto
     {
-        public ModeleMoto()
-        {
-            
-        }
-
         [Key]
         [Column("mod_id")]
         public int IdMoto { get; set; }
@@ -37,15 +32,15 @@ namespace SAE_4._01.Models.EntityFramework
 
 
         [InverseProperty(nameof(Caracteristique.ModeleMotoCaracteristique))]
-        public virtual ICollection<Caracteristique> CaracteristiqueModeleMoto { get; set; }
+        public virtual ICollection<Caracteristique>? CaracteristiqueModeleMoto { get; set; }
 
         [InverseProperty(nameof(MotoDisponible.ModeleMotoMotoDisponible))]
-        public virtual ICollection<MotoDisponible> MotoDisponibleModeleMoto { get; set; }
+        public virtual ICollection<MotoDisponible>? MotoDisponibleModeleMoto { get; set; }
 
         [InverseProperty(nameof(DemandeEssai.ModeleMotoDemandeEssai))]
-        public virtual ICollection<Media> DemandeEssaiModeleMoto { get; set; }
+        public virtual ICollection<Media>? DemandeEssaiModeleMoto { get; set; }
 
         [InverseProperty(nameof(Media.ModeleMotoMedia))]
-        public virtual ICollection<Media> MediaModeleMoto { get; set; }
+        public virtual ICollection<Media>? MediaModeleMoto { get; set; }
     }
 }

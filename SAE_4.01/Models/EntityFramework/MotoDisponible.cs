@@ -8,11 +8,6 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_motodisponible_mot")]
     public partial class MotoDisponible
     {
-        public MotoDisponible()
-        {
-
-        }
-
         [Key]
         [Column("mot_id")]
         public int IdMotoDisponible { get; set; }
@@ -30,6 +25,6 @@ namespace SAE_4._01.Models.EntityFramework
 
 
         [InverseProperty(nameof(Reservation.MotoDisponibleReservation))]
-        public virtual ICollection<Reservation> ReservationMotoDisponible { get; set; }
+        public virtual ICollection<Reservation>? ReservationMotoDisponible { get; set; }
     }
 }

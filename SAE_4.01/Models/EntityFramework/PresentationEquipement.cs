@@ -8,11 +8,6 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_presentationequipement_pre")]
     public partial class PresentationEquipement
     {
-        public PresentationEquipement()
-        {
-            
-        }
-
         [Key]
         [Column("pre_id")]
         public int IdPresentation { get; set; }
@@ -34,6 +29,6 @@ namespace SAE_4._01.Models.EntityFramework
 
 
         [InverseProperty(nameof(Media.PresentationEquipementMedia))]
-        public virtual ICollection<Media> MediaPresentationEquipement { get; set; }
+        public virtual ICollection<Media>? MediaPresentationEquipement { get; set; }
     }
 }

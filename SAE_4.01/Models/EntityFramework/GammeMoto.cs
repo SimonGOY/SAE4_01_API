@@ -9,11 +9,6 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_gammemoto_gam")]
     public partial class GammeMoto
     {
-        public GammeMoto()
-        {
-            
-        }
-
         [Key]
         [Column("gam_id")]
         public int IdGamme { get; set; }
@@ -24,6 +19,6 @@ namespace SAE_4._01.Models.EntityFramework
 
 
         [InverseProperty(nameof(ModeleMoto.GammeMotoModeleMoto))]
-        public virtual ICollection<ModeleMoto> ModeleMotoGammeMoto { get; set; }
+        public virtual ICollection<ModeleMoto>? ModeleMotoGammeMoto { get; set; }
     }
 }

@@ -8,11 +8,6 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_caracteristique_car")]
     public partial class Caracteristique
     {
-        public Caracteristique()
-        {
-
-        }
-
         [Key]
         [Column("car_id")]
         public int IdCaracteristique { get; set; }

@@ -8,11 +8,6 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_reservation_res")]
     public partial class Reservation
     {
-        public Reservation()
-        {
-
-        }
-
         [Key]
         [Column("res_id")]
         public int IdReservation { get; set; }

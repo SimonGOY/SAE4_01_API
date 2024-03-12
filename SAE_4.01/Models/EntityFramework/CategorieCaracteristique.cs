@@ -8,11 +8,6 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_categoriecaracteristique_cat")]
     public partial class CategorieCaracteristique
     {
-        public CategorieCaracteristique()
-        {
-            
-        }
-
         [Key]
         [Column("cat_id")]
         public int IdCatCaracteristique { get; set; }
@@ -23,6 +18,6 @@ namespace SAE_4._01.Models.EntityFramework
 
 
         [InverseProperty(nameof(Caracteristique.CategorieCaracteristiqueCaracteristique))]
-        public virtual ICollection<Caracteristique> CaracteristiqueCategorieCaracteristique { get; set; }
+        public virtual ICollection<Caracteristique>? CaracteristiqueCategorieCaracteristique { get; set; }
     }
 }

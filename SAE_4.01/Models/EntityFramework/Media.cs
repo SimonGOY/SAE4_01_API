@@ -8,11 +8,6 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_media_med")]
     public partial class Media
     {
-        public Media()
-        {
-            
-        }
-
         [Key]
         [Column("med_id")]
         public int IdMedia { get; set; }

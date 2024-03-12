@@ -8,11 +8,6 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_categorieequipement_ceq")]
     public partial class CategorieEquipement
     {
-        public CategorieEquipement()
-        {
-            
-        }
-
         [Key]
         [Column("ceq_id")]
         public int IdCatEquipement { get; set; }
@@ -31,9 +26,9 @@ namespace SAE_4._01.Models.EntityFramework
 
 
         [InverseProperty(nameof(CategorieEquipement.CategorieEquipementCategorieEquipementFK))]
-        public virtual ICollection<CategorieEquipement> CategorieEquipementCategorieEquipementProperty { get; set; }
+        public virtual ICollection<CategorieEquipement>? CategorieEquipementCategorieEquipementProperty { get; set; }
 
         [InverseProperty(nameof(Equipement.CategorieEquipementEquipement))]
-        public virtual ICollection<Equipement> EquipementCategorieEquipement { get; set; }
+        public virtual ICollection<Equipement>? EquipementCategorieEquipement { get; set; }
     }
 }
