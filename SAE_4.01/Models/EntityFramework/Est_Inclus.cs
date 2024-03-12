@@ -7,10 +7,10 @@ namespace SAE_4._01.Models.EntityFramework
     public class Est_Inclus
     {
         [Key]
-        [Column("id_opt")]
+        [Column("opt_id")]
         public int IdOption { get; set; }
         [Key]
-        [Column("id_sty")]
+        [Column("sty_id")]
         public int IdStyle { get; set; }
 
         /* A faire les 2 foreign key*/
