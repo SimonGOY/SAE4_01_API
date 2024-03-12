@@ -20,5 +20,8 @@ namespace SAE_4._01.Models.EntityFramework
         [Key]
         [Column("equ_equidequipement")]
         public int EquIdEquipement { get; set; }
+
+
+
     }
 }

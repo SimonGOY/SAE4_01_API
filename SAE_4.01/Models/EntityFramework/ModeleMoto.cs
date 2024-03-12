@@ -31,6 +31,9 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("mod_prix")]
         public float PrixMoto { get; set; }
 
+        [ForeignKey(nameof(IdGamme))]
+        [InverseProperty(nameof(GammeMoto.ModelesMoto))]
+        public virtual GammeMoto GammesMoto { get; set; } = null!;
 
         //[InverseProperty(nameof(Caracteristique.nom))]
         //public virtual ICollection<Caracteristique> Caracteristiques { get; set; }
