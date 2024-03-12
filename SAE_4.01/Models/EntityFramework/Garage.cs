@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_garage_grg")]
-    public class Garage
+    public partial class Garage
     {
         [Key]
         [Column("mcf_id")]

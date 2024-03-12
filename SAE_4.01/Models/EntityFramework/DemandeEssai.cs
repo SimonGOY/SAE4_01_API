@@ -5,7 +5,7 @@ using System.Drawing;
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_demandeessai_dme")]
-    public class DemandeEssai
+    public partial class DemandeEssai
     {
         [Key]
         [Column("dme_id")]
