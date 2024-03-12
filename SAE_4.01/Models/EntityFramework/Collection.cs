@@ -21,7 +21,8 @@ namespace SAE_4._01.Models.EntityFramework
         [StringLength(50)]
         public string NomCollection { get; set; } = null!;
 
-        //[InverseProperty(nameof(Equipement.nom))]
-        //public virtual ICollection<Equipement> Equipements { get; set; }
+
+        [InverseProperty(nameof(Equipement.CollectionEquipement))]
+        public virtual ICollection<Equipement> EquipementCollection { get; set; }
     }
 }

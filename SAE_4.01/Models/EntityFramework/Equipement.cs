@@ -48,6 +48,15 @@ namespace SAE_4._01.Models.EntityFramework
         public string Segment { get; set; } = null!;
 
 
+        [ForeignKey(nameof(IdCollection))]
+        [InverseProperty(nameof(Collection.EquipementCollection))]
+        public virtual Collection CollectionEquipement { get; set; } = null!;
+
+        [ForeignKey(nameof(IdCatEquipement))]
+        [InverseProperty(nameof(CategorieEquipement.EquipementCategorieEquipement))]
+        public virtual CategorieEquipement CategorieEquipementEquipement { get; set; } = null!;
+
+
         [InverseProperty(nameof(Stock.EquipementStock))]
         public virtual ICollection<Stock> StockEquipement { get; set; }
 
