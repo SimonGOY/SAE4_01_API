@@ -28,8 +28,8 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual Concessionnaire ConcessionnaireDemandeEssai { get; set; } = null!;
 
         [ForeignKey(nameof(IdMoto))]
-        [InverseProperty(nameof(ModelMoto.DemandeEssaiModelMoto))]
-        public virtual ModelMoto ModelMotoDemandeEssai { get; set; } = null!;
+        [InverseProperty(nameof(ModeleMoto.DemandeEssaiModeleMoto))]
+        public virtual ModeleMoto ModeleMotoDemandeEssai { get; set; } = null!;
 
         [ForeignKey(nameof(IdContact))]
         [InverseProperty(nameof(ContactInfo.DemandeEssaiContactInfo))]
