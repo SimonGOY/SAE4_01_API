@@ -10,9 +10,7 @@ namespace SAE_4._01.Models.EntityFramework
     {
         public Caracteristique()
         {
-            CategoriesCaracteristique = new HashSet<CategorieCaracteristique>();
 
-            ModelesMoto = new HashSet<ModeleMoto>();
         }
 
         [Key]
@@ -33,10 +31,12 @@ namespace SAE_4._01.Models.EntityFramework
         public string ValeurCaracteristique { get; set; } = null!;
 
 
-        [InverseProperty(nameof(CategorieCaracteristique.Caracteristiques))]
-        public virtual ICollection<CategorieCaracteristique> CategoriesCaracteristique { get; set; }
+        [ForeignKey(nameof(IdMoto))]
+        [InverseProperty(nameof(ModeleMoto.CaracteristiqueModeleMoto))]
+        public virtual ModeleMoto ModeleMotoCaracteristique { get; set; } = null!;
 
-        [InverseProperty(nameof(ModeleMoto.Caracteristiques))]
-        public virtual ICollection<ModeleMoto> ModelesMoto { get; set; }
+        [ForeignKey(nameof(IdCaracteristique))]
+        [InverseProperty(nameof(CategorieCaracteristique.CaracteristiqueCategorieCaracteristique))]
+        public virtual CategorieCaracteristique CategorieCaracteristiqueCaracteristique { get; set; } = null!;
     }
 }

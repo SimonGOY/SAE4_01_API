@@ -11,7 +11,7 @@ namespace SAE_4._01.Models.EntityFramework
     {
         public GammeMoto()
         {
-            ModelesMoto = new HashSet<ModeleMoto>();
+            
         }
 
         [Key]
@@ -22,7 +22,7 @@ namespace SAE_4._01.Models.EntityFramework
         [StringLength(75)]
         public string LibelleGamme { get; set; } = null!;
 
-        [InverseProperty(nameof(ModeleMoto.GammesMoto))]
-        public virtual ICollection<ModeleMoto> ModelesMoto { get; set; }
+        [InverseProperty(nameof(ModeleMoto.GammeMotoModeleMoto))]
+        public virtual ICollection<ModeleMoto> ModeleMotoGammeMoto { get; set; }
     }
 }

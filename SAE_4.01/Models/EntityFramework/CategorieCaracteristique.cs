@@ -22,7 +22,7 @@ namespace SAE_4._01.Models.EntityFramework
         public string NomCatCaracteristique { get; set; } = null!;
 
 
-        [InverseProperty(nameof(Caracteristique.CategoriesCaracteristique))]
-        public virtual ICollection<Caracteristique> Caracteristiques { get; set; }
+        [InverseProperty(nameof(Caracteristique.CategorieCaracteristiqueCaracteristique))]
+        public virtual ICollection<Caracteristique> CaracteristiqueCategorieCaracteristique { get; set; }
     }
 }

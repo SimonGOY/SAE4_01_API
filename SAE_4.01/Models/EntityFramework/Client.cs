@@ -34,7 +34,7 @@ namespace SAE_4._01.Models.EntityFramework
 
         [ForeignKey(nameof(NumAdresse))]
         [InverseProperty(nameof(Adresse.ClientAdresse))]
-        public virtual Taille AdresseClient { get; set; } = null!;
+        public virtual Adresse AdresseClient { get; set; } = null!;
 
         [InverseProperty(nameof(InfoCB.ClientInfoCB))]
         public virtual ICollection<InfoCB>? InfoCBClient { get; set; }
