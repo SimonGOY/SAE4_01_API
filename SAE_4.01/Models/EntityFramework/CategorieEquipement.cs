@@ -23,5 +23,11 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("ceq_libelle")]
         [StringLength(100)]
         public string LibelleCatEquipement { get; set; } = null!;
+
+        //[InverseProperty(nameof(Equipement.nom))]
+        //public virtual ICollection<Equipement> Equipements { get; set; }
+
+        //[InverseProperty(nameof(CategorieEquipement.nom))]
+        //public virtual ICollection<CategorieEquipement> CategoriesEquipement { get; set; }
     }
 }
