@@ -47,6 +47,9 @@ namespace SAE_4._01.Models.EntityFramework
         [StringLength(30)]
         public string Segment { get; set; } = null!;
 
+        [InverseProperty(nameof(Stock.EquipementStock))]
+        public virtual ICollection<Stock> StockEquipement { get; set; }
+
         //[InverseProperty(nameof(Media.nom))]
         //public virtual ICollection<Media> Medias { get; set; }
     }

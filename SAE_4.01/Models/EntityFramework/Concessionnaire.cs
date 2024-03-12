@@ -29,6 +29,9 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("con_adresse")]
         public string? AdresseConcessionnaire { get; set; } = null!;
 
+        [InverseProperty(nameof(Offre.ConcessionnaireOffre))]
+        public virtual ICollection<Offre>? OffreConcessionnaire { get; set; }
+
 
         //[InverseProperty(nameof(Reservation.nom))]
         //public virtual ICollection<Reservation> Reservations { get; set; }
