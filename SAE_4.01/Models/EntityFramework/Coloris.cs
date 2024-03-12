@@ -16,5 +16,9 @@ namespace SAE_4._01.Models.EntityFramework
 
         [InverseProperty(nameof(Stock.ColorisStock))]
         public virtual ICollection<Stock> StockColoris { get; set; }
+
+
+        [InverseProperty(nameof(PresentationEquipement.ColorisPresentationEquipement))]
+        public virtual ICollection<PresentationEquipement> PresentationEquipementColoris { get; set; }
     }
 }
