@@ -7,7 +7,7 @@ using System.Xml.Linq;
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_stock_stk")]
-    public class Stock
+    public partial class Stock
     {
         [Key]
         [Column("tle_id")]
