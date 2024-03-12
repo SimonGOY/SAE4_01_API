@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace SAE_4._01.Models.EntityFramework
 {
@@ -20,5 +21,8 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("gam_libelle")]
         [StringLength(75)]
         public string LibelleGamme { get; set; } = null!;
+
+        //[InverseProperty(nameof(ModeleMoto.nom))]
+        //public virtual ICollection<ModeleMoto> ModelesMoto { get; set; }
     }
 }

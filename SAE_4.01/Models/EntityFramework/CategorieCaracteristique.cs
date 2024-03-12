@@ -20,5 +20,9 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("cat_nom")]
         [StringLength(50)]
         public string NomCatCaracteristique { get; set; } = null!;
+
+
+        //[InverseProperty(nameof(Caracteristique.nom))]
+        //public virtual ICollection<Caracteristique> Caracteristiques { get; set; }
     }
 }
