@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace SAE_4._01.Models.EntityFramework
 {
@@ -10,7 +11,8 @@ namespace SAE_4._01.Models.EntityFramework
     {
         public Equipement()
         {
-            
+            EstLieEquipement1 = new HashSet<EstLie>();
+            EstLieEquipement2 = new HashSet<EstLie>();
         }
 
         [Key]
@@ -65,5 +67,11 @@ namespace SAE_4._01.Models.EntityFramework
 
         [InverseProperty(nameof(PresentationEquipement.EquipementPresentationEquipement))]
         public virtual ICollection<PresentationEquipement> PresentationEquipementEquipement { get; set; }
+
+        [InverseProperty(nameof(EstLie.EquipementEstLie1))]
+        public virtual ICollection<EstLie> EstLieEquipement1 { get; set; }
+
+        [InverseProperty(nameof(EstLie.EquipementEstLie2))]
+        public virtual ICollection<EstLie> EstLieEquipement2 { get; set; }
     }
 }
