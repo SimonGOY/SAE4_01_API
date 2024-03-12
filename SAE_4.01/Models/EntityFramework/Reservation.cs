@@ -18,19 +18,19 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdReservation { get; set; }
 
         [Column("res_idmoto")]
-        public int? IdMotoDisponible { get; set; }
+        public int IdMotoDisponible { get; set; }
 
         [Column("res_idclient")]
-        public int? IdClient { get; set; }
+        public int IdClient { get; set; }
 
         [Column("res_idconcessionnaire")]
-        public int? IdConcessionnaire { get; set; }
+        public int IdConcessionnaire { get; set; }
 
         [Column("res_dateres", TypeName = "date")]
-        public DateTime? DateReservation { get; set; }
+        public DateTime DateReservation { get; set; }
 
         [Column("res_financement")]
         [StringLength(30)]
-        public string? FinancementReservation { get; set; }
+        public string FinancementReservation { get; set; } = null!;
     }
 }

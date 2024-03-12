@@ -18,10 +18,10 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdCatEquipement { get; set; }
 
         [Column("ceq_catidcatequipement")]
-        public int? CatIdCatEquipement { get; set; }
+        public int CatIdCatEquipement { get; set; }
 
         [Column("ceq_libelle")]
         [StringLength(100)]
-        public string? LibelleCatEquipement { get; set; }
+        public string LibelleCatEquipement { get; set; } = null!;
     }
 }

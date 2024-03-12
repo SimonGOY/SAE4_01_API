@@ -18,16 +18,16 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdMoto { get; set; }
 
         [Column("mod_idgamme")]
-        public int? IdGamme { get; set; }
+        public int IdGamme { get; set; }
 
         [Column("mod_nommoto")]
         [StringLength(50)]
-        public string? NomMoto { get; set; }
+        public string NomMoto { get; set; } = null!;
 
         [Column("mod_desc")]
-        public string? DescriptifMoto { get; set; }
+        public string DescriptifMoto { get; set; } = null!;
 
         [Column("mod_prix")]
-        public float? PrixMoto { get; set; }
+        public float PrixMoto { get; set; }
     }
 }

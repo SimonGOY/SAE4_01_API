@@ -19,6 +19,6 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("cat_nom")]
         [StringLength(50)]
-        public string? NomCatCaracteristique { get; set; }
+        public string NomCatCaracteristique { get; set; } = null!;
     }
 }
