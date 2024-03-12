@@ -38,5 +38,8 @@ namespace SAE_4._01.Models.EntityFramework
 
         [InverseProperty(nameof(Prefere.ConcessionnairePrefere))]
         public virtual ICollection<Prefere>? PrefereConcessionnaire { get; set; }
+
+        [InverseProperty(nameof(DemandeEssai.ConcessionnaireDemandeEssai))]
+        public virtual ICollection<DemandeEssai> DemandeEssaiConcessionnaire { get; set; }
     }
 }
