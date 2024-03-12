@@ -35,6 +35,15 @@ namespace SAE_4._01.Models.EntityFramework
         [InverseProperty(nameof(InfoCB.ClientInfoCB))]
         public virtual ICollection<InfoCB>? InfoCBClient { get; set; }
 
+        [InverseProperty(nameof(Commande.ClientCommande))]
+        public virtual ICollection<Commande>? CommandeClient { get; set; }
+
+        [InverseProperty(nameof(Garage.ClientGarage))]
+        public virtual ICollection<Garage>? GarageClient { get; set; }
+
+
+        //[InverseProperty(nameof(Reservation.nom))]
+        //public virtual ICollection<Reservation> Reservations { get; set; }
         [InverseProperty(nameof(Prefere.ClientPrefere))] 
         public virtual ICollection<Prefere>? PrefereClient { get; set; }
 
