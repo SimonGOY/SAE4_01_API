@@ -57,5 +57,8 @@ namespace SAE_4._01.Models.EntityFramework
         [InverseProperty(nameof(Prive.ClientPrive))]
         public virtual ICollection<Prive>? PriveClient { get; set; }
 
+        [InverseProperty(nameof(Users.ClientUsers))]
+        public virtual ICollection<Users>? UsersClient { get; set; }
+
     }
 }
