@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace SAE_4._01.Models.EntityFramework
 {
@@ -29,5 +30,12 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("mod_prix")]
         public float PrixMoto { get; set; }
+
+
+        //[InverseProperty(nameof(Caracteristique.nom))]
+        //public virtual ICollection<Caracteristique> Caracteristiques { get; set; }
+
+        //[InverseProperty(nameof(Media.nom))]
+        //public virtual ICollection<Media> Medias { get; set; }
     }
 }

@@ -10,6 +10,9 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("icb_id")]
         public int IdCarte { get; set; }
 
+        [Column("clt_id")]
+        public int IdClient { get; set; }
+
         [Column("icb_numcarte")]
         public string? NumCarte { get; set; } = null!;
 
@@ -18,5 +21,9 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("icb_titulairecompte")]
         public string? TitulaireCompte { get; set; } = null!;
+
+        [ForeignKey(nameof(IdClient))]
+        [InverseProperty(nameof(Client.InfoCBClient))]
+        public virtual Client ClientInfoCB { get; set; } = null!;
     }
 }

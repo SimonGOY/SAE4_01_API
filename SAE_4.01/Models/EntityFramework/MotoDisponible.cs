@@ -22,5 +22,9 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("mod_idmoto")]
         public int IdMoto { get; set; }
+
+
+        [InverseProperty(nameof(ModeleMoto.nom))]
+        public virtual ICollection<ModeleMoto> ModelesMoto { get; set; }
     }
 }
