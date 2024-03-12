@@ -32,5 +32,8 @@ namespace SAE_4._01.Models.EntityFramework
         [StringLength(50)]
         public string? EmailClient { get; set; }
 
+        [InverseProperty(nameof(InfoCB.ClientInfoCB))]
+        public virtual ICollection<InfoCB>? InfoCBClient { get; set; }
+
     }
 }

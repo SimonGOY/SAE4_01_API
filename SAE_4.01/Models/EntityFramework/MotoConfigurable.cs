@@ -10,8 +10,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("mcf_id")]
         public int IdMotoConfigurable { get; set; }
 
-        /* A faire
-        [InverseProperty("NomPropInversee")]
-        public virtual Type IdMoto { get; set; } = null!;*/
+        [InverseProperty(nameof(Offre.MotoConfigurableOffre))]
+        public virtual ICollection<Offre>? OffreMotoConfigurable { get; set; }
     }
 }

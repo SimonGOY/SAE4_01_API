@@ -10,8 +10,16 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("adr_num")]
         public int NumAdresse { get; set; }
 
+        [Column("pay_nom")]
+        [StringLength(50)]
+        public string? NomPays { get; set; }
+
         [Column("adr_adresse")]
         [StringLength(50)]
         public string? AdresseAdresse { get; set; } = null!;
+
+        [ForeignKey(nameof(NomPays))]
+        [InverseProperty(nameof(Pays.AdressePays))]
+        public virtual Pays PaysAdresse { get; set; } = null!;
     }
 }

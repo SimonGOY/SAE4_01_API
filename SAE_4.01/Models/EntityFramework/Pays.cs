@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SAE_4._01.Models.EntityFramework
@@ -10,5 +11,8 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("pay_nom")]
         [StringLength(50)]
         public string? NomPays { get; set; }
+
+        [InverseProperty(nameof(Adresse.PaysAdresse))]
+        public virtual ICollection<Adresse>? AdressePays { get; set; }
     }
 }
