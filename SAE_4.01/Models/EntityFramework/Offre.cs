@@ -30,5 +30,8 @@ namespace SAE_4._01.Models.EntityFramework
         [ForeignKey(nameof(IdConcessionnaire))]
         [InverseProperty(nameof(Concessionnaire.OffreConcessionnaire))]
         public virtual Concessionnaire ConcessionnaireOffre { get; set; } = null!;
+
+        [InverseProperty(nameof(ContactInfo.OffreContactInfo))]
+        public virtual ICollection<Offre>? ContactInfoOffre { get; set; } = null!;
     }
 }
