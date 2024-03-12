@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace SAE_4._01.Models.EntityFramework
 {
@@ -20,5 +21,8 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("tle_description")]
         [StringLength(8)]
         public string? DescTaille { get; set; }
+
+        [InverseProperty(nameof(Stock.TailleStock))]
+        public virtual ICollection<Stock> StockTaille { get; set; }
     }
 }
