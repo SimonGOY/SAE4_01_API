@@ -10,7 +10,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("clt_id")]
         public int IdClient { get; set; }
 
-        [Column("clt_numeroadresse")]
+        [Column("adr_numeroadresse")]
         public int NumAdresse { get; set; }
 
         [Column("clt_civilite")]
@@ -32,6 +32,10 @@ namespace SAE_4._01.Models.EntityFramework
         [StringLength(50)]
         public string? EmailClient { get; set; }
 
+        [ForeignKey(nameof(NumAdresse))]
+        [InverseProperty(nameof(Adresse.ClientAdresse))]
+        public virtual Taille AdresseClient { get; set; } = null!;
+
         [InverseProperty(nameof(InfoCB.ClientInfoCB))]
         public virtual ICollection<InfoCB>? InfoCBClient { get; set; }
 
@@ -49,6 +53,9 @@ namespace SAE_4._01.Models.EntityFramework
         //public virtual ICollection<Reservation> Reservations { get; set; }
         [InverseProperty(nameof(Prefere.ClientPrefere))] 
         public virtual ICollection<Prefere>? PrefereClient { get; set; }
+
+        [InverseProperty(nameof(Prive.ClientPrive))]
+        public virtual ICollection<Prive>? PriveClient { get; set; }
 
     }
 }
