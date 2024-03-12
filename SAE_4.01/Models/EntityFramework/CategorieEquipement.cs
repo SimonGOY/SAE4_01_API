@@ -25,10 +25,15 @@ namespace SAE_4._01.Models.EntityFramework
         public string LibelleCatEquipement { get; set; } = null!;
 
 
+        [ForeignKey(nameof(CatIdCatEquipement))]
+        [InverseProperty(nameof(CategorieEquipement.CategorieEquipementCategorieEquipementProperty))]
+        public virtual CategorieEquipement CategorieEquipementCategorieEquipementFK { get; set; } = null!;
+
+
+        [InverseProperty(nameof(CategorieEquipement.CategorieEquipementCategorieEquipementFK))]
+        public virtual ICollection<CategorieEquipement> CategorieEquipementCategorieEquipementProperty { get; set; }
+
         [InverseProperty(nameof(Equipement.CategorieEquipementEquipement))]
         public virtual ICollection<Equipement> EquipementCategorieEquipement { get; set; }
-
-        //[InverseProperty(nameof(CategorieEquipement.nom))]
-        //public virtual ICollection<CategorieEquipement> CategoriesEquipement { get; set; }
     }
 }
