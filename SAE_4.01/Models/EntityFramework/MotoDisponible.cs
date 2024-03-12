@@ -10,7 +10,7 @@ namespace SAE_4._01.Models.EntityFramework
     {
         public MotoDisponible()
         {
-            ModelesMoto = new HashSet<ModeleMoto>();
+
         }
 
         [Key]
@@ -23,13 +23,8 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("mod_idmoto")]
         public int IdMoto { get; set; }
 
-        [InverseProperty(nameof(ModeleMoto.GammesMoto))]
-        public virtual ICollection<ModeleMoto> ModelesMoto { get; set; }
-
-        //[InverseProperty(nameof(ModeleMoto.nom))]
-        //public virtual ICollection<ModeleMoto> ModelesMoto { get; set; }
-
-        //[InverseProperty(nameof(Reservation.nom))]
-        //public virtual ICollection<Reservation> Reservations { get; set; }
+        [ForeignKey(nameof(IdMotoDisponible))]
+        [InverseProperty(nameof(ModeleMoto.MotoDisponibleModeleMoto))]
+        public virtual ModeleMoto ModeleMotoMotoDisponible { get; set; } = null!;
     }
 }
