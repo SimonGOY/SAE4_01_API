@@ -6,7 +6,19 @@ using System.Xml.Linq;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    public class Taille
+    [Table("t_r_taille_tle")]
+    public partial class Taille
     {
+        [Key]
+        [Column("tle_id")]
+        public int IdTaille { get; set; }
+
+        [Column("tle_libelle")]
+        [StringLength(15)]
+        public int LibelleTaille { get; set; }
+
+        [Column("tle_description")]
+        [StringLength(8)]
+        public int DescTaille { get; set; }
     }
 }
