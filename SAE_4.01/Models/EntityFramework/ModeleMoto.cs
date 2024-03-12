@@ -39,8 +39,8 @@ namespace SAE_4._01.Models.EntityFramework
         [InverseProperty(nameof(MotoDisponible.ModelesMoto))]
         public virtual MotoDisponible MotosDisponible { get; set; } = null!;
 
-        //[InverseProperty(nameof(Caracteristique.nom))]
-        //public virtual ICollection<Caracteristique> Caracteristiques { get; set; }
+        [InverseProperty(nameof(Caracteristique.ModelesMoto))]
+        public virtual ICollection<Caracteristique> Caracteristiques { get; set; }
 
         //[InverseProperty(nameof(Media.nom))]
         //public virtual ICollection<Media> Medias { get; set; }
