@@ -28,5 +28,8 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("ctf_tel")]
         [StringLength(10)]
         public string? TelContact { get; set; } = null!;
+
+        [InverseProperty(nameof(DemandeEssai.ContactInfoDemandeEssai))]
+        public virtual ICollection<Media> DemandeEssaiContactInfo { get; set; }
     }
 }
