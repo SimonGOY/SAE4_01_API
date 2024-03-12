@@ -41,6 +41,9 @@ namespace SAE_4._01.Models.EntityFramework
         [InverseProperty(nameof(Garage.ClientGarage))]
         public virtual ICollection<Garage>? GarageClient { get; set; }
 
+        [InverseProperty(nameof(Professionnel.ClientProfessionnel))]
+        public virtual ICollection<Professionnel>? ProfessionnelClient { get; set; }
+
 
         //[InverseProperty(nameof(Reservation.nom))]
         //public virtual ICollection<Reservation> Reservations { get; set; }
