@@ -48,9 +48,9 @@ namespace SAE_4._01.Models.EntityFramework
         [InverseProperty(nameof(Professionnel.ClientProfessionnel))]
         public virtual ICollection<Professionnel>? ProfessionnelClient { get; set; }
 
+        [InverseProperty(nameof(Reservation.ClientReservation))]
+        public virtual ICollection<Reservation> ReservationClient { get; set; }
 
-        //[InverseProperty(nameof(Reservation.nom))]
-        //public virtual ICollection<Reservation> Reservations { get; set; }
         [InverseProperty(nameof(Prefere.ClientPrefere))] 
         public virtual ICollection<Prefere>? PrefereClient { get; set; }
 

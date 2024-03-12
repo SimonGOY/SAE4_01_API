@@ -22,6 +22,7 @@ namespace SAE_4._01.Models.EntityFramework
         [StringLength(75)]
         public string LibelleGamme { get; set; } = null!;
 
+
         [InverseProperty(nameof(ModeleMoto.GammeMotoModeleMoto))]
         public virtual ICollection<ModeleMoto> ModeleMotoGammeMoto { get; set; }
     }

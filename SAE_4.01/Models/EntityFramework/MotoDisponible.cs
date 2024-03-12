@@ -23,8 +23,13 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("mod_idmoto")]
         public int IdMoto { get; set; }
 
+
         [ForeignKey(nameof(IdMotoDisponible))]
         [InverseProperty(nameof(ModeleMoto.MotoDisponibleModeleMoto))]
         public virtual ModeleMoto ModeleMotoMotoDisponible { get; set; } = null!;
+
+
+        [InverseProperty(nameof(Reservation.MotoDisponibleReservation))]
+        public virtual ICollection<Reservation> ReservationMotoDisponible { get; set; }
     }
 }

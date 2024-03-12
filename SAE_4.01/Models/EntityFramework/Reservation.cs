@@ -32,5 +32,18 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("res_financement")]
         [StringLength(30)]
         public string FinancementReservation { get; set; } = null!;
+
+
+        [ForeignKey(nameof(IdMotoDisponible))]
+        [InverseProperty(nameof(MotoDisponible.ReservationMotoDisponible))]
+        public virtual MotoDisponible MotoDisponibleReservation { get; set; } = null!;
+
+        [ForeignKey(nameof(IdClient))]
+        [InverseProperty(nameof(Client.ReservationClient))]
+        public virtual Client ClientReservation { get; set; } = null!;
+
+        [ForeignKey(nameof(IdConcessionnaire))]
+        [InverseProperty(nameof(Concessionnaire.ReservationConcessionnaire))]
+        public virtual Concessionnaire ConcessionnaireReservation { get; set; } = null!;
     }
 }
