@@ -17,13 +17,13 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("res_id")]
         public int IdReservation { get; set; }
 
-        [Column("res_idmoto")]
+        [Column("mot_idmoto")]
         public int IdMotoDisponible { get; set; }
 
-        [Column("res_idclient")]
+        [Column("clt_idclient")]
         public int IdClient { get; set; }
 
-        [Column("res_idconcessionnaire")]
+        [Column("con_idconcessionnaire")]
         public int IdConcessionnaire { get; set; }
 
         [Column("res_dateres", TypeName = "date")]

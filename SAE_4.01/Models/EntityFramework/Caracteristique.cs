@@ -17,10 +17,10 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("car_id")]
         public int IdCaracteristique { get; set; }
 
-        [Column("car_idmoto")]
+        [Column("mod_idmoto")]
         public int IdMoto { get; set; }
 
-        [Column("car_idcat")]
+        [Column("cat_idcat")]
         public int IdCatCaracteristique { get; set; }
 
         [Column("car_nom")]

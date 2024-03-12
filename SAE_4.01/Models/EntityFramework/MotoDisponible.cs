@@ -20,7 +20,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("mot_prix")]
         public float PrixMotoDisponible { get; set; }
 
-        [Column("mot_idmoto")]
+        [Column("mod_idmoto")]
         public int IdMoto { get; set; }
     }
 }

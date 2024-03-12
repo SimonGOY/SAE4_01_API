@@ -17,10 +17,10 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("pre_id")]
         public int IdPresentation { get; set; }
 
-        [Column("pre_idequipement")]
+        [Column("equ_idequipement")]
         public int IdEquipement { get; set; }
 
-        [Column("pre_idcoloris")]
+        [Column("col_idcoloris")]
         public int IdColoris { get; set; }
     }
 }

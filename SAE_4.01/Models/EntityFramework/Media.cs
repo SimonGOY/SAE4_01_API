@@ -17,13 +17,13 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("med_id")]
         public int IdMedia { get; set; }
 
-        [Column("med_idequipement")]
+        [Column("equ_idequipement")]
         public int IdEquipement { get; set; }
 
-        [Column("med_idmoto")]
+        [Column("mod_idmoto")]
         public int IdMoto { get; set; }
 
-        [Column("med_idpresentation")]
+        [Column("pre_idpresentation")]
         public int IdPresentation { get; set; }
 
         [Column("med_lienmedia")]

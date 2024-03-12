@@ -14,11 +14,11 @@ namespace SAE_4._01.Models.EntityFramework
         }
 
         [Key]
-        [Column("eli_idequipement")]
+        [Column("equ_idequipement")]
         public int IdEquipement { get; set; }
 
         [Key]
-        [Column("eli_equidequipement")]
+        [Column("equ_equidequipement")]
         public int EquIdEquipement { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("mod_id")]
         public int IdMoto { get; set; }
 
-        [Column("mod_idgamme")]
+        [Column("gam_idgamme")]
         public int IdGamme { get; set; }
 
         [Column("mod_nommoto")]
