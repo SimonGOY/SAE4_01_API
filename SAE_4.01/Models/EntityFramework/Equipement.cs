@@ -46,5 +46,8 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("equ_segment")]
         [StringLength(30)]
         public string Segment { get; set; } = null!;
+
+        //[InverseProperty(nameof(Media.nom))]
+        //public virtual ICollection<Media> Medias { get; set; }
     }
 }
