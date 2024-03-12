@@ -15,10 +15,10 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("tle_libelle")]
         [StringLength(15)]
-        public int LibelleTaille { get; set; }
+        public string? LibelleTaille { get; set; }
 
         [Column("tle_description")]
         [StringLength(8)]
-        public int DescTaille { get; set; }
+        public string? DescTaille { get; set; }
     }
 }
