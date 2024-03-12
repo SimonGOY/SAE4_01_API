@@ -6,6 +6,9 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_r_prefere_prf")]
     public class Prefere
     {
+        public Prefere() {
+            ClientPrefere = new HashSet<Prefere>();
+        }
         [Key]
         [Column("clt_id")]
         public int IdClient { get; set; }
@@ -19,7 +22,7 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual Client ClientPrefere { get; set; } = null!;
 
         [ForeignKey(nameof(IdConcessionnaire))]
-        [InverseProperty(nameof(Concessionnaire.PrefereConcessionnairet))]
+        [InverseProperty(nameof(Concessionnaire.PrefereConcessionnaire))]
         public virtual Concessionnaire ConcessionnairePrefere { get; set; } = null!;
     }
 }
