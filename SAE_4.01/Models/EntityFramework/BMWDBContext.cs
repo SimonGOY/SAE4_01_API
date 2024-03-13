@@ -79,6 +79,11 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdAccessoire)
                     .HasName("pk_acc");
+                entity.HasOne(d => d.EquipementContenuCommande)
+                    .WithMany(p => p.ContenuCommandeEquipement)
+                    .HasForeignKey(d => d.IdEquipement)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_ccm_equ");
             });
 
             modelBuilder.Entity<Adresse>(entity =>
@@ -127,7 +132,6 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdColoris)
                     .HasName("pk_cls");
-                
             });
 
             modelBuilder.Entity<Commande>(entity =>
@@ -337,6 +341,16 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => new { e.IdPack, e.IdOption })
                     .HasName("pk_scp");
+                entity.HasOne(d => d.PackSeCompose)
+                    .WithMany(p => p.SeComposePack)
+                    .HasForeignKey(d => d.IdPack)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_scp_pck");
+                entity.HasOne(d => d.OptionSeCompose)
+                    .WithMany(p => p.SeComposeOption)
+                    .HasForeignKey(d => d.IdOption)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_scp_opt");
             });
 
             modelBuilder.Entity<Specifie>(entity =>
