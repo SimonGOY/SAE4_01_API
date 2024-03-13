@@ -26,5 +26,8 @@ namespace SAE_4._01.Models.EntityFramework
         [InverseProperty(nameof(ModeleMoto.CouleurMoto))]
         public virtual ModeleMoto ModeleStyle { get; set; } = null!;
 
+        [InverseProperty(nameof(EstInclus.StyleInclus))]
+        public virtual ICollection<EstInclus>? InclusStyle { get; set; }
+
     }
 }

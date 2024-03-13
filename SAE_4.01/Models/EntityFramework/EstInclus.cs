@@ -16,5 +16,9 @@ namespace SAE_4._01.Models.EntityFramework
         [ForeignKey(nameof(IdOption))]
         [InverseProperty(nameof(Option.InclusOption))]
         public virtual Option? OptionIncluse { get; set; }
+
+        [ForeignKey(nameof(IdStyle))]
+        [InverseProperty(nameof(Style.InclusStyle))]
+        public virtual Option? StyleInclus { get; set; }
     }
 }
