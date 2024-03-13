@@ -46,5 +46,9 @@ namespace SAE_4._01.Models.EntityFramework
         [InverseProperty(nameof(Couleur.ModeleColore))]
         public virtual ICollection<Couleur>? CouleurMoto { get; set; }
 
+        [InverseProperty(nameof(Style.ModeleStyle))]
+        public virtual ICollection<Couleur>? StyleMoto { get; set; }
+
+
     }
 }
