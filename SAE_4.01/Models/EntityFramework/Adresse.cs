@@ -16,7 +16,7 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("adr_adresse")]
         [StringLength(50)]
-        public string? AdresseAdresse { get; set; } = null!;
+        public string AdresseAdresse { get; set; } = null!;
 
         [ForeignKey(nameof(NomPays))]
         [InverseProperty(nameof(Pays.AdressePays))]

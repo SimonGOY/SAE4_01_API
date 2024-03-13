@@ -15,22 +15,22 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("ctf_nom")]
         [StringLength(50)]
-        public string? NomContact { get; set; } = null!;
+        public string NomContact { get; set; } = null!;
 
         [Column("ctf_prenom")]
         [StringLength(50)]
-        public string? PrenomContact { get; set; } = null!;
+        public string PrenomContact { get; set; } = null!;
 
         [Column("ctf_datenaissance", TypeName ="DATE")]
         public DateTime DateNaissanceContact { get; set; }
 
         [Column("ctf_email")]
         [StringLength(100)]
-        public string? EmailContact { get; set; } = null!;
+        public string EmailContact { get; set; } = null!;
 
         [Column("ctf_tel")]
         [StringLength(10)]
-        public string? TelContact { get; set; } = null!;
+        public string TelContact { get; set; } = null!;
 
         [InverseProperty(nameof(DemandeEssai.ContactInfoDemandeEssai))]
         public virtual ICollection<Media>? DemandeEssaiContactInfo { get; set; }

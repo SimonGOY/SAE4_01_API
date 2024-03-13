@@ -21,7 +21,7 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("ofr_financement")]
         [StringLength(30)]
-        public string? FinancementOffre { get; set; } = null!;
+        public string FinancementOffre { get; set; } = null!;
 
         [ForeignKey(nameof(IdMotoConfigurable))]
         [InverseProperty(nameof(MotoConfigurable.OffreMotoConfigurable))]
@@ -32,6 +32,6 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual Concessionnaire ConcessionnaireOffre { get; set; } = null!;
 
         [InverseProperty(nameof(ContactInfo.OffreContactInfo))]
-        public virtual ICollection<Offre>? ContactInfoOffre { get; set; } = null!;
+        public virtual ICollection<ContactInfo>? ContactInfoOffre { get; set; }
     }
 }
