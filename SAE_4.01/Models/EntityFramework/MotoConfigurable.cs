@@ -24,9 +24,6 @@ namespace SAE_4._01.Models.EntityFramework
         [InverseProperty(nameof(Garage.MotoConfigurableGarage))]
         public virtual ICollection<Garage>? GarageMotoConfigurable { get; set; }
 
-        [InverseProperty(nameof(ModeleMoto.ConfigMoto))]
-        public virtual ModeleMoto? ModeleConfig { get; set; }
-
         [InverseProperty(nameof(Specifie.MotoConfigurableSpecifie))]
         public virtual ICollection<Specifie>? SpecifieMotoConfigurable { get; set; }
     }
