@@ -28,6 +28,6 @@ namespace SAE_4._01.Models.EntityFramework
 
         [ForeignKey(nameof(IdClient))]
         [InverseProperty(nameof(Client.TelephoneClient))]
-        public virtual Client? ClientTelephone { get; set; } = null!;
+        public virtual Client ClientTelephone { get; set; } = null!;
     }
 }
