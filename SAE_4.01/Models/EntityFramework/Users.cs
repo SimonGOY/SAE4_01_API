@@ -22,7 +22,7 @@ namespace SAE_4._01.Models.EntityFramework
         public string Password { get; set; } = null!;
 
         [Column("usr_remembertoken")]
-        public string RememberToken { get; set; } = null!;
+        public string? RememberToken { get; set; }
 
         [Column("usr_createdat", TypeName = "DATE")]
         public DateTime CreatedAt { get; set; }

@@ -20,11 +20,11 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("tel_type")]
         [StringLength(60)]
-        public string? Type { get; set; } = null!;
+        public string Type { get; set; } = null!;
 
         [Column("tel_fonction")]
         [StringLength(25)]
-        public string? Fonction { get; set; } = null!;
+        public string Fonction { get; set; } = null!;
 
         [ForeignKey(nameof(IdClient))]
         [InverseProperty(nameof(Client.TelephoneClient))]

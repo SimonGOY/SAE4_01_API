@@ -16,7 +16,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("sty_prix")]
         public double PrixStyle { get; set; }
         [Column("sty_description")]
-        public string DescriptionStyle { get; set; } = null !;
+        public string DescriptionStyle { get; set; } = null!;
         [Column("sty_photo")]
         public string PhotoStyle { get; set; } = null!;
         [Column("sty_photomoto")]

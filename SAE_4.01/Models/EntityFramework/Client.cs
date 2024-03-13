@@ -19,22 +19,22 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("clt_civilite")]
         [StringLength(10)]
-        public string? Civilite { get; set; }
+        public string Civilite { get; set; } = null!;
 
         [Column("clt_nom")]
         [StringLength(50)]
-        public string? NomClient { get; set; }
+        public string NomClient { get; set; } = null!;
 
         [Column("clt_prenom")]
         [StringLength(50)]
-        public string? PrenomClient { get; set; }
+        public string PrenomClient { get; set; } = null!;
 
         [Column("clt_datenaissance", TypeName ="DATE")]
         public DateTime DateNaissanceClient { get; set; }
 
         [Column("clt_email")]
         [StringLength(50)]
-        public string? EmailClient { get; set; }
+        public string EmailClient { get; set; } = null!;
 
         [ForeignKey(nameof(NumAdresse))]
         [InverseProperty(nameof(Adresse.ClientAdresse))]
