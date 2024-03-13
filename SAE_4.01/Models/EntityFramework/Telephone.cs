@@ -10,6 +10,10 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("tel_id")]
         public int Id { get; set; }
 
+
+        [Column("clt_id")]
+        public int IdClient { get; set; }
+
         [Column("tel_num")]
         [StringLength(20)]
         public string? NumTelephone { get; set; }
@@ -21,5 +25,9 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("tel_fonction")]
         [StringLength(25)]
         public string? Fonction { get; set; } = null!;
+
+        [ForeignKey(nameof(IdClient))]
+        [InverseProperty(nameof(Client.TelephoneClient))]
+        public virtual Client? ClientTelephone { get; set; } = null!;
     }
 }
