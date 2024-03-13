@@ -544,6 +544,18 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => new { e.IdMoto, e.IdOption })
                     .HasName("pk_spe");
+
+                entity.HasOne(d => d.MotoConfigurableSpecifie)
+                    .WithMany(p => p.SpecifieMotoConfigurable)
+                    .HasForeignKey(d => d.IdMotoConfigurable)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_spe_mcf");
+
+                entity.HasOne(d => d.OptionSpecifie)
+                    .WithMany(p => p.SpecifieOption)
+                    .HasForeignKey(d => d.IdOption)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_spe_opt");
             });
 
             modelBuilder.Entity<Stock>(entity =>
