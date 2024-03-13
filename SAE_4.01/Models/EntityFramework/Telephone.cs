@@ -26,6 +26,7 @@ namespace SAE_4._01.Models.EntityFramework
         [StringLength(25)]
         public string Fonction { get; set; } = null!;
 
+
         [ForeignKey(nameof(IdClient))]
         [InverseProperty(nameof(Client.TelephoneClient))]
         public virtual Client ClientTelephone { get; set; } = null!;

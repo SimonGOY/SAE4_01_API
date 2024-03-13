@@ -21,6 +21,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("tct_montant", TypeName = "decimal(6,2)")]
         public decimal Montant { get; set; }
 
+
         [ForeignKey(nameof(IdCommande))]
         [InverseProperty(nameof(Commande.TransactionCommande))]
         public virtual Commande CommandeTransaction { get; set; } = null!;

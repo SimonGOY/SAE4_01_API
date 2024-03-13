@@ -35,6 +35,7 @@ namespace SAE_4._01.Models.EntityFramework
         [InverseProperty(nameof(DemandeEssai.ContactInfoDemandeEssai))]
         public virtual ICollection<Media>? DemandeEssaiContactInfo { get; set; }
 
+
         [ForeignKey(nameof(IdOffre))]
         [InverseProperty(nameof(Offre.ContactInfoOffre))]
         public virtual Offre OffreContactInfo { get; set; } = null!;

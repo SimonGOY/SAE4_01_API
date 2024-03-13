@@ -23,19 +23,19 @@ namespace SAE_4._01.Models.EntityFramework
 
 
         [ForeignKey(nameof(IdEquipement))]
-        [InverseProperty(nameof(Equipement.Equipement))]
-        public virtual Equipement Equipement { get; set; } = null!;
+        [InverseProperty(nameof(Equipement.ContenuCommandeEquipement))]
+        public virtual Equipement EquipementContenuCommande { get; set; } = null!;
 
         [ForeignKey(nameof(IdTaille))]
-        [InverseProperty(nameof(Taille.Taille))]
-        public virtual Taille Taille { get; set; } = null!;
+        [InverseProperty(nameof(Taille.ContenuCommandeTaille))]
+        public virtual Taille TailleContenuCommande { get; set; } = null!;
 
         [ForeignKey(nameof(IdColoris))]
-        [InverseProperty(nameof(Coloris.Coloris))]
-        public virtual Coloris Coloris { get; set; } = null!;
+        [InverseProperty(nameof(Coloris.ContenuCommandeColoris))]
+        public virtual Coloris ColorisContenuCommande { get; set; } = null!;
 
         [ForeignKey(nameof(IdCommande))]
-        [InverseProperty(nameof(Commande.Commande))]
-        public virtual Commande Commande { get; set; } = null!;
+        [InverseProperty(nameof(Commande.ContenuCommandeCommande))]
+        public virtual Commande CommandeContenuCommande { get; set; } = null!;
     }
 }
