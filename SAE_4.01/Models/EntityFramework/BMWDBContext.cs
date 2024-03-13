@@ -105,11 +105,11 @@ namespace SAE_4._01.Models.EntityFramework
 
             modelBuilder.Entity<Transaction>(entity =>
             {
-                entity.HasOne(d => d.ClientCommande)
-                    .WithMany(p => p.CommandeClient)
-                    .HasForeignKey(d => d.IdClient)
+                entity.HasOne(d => d.CommandeTransaction)
+                    .WithMany(p => p.TransactionCommande)
+                    .HasForeignKey(d => d.IdCommande)
                     .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_cmd_clt");
+                    .HasConstraintName("fk_tct_cmd");
             });
 
             modelBuilder.Entity<ContactInfo>(entity =>
