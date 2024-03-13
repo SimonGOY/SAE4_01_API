@@ -443,14 +443,11 @@ namespace SAE_4._01.Models.EntityFramework
                 entity.HasKey(e => new { e.IdClient, e.IdConcessionnaire })
                     .HasName("pk_prf");
 
-                entity.HasKey(e => new { e.IdClient, e.IdConcessionnaire })
-                    .HasName("pk_prf");
                 entity.HasOne(d => d.ClientPrefere)
                     .WithMany(p => p.PrefereClient)
                     .HasForeignKey(d => d.IdClient)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_prf_clt");
-
                 entity.HasOne(d => d.ConcessionnairePrefere)
                     .WithMany(p => p.PrefereConcessionnaire)
                     .HasForeignKey(d => d.IdConcessionnaire)
@@ -509,13 +506,11 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdReservation)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_res_mdp");
-
                 entity.HasOne(d => d.ClientReservation)
                     .WithMany(p => p.ReservationClient)
                     .HasForeignKey(d => d.IdClient)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_res_clt");
-
                 entity.HasOne(d => d.ConcessionnaireReservation)
                     .WithMany(p => p.ReservationConcessionnaire)
                     .HasForeignKey(d => d.IdConcessionnaire)
