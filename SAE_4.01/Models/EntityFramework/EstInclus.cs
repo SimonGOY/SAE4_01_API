@@ -13,6 +13,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("sty_id")]
         public int IdStyle { get; set; }
 
+
         [ForeignKey(nameof(IdOption))]
         [InverseProperty(nameof(Option.InclusOption))]
         public virtual Option OptionIncluse { get; set; } = null!;

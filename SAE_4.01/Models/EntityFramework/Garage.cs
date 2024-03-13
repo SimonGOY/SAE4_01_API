@@ -14,6 +14,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("clt_id")]
         public int IdClient { get; set; }
 
+
         [ForeignKey(nameof(IdMotoConfigurable))]
         [InverseProperty(nameof(MotoConfigurable.GarageMotoConfigurable))]
         public virtual MotoConfigurable? MotoConfigurableGarage { get; set; }

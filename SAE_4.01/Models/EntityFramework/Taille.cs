@@ -22,10 +22,11 @@ namespace SAE_4._01.Models.EntityFramework
         [StringLength(8)]
         public string DescTaille { get; set; } = null!;
 
+
         [InverseProperty(nameof(Stock.TailleStock))]
         public virtual ICollection<Stock>? StockTaille { get; set; }
 
         [InverseProperty(nameof(ContenuCommande.TailleContenuCommande))]
-        public virtual ContenuCommande? ContenuCommandeTaille { get; set; }
+        public virtual ICollection<ContenuCommande>? ContenuCommandeTaille { get; set; }
     }
 }

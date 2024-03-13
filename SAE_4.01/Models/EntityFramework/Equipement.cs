@@ -75,6 +75,6 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual ICollection<EstLie>? EstLieEquipement2 { get; set; }
 
         [InverseProperty(nameof(ContenuCommande.EquipementContenuCommande))]
-        public virtual ContenuCommande? ContenuCommandeEquipement { get; set; }
+        public virtual ICollection<ContenuCommande>? ContenuCommandeEquipement { get; set; }
     }
 }

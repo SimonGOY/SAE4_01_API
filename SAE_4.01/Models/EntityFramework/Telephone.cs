@@ -10,7 +10,6 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("tel_id")]
         public int Id { get; set; }
 
-
         [Column("clt_id")]
         public int IdClient { get; set; }
 

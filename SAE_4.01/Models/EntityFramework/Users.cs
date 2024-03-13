@@ -6,7 +6,6 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_users_usr")]
     public partial class Users
     {
-
         [Key]
         [Column("usr_id")]
         public int Id { get; set; }

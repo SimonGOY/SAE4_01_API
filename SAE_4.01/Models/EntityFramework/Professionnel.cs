@@ -20,6 +20,7 @@ namespace SAE_4._01.Models.EntityFramework
         [StringLength(100)]
         public string NomCompagnie { get; set; } = null!;
 
+
         [ForeignKey(nameof(IdClient))]
         [InverseProperty(nameof(Client.ProfessionnelClient))]
         public virtual Client ClientProfessionnel { get; set; } = null!;

@@ -10,6 +10,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("par_nom")]
         [StringLength(50)]
         public string NomParametre { get; set; } = null!;
+
         [Column("par_description")]
         [StringLength(50)]
         public string Description { get; set;} = null!;

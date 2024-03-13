@@ -24,6 +24,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("stk_quantite")]
         public int Quantite { get; set; }
 
+
         [ForeignKey(nameof(IdTaille))]
         [InverseProperty(nameof(Taille.StockTaille))]
         public virtual Taille TailleStock { get; set; } = null!;

@@ -22,6 +22,6 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual ICollection<PresentationEquipement>? PresentationEquipementColoris { get; set; }
 
         [InverseProperty(nameof(ContenuCommande.ColorisContenuCommande))]
-        public virtual ContenuCommande? ContenuCommandeColoris { get; set; }
+        public virtual ICollection<ContenuCommande>? ContenuCommandeColoris { get; set; }
     }
 }
