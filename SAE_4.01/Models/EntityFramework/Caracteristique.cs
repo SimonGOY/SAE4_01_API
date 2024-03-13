@@ -30,7 +30,7 @@ namespace SAE_4._01.Models.EntityFramework
         [InverseProperty(nameof(ModeleMoto.CaracteristiqueModeleMoto))]
         public virtual ModeleMoto ModeleMotoCaracteristique { get; set; } = null!;
 
-        [ForeignKey(nameof(IdCaracteristique))]
+        [ForeignKey(nameof(IdCatCaracteristique))]
         [InverseProperty(nameof(CategorieCaracteristique.CaracteristiqueCategorieCaracteristique))]
         public virtual CategorieCaracteristique CategorieCaracteristiqueCaracteristique { get; set; } = null!;
     }

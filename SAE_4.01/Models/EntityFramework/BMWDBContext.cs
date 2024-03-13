@@ -91,6 +91,18 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdCaracteristique)
                     .HasName("pk_car");
+
+                entity.HasOne(d => d.ModeleMotoCaracteristique)
+                    .WithMany(p => p.CaracteristiqueModeleMoto)
+                    .HasForeignKey(d => d.IdCaracteristique)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_car_mod");
+
+                entity.HasOne(d => d.CategorieCaracteristiqueCaracteristique)
+                    .WithMany(p => p.CaracteristiqueCategorieCaracteristique)
+                    .HasForeignKey(d => d.IdCatCaracteristique)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_car_ctc");
             });
 
             modelBuilder.Entity<CategorieAccessoire>(entity =>
@@ -223,6 +235,12 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdMotoDisponible)
                     .HasName("pk_mdp");
+
+                entity.HasOne(d => d.ModeleMotoMotoDisponible)
+                    .WithMany(p => p.MotoDisponibleModeleMoto)
+                    .HasForeignKey(d => d.IdMotoDisponible)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_mdp_mod");
             });
 
             modelBuilder.Entity<Offre>(entity =>
@@ -283,6 +301,12 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdReservation)
                     .HasName("pk_res");
+
+                entity.HasOne(d => d.MotoDisponibleReservation)
+                    .WithMany(p => p.ReservationMotoDisponible)
+                    .HasForeignKey(d => d.IdMotoDisponible)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_mdp_mod");
             });
 
             modelBuilder.Entity<SeCompose>(entity =>
