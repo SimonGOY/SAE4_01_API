@@ -8,7 +8,7 @@ namespace SAE_4._01.Models.EntityFramework
     {
         public Style()
         {
-            InclusStyle = new HashSet<EstInclus>();
+            EstInclusStyle = new HashSet<EstInclus>();
         }
 
         [Key]
@@ -39,8 +39,8 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual ModeleMoto ModeleMotoStyle { get; set; } = null!;
 
 
-        [InverseProperty(nameof(EstInclus.StyleInclus))]
-        public virtual ICollection<EstInclus>? InclusStyle { get; set; }
+        [InverseProperty(nameof(EstInclus.StyleEstInclus))]
+        public virtual ICollection<EstInclus>? EstInclusStyle { get; set; }
 
     }
 }

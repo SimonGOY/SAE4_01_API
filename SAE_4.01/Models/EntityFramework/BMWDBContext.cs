@@ -79,6 +79,7 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdAccessoire)
                     .HasName("pk_acc");
+
                 entity.HasOne(d => d.CateAccessoire)
                     .WithMany(p => p.AccessoireCategorise)
                     .HasForeignKey(d => d.IdCatAcc)
@@ -233,6 +234,7 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdCouleur)
                     .HasName("pk_clr");
+
                 entity.HasOne(d => d.ModeleMotoCouleur)
                     .WithMany(p => p.CouleurModeleMoto)
                     .HasForeignKey(d => d.IdMoto)
@@ -250,13 +252,11 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdConcessionnaire)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_dmd_con");
-
                 entity.HasOne(d => d.ModeleMotoDemandeEssai)
                     .WithMany(p => p.DemandeEssaiModeleMoto)
                     .HasForeignKey(d => d.IdConcessionnaire)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_dmd_mod");
-
                 entity.HasOne(d => d.ContactInfoDemandeEssai)
                     .WithMany(p => p.DemandeEssaiContactInfo)
                     .HasForeignKey(d => d.IdConcessionnaire)
@@ -274,7 +274,6 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdCollection)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_equ_cln");
-
                 entity.HasOne(d => d.CategorieEquipementEquipement)
                     .WithMany(p => p.EquipementCategorieEquipement)
                     .HasForeignKey(d => d.IdCatEquipement)
@@ -308,7 +307,6 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdEquipement)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_eli_equ");
-
                 entity.HasOne(d => d.EquipementEstLie2)
                     .WithMany(p => p.EstLieEquipement2)
                     .HasForeignKey(d => d.IdEquipement)
@@ -332,7 +330,6 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdMotoConfigurable)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_grg_mcf");
-
                 entity.HasOne(d => d.ClientGarage)
                     .WithMany(p => p.GarageClient)
                     .HasForeignKey(d => d.IdClient)
@@ -362,13 +359,11 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdEquipement)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_med_equ");
-
                 entity.HasOne(d => d.ModeleMotoMedia)
                     .WithMany(p => p.MediaModeleMoto)
                     .HasForeignKey(d => d.IdMoto)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_med_mod");
-
                 entity.HasOne(d => d.PresentationEquipementMedia)
                     .WithMany(p => p.MediaPresentationEquipement)
                     .HasForeignKey(d => d.IdPresentation)
@@ -463,14 +458,11 @@ namespace SAE_4._01.Models.EntityFramework
                 entity.HasKey(e => new { e.IdClient, e.IdConcessionnaire })
                     .HasName("pk_prf");
 
-                entity.HasKey(e => new { e.IdClient, e.IdConcessionnaire })
-                    .HasName("pk_prf");
                 entity.HasOne(d => d.ClientPrefere)
                     .WithMany(p => p.PrefereClient)
                     .HasForeignKey(d => d.IdClient)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_prf_clt");
-
                 entity.HasOne(d => d.ConcessionnairePrefere)
                     .WithMany(p => p.PrefereConcessionnaire)
                     .HasForeignKey(d => d.IdConcessionnaire)
@@ -529,13 +521,11 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdReservation)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_res_mdp");
-
                 entity.HasOne(d => d.ClientReservation)
                     .WithMany(p => p.ReservationClient)
                     .HasForeignKey(d => d.IdClient)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_res_clt");
-
                 entity.HasOne(d => d.ConcessionnaireReservation)
                     .WithMany(p => p.ReservationConcessionnaire)
                     .HasForeignKey(d => d.IdConcessionnaire)
