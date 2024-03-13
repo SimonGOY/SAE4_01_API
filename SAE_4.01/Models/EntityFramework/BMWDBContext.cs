@@ -576,7 +576,7 @@ namespace SAE_4._01.Models.EntityFramework
                 entity.HasKey(e => e.IdStyle)
                     .HasName("pk_sty");
                 entity.HasOne(d => d.ModeleStyle)
-                    .WithMany(p => p.CouleurMoto)
+                    .WithMany(p => p.StyleMoto)
                     .HasForeignKey(d => d.IdMoto)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_sty_mod");
