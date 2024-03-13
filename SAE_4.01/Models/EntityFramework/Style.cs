@@ -8,7 +8,7 @@ namespace SAE_4._01.Models.EntityFramework
     {
         public Style()
         {
-            InclusStyle = new HashSet<EstInclus>();
+            EstInclusStyle = new HashSet<EstInclus>();
         }
 
         [Key]

@@ -8,7 +8,7 @@ namespace SAE_4._01.Models.EntityFramework
     {
         public Option()
         {
-            InclusOption = new HashSet<EstInclus>();
+            EstInclusOption = new HashSet<EstInclus>();
 
             SpecifieOption = new HashSet<Specifie>();
 
