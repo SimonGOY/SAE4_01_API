@@ -6,6 +6,11 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_style_sty")]
     public class Style
     {
+        public Style()
+        {
+            InclusStyle = new HashSet<EstInclus>();
+        }
+
         [Key]
         [Column("sty_id")]
         public int IdStyle { get; set; }

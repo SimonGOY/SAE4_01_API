@@ -6,6 +6,10 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_option_opt")]
     public class Option
     {
+        public Option() {
+            InclusOption = new HashSet<EstInclus>();
+        }
+
         [Key]
         [Column("opt_id")]
         public int IdOption { get; set; }
