@@ -103,6 +103,24 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasConstraintName("fk_cmd_clt");
             });
 
+            modelBuilder.Entity<Prefere>(entity =>
+            {
+                entity.HasKey(e => new { e.IdClient, e.IdConcessionnaire })
+                    .HasName("pk_prf");
+                entity.HasOne(d => d.ClientPrefere)
+                    .WithMany(p => p.PrefereClient)
+                    .HasForeignKey(d => d.IdClient)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_prf_clt");
+
+                entity.HasOne(d => d.ConcessionnairePrefere)
+                    .WithMany(p => p.PrefereConcessionnaire)
+                    .HasForeignKey(d => d.IdConcessionnaire)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_prf_con");
+            });
+
+
             modelBuilder.Entity<Transaction>(entity =>
             {
                 entity.HasOne(d => d.CommandeTransaction)
