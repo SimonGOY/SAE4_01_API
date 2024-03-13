@@ -15,11 +15,11 @@ namespace SAE_4._01.Models.EntityFramework
 
 
         [ForeignKey(nameof(IdOption))]
-        [InverseProperty(nameof(Option.EstInclusOption))]
-        public virtual Option OptionEstInclus { get; set; } = null!;
+        [InverseProperty(nameof(Option.InclusOption))]
+        public virtual Option OptionInclus { get; set; } = null!;
 
         [ForeignKey(nameof(IdStyle))]
-        [InverseProperty(nameof(Style.EstInclusStyle))]
-        public virtual Style StyleEstInclus { get; set; } = null!;
+        [InverseProperty(nameof(Style.InclusStyle))]
+        public virtual Style StyleInclus { get; set; } = null!;
     }
 }

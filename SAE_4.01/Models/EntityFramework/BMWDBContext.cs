@@ -285,14 +285,13 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => new { e.IdOption, e.IdStyle })
                     .HasName("pk_ecl");
-
-                entity.HasOne(d => d.OptionEstInclus)
-                    .WithMany(p => p.EstInclusOption)
+                entity.HasOne(d => d.OptionInclus)
+                    .WithMany(p => p.InclusOption)
                     .HasForeignKey(d => d.IdOption)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_ecl_opt");
-                entity.HasOne(d => d.StyleEstInclus)
-                    .WithMany(p => p.EstInclusStyle)
+                entity.HasOne(d => d.StyleInclus)
+                    .WithMany(p => p.InclusStyle)
                     .HasForeignKey(d => d.IdStyle)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_ecl_sty");
