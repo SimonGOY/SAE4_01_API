@@ -24,6 +24,11 @@ namespace SAE_4._01.Models.EntityFramework
         public decimal PrixPack { get; set; }
 
 
+        [ForeignKey(nameof(IdMoto))]
+        [InverseProperty(nameof(ModeleMoto.PackModeleMoto))]
+        public virtual ModeleMoto ModeleMotoPack { get; set; } = null!;
+
+
         [InverseProperty(nameof(SeCompose.PackSeCompose))]
         public virtual SeCompose? SeComposePack { get; set; }
     }
