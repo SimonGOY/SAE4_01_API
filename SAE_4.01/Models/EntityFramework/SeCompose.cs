@@ -13,6 +13,13 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("opt_id")]
         public int IdOption { get; set; }
 
-        // A faire les 2 foreing keys
+
+        [ForeignKey(nameof(IdPack))]
+        [InverseProperty(nameof(Pack.SeComposePack))]
+        public virtual Pack PackSeCompose { get; set; } = null!;
+
+        [ForeignKey(nameof(IdOption))]
+        [InverseProperty(nameof(Option.SeComposeOption))]
+        public virtual Option OptionSeCompose { get; set; } = null!;
     }
 }

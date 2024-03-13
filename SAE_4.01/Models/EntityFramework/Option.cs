@@ -29,5 +29,8 @@ namespace SAE_4._01.Models.EntityFramework
 
         [InverseProperty(nameof(Specifie.OptionSpecifie))]
         public virtual ICollection<Specifie>? SpecifieOption { get; set; }
+
+        [InverseProperty(nameof(SeCompose.OptionSeCompose))]
+        public virtual SeCompose? SeComposeOption { get; set; }
     }
 }

@@ -22,5 +22,9 @@ namespace SAE_4._01.Models.EntityFramework
         public string PhotoPack { get; set; } = null!;
         [Column("pck_prix", TypeName = "DECIMAL(6,2)")]
         public decimal PrixPack { get; set; }
+
+
+        [InverseProperty(nameof(SeCompose.PackSeCompose))]
+        public virtual SeCompose? SeComposePack { get; set; }
     }
 }
