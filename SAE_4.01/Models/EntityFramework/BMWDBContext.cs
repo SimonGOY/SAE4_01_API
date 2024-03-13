@@ -575,11 +575,11 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdStyle)
                     .HasName("pk_sty");
-                entity.HasOne(d => d.ModeleAccessoire)
-                    .WithMany(p => p.AccessoireMoto)
+                entity.HasOne(d => d.ModeleStyle)
+                    .WithMany(p => p.CouleurMoto)
                     .HasForeignKey(d => d.IdMoto)
                     .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_ccm_mod");
+                    .HasConstraintName("fk_sty_mod");
             });
 
             modelBuilder.Entity<Taille>(entity =>
