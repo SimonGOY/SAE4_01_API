@@ -39,6 +39,6 @@ namespace SAE_4._01.Models.EntityFramework
 
 
         [InverseProperty(nameof(DemandeEssai.ContactInfoDemandeEssai))]
-        public virtual ICollection<Media>? DemandeEssaiContactInfo { get; set; }
+        public virtual ICollection<DemandeEssai>? DemandeEssaiContactInfo { get; set; }
     }
 }
