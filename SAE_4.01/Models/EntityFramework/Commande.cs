@@ -19,11 +19,12 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("cmd_etat")]
         public DateTime Etat { get; set; }
 
+        [InverseProperty(nameof(Transaction.CommandeTransaction))]
+        public virtual ICollection<Transaction>? TransactionCommande { get; set; }
+
         [ForeignKey(nameof(IdClient))]
         [InverseProperty(nameof(Client.CommandeClient))]
         public virtual Client ClientCommande { get; set; } = null!;
 
-        [InverseProperty(nameof(Transaction.CommandeTransaction))]
-        public virtual ICollection<Transaction>? TransactionCommande { get; set; }
     }
 }

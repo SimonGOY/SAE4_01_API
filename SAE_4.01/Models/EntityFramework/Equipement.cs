@@ -60,18 +60,18 @@ namespace SAE_4._01.Models.EntityFramework
 
 
         [InverseProperty(nameof(Stock.EquipementStock))]
-        public virtual ICollection<Stock> StockEquipement { get; set; }
+        public virtual ICollection<Stock>? StockEquipement { get; set; }
 
         [InverseProperty(nameof(Media.EquipementMedia))]
-        public virtual ICollection<Media> MediaEquipement { get; set; }
+        public virtual ICollection<Media>? MediaEquipement { get; set; }
 
         [InverseProperty(nameof(PresentationEquipement.EquipementPresentationEquipement))]
-        public virtual ICollection<PresentationEquipement> PresentationEquipementEquipement { get; set; }
+        public virtual ICollection<PresentationEquipement>? PresentationEquipementEquipement { get; set; }
 
         [InverseProperty(nameof(EstLie.EquipementEstLie1))]
-        public virtual ICollection<EstLie> EstLieEquipement1 { get; set; }
+        public virtual ICollection<EstLie>? EstLieEquipement1 { get; set; }
 
         [InverseProperty(nameof(EstLie.EquipementEstLie2))]
-        public virtual ICollection<EstLie> EstLieEquipement2 { get; set; }
+        public virtual ICollection<EstLie>? EstLieEquipement2 { get; set; }
     }
 }

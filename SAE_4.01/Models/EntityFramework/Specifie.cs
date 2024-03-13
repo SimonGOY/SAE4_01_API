@@ -15,6 +15,13 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("mcf_id")]
         public int IdMotoConfigurable { get; set;}
 
-        /* A faire les 2 fk idmcf et idopt */
+
+        [ForeignKey(nameof(IdOption))]
+        [InverseProperty(nameof(Option.SpecifieOption))]
+        public virtual Option OptionSpecifie { get; set; } = null!;
+
+        [ForeignKey(nameof(IdMotoConfigurable))]
+        [InverseProperty(nameof(MotoConfigurable.SpecifieMotoConfigurable))]
+        public virtual MotoConfigurable MotoConfigurableSpecifie { get; set; } = null!;
     }
 }
