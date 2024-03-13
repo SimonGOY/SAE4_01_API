@@ -63,7 +63,6 @@ namespace SAE_4._01.Models.EntityFramework
             if (!optionsBuilder.IsConfigured)
             {
                 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                //optionsBuilder.UseNpgsql("Server=localhost;port=5432;Database=FilmRatingsDB; uid=postgres; password=postgres;");
 
                 optionsBuilder.UseLoggerFactory(MyLoggerFactory)
                     .EnableSensitiveDataLogging()
@@ -94,6 +93,58 @@ namespace SAE_4._01.Models.EntityFramework
 
             modelBuilder.Entity<Utilisateur>().Property(e => e.DateCreation).HasDefaultValueSql("now()");
             modelBuilder.Entity<Utilisateur>().Property(e => e.Pays).HasDefaultValue("France");*/
+
+            modelBuilder.Entity<Commande>(entity =>
+            {
+                entity.HasOne(d => d.ClientCommande)
+                    .WithMany(p => p.CommandeClient)
+                    .HasForeignKey(d => d.IdClient)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_cmd_clt");
+            });
+
+            modelBuilder.Entity<Stock>(entity =>
+            {
+                entity.HasKey(s => new { s.IdTaille, s.IdColoris, s.IdEquipement })
+                    .HasName("pk_stk");
+
+                entity.HasOne(d => d.TailleStock)
+                    .WithMany(p => p.StockTaille)
+                    .HasForeignKey(d => d.IdTaille)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_stk_tle");
+
+                entity.HasOne(d => d.ColorisStock)
+                    .WithMany(p => p.StockColoris)
+                    .HasForeignKey(d => d.IdColoris)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_cls_tle");
+
+                entity.HasOne(d => d.EquipementStock)
+                    .WithMany(p => p.StockEquipement)
+                    .HasForeignKey(d => d.IdEquipement)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_equ_tle");
+            });
+
+            modelBuilder.Entity<Garage>(entity =>
+            {
+                entity.HasKey(g => new { g.IdMotoConfigurable, g.IdClient })
+                    .HasName("pk_grg");
+
+                entity.HasOne(d => d.MotoConfigurableGarage)
+                    .WithMany(p => p.GarageMotoConfigurable)
+                    .HasForeignKey(d => d.IdMotoConfigurable)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_stk_tle");
+
+                entity.HasOne(d => d.ClientGarage)
+                    .WithMany(p => p.GarageClient)
+                    .HasForeignKey(d => d.IdClient)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_cls_tle");
+
+            });
 
 
             OnModelCreatingPartial(modelBuilder);
