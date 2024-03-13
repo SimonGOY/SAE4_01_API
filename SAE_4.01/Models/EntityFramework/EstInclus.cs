@@ -20,6 +20,6 @@ namespace SAE_4._01.Models.EntityFramework
 
         [ForeignKey(nameof(IdStyle))]
         [InverseProperty(nameof(Style.InclusStyle))]
-        public virtual Option StyleInclus { get; set; } = null!;
+        public virtual Style StyleInclus { get; set; } = null!;
     }
 }

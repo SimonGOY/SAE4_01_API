@@ -286,6 +286,16 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => new { e.IdOption, e.IdStyle })
                     .HasName("pk_ecl");
+                entity.HasOne(d => d.OptionIncluse)
+                    .WithMany(p => p.InclusOption)
+                    .HasForeignKey(d => d.IdOption)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_ecl_opt");
+                entity.HasOne(d => d.StyleInclus)
+                    .WithMany(p => p.InclusStyle)
+                    .HasForeignKey(d => d.IdStyle)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_ecl_sty");
             });
 
             modelBuilder.Entity<EstLie>(entity =>
