@@ -35,8 +35,8 @@ namespace SAE_4._01.Models.EntityFramework
 
 
         [ForeignKey(nameof(IdMoto))]
-        [InverseProperty(nameof(ModeleMoto.CouleurMoto))]
-        public virtual ModeleMoto ModeleStyle { get; set; } = null!;
+        [InverseProperty(nameof(ModeleMoto.StyleModeleMoto))]
+        public virtual ModeleMoto ModeleMotoStyle { get; set; } = null!;
 
 
         [InverseProperty(nameof(EstInclus.StyleInclus))]
