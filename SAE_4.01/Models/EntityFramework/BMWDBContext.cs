@@ -233,6 +233,11 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdCouleur)
                     .HasName("pk_clr");
+                entity.HasOne(d => d.ModeleMotoCouleur)
+                    .WithMany(p => p.CouleurModeleMoto)
+                    .HasForeignKey(d => d.IdMoto)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_clr_mod");
             });
 
             modelBuilder.Entity<DemandeEssai>(entity =>
@@ -389,6 +394,11 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdMotoConfigurable)
                     .HasName("pk_mcf");
+                entity.HasOne(d => d.ModeleMotoMotoConfigurable)
+                    .WithMany(p => p.MotoConfigurableModeleMoto)
+                    .HasForeignKey(d => d.IdMoto)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_mcf_mod");
             });
 
             modelBuilder.Entity<MotoDisponible>(entity =>
@@ -413,7 +423,6 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdMotoConfigurable)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_ofr_mcf");
-
                 entity.HasOne(d => d.ConcessionnaireOffre)
                   .WithMany(p => p.OffreConcessionnaire)
                   .HasForeignKey(d => d.IdConcessionnaire)
@@ -431,6 +440,7 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdPack)
                     .HasName("pk_pck");
+
                 entity.HasOne(d => d.ModeleMotoPack)
                   .WithMany(p => p.PackModeleMoto)
                   .HasForeignKey(d => d.IdMoto)
@@ -480,7 +490,6 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdPresentation)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_pre_equ");
-
                 entity.HasOne(d => d.ColorisPresentationEquipement)
                     .WithMany(p => p.PresentationEquipementColoris)
                     .HasForeignKey(d => d.IdColoris)
@@ -540,6 +549,7 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => new { e.IdPack, e.IdOption })
                     .HasName("pk_scp");
+
                 entity.HasOne(d => d.PackSeCompose)
                     .WithMany(p => p.SeComposePack)
                     .HasForeignKey(d => d.IdPack)
@@ -556,6 +566,17 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => new { e.IdMoto, e.IdOption })
                     .HasName("pk_spe");
+
+                entity.HasOne(d => d.MotoConfigurableSpecifie)
+                    .WithMany(p => p.SpecifieMotoConfigurable)
+                    .HasForeignKey(d => d.IdMotoConfigurable)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_spe_mcf");
+                entity.HasOne(d => d.OptionSpecifie)
+                    .WithMany(p => p.SpecifieOption)
+                    .HasForeignKey(d => d.IdOption)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_spe_opt");
             });
 
             modelBuilder.Entity<Stock>(entity =>
@@ -569,13 +590,11 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdTaille)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_stk_tle");
-
                 entity.HasOne(d => d.ColorisStock)
                     .WithMany(p => p.StockColoris)
                     .HasForeignKey(d => d.IdColoris)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_stk_cls");
-
                 entity.HasOne(d => d.EquipementStock)
                     .WithMany(p => p.StockEquipement)
                     .HasForeignKey(d => d.IdEquipement)
@@ -587,6 +606,7 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdStyle)
                     .HasName("pk_sty");
+
                 entity.HasOne(d => d.ModeleMotoStyle)
                     .WithMany(p => p.StyleModeleMoto)
                     .HasForeignKey(d => d.IdMoto)
