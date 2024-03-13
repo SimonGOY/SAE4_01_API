@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    [Table("t_j_est_inclus_ein")]
-    public class Est_Inclus
+    [Table("t_j_estinclus_ein")]
+    public class EstInclus
     {
         [Key]
         [Column("opt_id")]

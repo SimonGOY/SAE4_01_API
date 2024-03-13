@@ -6,6 +6,10 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_concessionnaire_con")]
     public class Concessionnaire
     {
+        public Concessionnaire()
+        {
+            PrefereConcessionnaire = new HashSet<Prefere>();
+        }
         [Key]
         [Column("con_id")]
         public int IdConcessionnaire { get; set; }
