@@ -6,6 +6,10 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_client_clt")]
     public partial class Client
     {
+        public Client () {
+            PrefereClient= new HashSet<Prefere> ();
+        }
+
         [Key]
         [Column("clt_id")]
         public int IdClient { get; set; }
