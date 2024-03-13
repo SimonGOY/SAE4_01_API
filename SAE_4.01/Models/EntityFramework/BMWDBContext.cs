@@ -88,7 +88,7 @@ namespace SAE_4._01.Models.EntityFramework
                     .WithMany(p => p.AccessoireMoto)
                     .HasForeignKey(d => d.IdMoto)
                     .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_ccm_mod");
+                    .HasConstraintName("fk_acc_mod");
             });
 
             modelBuilder.Entity<Adresse>(entity =>
