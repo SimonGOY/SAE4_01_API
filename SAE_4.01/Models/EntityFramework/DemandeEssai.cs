@@ -14,7 +14,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("con_id")]
         public int IdConcessionnaire { get; set; }
 
-        [Column("mom_id")]
+        [Column("mod_id")]
         public int IdMoto { get; set; }
 
         [Column("ctf_id")]
