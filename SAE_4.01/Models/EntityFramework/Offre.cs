@@ -32,6 +32,6 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual Concessionnaire ConcessionnaireOffre { get; set; } = null!;
 
         [InverseProperty(nameof(ContactInfo.OffreContactInfo))]
-        public virtual ICollection<Offre>? ContactInfoOffre { get; set; }
+        public virtual ICollection<ContactInfo>? ContactInfoOffre { get; set; }
     }
 }
