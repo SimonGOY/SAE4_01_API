@@ -22,6 +22,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("icb_titulairecompte")]
         public string TitulaireCompte { get; set; } = null!;
 
+
         [ForeignKey(nameof(IdClient))]
         [InverseProperty(nameof(Client.InfoCBClient))]
         public virtual Client ClientInfoCB { get; set; } = null!;

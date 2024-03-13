@@ -6,6 +6,11 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_pack_pck")]
     public class Pack
     {
+        public Pack()
+        {
+            SeComposePack = new HashSet<SeCompose>();
+        }
+
         [Key]
         [Column("pck_id")]
         public int IdPack { get; set; }
@@ -22,5 +27,14 @@ namespace SAE_4._01.Models.EntityFramework
         public string PhotoPack { get; set; } = null!;
         [Column("pck_prix", TypeName = "DECIMAL(6,2)")]
         public decimal PrixPack { get; set; }
+
+
+        [ForeignKey(nameof(IdMoto))]
+        [InverseProperty(nameof(ModeleMoto.PackModeleMoto))]
+        public virtual ModeleMoto ModeleMotoPack { get; set; } = null!;
+
+
+        [InverseProperty(nameof(SeCompose.PackSeCompose))]
+        public virtual ICollection<SeCompose>? SeComposePack { get; set; }
     }
 }

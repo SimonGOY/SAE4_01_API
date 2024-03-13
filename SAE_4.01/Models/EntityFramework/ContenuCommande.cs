@@ -21,11 +21,21 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("equ_quantite")]
         public int Quantite { get; set; }
 
-        // A faire les 4 fk
 
-        /* ce modèle
-        [ForeignKey(nameof(FilmId))]
-        [InverseProperty(nameof(Film.NotesFilm))]
-        public virtual Film FilmNote { get; set; } = null!;*/
+        [ForeignKey(nameof(IdEquipement))]
+        [InverseProperty(nameof(Equipement.ContenuCommandeEquipement))]
+        public virtual Equipement EquipementContenuCommande { get; set; } = null!;
+
+        [ForeignKey(nameof(IdTaille))]
+        [InverseProperty(nameof(Taille.ContenuCommandeTaille))]
+        public virtual Taille TailleContenuCommande { get; set; } = null!;
+
+        [ForeignKey(nameof(IdColoris))]
+        [InverseProperty(nameof(Coloris.ContenuCommandeColoris))]
+        public virtual Coloris ColorisContenuCommande { get; set; } = null!;
+
+        [ForeignKey(nameof(IdCommande))]
+        [InverseProperty(nameof(Commande.ContenuCommandeCommande))]
+        public virtual Commande CommandeContenuCommande { get; set; } = null!;
     }
 }

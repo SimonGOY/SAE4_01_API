@@ -26,5 +26,9 @@ namespace SAE_4._01.Models.EntityFramework
         [InverseProperty(nameof(Client.CommandeClient))]
         public virtual Client ClientCommande { get; set; } = null!;
 
+
+        [InverseProperty(nameof(ContenuCommande.CommandeContenuCommande))]
+        public virtual ContenuCommande? ContenuCommandeCommande { get; set; }
+
     }
 }

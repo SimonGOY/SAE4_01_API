@@ -14,6 +14,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("con_id")]
         public int IdConcessionnaire { get; set; }
 
+
         [ForeignKey(nameof(IdClient))]
         [InverseProperty(nameof(Client.PrefereClient))]
         public virtual Client ClientPrefere { get; set; } = null!;

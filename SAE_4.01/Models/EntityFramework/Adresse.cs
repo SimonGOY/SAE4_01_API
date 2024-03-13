@@ -18,9 +18,11 @@ namespace SAE_4._01.Models.EntityFramework
         [StringLength(50)]
         public string AdresseAdresse { get; set; } = null!;
 
+
         [ForeignKey(nameof(NomPays))]
         [InverseProperty(nameof(Pays.AdressePays))]
         public virtual Pays PaysAdresse { get; set; } = null!;
+
 
         [InverseProperty(nameof(Client.AdresseClient))]
         public virtual ICollection<Client>? ClientAdresse { get; set; }

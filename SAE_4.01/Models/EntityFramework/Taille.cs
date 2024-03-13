@@ -24,5 +24,8 @@ namespace SAE_4._01.Models.EntityFramework
 
         [InverseProperty(nameof(Stock.TailleStock))]
         public virtual ICollection<Stock>? StockTaille { get; set; }
+
+        [InverseProperty(nameof(ContenuCommande.TailleContenuCommande))]
+        public virtual ContenuCommande? ContenuCommandeTaille { get; set; }
     }
 }

@@ -6,8 +6,13 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_option_opt")]
     public class Option
     {
-        public Option() {
+        public Option()
+        {
             InclusOption = new HashSet<EstInclus>();
+
+            SpecifieOption = new HashSet<Specifie>();
+
+            SeComposeOption = new HashSet<SeCompose>();
         }
 
         [Key]
@@ -29,5 +34,8 @@ namespace SAE_4._01.Models.EntityFramework
 
         [InverseProperty(nameof(Specifie.OptionSpecifie))]
         public virtual ICollection<Specifie>? SpecifieOption { get; set; }
+
+        [InverseProperty(nameof(SeCompose.OptionSeCompose))]
+        public virtual ICollection<SeCompose>? SeComposeOption { get; set; }
     }
 }
