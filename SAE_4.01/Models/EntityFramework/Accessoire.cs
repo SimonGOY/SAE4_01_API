@@ -25,10 +25,10 @@ namespace SAE_4._01.Models.EntityFramework
 
         [ForeignKey(nameof(IdCatAcc))]
         [InverseProperty(nameof(CategorieAccessoire.AccessoireCategorise))]
-        public virtual CategorieAccessoire? CateAccessoire { get; set; }
+        public virtual CategorieAccessoire CateAccessoire { get; set; } = null!;
 
         [ForeignKey(nameof(IdMoto))]
         [InverseProperty(nameof(ModeleMoto.AccessoireMoto))]
-        public virtual CategorieAccessoire? ModeleAccessoire { get; set; }
+        public virtual CategorieAccessoire ModeleAccessoire { get; set; } = null!;
     }
 }

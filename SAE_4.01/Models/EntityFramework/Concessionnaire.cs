@@ -37,12 +37,12 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual ICollection<Offre>? OffreConcessionnaire { get; set; }
 
         [InverseProperty(nameof(Reservation.ConcessionnaireReservation))]
-        public virtual ICollection<Reservation> ReservationConcessionnaire { get; set; }
+        public virtual ICollection<Reservation>? ReservationConcessionnaire { get; set; }
 
         [InverseProperty(nameof(Prefere.ConcessionnairePrefere))]
         public virtual ICollection<Prefere>? PrefereConcessionnaire { get; set; }
 
         [InverseProperty(nameof(DemandeEssai.ConcessionnaireDemandeEssai))]
-        public virtual ICollection<DemandeEssai> DemandeEssaiConcessionnaire { get; set; }
+        public virtual ICollection<DemandeEssai>? DemandeEssaiConcessionnaire { get; set; }
     }
 }

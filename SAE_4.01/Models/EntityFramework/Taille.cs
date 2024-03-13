@@ -23,6 +23,6 @@ namespace SAE_4._01.Models.EntityFramework
         public string DescTaille { get; set; } = null!;
 
         [InverseProperty(nameof(Stock.TailleStock))]
-        public virtual ICollection<Stock> StockTaille { get; set; }
+        public virtual ICollection<Stock>? StockTaille { get; set; }
     }
 }
