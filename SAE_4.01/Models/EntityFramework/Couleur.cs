@@ -10,19 +10,26 @@ namespace SAE_4._01.Models.EntityFramework
         [Key]
         [Column("clr_id")]
         public int IdCouleur { get; set; }
+
         [Column("mod_id")]
         public int IdMoto { get; set; }
+
         [Column("clr_nom")]
         [StringLength(50)]
         public string NomCouleur { get; set; } = null!;
+
         [Column("clr_prix")]
         public double PrixCouleur { get; set; }
+
         [Column("clr_description")]
         public string DescriptionCouleur { get; set; } = null!;
+
         [Column("clr_photo")]
         public string PhotoCouleur { get; set; } = null!;
+
         [Column("clr_moto")]
         public string MotoCouleur { get; set; } = null!;
+
 
         [ForeignKey(nameof(IdMoto))]
         [InverseProperty(nameof(ModeleMoto.CouleurMoto))]

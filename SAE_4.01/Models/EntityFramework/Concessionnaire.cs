@@ -10,6 +10,7 @@ namespace SAE_4._01.Models.EntityFramework
         {
             PrefereConcessionnaire = new HashSet<Prefere>();
         }
+
         [Key]
         [Column("con_id")]
         public int IdConcessionnaire { get; set; }
