@@ -68,6 +68,7 @@ namespace SAE_4._01.Models.EntityFramework
         [InverseProperty(nameof(PresentationEquipement.EquipementPresentationEquipement))]
         public virtual ICollection<PresentationEquipement>? PresentationEquipementEquipement { get; set; }
 
+        [NotMapped]
         [InverseProperty(nameof(EstLie.EquipementEstLie1))]
         public virtual ICollection<EstLie>? EstLieEquipement1 { get; set; }
 
