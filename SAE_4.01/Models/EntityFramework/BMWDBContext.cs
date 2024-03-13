@@ -7,10 +7,10 @@ namespace SAE_4._01.Models.EntityFramework
     public partial class BMWDBContext : DbContext
     {
         public static readonly ILoggerFactory MyLoggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+        
         public BMWDBContext()
         {
         }
-
         public BMWDBContext(DbContextOptions<BMWDBContext> options)
             : base(options)
         {
@@ -64,7 +64,7 @@ namespace SAE_4._01.Models.EntityFramework
         {
             if (!optionsBuilder.IsConfigured)
             {
-                #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
 
                 optionsBuilder.UseLoggerFactory(MyLoggerFactory)
                     .EnableSensitiveDataLogging()
@@ -75,6 +75,264 @@ namespace SAE_4._01.Models.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Accessoire>(entity =>
+            {
+                entity.HasKey(e => e.IdAccessoire)
+                    .HasName("pk_acc");
+            });
+
+            modelBuilder.Entity<Adresse>(entity =>
+            {
+                entity.HasKey(e => e.NumAdresse)
+                    .HasName("pk_adr");
+            });
+
+            modelBuilder.Entity<Caracteristique>(entity =>
+            {
+                entity.HasKey(e => e.IdCaracteristique)
+                    .HasName("pk_car");
+            });
+
+            modelBuilder.Entity<CategorieAccessoire>(entity =>
+            {
+                entity.HasKey(e => e.IdCatAcc)
+                    .HasName("pk_cta");
+            });
+
+            modelBuilder.Entity<CategorieCaracteristique>(entity =>
+            {
+                entity.HasKey(e => e.IdCatCaracteristique)
+                    .HasName("pk_ctc");
+            });
+
+            modelBuilder.Entity<CategorieEquipement>(entity =>
+            {
+                entity.HasKey(e => e.IdCatEquipement)
+                    .HasName("pk_cte");
+            });
+
+            modelBuilder.Entity<Client>(entity =>
+            {
+                entity.HasKey(e => e.IdClient)
+                    .HasName("pk_clt");
+            });
+
+            modelBuilder.Entity<Collection>(entity =>
+            {
+                entity.HasKey(e => e.IdCollection)
+                    .HasName("pk_cln");
+            });
+
+            modelBuilder.Entity<Coloris>(entity =>
+            {
+                entity.HasKey(e => e.IdColoris)
+                    .HasName("pk_cls");
+            });
+
+            modelBuilder.Entity<Commande>(entity =>
+            {
+                entity.HasKey(e => e.IdCommande)
+                    .HasName("pk_cmd");
+            });
+
+            modelBuilder.Entity<Concessionnaire>(entity =>
+            {
+                entity.HasKey(e => e.IdConcessionnaire)
+                    .HasName("pk_con");
+            });
+
+            modelBuilder.Entity<ContactInfo>(entity =>
+            {
+                entity.HasKey(e => e.IdContact)
+                    .HasName("pk_ctf");
+            });
+
+            modelBuilder.Entity<ContenuCommande>(entity =>
+            {
+                entity.HasKey(e => new { e.IdEquipement, e.IdTaille, e.IdColoris, e.IdCommande })
+                    .HasName("pk_ccm");
+            });
+
+            modelBuilder.Entity<Couleur>(entity =>
+            {
+                entity.HasKey(e => e.IdCouleur)
+                    .HasName("pk_clr");
+            });
+
+            modelBuilder.Entity<DemandeEssai>(entity =>
+            {
+                entity.HasKey(e => e.IdDemandeEssai)
+                    .HasName("pk_dmd");
+            });
+
+            modelBuilder.Entity<Equipement>(entity =>
+            {
+                entity.HasKey(e => e.IdEquipement)
+                    .HasName("pk_equ");
+            });
+
+            modelBuilder.Entity<EstInclus>(entity =>
+            {
+                entity.HasKey(e => new { e.IdOption, e.IdStyle })
+                    .HasName("pk_ecl");
+            });
+
+            modelBuilder.Entity<EstLie>(entity =>
+            {
+                entity.HasKey(e => new { e.IdEquipement, e.EquIdEquipement })
+                    .HasName("pk_eli");
+            });
+
+            modelBuilder.Entity<GammeMoto>(entity =>
+            {
+                entity.HasKey(e => e.IdGamme)
+                    .HasName("pk_gam");
+            });
+
+            modelBuilder.Entity<Garage>(entity =>
+            {
+                entity.HasKey(e => new { e.IdMotoConfigurable, e.IdClient })
+                    .HasName("pk_grg");
+            });
+
+            modelBuilder.Entity<InfoCB>(entity =>
+            {
+                entity.HasKey(e => e.IdCarte)
+                    .HasName("pk_icb");
+            });
+
+            modelBuilder.Entity<Media>(entity =>
+            {
+                entity.HasKey(e => e.IdMedia)
+                    .HasName("pk_med");
+            });
+
+            modelBuilder.Entity<ModeleMoto>(entity =>
+            {
+                entity.HasKey(e => e.IdMoto)
+                    .HasName("pk_mod");
+            });
+
+            modelBuilder.Entity<MotoConfigurable>(entity =>
+            {
+                entity.HasKey(e => e.IdMotoConfigurable)
+                    .HasName("pk_mcf");
+            });
+
+            modelBuilder.Entity<MotoDisponible>(entity =>
+            {
+                entity.HasKey(e => e.IdMotoDisponible)
+                    .HasName("pk_mdp");
+            });
+
+            modelBuilder.Entity<Offre>(entity =>
+            {
+                entity.HasKey(e => e.IdOffre)
+                    .HasName("pk_ofr");
+            });
+
+            modelBuilder.Entity<Option>(entity =>
+            {
+                entity.HasKey(e => e.IdOption)
+                    .HasName("pk_opt");
+            });
+
+            modelBuilder.Entity<Pack>(entity =>
+            {
+                entity.HasKey(e => e.IdPack)
+                    .HasName("pk_pck");
+            });
+
+            modelBuilder.Entity<Parametres>(entity =>
+            {
+                entity.HasKey(e => e.NomParametre)
+                    .HasName("pk_par");
+            });
+
+            modelBuilder.Entity<Pays>(entity =>
+            {
+                entity.HasKey(e => e.NomPays)
+                    .HasName("pk_pay");
+            });
+
+            modelBuilder.Entity<Prefere>(entity =>
+            {
+                entity.HasKey(e => new { e.IdClient, e.IdConcessionnaire })
+                    .HasName("pk_prf");
+            });
+
+            modelBuilder.Entity<PresentationEquipement>(entity =>
+            {
+                entity.HasKey(e => e.IdPresentation)
+                    .HasName("pk_pre");
+            });
+
+            modelBuilder.Entity<Prive>(entity =>
+            {
+                entity.HasKey(e => e.IdPrive)
+                    .HasName("pk_prv");
+            });
+
+            modelBuilder.Entity<Professionnel>(entity =>
+            {
+                entity.HasKey(e => e.IdPro)
+                    .HasName("pk_pro");
+            });
+
+            modelBuilder.Entity<Reservation>(entity =>
+            {
+                entity.HasKey(e => e.IdReservation)
+                    .HasName("pk_res");
+            });
+
+            modelBuilder.Entity<SeCompose>(entity =>
+            {
+                entity.HasKey(e => new { e.IdPack, e.IdOption })
+                    .HasName("pk_scp");
+            });
+
+            modelBuilder.Entity<Specifie>(entity =>
+            {
+                entity.HasKey(e => new { e.IdMoto, e.IdOption })
+                    .HasName("pk_spe");
+            });
+
+            modelBuilder.Entity<Stock>(entity =>
+            {
+                entity.HasKey(e => new { e.IdTaille, e.IdColoris, e.IdEquipement })
+                    .HasName("pk_stk");
+            });
+
+            modelBuilder.Entity<Style>(entity =>
+            {
+                entity.HasKey(e => e.IdStyle)
+                    .HasName("pk_sty");
+            });
+
+            modelBuilder.Entity<Taille>(entity =>
+            {
+                entity.HasKey(e => e.IdTaille)
+                    .HasName("pk_tle");
+            });
+
+            modelBuilder.Entity<Telephone>(entity =>
+            {
+                entity.HasKey(e => e.Id)
+                    .HasName("pk_tel");
+            });
+
+            modelBuilder.Entity<Transaction>(entity =>
+            {
+                entity.HasKey(e => e.IdTransaction)
+                    .HasName("pk_tct");
+            });
+
+            modelBuilder.Entity<Users>(entity =>
+            {
+                entity.HasKey(e => e.Id)
+                    .HasName("pk_usr");
+            });
+
             /*modelBuilder.Entity<Notation>(entity =>
             {
                 entity.HasKey(e => new { e.UtilisateurId, e.FilmId })

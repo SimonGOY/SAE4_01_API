@@ -14,6 +14,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Key]
         [Column("mcf_id")]
         public int IdMotoConfigurable { get; set; }
+
         [Column("mod_id")]
         public int IdMoto { get; set; }
 
