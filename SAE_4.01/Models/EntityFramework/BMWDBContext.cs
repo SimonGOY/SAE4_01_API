@@ -440,6 +440,7 @@ namespace SAE_4._01.Models.EntityFramework
 
             modelBuilder.Entity<Adresse>(entity =>
             {
+
                 entity.HasOne(d => d.PaysAdresse)
                     .WithMany(p => p.AdressePays)
                     .HasForeignKey(d => d.NomPays)
