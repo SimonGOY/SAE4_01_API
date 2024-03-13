@@ -285,7 +285,7 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => new { e.IdOption, e.IdStyle })
                     .HasName("pk_ecl");
-                entity.HasOne(d => d.OptionIncluse)
+                entity.HasOne(d => d.OptionInclus)
                     .WithMany(p => p.InclusOption)
                     .HasForeignKey(d => d.IdOption)
                     .OnDelete(DeleteBehavior.Restrict)
