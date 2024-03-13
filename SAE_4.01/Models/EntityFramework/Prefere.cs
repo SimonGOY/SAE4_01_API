@@ -7,7 +7,8 @@ namespace SAE_4._01.Models.EntityFramework
     public class Prefere
     {
         public Prefere() {
-            ClientPrefere = new HashSet<Prefere>();
+            ClientPrefere = new HashSet<Client>();
+            ConcessionnairePrefere = new HashSet<Concessionnaire>();
         }
         [Key]
         [Column("clt_id")]
