@@ -12,7 +12,7 @@ namespace SAE_4._01.Models.EntityFramework
         public Equipement()
         {
             EstLieEquipement1 = new HashSet<EstLie>();
-            EstLieEquipement2 = new HashSet<EstLie>();
+            //EstLieEquipement2 = new HashSet<EstLie>();
         }
 
         [Key]
