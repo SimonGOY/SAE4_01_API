@@ -13,11 +13,16 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdMoto { get; set; }
 
 
+        [ForeignKey(nameof(IdMoto))]
+        [InverseProperty(nameof(ModeleMoto.MotoConfigurableModeleMoto))]
+        public virtual ModeleMoto ModeleMotoMotoConfigurable { get; set; } = null!;
+
+
         [InverseProperty(nameof(Offre.MotoConfigurableOffre))]
-        public virtual Offre? OffreMotoConfigurable { get; set; } 
+        public virtual ICollection<Offre>? OffreMotoConfigurable { get; set; }
 
         [InverseProperty(nameof(Garage.MotoConfigurableGarage))]
-        public virtual ICollection<Garage>? GarageMotoConfigurable { get; set; } 
+        public virtual ICollection<Garage>? GarageMotoConfigurable { get; set; }
 
         [InverseProperty(nameof(ModeleMoto.ConfigMoto))]
         public virtual ModeleMoto? ModeleConfig { get; set; }
