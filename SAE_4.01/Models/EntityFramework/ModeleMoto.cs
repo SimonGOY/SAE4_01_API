@@ -39,7 +39,7 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual ICollection<MotoDisponible>? MotoDisponibleModeleMoto { get; set; }
 
         [InverseProperty(nameof(DemandeEssai.ModeleMotoDemandeEssai))]
-        public virtual ICollection<Media>? DemandeEssaiModeleMoto { get; set; }
+        public virtual ICollection<DemandeEssai>? DemandeEssaiModeleMoto { get; set; }
 
         [InverseProperty(nameof(Media.ModeleMotoMedia))]
         public virtual ICollection<Media>? MediaModeleMoto { get; set; }
