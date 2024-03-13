@@ -29,6 +29,6 @@ namespace SAE_4._01.Models.EntityFramework
 
         [ForeignKey(nameof(IdMoto))]
         [InverseProperty(nameof(ModeleMoto.AccessoireMoto))]
-        public virtual CategorieAccessoire ModeleAccessoire { get; set; } = null!;
+        public virtual ModeleMoto ModeleAccessoire { get; set; } = null!;
     }
 }
