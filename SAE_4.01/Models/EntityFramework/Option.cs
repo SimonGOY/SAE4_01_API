@@ -6,6 +6,10 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_option_opt")]
     public class Option
     {
+        public Option() {
+            InclusOption = new HashSet<EstInclus>();
+        }
+
         [Key]
         [Column("opt_id")]
         public int IdOption { get; set; }
@@ -18,5 +22,12 @@ namespace SAE_4._01.Models.EntityFramework
         public string DetailOption { get; set; } = null!;
         [Column("opt_photo")]
         public string PhotoOption { get; set; } = null!;
+
+
+        [InverseProperty(nameof(EstInclus.OptionIncluse))]
+        public virtual ICollection<EstInclus>? InclusOption { get; set; }
+
+        [InverseProperty(nameof(Specifie.OptionSpecifie))]
+        public virtual ICollection<Specifie>? SpecifieOption { get; set; }
     }
 }

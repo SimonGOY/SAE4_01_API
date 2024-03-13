@@ -12,13 +12,13 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("cls_nom")]
         [StringLength(20)]
-        public string? NomColoris { get; set; } = null!;
+        public string NomColoris { get; set; } = null!;
 
         [InverseProperty(nameof(Stock.ColorisStock))]
-        public virtual ICollection<Stock> StockColoris { get; set; }
+        public virtual ICollection<Stock>? StockColoris { get; set; }
 
 
         [InverseProperty(nameof(PresentationEquipement.ColorisPresentationEquipement))]
-        public virtual ICollection<PresentationEquipement> PresentationEquipementColoris { get; set; }
+        public virtual ICollection<PresentationEquipement>? PresentationEquipementColoris { get; set; }
     }
 }

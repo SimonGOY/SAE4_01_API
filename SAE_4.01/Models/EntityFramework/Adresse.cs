@@ -12,7 +12,7 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("pay_nom")]
         [StringLength(50)]
-        public string? NomPays { get; set; }
+        public string NomPays { get; set; } = null!;
 
         [Column("adr_adresse")]
         [StringLength(50)]

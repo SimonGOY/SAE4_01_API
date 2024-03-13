@@ -21,7 +21,7 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdContact { get; set; }
 
         [Column("dme_descriptif")]
-        public string? DescriptifDemandeEssai { get; set; }
+        public string DescriptifDemandeEssai { get; set; } = null!;
 
         [ForeignKey(nameof(IdConcessionnaire))]
         [InverseProperty(nameof(Concessionnaire.DemandeEssaiConcessionnaire))]

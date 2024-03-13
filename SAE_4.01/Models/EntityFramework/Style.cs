@@ -6,6 +6,11 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_style_sty")]
     public class Style
     {
+        public Style()
+        {
+            InclusStyle = new HashSet<EstInclus>();
+        }
+
         [Key]
         [Column("sty_id")]
         public int IdStyle { get; set; }
@@ -16,7 +21,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("sty_prix")]
         public double PrixStyle { get; set; }
         [Column("sty_description")]
-        public string DescriptionStyle { get; set; } = null !;
+        public string DescriptionStyle { get; set; } = null!;
         [Column("sty_photo")]
         public string PhotoStyle { get; set; } = null!;
         [Column("sty_photomoto")]
@@ -25,6 +30,9 @@ namespace SAE_4._01.Models.EntityFramework
         [ForeignKey(nameof(IdMoto))]
         [InverseProperty(nameof(ModeleMoto.CouleurMoto))]
         public virtual ModeleMoto ModeleStyle { get; set; } = null!;
+
+        [InverseProperty(nameof(EstInclus.StyleInclus))]
+        public virtual ICollection<EstInclus>? InclusStyle { get; set; }
 
     }
 }
