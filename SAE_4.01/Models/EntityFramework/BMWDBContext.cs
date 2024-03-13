@@ -233,6 +233,7 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdCouleur)
                     .HasName("pk_clr");
+
                 entity.HasOne(d => d.ModeleMotoCouleur)
                     .WithMany(p => p.CouleurModeleMoto)
                     .HasForeignKey(d => d.IdMoto)
@@ -250,13 +251,11 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdConcessionnaire)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_dmd_con");
-
                 entity.HasOne(d => d.ModeleMotoDemandeEssai)
                     .WithMany(p => p.DemandeEssaiModeleMoto)
                     .HasForeignKey(d => d.IdConcessionnaire)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_dmd_mod");
-
                 entity.HasOne(d => d.ContactInfoDemandeEssai)
                     .WithMany(p => p.DemandeEssaiContactInfo)
                     .HasForeignKey(d => d.IdConcessionnaire)
@@ -274,7 +273,6 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdCollection)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_equ_cln");
-
                 entity.HasOne(d => d.CategorieEquipementEquipement)
                     .WithMany(p => p.EquipementCategorieEquipement)
                     .HasForeignKey(d => d.IdCatEquipement)
@@ -292,7 +290,6 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdOption)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_ecl_opt");
-
                 entity.HasOne(d => d.StyleEstInclus)
                     .WithMany(p => p.EstInclusStyle)
                     .HasForeignKey(d => d.IdStyle)
@@ -310,7 +307,6 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdEquipement)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_eli_equ");
-
                 entity.HasOne(d => d.EquipementEstLie2)
                     .WithMany(p => p.EstLieEquipement2)
                     .HasForeignKey(d => d.IdEquipement)
@@ -334,7 +330,6 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdMotoConfigurable)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_grg_mcf");
-
                 entity.HasOne(d => d.ClientGarage)
                     .WithMany(p => p.GarageClient)
                     .HasForeignKey(d => d.IdClient)
@@ -364,13 +359,11 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdEquipement)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_med_equ");
-
                 entity.HasOne(d => d.ModeleMotoMedia)
                     .WithMany(p => p.MediaModeleMoto)
                     .HasForeignKey(d => d.IdMoto)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_med_mod");
-
                 entity.HasOne(d => d.PresentationEquipementMedia)
                     .WithMany(p => p.MediaPresentationEquipement)
                     .HasForeignKey(d => d.IdPresentation)
