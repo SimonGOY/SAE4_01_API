@@ -16,7 +16,7 @@ namespace SAE_4._01.Models.EntityFramework
 
         [ForeignKey(nameof(IdMotoConfigurable))]
         [InverseProperty(nameof(MotoConfigurable.GarageMotoConfigurable))]
-        public virtual MotoConfigurable MotoConfigurableGarage { get; set; } = null!;
+        public virtual ICollection<MotoConfigurable>? MotoConfigurableGarage { get; set; }
 
         [ForeignKey(nameof(IdClient))]
         [InverseProperty(nameof(Client.GarageClient))]

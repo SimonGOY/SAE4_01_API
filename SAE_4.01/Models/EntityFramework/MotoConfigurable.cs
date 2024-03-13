@@ -16,7 +16,7 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual Offre? OffreMotoConfigurable { get; set; } 
 
         [InverseProperty(nameof(Garage.MotoConfigurableGarage))]
-        public virtual Garage? GarageMotoConfigurable { get; set; } 
+        public virtual ICollection<Garage>? GarageMotoConfigurable { get; set; } 
 
         [InverseProperty(nameof(ModeleMoto.ConfigMoto))]
         public virtual ModeleMoto? ModeleConfig { get; set; } 
