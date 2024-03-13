@@ -23,7 +23,11 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("opt_photo")]
         public string PhotoOption { get; set; } = null!;
 
+
         [InverseProperty(nameof(EstInclus.OptionIncluse))]
         public virtual ICollection<EstInclus>? InclusOption { get; set; }
+
+        [InverseProperty(nameof(Specifie.OptionSpecifie))]
+        public virtual ICollection<Specifie>? SpecifieOption { get; set; }
     }
 }
