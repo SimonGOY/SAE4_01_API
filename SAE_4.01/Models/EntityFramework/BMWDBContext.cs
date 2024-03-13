@@ -28,6 +28,7 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual DbSet<Commande> Commandes { get; set; } = null!;
         public virtual DbSet<Concessionnaire> Concessionnaires { get; set; } = null!;
         public virtual DbSet<ContactInfo> ContactInfos { get; set; } = null!;
+        public virtual DbSet<ContenuCommande> ContenuCommandes { get; set; } = null!;
         public virtual DbSet<Couleur> Couleurs { get; set; } = null!;
         public virtual DbSet<DemandeEssai> DemandeEssais { get; set; } = null!;
         public virtual DbSet<Equipement> Equipements { get; set; } = null!;
@@ -43,6 +44,7 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual DbSet<Offre> Offres { get; set; } = null!;
         public virtual DbSet<Option> Options { get; set; } = null!;
         public virtual DbSet<Pack> Packs { get; set; } = null!;
+        public virtual DbSet<Parametres> Parametres { get; set; } = null!;
         public virtual DbSet<Pays> LesPays { get; set; } = null!;
         public virtual DbSet<Prefere> Preferes { get; set; } = null!;
         public virtual DbSet<PresentationEquipement> PresentationEquipements { get; set; } = null!;
