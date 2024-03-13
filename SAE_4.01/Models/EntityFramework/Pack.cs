@@ -6,6 +6,11 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_pack_pck")]
     public class Pack
     {
+        public Pack()
+        {
+            SeComposePack = new HashSet<SeCompose>();
+        }
+
         [Key]
         [Column("pck_id")]
         public int IdPack { get; set; }
@@ -30,6 +35,6 @@ namespace SAE_4._01.Models.EntityFramework
 
 
         [InverseProperty(nameof(SeCompose.PackSeCompose))]
-        public virtual SeCompose? SeComposePack { get; set; }
+        public virtual ICollection<SeCompose>? SeComposePack { get; set; }
     }
 }
