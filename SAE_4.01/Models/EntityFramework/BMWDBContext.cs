@@ -79,6 +79,7 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdAccessoire)
                     .HasName("pk_acc");
+
                 entity.HasOne(d => d.CateAccessoire)
                     .WithMany(p => p.AccessoireCategorise)
                     .HasForeignKey(d => d.IdCatAcc)
