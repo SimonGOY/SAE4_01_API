@@ -16,22 +16,22 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("con_nom")]
         [StringLength(50)]
-        public string? NomConcessionnaire { get;set; } = null!;
+        public string NomConcessionnaire { get;set; } = null!;
 
         [Column("con_email")]
         [StringLength(100)]
-        public string? EmailConcessionnaire { get; set; } = null!;
+        public string EmailConcessionnaire { get; set; } = null!;
 
         [Column("con_site")]
         [StringLength(150)]
-        public string? SiteConcessionnaire { get; set; } = null!;
+        public string SiteConcessionnaire { get; set; } = null!;
 
         [Column("con_telephone")]
         [StringLength(20)]
-        public string? TelephoneConcessionnaire { get; set; } = null!;
+        public string TelephoneConcessionnaire { get; set; } = null!;
 
         [Column("con_adresse")]
-        public string? AdresseConcessionnaire { get; set; } = null!;
+        public string AdresseConcessionnaire { get; set; } = null!;
 
         [InverseProperty(nameof(Offre.ConcessionnaireOffre))]
         public virtual ICollection<Offre>? OffreConcessionnaire { get; set; }

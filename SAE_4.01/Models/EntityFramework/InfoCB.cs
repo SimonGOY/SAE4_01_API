@@ -14,13 +14,13 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdClient { get; set; }
 
         [Column("icb_numcarte")]
-        public string? NumCarte { get; set; } = null!;
+        public string NumCarte { get; set; } = null!;
 
         [Column("icb_dateexpiration")]
-        public string? DateExpiration { get; set; } = null!;
+        public string DateExpiration { get; set; } = null!;
 
         [Column("icb_titulairecompte")]
-        public string? TitulaireCompte { get; set; } = null!;
+        public string TitulaireCompte { get; set; } = null!;
 
         [ForeignKey(nameof(IdClient))]
         [InverseProperty(nameof(Client.InfoCBClient))]

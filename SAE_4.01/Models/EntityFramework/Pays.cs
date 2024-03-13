@@ -10,7 +10,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Key]
         [Column("pay_nom")]
         [StringLength(50)]
-        public string? NomPays { get; set; }
+        public string NomPays { get; set; } = null!;
 
         [InverseProperty(nameof(Adresse.PaysAdresse))]
         public virtual ICollection<Adresse>? AdressePays { get; set; }

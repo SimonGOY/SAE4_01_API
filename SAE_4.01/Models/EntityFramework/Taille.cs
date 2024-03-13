@@ -16,11 +16,11 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("tle_libelle")]
         [StringLength(15)]
-        public string? LibelleTaille { get; set; }
+        public string LibelleTaille { get; set; } = null!;
 
         [Column("tle_description")]
         [StringLength(8)]
-        public string? DescTaille { get; set; }
+        public string DescTaille { get; set; } = null!;
 
         [InverseProperty(nameof(Stock.TailleStock))]
         public virtual ICollection<Stock> StockTaille { get; set; }
