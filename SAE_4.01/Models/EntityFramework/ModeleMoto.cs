@@ -53,6 +53,6 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual ICollection<MotoConfigurable>? ConfigMoto { get; set; }
 
         [InverseProperty(nameof(Accessoire.ModeleAccessoire))]
-        public virtual ICollection<MotoConfigurable>? ConfigMoto { get; set; }
+        public virtual ICollection<MotoConfigurable>? AccessoireMoto { get; set; }
     }
 }
