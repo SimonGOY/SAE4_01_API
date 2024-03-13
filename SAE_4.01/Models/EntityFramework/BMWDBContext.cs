@@ -85,6 +85,12 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.NumAdresse)
                     .HasName("pk_adr");
+
+                entity.HasOne(d => d.PaysAdresse)
+                    .WithMany(p => p.AdressePays)
+                    .HasForeignKey(d => d.NomPays)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_adr_pay");
             });
 
             modelBuilder.Entity<Caracteristique>(entity =>
@@ -115,6 +121,12 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdClient)
                     .HasName("pk_clt");
+
+                entity.HasOne(d => d.AdresseClient)
+                    .WithMany(p => p.ClientAdresse)
+                    .HasForeignKey(d => d.NumAdresse)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_clt_adr");
             });
 
             modelBuilder.Entity<Collection>(entity =>
@@ -133,6 +145,12 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdCommande)
                     .HasName("pk_cmd");
+
+                entity.HasOne(d => d.ClientCommande)
+                    .WithMany(p => p.CommandeClient)
+                    .HasForeignKey(d => d.IdClient)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_cmd_clt");
             });
 
             modelBuilder.Entity<Concessionnaire>(entity =>
@@ -145,6 +163,12 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdContact)
                     .HasName("pk_ctf");
+
+                entity.HasOne(d => d.OffreContactInfo)
+                    .WithMany(p => p.ContactInfoOffre)
+                    .HasForeignKey(d => d.IdOffre)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_ctf_ofr");
             });
 
             modelBuilder.Entity<ContenuCommande>(entity =>
@@ -235,12 +259,30 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => new { e.IdMotoConfigurable, e.IdClient })
                     .HasName("pk_grg");
+
+                entity.HasOne(d => d.MotoConfigurableGarage)
+                    .WithMany(p => p.GarageMotoConfigurable)
+                    .HasForeignKey(d => d.IdMotoConfigurable)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_grg_mcf");
+
+                entity.HasOne(d => d.ClientGarage)
+                    .WithMany(p => p.GarageClient)
+                    .HasForeignKey(d => d.IdClient)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_grg_clt");
             });
 
             modelBuilder.Entity<InfoCB>(entity =>
             {
                 entity.HasKey(e => e.IdCarte)
                     .HasName("pk_icb");
+
+                entity.HasOne(d => d.ClientInfoCB)
+                    .WithMany(p => p.InfoCBClient)
+                    .HasForeignKey(d => d.IdClient)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_icb_clt");
             });
 
             modelBuilder.Entity<Media>(entity =>
@@ -271,6 +313,18 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdOffre)
                     .HasName("pk_ofr");
+
+                entity.HasOne(d => d.MotoConfigurableOffre)
+                    .WithMany(p => p.OffreMotoConfigurable)
+                    .HasForeignKey(d => d.IdMotoConfigurable)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_ofr_mcf");
+
+                entity.HasOne(d => d.ConcessionnaireOffre)
+                  .WithMany(p => p.OffreConcessionnaire)
+                  .HasForeignKey(d => d.IdConcessionnaire)
+                  .OnDelete(DeleteBehavior.Restrict)
+                  .HasConstraintName("fk_ofr_con");
             });
 
             modelBuilder.Entity<Option>(entity =>
@@ -301,6 +355,20 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => new { e.IdClient, e.IdConcessionnaire })
                     .HasName("pk_prf");
+
+                entity.HasKey(e => new { e.IdClient, e.IdConcessionnaire })
+                    .HasName("pk_prf");
+                entity.HasOne(d => d.ClientPrefere)
+                    .WithMany(p => p.PrefereClient)
+                    .HasForeignKey(d => d.IdClient)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_prf_clt");
+
+                entity.HasOne(d => d.ConcessionnairePrefere)
+                    .WithMany(p => p.PrefereConcessionnaire)
+                    .HasForeignKey(d => d.IdConcessionnaire)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_prf_con");
             });
 
             modelBuilder.Entity<PresentationEquipement>(entity =>
@@ -313,12 +381,24 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdPrive)
                     .HasName("pk_prv");
+
+                entity.HasOne(d => d.ClientPrive)
+                    .WithMany(p => p.PriveClient)
+                    .HasForeignKey(d => d.IdClient)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_prv_clt");
             });
 
             modelBuilder.Entity<Professionnel>(entity =>
             {
                 entity.HasKey(e => e.IdPro)
                     .HasName("pk_pro");
+
+                entity.HasOne(d => d.ClientProfessionnel)
+                    .WithMany(p => p.ProfessionnelClient)
+                    .HasForeignKey(d => d.IdPro)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_pro_clt");
             });
 
             modelBuilder.Entity<Reservation>(entity =>
@@ -341,8 +421,27 @@ namespace SAE_4._01.Models.EntityFramework
 
             modelBuilder.Entity<Stock>(entity =>
             {
-                entity.HasKey(e => new { e.IdTaille, e.IdColoris, e.IdEquipement })
+
+                entity.HasKey(s => new { s.IdTaille, s.IdColoris, s.IdEquipement })
                     .HasName("pk_stk");
+
+                entity.HasOne(d => d.TailleStock)
+                    .WithMany(p => p.StockTaille)
+                    .HasForeignKey(d => d.IdTaille)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_stk_tle");
+
+                entity.HasOne(d => d.ColorisStock)
+                    .WithMany(p => p.StockColoris)
+                    .HasForeignKey(d => d.IdColoris)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_stk_cls");
+
+                entity.HasOne(d => d.EquipementStock)
+                    .WithMany(p => p.StockEquipement)
+                    .HasForeignKey(d => d.IdEquipement)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_stk_equ");
             });
 
             modelBuilder.Entity<Style>(entity =>
@@ -367,12 +466,24 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdTransaction)
                     .HasName("pk_tct");
+
+                entity.HasOne(d => d.CommandeTransaction)
+                    .WithMany(p => p.TransactionCommande)
+                    .HasForeignKey(d => d.IdCommande)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_tct_cmd");
             });
 
             modelBuilder.Entity<Users>(entity =>
             {
                 entity.HasKey(e => e.Id)
                     .HasName("pk_usr");
+
+                entity.HasOne(d => d.ClientUsers)
+                    .WithMany(p => p.UsersClient)
+                    .HasForeignKey(d => d.IdClient)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_usr_clt");
             });
 
             /*modelBuilder.Entity<Notation>(entity =>
@@ -395,173 +506,6 @@ namespace SAE_4._01.Models.EntityFramework
 
             modelBuilder.Entity<Utilisateur>().Property(e => e.DateCreation).HasDefaultValueSql("now()");
             modelBuilder.Entity<Utilisateur>().Property(e => e.Pays).HasDefaultValue("France");*/
-
-            modelBuilder.Entity<Commande>(entity =>
-            {
-                entity.HasOne(d => d.ClientCommande)
-                    .WithMany(p => p.CommandeClient)
-                    .HasForeignKey(d => d.IdClient)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_cmd_clt");
-            });
-
-            modelBuilder.Entity<Prefere>(entity =>
-            {
-                entity.HasKey(e => new { e.IdClient, e.IdConcessionnaire })
-                    .HasName("pk_prf");
-                entity.HasOne(d => d.ClientPrefere)
-                    .WithMany(p => p.PrefereClient)
-                    .HasForeignKey(d => d.IdClient)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_prf_clt");
-
-                entity.HasOne(d => d.ConcessionnairePrefere)
-                    .WithMany(p => p.PrefereConcessionnaire)
-                    .HasForeignKey(d => d.IdConcessionnaire)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_prf_con");
-            });
-
-
-            modelBuilder.Entity<Transaction>(entity =>
-            {
-                entity.HasOne(d => d.CommandeTransaction)
-                    .WithMany(p => p.TransactionCommande)
-                    .HasForeignKey(d => d.IdCommande)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_tct_cmd");
-            });
-
-            modelBuilder.Entity<ContactInfo>(entity =>
-            {
-                entity.HasOne(d => d.OffreContactInfo)
-                    .WithMany(p => p.ContactInfoOffre)
-                    .HasForeignKey(d => d.IdOffre)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_ctf_ofr");
-            });
-
-            modelBuilder.Entity<Offre>(entity =>
-            {
-                entity.HasOne(d => d.MotoConfigurableOffre)
-                    .WithMany(p => p.OffreMotoConfigurable)
-                    .HasForeignKey(d => d.IdMotoConfigurable)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_ofr_mcf");
-
-                entity.HasOne(d => d.ConcessionnaireOffre)
-                  .WithMany(p => p.OffreConcessionnaire)
-                  .HasForeignKey(d => d.IdConcessionnaire)
-                  .OnDelete(DeleteBehavior.Restrict)
-                  .HasConstraintName("fk_ofr_con");
-            });
-
-            modelBuilder.Entity<Adresse>(entity =>
-            {
-
-                entity.HasOne(d => d.PaysAdresse)
-                    .WithMany(p => p.AdressePays)
-                    .HasForeignKey(d => d.NomPays)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_adr_pay");
-            });
-
-            modelBuilder.Entity<InfoCB>(entity =>
-            {
-                entity.HasOne(d => d.ClientInfoCB)
-                    .WithMany(p => p.InfoCBClient)
-                    .HasForeignKey(d => d.IdClient)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_icb_clt");
-            });
-
-            modelBuilder.Entity<Stock>(entity =>
-            {
-                entity.HasKey(s => new { s.IdTaille, s.IdColoris, s.IdEquipement })
-                    .HasName("pk_stk");
-
-                entity.HasOne(d => d.TailleStock)
-                    .WithMany(p => p.StockTaille)
-                    .HasForeignKey(d => d.IdTaille)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_stk_tle");
-
-                entity.HasOne(d => d.ColorisStock)
-                    .WithMany(p => p.StockColoris)
-                    .HasForeignKey(d => d.IdColoris)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_stk_cls");
-
-                entity.HasOne(d => d.EquipementStock)
-                    .WithMany(p => p.StockEquipement)
-                    .HasForeignKey(d => d.IdEquipement)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_stk_equ");
-            });
-
-            modelBuilder.Entity<Garage>(entity =>
-            {
-                entity.HasKey(g => new { g.IdMotoConfigurable, g.IdClient })
-                    .HasName("pk_grg");
-
-                entity.HasOne(d => d.MotoConfigurableGarage)
-                    .WithMany(p => p.GarageMotoConfigurable)
-                    .HasForeignKey(d => d.IdMotoConfigurable)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_grg_mcf");
-
-                entity.HasOne(d => d.ClientGarage)
-                    .WithMany(p => p.GarageClient)
-                    .HasForeignKey(d => d.IdClient)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_grg_clt");
-
-            });
-
-            modelBuilder.Entity<Professionnel>(entity =>
-            {
-
-                entity.HasOne(d => d.ClientProfessionnel)
-                    .WithMany(p => p.ProfessionnelClient)
-                    .HasForeignKey(d => d.IdPro)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_pro_clt");
-
-            });
-
-            modelBuilder.Entity<Prive>(entity =>
-            {
-
-                entity.HasOne(d => d.ClientPrive)
-                    .WithMany(p => p.PriveClient)
-                    .HasForeignKey(d => d.IdClient)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_prv_clt");
-
-            });
-
-            modelBuilder.Entity<Users>(entity =>
-            {
-
-                entity.HasOne(d => d.ClientUsers)
-                    .WithMany(p => p.UsersClient)
-                    .HasForeignKey(d => d.IdClient)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_usr_clt");
-
-            });
-
-            modelBuilder.Entity<Client>(entity =>
-            {
-
-                entity.HasOne(d => d.AdresseClient)
-                    .WithMany(p => p.ClientAdresse)
-                    .HasForeignKey(d => d.NumAdresse)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_clt_adr");
-
-            });
-
 
             OnModelCreatingPartial(modelBuilder);
         }
