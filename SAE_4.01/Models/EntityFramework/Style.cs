@@ -9,6 +9,8 @@ namespace SAE_4._01.Models.EntityFramework
         [Key]
         [Column("sty_id")]
         public int IdStyle { get; set; }
+        [Column("mod_id")]
+        public int IdMoto { get; set; }
         [Column("sty_nom")]
         public string Name { get; set; } = null!;
         [Column("sty_prix")]
@@ -20,9 +22,9 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("sty_photomoto")]
         public string PhotoMoto { get; set; } = null!;
 
-        /* A faire
-        [InverseProperty("NomPropInversee")]
-        public virtual Type IdMoto { get; set; } = null!;*/
+        [ForeignKey(nameof(IdMoto))]
+        [InverseProperty(nameof(ModeleMoto.CouleurMoto))]
+        public virtual ModeleMoto ModeleStyle { get; set; } = null!;
 
     }
 }
