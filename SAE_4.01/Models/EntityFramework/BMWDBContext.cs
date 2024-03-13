@@ -79,11 +79,16 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdAccessoire)
                     .HasName("pk_acc");
-                entity.HasOne(d => d.EquipementContenuCommande)
-                    .WithMany(p => p.ContenuCommandeEquipement)
-                    .HasForeignKey(d => d.IdEquipement)
+                entity.HasOne(d => d.CateAccessoire)
+                    .WithMany(p => p.AccessoireCategorise)
+                    .HasForeignKey(d => d.IdCatAcc)
                     .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_ccm_equ");
+                    .HasConstraintName("fk_acc_cta");
+                entity.HasOne(d => d.ModeleAccessoire)
+                    .WithMany(p => p.AccessoireMoto)
+                    .HasForeignKey(d => d.IdMoto)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_ccm_mod");
             });
 
             modelBuilder.Entity<Adresse>(entity =>
@@ -468,6 +473,11 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdStyle)
                     .HasName("pk_sty");
+                entity.HasOne(d => d.ModeleAccessoire)
+                    .WithMany(p => p.AccessoireMoto)
+                    .HasForeignKey(d => d.IdMoto)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_ccm_mod");
             });
 
             modelBuilder.Entity<Taille>(entity =>
