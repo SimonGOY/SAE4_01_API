@@ -151,6 +151,30 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => new { e.IdEquipement, e.IdTaille, e.IdColoris, e.IdCommande })
                     .HasName("pk_ccm");
+
+                entity.HasOne(d => d.ClientPrefere)
+                    .WithMany(p => p.PrefereClient)
+                    .HasForeignKey(d => d.IdClient)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_prf_clt");
+
+                entity.HasOne(d => d.ConcessionnairePrefere)
+                    .WithMany(p => p.PrefereConcessionnaire)
+                    .HasForeignKey(d => d.IdConcessionnaire)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_prf_con");
+
+                entity.HasOne(d => d.ClientPrefere)
+                .WithMany(p => p.PrefereClient)
+                .HasForeignKey(d => d.IdClient)
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasConstraintName("fk_prf_clt");
+
+                entity.HasOne(d => d.ConcessionnairePrefere)
+                    .WithMany(p => p.PrefereConcessionnaire)
+                    .HasForeignKey(d => d.IdConcessionnaire)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_prf_con");
             });
 
             modelBuilder.Entity<Couleur>(entity =>
