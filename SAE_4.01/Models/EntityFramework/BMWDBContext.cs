@@ -163,6 +163,24 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdDemandeEssai)
                     .HasName("pk_dmd");
+
+                entity.HasOne(d => d.ConcessionnaireDemandeEssai)
+                    .WithMany(p => p.DemandeEssaiConcessionnaire)
+                    .HasForeignKey(d => d.IdConcessionnaire)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_dmd_con");
+
+                entity.HasOne(d => d.ModeleMotoDemandeEssai)
+                    .WithMany(p => p.DemandeEssaiModeleMoto)
+                    .HasForeignKey(d => d.IdConcessionnaire)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_dmd_mod");
+
+                entity.HasOne(d => d.ContactInfoDemandeEssai)
+                    .WithMany(p => p.DemandeEssaiContactInfo)
+                    .HasForeignKey(d => d.IdConcessionnaire)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_dmd_ctf");
             });
 
             modelBuilder.Entity<Equipement>(entity =>
