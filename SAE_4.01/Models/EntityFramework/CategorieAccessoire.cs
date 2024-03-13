@@ -12,5 +12,8 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("cta_nom")]
         [StringLength(50)]
         public string NomCatAcc { get; set; } = null!;
+
+        [InverseProperty(nameof(Accessoire.CateAccessoire))]
+        public virtual ICollection<Accessoire>? AccessoireCategorise { get; set; }
     }
 }

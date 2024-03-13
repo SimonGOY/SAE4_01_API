@@ -9,6 +9,10 @@ namespace SAE_4._01.Models.EntityFramework
         [Key]
         [Column("acc_id")]
         public int IdAccessoire { get; set; }
+        [Column("mod_id")]
+        public int IdMoto { get; set; }
+        [Column("cta_id")]
+        public int IdCatAcc { get; set; }
         [Column("acc_nom")]
         [StringLength(50)]
         public string NomAccessoire { get; set; } = null!;
@@ -19,11 +23,12 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("acc_photo")]
         public string PhotoAccessoire { get; set; } = null!;
 
-        /* A faire
-        [InverseProperty("NomPropInversee")]
-        public virtual Type IdMoto { get; set; } = null!;
-        
-        [InverseProperty("NomPropInversee")]
-        public virtual Type IdCatAcc { get; set; } = null!;*/
+        [ForeignKey(nameof(IdCatAcc))]
+        [InverseProperty(nameof(CategorieAccessoire.AccessoireCategorise))]
+        public virtual CategorieAccessoire? CateAccessoire { get; set; }
+
+        [ForeignKey(nameof(IdMoto))]
+        [InverseProperty(nameof(ModeleMoto.AccessoireMoto))]
+        public virtual CategorieAccessoire? ModeleAccessoire { get; set; }
     }
 }
