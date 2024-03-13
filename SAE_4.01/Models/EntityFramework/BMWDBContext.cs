@@ -307,11 +307,11 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdEquipement)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_eli_equ");
-                entity.HasOne(d => d.EquipementEstLie2)
+                /*entity.HasOne(d => d.EquipementEstLie2)
                     .WithMany(p => p.EstLieEquipement2)
                     .HasForeignKey(d => d.IdEquipement)
                     .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_eli_equ");
+                    .HasConstraintName("fk_eli_equ");*/
             });
 
             modelBuilder.Entity<GammeMoto>(entity =>

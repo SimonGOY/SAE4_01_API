@@ -22,8 +22,8 @@ namespace SAE_4._01.Models.EntityFramework
         [InverseProperty(nameof(Equipement.EstLieEquipement1))]
         public virtual Equipement EquipementEstLie1 { get; set; } = null!;
 
-        [ForeignKey(nameof(EquIdEquipement))]
+        /*[ForeignKey(nameof(EquIdEquipement))]
         [InverseProperty(nameof(Equipement.EstLieEquipement2))]
-        public virtual Equipement EquipementEstLie2 { get; set; } = null!;
+        public virtual Equipement EquipementEstLie2 { get; set; } = null!;*/
     }
 }
