@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    [Table("t_j_estinclus_ein")]
+    [Table("t_j_estinclus_ecl")]
     public class EstInclus
     {
         [Key]

@@ -12,7 +12,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("res_id")]
         public int IdReservation { get; set; }
 
-        [Column("mot_idmoto")]
+        [Column("mdp_idmoto")]
         public int IdMotoDisponible { get; set; }
 
         [Column("clt_idclient")]

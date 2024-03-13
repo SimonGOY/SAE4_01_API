@@ -5,14 +5,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    [Table("t_e_motodisponible_mot")]
+    [Table("t_e_motodisponible_mdp")]
     public partial class MotoDisponible
     {
         [Key]
-        [Column("mot_id")]
+        [Column("mdp_id")]
         public int IdMotoDisponible { get; set; }
 
-        [Column("mot_prix")]
+        [Column("mdp_prix")]
         public float PrixMotoDisponible { get; set; }
 
         [Column("mod_idmoto")]

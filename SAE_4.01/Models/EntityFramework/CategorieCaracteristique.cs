@@ -5,14 +5,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    [Table("t_e_categoriecaracteristique_cat")]
+    [Table("t_e_categoriecaracteristique_ctc")]
     public partial class CategorieCaracteristique
     {
         [Key]
-        [Column("cat_id")]
+        [Column("ctc_id")]
         public int IdCatCaracteristique { get; set; }
 
-        [Column("cat_nom")]
+        [Column("ctc_nom")]
         [StringLength(50)]
         public string NomCatCaracteristique { get; set; } = null!;
 

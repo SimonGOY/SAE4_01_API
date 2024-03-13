@@ -19,10 +19,10 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("equ_id")]
         public int IdEquipement { get; set; }
 
-        [Column("col_idcollection")]
+        [Column("cln_idcollection")]
         public int IdCollection { get; set; }
 
-        [Column("ceq_idcatequipement")]
+        [Column("cte_idcatequipement")]
         public int IdCatEquipement { get; set; }
 
         [Column("equ_nom")]

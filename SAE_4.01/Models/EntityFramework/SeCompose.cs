@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    [Table("t_j_se_compose_sec")]
+    [Table("t_j_se_compose_scp")]
     public class SeCompose
     {
         [Key]

@@ -5,14 +5,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    [Table("t_e_collection_col")]
+    [Table("t_e_collection_cln")]
     public partial class Collection
     {
         [Key]
-        [Column("col_id")]
+        [Column("cln_id")]
         public int IdCollection { get; set; }
 
-        [Column("col_nom")]
+        [Column("cln_nom")]
         [StringLength(50)]
         public string NomCollection { get; set; } = null!;
 

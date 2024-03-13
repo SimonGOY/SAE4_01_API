@@ -4,11 +4,11 @@ using System.Drawing;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    [Table("t_e_demandeessai_dme")]
+    [Table("t_e_demandeessai_dmd")]
     public partial class DemandeEssai
     {
         [Key]
-        [Column("dme_id")]
+        [Column("dmd_id")]
         public int IdDemandeEssai { get; set; }
 
         [Column("con_id")]
@@ -20,7 +20,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("ctf_id")]
         public int IdContact { get; set; }
 
-        [Column("dme_descriptif")]
+        [Column("dmd_descriptif")]
         public string DescriptifDemandeEssai { get; set; } = null!;
 
         [ForeignKey(nameof(IdConcessionnaire))]

@@ -5,17 +5,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    [Table("t_e_categorieequipement_ceq")]
+    [Table("t_e_categorieequipement_cte")]
     public partial class CategorieEquipement
     {
         [Key]
-        [Column("ceq_id")]
+        [Column("cte_id")]
         public int IdCatEquipement { get; set; }
 
-        [Column("ceq_catidcatequipement")]
+        [Column("cte_catidcatequipement")]
         public int CatIdCatEquipement { get; set; }
 
-        [Column("ceq_libelle")]
+        [Column("cte_libelle")]
         [StringLength(100)]
         public string LibelleCatEquipement { get; set; } = null!;
 
