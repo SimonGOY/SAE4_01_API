@@ -18,7 +18,7 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdColoris { get; set; }
 
         [Key]
-        [Column("eqp_id")]
+        [Column("equ_id")]
         public int IdEquipement { get; set; }
 
         [Column("stk_quantite")]

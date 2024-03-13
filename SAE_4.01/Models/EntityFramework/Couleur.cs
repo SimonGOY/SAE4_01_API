@@ -10,6 +10,8 @@ namespace SAE_4._01.Models.EntityFramework
         [Key]
         [Column("clr_id")]
         public int IdCouleur { get; set; }
+        [Column("mod_id")]
+        public int IdMoto { get; set; }
         [Column("clr_nom")]
         [StringLength(50)]
         public string NomCouleur { get; set; } = null!;
@@ -22,8 +24,8 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("clr_moto")]
         public string MotoCouleur { get; set; } = null!;
 
-        /* A faire
-        [InverseProperty("NomPropInversee")]
-        public virtual Type IdMoto { get; set; } = null!;*/
+        [ForeignKey(nameof(IdMoto))]
+        [InverseProperty(nameof(ModeleMoto.CouleurMoto))]
+        public virtual ModeleMoto ModeleColore { get; set; } = null!;
     }
 }
