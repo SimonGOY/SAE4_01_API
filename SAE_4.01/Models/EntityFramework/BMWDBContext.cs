@@ -121,6 +121,12 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdCatEquipement)
                     .HasName("pk_cte");
+
+                entity.HasOne(d => d.CategorieEquipementCategorieEquipementFK)
+                    .WithMany(p => p.CategorieEquipementCategorieEquipementProperty)
+                    .HasForeignKey(d => d.CatIdCatEquipement)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_cte_cte");
             });
 
             modelBuilder.Entity<Client>(entity =>
@@ -224,6 +230,18 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdEquipement)
                     .HasName("pk_equ");
+
+                entity.HasOne(d => d.CollectionEquipement)
+                    .WithMany(p => p.EquipementCollection)
+                    .HasForeignKey(d => d.IdCollection)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_equ_cln");
+
+                entity.HasOne(d => d.CategorieEquipementEquipement)
+                    .WithMany(p => p.EquipementCategorieEquipement)
+                    .HasForeignKey(d => d.IdCatEquipement)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_equ_cte");
             });
 
             modelBuilder.Entity<EstInclus>(entity =>
@@ -236,6 +254,18 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => new { e.IdEquipement, e.EquIdEquipement })
                     .HasName("pk_eli");
+
+                entity.HasOne(d => d.EquipementEstLie1)
+                    .WithMany(p => p.EstLieEquipement1)
+                    .HasForeignKey(d => d.IdEquipement)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_eli_equ");
+
+                entity.HasOne(d => d.EquipementEstLie2)
+                    .WithMany(p => p.EstLieEquipement2)
+                    .HasForeignKey(d => d.IdEquipement)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_eli_equ");
             });
 
             modelBuilder.Entity<GammeMoto>(entity =>
