@@ -233,6 +233,11 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdCouleur)
                     .HasName("pk_clr");
+                entity.HasOne(d => d.ModeleMotoCouleur)
+                    .WithMany(p => p.CouleurModeleMoto)
+                    .HasForeignKey(d => d.IdMoto)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_clr_mod");
             });
 
             modelBuilder.Entity<DemandeEssai>(entity =>
@@ -281,6 +286,18 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => new { e.IdOption, e.IdStyle })
                     .HasName("pk_ecl");
+
+                entity.HasOne(d => d.OptionEstInclus)
+                    .WithMany(p => p.EstInclusOption)
+                    .HasForeignKey(d => d.IdOption)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_ecl_opt");
+
+                entity.HasOne(d => d.StyleEstInclus)
+                    .WithMany(p => p.EstInclusStyle)
+                    .HasForeignKey(d => d.IdStyle)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_ecl_sty");
             });
 
             modelBuilder.Entity<EstLie>(entity =>
@@ -377,6 +394,11 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdMotoConfigurable)
                     .HasName("pk_mcf");
+                entity.HasOne(d => d.ModeleMotoMotoConfigurable)
+                    .WithMany(p => p.MotoConfigurableModeleMoto)
+                    .HasForeignKey(d => d.IdMoto)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_mcf_mod");
             });
 
             modelBuilder.Entity<MotoDisponible>(entity =>
