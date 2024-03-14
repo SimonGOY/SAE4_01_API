@@ -11,55 +11,55 @@ namespace SAE_4._01.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ModeleMotosController : ControllerBase
+    public class ClientsController : ControllerBase
     {
         private readonly BMWDBContext _context;
 
-        public ModeleMotosController(BMWDBContext context)
+        public ClientsController(BMWDBContext context)
         {
             _context = context;
         }
 
-        // GET: api/ModeleMotos
+        // GET: api/Clients
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ModeleMoto>>> GetModeleMotos()
+        public async Task<ActionResult<IEnumerable<Client>>> GetClients()
         {
-            if (_context.ModeleMotos == null)
+            if (_context.Clients == null)
             {
                 return NotFound();
             }
-            return await _context.ModeleMotos.ToListAsync();
+            return await _context.Clients.ToListAsync();
         }
 
-        // GET: api/ModeleMotos/5
+        // GET: api/Clients/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ModeleMoto>> GetModeleMoto(int id)
+        public async Task<ActionResult<Client>> GetClient(int id)
         {
-            if (_context.ModeleMotos == null)
+            if (_context.Clients == null)
             {
                 return NotFound();
             }
-            var ModeleMoto = await _context.ModeleMotos.FindAsync(id);
+            var Client = await _context.Clients.FindAsync(id);
 
-            if (ModeleMoto == null)
+            if (Client == null)
             {
                 return NotFound();
             }
 
-            return ModeleMoto;
+            return Client;
         }
 
-        // PUT: api/ModeleMotos/5
+        // PUT: api/Clients/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutModeleMoto(int id, ModeleMoto ModeleMoto)
+        public async Task<IActionResult> PutClient(int id, Client Client)
         {
-            if (id != ModeleMoto.IdMoto)
+            if (id != Client.IdClient)
             {
                 return BadRequest();
             }
 
-            _context.Entry(ModeleMoto).State = EntityState.Modified;
+            _context.Entry(Client).State = EntityState.Modified;
 
             try
             {
@@ -67,7 +67,7 @@ namespace SAE_4._01.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ModeleMotoExists(id))
+                if (!ClientExists(id))
                 {
                     return NotFound();
                 }
@@ -80,44 +80,44 @@ namespace SAE_4._01.Controllers
             return NoContent();
         }
 
-        // POST: api/ModeleMotos
+        // POST: api/Clients
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ModeleMoto>> PostModeleMoto(ModeleMoto ModeleMoto)
+        public async Task<ActionResult<Client>> PostClient(Client Client)
         {
-            if (_context.ModeleMotos == null)
+            if (_context.Clients == null)
             {
-                return Problem("Entity set 'BMWDBContext.ModeleMotos'  is null.");
+                return Problem("Entity set 'BMWDBContext.Clients'  is null.");
             }
-            _context.ModeleMotos.Add(ModeleMoto);
+            _context.Clients.Add(Client);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetModeleMoto", new { id = ModeleMoto.IdMoto }, ModeleMoto);
+            return CreatedAtAction("GetClient", new { id = Client.IdClient }, Client);
         }
 
-        // DELETE: api/ModeleMotos/5
+        // DELETE: api/Clients/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteModeleMoto(int id)
+        public async Task<IActionResult> DeleteClient(int id)
         {
-            if (_context.ModeleMotos == null)
+            if (_context.Clients == null)
             {
                 return NotFound();
             }
-            var ModeleMoto = await _context.ModeleMotos.FindAsync(id);
-            if (ModeleMoto == null)
+            var Client = await _context.Clients.FindAsync(id);
+            if (Client == null)
             {
                 return NotFound();
             }
 
-            _context.ModeleMotos.Remove(ModeleMoto);
+            _context.Clients.Remove(Client);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ModeleMotoExists(int id)
+        private bool ClientExists(int id)
         {
-            return (_context.ModeleMotos?.Any(e => e.IdMoto == id)).GetValueOrDefault();
+            return (_context.Clients?.Any(e => e.IdClient == id)).GetValueOrDefault();
         }
     }
 }

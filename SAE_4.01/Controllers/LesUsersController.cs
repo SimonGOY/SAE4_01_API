@@ -11,55 +11,55 @@ namespace SAE_4._01.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ModeleMotosController : ControllerBase
+    public class LesUsersController : ControllerBase
     {
         private readonly BMWDBContext _context;
 
-        public ModeleMotosController(BMWDBContext context)
+        public LesUsersController(BMWDBContext context)
         {
             _context = context;
         }
 
-        // GET: api/ModeleMotos
+        // GET: api/LesUsers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ModeleMoto>>> GetModeleMotos()
+        public async Task<ActionResult<IEnumerable<Users>>> GetLesUsers()
         {
-            if (_context.ModeleMotos == null)
+            if (_context.LesUsers == null)
             {
                 return NotFound();
             }
-            return await _context.ModeleMotos.ToListAsync();
+            return await _context.LesUsers.ToListAsync();
         }
 
-        // GET: api/ModeleMotos/5
+        // GET: api/LesUsers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ModeleMoto>> GetModeleMoto(int id)
+        public async Task<ActionResult<Users>> GetUsers(int id)
         {
-            if (_context.ModeleMotos == null)
+            if (_context.LesUsers == null)
             {
                 return NotFound();
             }
-            var ModeleMoto = await _context.ModeleMotos.FindAsync(id);
+            var Users = await _context.LesUsers.FindAsync(id);
 
-            if (ModeleMoto == null)
+            if (Users == null)
             {
                 return NotFound();
             }
 
-            return ModeleMoto;
+            return Users;
         }
 
-        // PUT: api/ModeleMotos/5
+        // PUT: api/LesUsers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutModeleMoto(int id, ModeleMoto ModeleMoto)
+        public async Task<IActionResult> PutUsers(int id, Users Users)
         {
-            if (id != ModeleMoto.IdMoto)
+            if (id != Users.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(ModeleMoto).State = EntityState.Modified;
+            _context.Entry(Users).State = EntityState.Modified;
 
             try
             {
@@ -67,7 +67,7 @@ namespace SAE_4._01.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ModeleMotoExists(id))
+                if (!UsersExists(id))
                 {
                     return NotFound();
                 }
@@ -80,44 +80,44 @@ namespace SAE_4._01.Controllers
             return NoContent();
         }
 
-        // POST: api/ModeleMotos
+        // POST: api/LesUsers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ModeleMoto>> PostModeleMoto(ModeleMoto ModeleMoto)
+        public async Task<ActionResult<Users>> PostUsers(Users Users)
         {
-            if (_context.ModeleMotos == null)
+            if (_context.LesUsers == null)
             {
-                return Problem("Entity set 'BMWDBContext.ModeleMotos'  is null.");
+                return Problem("Entity set 'BMWDBContext.LesUsers'  is null.");
             }
-            _context.ModeleMotos.Add(ModeleMoto);
+            _context.LesUsers.Add(Users);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetModeleMoto", new { id = ModeleMoto.IdMoto }, ModeleMoto);
+            return CreatedAtAction("GetUsers", new { id = Users.Id }, Users);
         }
 
-        // DELETE: api/ModeleMotos/5
+        // DELETE: api/LesUsers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteModeleMoto(int id)
+        public async Task<IActionResult> DeleteUsers(int id)
         {
-            if (_context.ModeleMotos == null)
+            if (_context.LesUsers == null)
             {
                 return NotFound();
             }
-            var ModeleMoto = await _context.ModeleMotos.FindAsync(id);
-            if (ModeleMoto == null)
+            var Users = await _context.LesUsers.FindAsync(id);
+            if (Users == null)
             {
                 return NotFound();
             }
 
-            _context.ModeleMotos.Remove(ModeleMoto);
+            _context.LesUsers.Remove(Users);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ModeleMotoExists(int id)
+        private bool UsersExists(int id)
         {
-            return (_context.ModeleMotos?.Any(e => e.IdMoto == id)).GetValueOrDefault();
+            return (_context.LesUsers?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
