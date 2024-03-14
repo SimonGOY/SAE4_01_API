@@ -428,6 +428,8 @@ namespace SAE_4._01.Models.EntityFramework
                   .HasForeignKey(d => d.IdConcessionnaire)
                   .OnDelete(DeleteBehavior.Restrict)
                   .HasConstraintName("fk_ofr_con");
+
+                entity.HasCheckConstraint("ck_ofr_financement", "((((ofr_financement)::text = 'Sans Financement'::text) OR ((ofr_financement)::text = 'Financement Particulier'::text) OR ((ofr_financement)::text = 'Financement Professionnel'::text)))");
             });
 
             modelBuilder.Entity<Option>(entity =>
@@ -538,6 +540,8 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdConcessionnaire)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_res_con");
+
+                entity.HasCheckConstraint("ck_res_financement", "((((res_financement)::text = 'Comptant'::text) OR ((res_financement)::text = 'LLD'::text) OR ((res_financement)::text = 'Crédit'::text)))");
             });
 
             modelBuilder.Entity<SeCompose>(entity =>
@@ -619,6 +623,10 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.Id)
                     .HasName("pk_tel");
+
+                entity.HasCheckConstraint("ck_tel_fonction", "((((tel_fonction)::text = 'Privé'::text) OR ((tel_fonction)::text = 'Professionnel'::text)))");
+                entity.HasCheckConstraint("ck_tel_num", "((((tel_fonction)::text = 'Privé'::text) OR ((tel_fonction)::text = 'Professionnel'::text)))");
+                entity.HasCheckConstraint("ck_tel_type", "((((tel_type)::text = 'Fixe'::text) OR ((tel_type)::text = 'Mobile'::text)))");
             });
 
             modelBuilder.Entity<Transaction>(entity =>

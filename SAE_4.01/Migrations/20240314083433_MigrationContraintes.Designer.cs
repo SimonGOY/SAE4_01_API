@@ -12,14 +12,14 @@ using SAE_4._01.Models.EntityFramework;
 namespace SAE_4._01.Migrations
 {
     [DbContext(typeof(BMWDBContext))]
-    [Migration("20240313142422_CreationBD")]
-    partial class CreationBD
+    [Migration("20240314083433_MigrationContraintes")]
+    partial class MigrationContraintes
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.27")
+                .HasAnnotation("ProductVersion", "6.0.28")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -249,6 +249,10 @@ namespace SAE_4._01.Migrations
                     b.HasIndex("NumAdresse");
 
                     b.ToTable("t_e_client_clt");
+
+                    b.HasCheckConstraint("ck_clt_age", "age((clt_datenaissance)::timestamp with time zone) >= '18 years'::interval");
+
+                    b.HasCheckConstraint("ck_clt_email", "clt_email ~~ '%_@__%.__%'::text");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Collection", b =>
@@ -364,6 +368,10 @@ namespace SAE_4._01.Migrations
                         .HasName("pk_con");
 
                     b.ToTable("t_e_concessionnaire_con");
+
+                    b.HasCheckConstraint("ck_con_email", "con_email ~~ '%_@__%.__%'::text");
+
+                    b.HasCheckConstraint("ck_con_telephone", "(con_telephone)::text ~'^(01|02|03|04|05|09)\\d{8}$'::text");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.ContactInfo", b =>

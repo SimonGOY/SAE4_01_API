@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace SAE_4._01.Migrations
 {
-    public partial class CreationBD : Migration
+    public partial class MigrationContraintes : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -97,6 +97,8 @@ namespace SAE_4._01.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_con", x => x.con_id);
+                    table.CheckConstraint("ck_con_email", "con_email ~~ '%_@__%.__%'::text");
+                    table.CheckConstraint("ck_con_telephone", "(con_telephone)::text ~'^(01|02|03|04|05|09)\\d{8}$'::text");
                 });
 
             migrationBuilder.CreateTable(
@@ -497,6 +499,8 @@ namespace SAE_4._01.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_clt", x => x.clt_id);
+                    table.CheckConstraint("ck_clt_age", "age((clt_datenaissance)::timestamp with time zone) >= '18 years'::interval");
+                    table.CheckConstraint("ck_clt_email", "clt_email ~~ '%_@__%.__%'::text");
                     table.ForeignKey(
                         name: "fk_clt_adr",
                         column: x => x.adr_numeroadresse,
