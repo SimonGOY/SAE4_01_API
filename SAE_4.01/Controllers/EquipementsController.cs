@@ -11,55 +11,55 @@ namespace SAE_4._01.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ModeleMotosController : ControllerBase
+    public class EquipementsController : ControllerBase
     {
         private readonly BMWDBContext _context;
 
-        public ModeleMotosController(BMWDBContext context)
+        public EquipementsController(BMWDBContext context)
         {
             _context = context;
         }
 
-        // GET: api/ModeleMotos
+        // GET: api/Equipements
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ModeleMoto>>> GetModeleMotos()
+        public async Task<ActionResult<IEnumerable<Equipement>>> GetEquipements()
         {
-            if (_context.ModeleMotos == null)
+            if (_context.Equipements == null)
             {
                 return NotFound();
             }
-            return await _context.ModeleMotos.ToListAsync();
+            return await _context.Equipements.ToListAsync();
         }
 
-        // GET: api/ModeleMotos/5
+        // GET: api/Equipements/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ModeleMoto>> GetModeleMoto(int id)
+        public async Task<ActionResult<Equipement>> GetEquipement(int id)
         {
-            if (_context.ModeleMotos == null)
+            if (_context.Equipements == null)
             {
                 return NotFound();
             }
-            var ModeleMoto = await _context.ModeleMotos.FindAsync(id);
+            var Equipement = await _context.Equipements.FindAsync(id);
 
-            if (ModeleMoto == null)
+            if (Equipement == null)
             {
                 return NotFound();
             }
 
-            return ModeleMoto;
+            return Equipement;
         }
 
-        // PUT: api/ModeleMotos/5
+        // PUT: api/Equipements/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutModeleMoto(int id, ModeleMoto ModeleMoto)
+        public async Task<IActionResult> PutEquipement(int id, Equipement Equipement)
         {
-            if (id != ModeleMoto.IdMoto)
+            if (id != Equipement.IdEquipement)
             {
                 return BadRequest();
             }
 
-            _context.Entry(ModeleMoto).State = EntityState.Modified;
+            _context.Entry(Equipement).State = EntityState.Modified;
 
             try
             {
@@ -67,7 +67,7 @@ namespace SAE_4._01.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ModeleMotoExists(id))
+                if (!EquipementExists(id))
                 {
                     return NotFound();
                 }
@@ -80,44 +80,44 @@ namespace SAE_4._01.Controllers
             return NoContent();
         }
 
-        // POST: api/ModeleMotos
+        // POST: api/Equipements
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ModeleMoto>> PostModeleMoto(ModeleMoto ModeleMoto)
+        public async Task<ActionResult<Equipement>> PostEquipement(Equipement Equipement)
         {
-            if (_context.ModeleMotos == null)
+            if (_context.Equipements == null)
             {
-                return Problem("Entity set 'BMWDBContext.ModeleMotos'  is null.");
+                return Problem("Entity set 'BMWDBContext.Equipements'  is null.");
             }
-            _context.ModeleMotos.Add(ModeleMoto);
+            _context.Equipements.Add(Equipement);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetModeleMoto", new { id = ModeleMoto.IdMoto }, ModeleMoto);
+            return CreatedAtAction("GetEquipement", new { id = Equipement.IdEquipement }, Equipement);
         }
 
-        // DELETE: api/ModeleMotos/5
+        // DELETE: api/Equipements/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteModeleMoto(int id)
+        public async Task<IActionResult> DeleteEquipement(int id)
         {
-            if (_context.ModeleMotos == null)
+            if (_context.Equipements == null)
             {
                 return NotFound();
             }
-            var ModeleMoto = await _context.ModeleMotos.FindAsync(id);
-            if (ModeleMoto == null)
+            var Equipement = await _context.Equipements.FindAsync(id);
+            if (Equipement == null)
             {
                 return NotFound();
             }
 
-            _context.ModeleMotos.Remove(ModeleMoto);
+            _context.Equipements.Remove(Equipement);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ModeleMotoExists(int id)
+        private bool EquipementExists(int id)
         {
-            return (_context.ModeleMotos?.Any(e => e.IdMoto == id)).GetValueOrDefault();
+            return (_context.Equipements?.Any(e => e.IdEquipement == id)).GetValueOrDefault();
         }
     }
 }
