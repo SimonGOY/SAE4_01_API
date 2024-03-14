@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Data;
 using System.Runtime.Intrinsics.X86;
+using System.Security.Policy;
 
 namespace SAE_4._01.Models.EntityFramework
 {
@@ -191,7 +192,7 @@ namespace SAE_4._01.Models.EntityFramework
                 entity.HasKey(e => e.IdConcessionnaire)
                     .HasName("pk_con");
 
-                entity.HasCheckConstraint("ck_con_email", "con_email ~~ '%_@__%.__%'::text");
+                entity.HasCheckConstraint("ck_con_email", "(con_email)::text ~~ '%_@__%.__%'::text");
                 entity.HasCheckConstraint("ck_con_telephone","(con_telephone)::text ~'^(01|02|03|04|05|09)\\d{8}$'::text");
             });
 
@@ -205,6 +206,9 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdOffre)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_ctf_ofr");
+
+                entity.HasCheckConstraint("ck_ctf_datenaissance", "age((ctf_datenaissance)::timestamp with time zone) >= '18 years'::interval");
+                entity.HasCheckConstraint("ck_ctf_email", "(ctf_email)::text ~~'%_@__%.__%'::text");
             });
 
             modelBuilder.Entity<ContenuCommande>(entity =>
