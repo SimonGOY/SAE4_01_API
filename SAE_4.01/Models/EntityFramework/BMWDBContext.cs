@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using System.Data;
 using System.Runtime.Intrinsics.X86;
 
 namespace SAE_4._01.Models.EntityFramework
@@ -156,6 +157,9 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.NumAdresse)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_clt_adr");
+
+                entity.HasCheckConstraint("ck_clt_age", "age((clt_datenaissance)::timestamp with time zone) >= '18 years'::interval");
+                entity.HasCheckConstraint("ck_clt_email", "clt_email ~~ '%_@__%.__%'::text");
             });
 
             modelBuilder.Entity<Collection>(entity =>
@@ -186,6 +190,9 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdConcessionnaire)
                     .HasName("pk_con");
+
+                entity.HasCheckConstraint("ck_con_email", "con_email ~~ '%_@__%.__%'::text");
+                entity.HasCheckConstraint("ck_con_telephone","(con_telephone)::text ~'^(01|02|03|04|05|09)\\d{8}$'::text");
             });
 
             modelBuilder.Entity<ContactInfo>(entity =>
