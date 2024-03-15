@@ -367,7 +367,7 @@ namespace SAE_4._01.Migrations
 
                     b.ToTable("t_e_concessionnaire_con");
 
-                    b.HasCheckConstraint("ck_con_email", "con_email ~~ '%_@__%.__%'::text");
+                    b.HasCheckConstraint("ck_con_email", "(con_email)::text ~~ '%_@__%.__%'::text");
 
                     b.HasCheckConstraint("ck_con_telephone", "(con_telephone)::text ~'^(01|02|03|04|05|09)\\d{8}$'::text");
                 });
@@ -419,6 +419,10 @@ namespace SAE_4._01.Migrations
                     b.HasIndex("IdOffre");
 
                     b.ToTable("t_e_contactinfo_ctf");
+
+                    b.HasCheckConstraint("ck_ctf_datenaissance", "age((ctf_datenaissance)::timestamp with time zone) >= '18 years'::interval");
+
+                    b.HasCheckConstraint("ck_ctf_email", "(ctf_email)::text ~~'%_@__%.__%'::text");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.ContenuCommande", b =>
@@ -595,6 +599,8 @@ namespace SAE_4._01.Migrations
                     b.HasIndex("IdCollection");
 
                     b.ToTable("t_e_equipement_equ");
+
+                    b.HasCheckConstraint("ck_eq_sexe", "(((equ_sexe)::text = 'f'::text) OR ((equ_sexe)::text = 'h'::text) OR ((equ_sexe)::text = 'uni'::text))");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.EstInclus", b =>
@@ -856,6 +862,8 @@ namespace SAE_4._01.Migrations
                     b.HasIndex("IdMotoConfigurable");
 
                     b.ToTable("t_e_offre_ofr");
+
+                    b.HasCheckConstraint("ck_ofr_financement", "((((ofr_financement)::text = 'Sans Financement'::text) OR ((ofr_financement)::text = 'Financement Particulier'::text) OR ((ofr_financement)::text = 'Financement Professionnel'::text)))");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Option", b =>
@@ -1094,6 +1102,8 @@ namespace SAE_4._01.Migrations
                     b.HasIndex("IdConcessionnaire");
 
                     b.ToTable("t_e_reservation_res");
+
+                    b.HasCheckConstraint("ck_res_financement", "((((res_financement)::text = 'Comptant'::text) OR ((res_financement)::text = 'LLD'::text) OR ((res_financement)::text = 'Crédit'::text)))");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.SeCompose", b =>
@@ -1274,6 +1284,12 @@ namespace SAE_4._01.Migrations
                     b.HasIndex("IdClient");
 
                     b.ToTable("t_e_telephone_tel");
+
+                    b.HasCheckConstraint("ck_tel_fonction", "((((tel_fonction)::text = 'Privé'::text) OR ((tel_fonction)::text = 'Professionnel'::text)))");
+
+                    b.HasCheckConstraint("ck_tel_num", "((((tel_fonction)::text = 'Privé'::text) OR ((tel_fonction)::text = 'Professionnel'::text)))");
+
+                    b.HasCheckConstraint("ck_tel_type", "((((tel_type)::text = 'Fixe'::text) OR ((tel_type)::text = 'Mobile'::text)))");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Transaction", b =>

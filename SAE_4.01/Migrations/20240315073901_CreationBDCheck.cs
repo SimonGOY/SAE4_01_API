@@ -6,11 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace SAE_4._01.Migrations
 {
-<<<<<<<< HEAD:SAE_4.01/Migrations/20240314083433_MigrationContraintes.cs
-    public partial class MigrationContraintes : Migration
-========
-    public partial class TestCheck2 : Migration
->>>>>>>> c160f84a9ee2ff8a474e826e297e31edabc3cf4c:SAE_4.01/Migrations/20240314083741_TestCheck2.cs
+    public partial class CreationBDCheck : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -101,7 +97,7 @@ namespace SAE_4._01.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_con", x => x.con_id);
-                    table.CheckConstraint("ck_con_email", "con_email ~~ '%_@__%.__%'::text");
+                    table.CheckConstraint("ck_con_email", "(con_email)::text ~~ '%_@__%.__%'::text");
                     table.CheckConstraint("ck_con_telephone", "(con_telephone)::text ~'^(01|02|03|04|05|09)\\d{8}$'::text");
                 });
 
@@ -190,6 +186,7 @@ namespace SAE_4._01.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_equ", x => x.equ_id);
+                    table.CheckConstraint("ck_eq_sexe", "(((equ_sexe)::text = 'f'::text) OR ((equ_sexe)::text = 'h'::text) OR ((equ_sexe)::text = 'uni'::text))");
                     table.ForeignKey(
                         name: "fk_equ_cln",
                         column: x => x.cln_idcollection,
@@ -609,6 +606,7 @@ namespace SAE_4._01.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_ofr", x => x.ofr_id);
+                    table.CheckConstraint("ck_ofr_financement", "((((ofr_financement)::text = 'Sans Financement'::text) OR ((ofr_financement)::text = 'Financement Particulier'::text) OR ((ofr_financement)::text = 'Financement Professionnel'::text)))");
                     table.ForeignKey(
                         name: "fk_ofr_con",
                         column: x => x.con_id,
@@ -745,6 +743,7 @@ namespace SAE_4._01.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_res", x => x.res_id);
+                    table.CheckConstraint("ck_res_financement", "((((res_financement)::text = 'Comptant'::text) OR ((res_financement)::text = 'LLD'::text) OR ((res_financement)::text = 'Crédit'::text)))");
                     table.ForeignKey(
                         name: "fk_res_clt",
                         column: x => x.clt_idclient,
@@ -779,6 +778,9 @@ namespace SAE_4._01.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_tel", x => x.tel_id);
+                    table.CheckConstraint("ck_tel_fonction", "((((tel_fonction)::text = 'Privé'::text) OR ((tel_fonction)::text = 'Professionnel'::text)))");
+                    table.CheckConstraint("ck_tel_num", "((((tel_fonction)::text = 'Privé'::text) OR ((tel_fonction)::text = 'Professionnel'::text)))");
+                    table.CheckConstraint("ck_tel_type", "((((tel_type)::text = 'Fixe'::text) OR ((tel_type)::text = 'Mobile'::text)))");
                     table.ForeignKey(
                         name: "FK_t_e_telephone_tel_t_e_client_clt_clt_id",
                         column: x => x.clt_id,
@@ -878,6 +880,8 @@ namespace SAE_4._01.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_ctf", x => x.ctf_id);
+                    table.CheckConstraint("ck_ctf_datenaissance", "age((ctf_datenaissance)::timestamp with time zone) >= '18 years'::interval");
+                    table.CheckConstraint("ck_ctf_email", "(ctf_email)::text ~~'%_@__%.__%'::text");
                     table.ForeignKey(
                         name: "fk_ctf_ofr",
                         column: x => x.ofr_id,
