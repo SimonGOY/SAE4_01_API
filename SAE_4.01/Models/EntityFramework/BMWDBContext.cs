@@ -85,6 +85,8 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdMoto)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_acc_mod");
+
+                entity.HasAlternateKey(e => e.NomAccessoire);
             });
 
             modelBuilder.Entity<Adresse>(entity =>
@@ -121,12 +123,16 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdCatAcc)
                     .HasName("pk_cta");
+
+                entity.HasAlternateKey(e => e.NomCatAcc);
             });
 
             modelBuilder.Entity<CategorieCaracteristique>(entity =>
             {
                 entity.HasKey(e => e.IdCatCaracteristique)
                     .HasName("pk_ctc");
+
+                entity.HasAlternateKey(e => e.NomCatCaracteristique);
             });
 
             modelBuilder.Entity<CategorieEquipement>(entity =>
@@ -166,6 +172,8 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdColoris)
                     .HasName("pk_cls");
+
+                entity.HasAlternateKey(e => e.NomColoris);
             });
 
             modelBuilder.Entity<Commande>(entity =>
@@ -187,6 +195,8 @@ namespace SAE_4._01.Models.EntityFramework
 
                 entity.HasCheckConstraint("ck_con_email", "(con_email)::text ~~ '%_@__%.__%'::text");
                 entity.HasCheckConstraint("ck_con_telephone","(con_telephone)::text ~'^(01|02|03|04|05|09)\\d{8}$'::text");
+
+                entity.HasAlternateKey(e => e.NomConcessionnaire);
             });
 
             modelBuilder.Entity<ContactInfo>(entity =>
@@ -244,6 +254,8 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdMoto)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_clr_mod");
+
+                entity.HasAlternateKey(e => new { e.NomCouleur, e.DescriptionCouleur});
             });
 
             modelBuilder.Entity<DemandeEssai>(entity =>
@@ -324,6 +336,8 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdGamme)
                     .HasName("pk_gam");
+
+                entity.HasAlternateKey(e => e.LibelleGamme);
             });
 
             modelBuilder.Entity<Garage>(entity =>
@@ -375,6 +389,8 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdPresentation)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_med_pre");
+
+                entity.HasAlternateKey(e => e.LienMedia);
             });
 
             modelBuilder.Entity<ModeleMoto>(entity =>
@@ -387,6 +403,8 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdGamme)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_mod_gam");
+
+                entity.HasAlternateKey(e => new { e.IdGamme, e.NomMoto, e.DescriptifMoto, e.PrixMoto });
             });
 
             modelBuilder.Entity<MotoConfigurable>(entity =>
@@ -435,6 +453,8 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdOption)
                     .HasName("pk_opt");
+
+                entity.HasAlternateKey(e => new { e.NomOption, e.DetailOption });
             });
 
             modelBuilder.Entity<Pack>(entity =>
@@ -447,6 +467,8 @@ namespace SAE_4._01.Models.EntityFramework
                   .HasForeignKey(d => d.IdMoto)
                   .OnDelete(DeleteBehavior.Restrict)
                   .HasConstraintName("fk_pck_mod");
+
+                entity.HasAlternateKey(e => new { e.IdMoto, e.NomPack });
             });
 
             modelBuilder.Entity<Parametres>(entity =>
@@ -505,6 +527,8 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdClient)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_prv_clt");
+
+                entity.HasAlternateKey(e => e.IdClient);
             });
 
             modelBuilder.Entity<Professionnel>(entity =>
@@ -517,6 +541,8 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdPro)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_pro_clt");
+
+                entity.HasAlternateKey(e => e.IdClient);
             });
 
             modelBuilder.Entity<Reservation>(entity =>
@@ -610,6 +636,8 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdMoto)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_sty_mod");
+
+                entity.HasAlternateKey(e => new { e.NomStyle, e.DescriptionStyle });
             });
 
             modelBuilder.Entity<Taille>(entity =>
