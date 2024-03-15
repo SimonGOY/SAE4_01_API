@@ -2394,35 +2394,35 @@ INSERT INTO "BMWMottorad".transaction VALUES (5, 401, 'CB', 990.00);
 
 
 --
--- Data for Name: users; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_users_usr; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".users VALUES (26, 'sans', 'sanscommande@gmail.com', '$2y$12$BL8Jx4VFNrPc0ZKGHHVvRec9oZw/BfljIFamfBeGld2CFTP.oVr0m', '2023-12-19', '2023-12-19', 'M', 'commande', 78, true, 0, false, '2023-12-19');
-INSERT INTO "BMWMottorad".users VALUES (23, 'Simon', 'levraisimoncussonait@gmail.com', '$2y$12$THw2pTRDXELveHxEIskWROQefPZAPGA/w4i1xRPTct09xa0YLVSyy', '2023-12-18', '2023-12-18', 'M', 'Cussonait', 75, true, 0, false, '2023-12-18');
-INSERT INTO "BMWMottorad".users VALUES (27, 'avec', 'avecommande@gmail.com', '$2y$12$BLIJizwO470Dp5wvT0P3iuUhZN/QHydmfAG78oXqTKEnixaf6q8PK', '2023-12-19', '2023-12-19', 'M', 'commande', 79, true, 0, false, '2023-12-19');
-INSERT INTO "BMWMottorad".users VALUES (29, 'avec', 'avec@gmail.com', '$2y$12$bTo3ixRYKFwmD.AtpYd0tuIyPLriJYr2XKqUAP4qpZ4Yfzq2BXZHK', '2023-12-19', '2023-12-19', 'M', 'avec', 81, true, 0, false, '2023-12-19');
-INSERT INTO "BMWMottorad".users VALUES (2, 'Pascal', 'pascal.colin@gmail.com', '$2y$12$xBBqpQNKYgoAwSZdmomOyOBnkDLtZOlM07CVM9HocAX5v25oSGc.q', '2023-11-29', '2023-11-29', 'M', 'Colin', 52, true, 0, false, '2023-12-15');
-INSERT INTO "BMWMottorad".users VALUES (4, 'Simon', 'simon@gmail.com', '$2y$12$sK6ivkA80r2TzzkKcG0NjO5StEkAerRWoYOiHFQ1GPzS77TmyYNkm', '2023-12-04', '2023-12-04', 'M', 'Shoah', 53, true, 0, false, '2023-12-15');
-INSERT INTO "BMWMottorad".users VALUES (6, 'Simon', 'simon@bmw.com', '$2y$12$iPnj1mRbFCT9yggWKG7j.uY5Zgpq5yL0cp2r0urcCcVxT.2t3KxOm', '2023-12-05', '2023-12-05', 'M', 'GOY', 55, true, 0, false, '2023-12-15');
-INSERT INTO "BMWMottorad".users VALUES (7, 'Simon', 'sg.bonneville@gmail.com', '$2y$12$uunUPF07m0onE/iZUugJaOqp996SUXPlX3LYNcC0b7IlzS.Gyag.y', '2023-12-07', '2023-12-07', 'M', 'GOY', 56, true, 0, false, '2023-12-15');
-INSERT INTO "BMWMottorad".users VALUES (10, 'Helène', 'helene.carter@gmail.com', '$2y$12$ZLYS55juwUdkWGqxGeAQT.bqC.w9o37cXBmPmLqtwqSqHaDEMP0xC', '2023-12-08', '2023-12-08', 'Mme', 'Carter', 61, true, 0, false, '2023-12-15');
-INSERT INTO "BMWMottorad".users VALUES (16, 'Arturo', 'arturo@gmail.com', '$2y$12$TJJ7Pn3JZjd905i4eyV51ej8vO4lXj8.VZrcY3uDEYC1k7ILAKXwS', '2023-12-13', '2023-12-13', 'M', 'Turconito', 67, true, 0, false, '2023-12-15');
-INSERT INTO "BMWMottorad".users VALUES (18, 'Réparez le site plz', 'css_404_not_found@iutannecy-deptinfo.fr', '$2y$12$OChrw0GCiW2/Z97t7llS0u6nUyvLpTgitEtdOKhTpNA.eiuF3F/6u', '2023-12-13', '2023-12-13', 'M', 'CPT', 69, true, 0, false, '2023-12-15');
-INSERT INTO "BMWMottorad".users VALUES (14, 'Anna', 'anna.kompaniets@gmail.com', '$2y$12$IW0yv6maV.kMfzFnY038vuL1CtQGhba221n0C6gnhgL4tDLhP8b42', '2023-12-11', '2023-12-11', 'M', 'Kompaniets', 65, true, 0, false, '2023-12-15');
-INSERT INTO "BMWMottorad".users VALUES (21, 'Arthur', 'arthur.turconi@gmail.com', '$2y$12$1lG0xwFrM0ToPypxuuCW8eX1rr4fufmwIGj9ObrzvkwQ5xZ0TWJMC', '2023-12-13', '2023-12-19', 'M', 'Turconi', 72, true, 0, true, '2023-12-19');
-INSERT INTO "BMWMottorad".users VALUES (22, 'DPO', 'dpo@bmwmottorad.com', '$2y$12$XMnSYjHsQyL8mwpjLcliv.7.PGyomdbP.QuG41zrGKiS5gLWK.L8e', '2023-12-15', '2024-01-09', 'M', 'DPO', 73, true, 2, false, '2024-01-09');
-INSERT INTO "BMWMottorad".users VALUES (1, 'Epstein', 'epstein@gmail.com', '$2y$12$l1VhYQ5TBR8yzuhgnX/pau0hXDOfYZfPJdo0pmt20HZ4EmimhKYU2', '2024-01-10', '2024-01-10', 'M', 'Island', 90, true, 0, false, '2024-01-10');
-INSERT INTO "BMWMottorad".users VALUES (40, 'Barbapapa', 'barbapapa@gmail.com', '$2y$12$9PfkXcCM93c.3Lvwf2SH/uCLc0hpCunMuwr4erm7xJOIim8DCk1We', '2024-01-15', '2024-01-15', 'M', 'BarbaFamille', 200, true, 0, false, '2024-01-15');
-INSERT INTO "BMWMottorad".users VALUES (17, 'Commerce', 'commerce@bmw.fr', '$2y$12$KUrKM0qJinlvy1xl5jVfeOWr8.K4jOyMTXQzpCgGp8R6jv.bw9H5S', '2023-12-13', '2024-01-14', 'M', 'Commerce', 68, true, 1, false, '2024-01-14');
-INSERT INTO "BMWMottorad".users VALUES (3, 'Simon', 'simon.cussonait@gmail.com', '$2y$12$UFeLFhns1P0t2o7hT.0IGO2nFpNa4ZUxM3h2svIln7OBLCsfpyb4C', '2024-01-14', '2024-01-14', 'M', 'Cussonait', 91, true, 0, false, '2024-01-14');
-INSERT INTO "BMWMottorad".users VALUES (5, 'Stephen', 'stephenh@gmail.com', '$2y$12$/XUw9DXhDgs5OFAtOmDX.u07tIgIjvg80W1OqR8H2a25MOYIMA3yG', '2024-01-14', '2024-01-14', 'M', 'Hawking', 92, true, 0, false, '2024-01-14');
-INSERT INTO "BMWMottorad".users VALUES (8, 'Homme', 'paddle@gmail.com', '$2y$12$bxwtT4GVrmAdvGQ9ed1zm.cJFOiztCAy/MwakjnPszyC2tVPrNq2e', '2024-01-14', '2024-01-14', 'M', 'Paddle', 93, true, 0, false, '2024-01-14');
-INSERT INTO "BMWMottorad".users VALUES (9, 'pascaline', 'pascaline@coline.fr', '$2y$12$FWapdxZ2yJs1Ew0dSfjp2evBOTWIkUGq./uiyHQbiTY6HqWaObaoO', '2024-01-14', '2024-01-14', 'Mme', 'coline', 94, true, 0, false, '2024-01-14');
-INSERT INTO "BMWMottorad".users VALUES (11, 'Dylan', 'dydylan@gmail.com', '$2y$12$GAC8gCTt5aH.HuzhRtDWXOjORnIsFB/Umo2gBAmNy1gqbV6THrdCa', '2024-01-14', '2024-01-14', 'M', 'Milftari', 95, true, 0, false, '2024-01-14');
-INSERT INTO "BMWMottorad".users VALUES (12, 'Prenomtest', 'prenom.nom@gmail.com', '$2y$12$0W5tiLtDtO1Glpp1ldCJwu4ssVSxBYIAfjdVENBwOh1g1hnJWK2uS', '2024-01-15', '2024-01-15', 'M', 'Nomtest', 96, true, 0, false, '2024-01-15');
-INSERT INTO "BMWMottorad".users VALUES (13, 'ZOUZOU', 'zouzou@gmail.com', '$2y$12$FhQMv53v.yQefDGygh.4SO5qEzCFjxOVtYMB0X80v29JkjzUkpQXO', '2024-01-15', '2024-01-15', 'M', 'ZAZA', 97, true, 0, false, '2024-01-15');
-INSERT INTO "BMWMottorad".users VALUES (15, 'Barack', 'barack@maisonblanche.fr', '$2y$12$y2hoGAlJNCNsRJ1A.2R.gucljzCngiGQCwBVzxVhAcxYgutSm6VKa', '2024-01-15', '2024-01-15', 'M', 'Obmana', 98, true, 0, false, '2024-01-15');
-INSERT INTO "BMWMottorad".users VALUES (41, 'Simon', 'simon.pasgay@gmail.com', '$2y$12$DKszpP7jW53GJgG7LAoKIur3.qf5nzxdnXDBotaGdmRZJTg9E6Sgu', '2024-01-15', '2024-01-15', 'M', 'PasGay', 201, true, 0, false, '2024-01-15');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (26, 'sans', 'sanscommande@gmail.com', '$2y$12$BL8Jx4VFNrPc0ZKGHHVvRec9oZw/BfljIFamfBeGld2CFTP.oVr0m', '2023-12-19', '2023-12-19', 'M', 'commande', 78, true, 0, false, '2023-12-19');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (23, 'Simon', 'levraisimoncussonait@gmail.com', '$2y$12$THw2pTRDXELveHxEIskWROQefPZAPGA/w4i1xRPTct09xa0YLVSyy', '2023-12-18', '2023-12-18', 'M', 'Cussonait', 75, true, 0, false, '2023-12-18');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (27, 'avec', 'avecommande@gmail.com', '$2y$12$BLIJizwO470Dp5wvT0P3iuUhZN/QHydmfAG78oXqTKEnixaf6q8PK', '2023-12-19', '2023-12-19', 'M', 'commande', 79, true, 0, false, '2023-12-19');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (29, 'avec', 'avec@gmail.com', '$2y$12$bTo3ixRYKFwmD.AtpYd0tuIyPLriJYr2XKqUAP4qpZ4Yfzq2BXZHK', '2023-12-19', '2023-12-19', 'M', 'avec', 81, true, 0, false, '2023-12-19');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (2, 'Pascal', 'pascal.colin@gmail.com', '$2y$12$xBBqpQNKYgoAwSZdmomOyOBnkDLtZOlM07CVM9HocAX5v25oSGc.q', '2023-11-29', '2023-11-29', 'M', 'Colin', 52, true, 0, false, '2023-12-15');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (4, 'Simon', 'simon@gmail.com', '$2y$12$sK6ivkA80r2TzzkKcG0NjO5StEkAerRWoYOiHFQ1GPzS77TmyYNkm', '2023-12-04', '2023-12-04', 'M', 'Shoah', 53, true, 0, false, '2023-12-15');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (6, 'Simon', 'simon@bmw.com', '$2y$12$iPnj1mRbFCT9yggWKG7j.uY5Zgpq5yL0cp2r0urcCcVxT.2t3KxOm', '2023-12-05', '2023-12-05', 'M', 'GOY', 55, true, 0, false, '2023-12-15');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (7, 'Simon', 'sg.bonneville@gmail.com', '$2y$12$uunUPF07m0onE/iZUugJaOqp996SUXPlX3LYNcC0b7IlzS.Gyag.y', '2023-12-07', '2023-12-07', 'M', 'GOY', 56, true, 0, false, '2023-12-15');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (10, 'Helène', 'helene.carter@gmail.com', '$2y$12$ZLYS55juwUdkWGqxGeAQT.bqC.w9o37cXBmPmLqtwqSqHaDEMP0xC', '2023-12-08', '2023-12-08', 'Mme', 'Carter', 61, true, 0, false, '2023-12-15');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (16, 'Arturo', 'arturo@gmail.com', '$2y$12$TJJ7Pn3JZjd905i4eyV51ej8vO4lXj8.VZrcY3uDEYC1k7ILAKXwS', '2023-12-13', '2023-12-13', 'M', 'Turconito', 67, true, 0, false, '2023-12-15');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (18, 'Réparez le site plz', 'css_404_not_found@iutannecy-deptinfo.fr', '$2y$12$OChrw0GCiW2/Z97t7llS0u6nUyvLpTgitEtdOKhTpNA.eiuF3F/6u', '2023-12-13', '2023-12-13', 'M', 'CPT', 69, true, 0, false, '2023-12-15');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (14, 'Anna', 'anna.kompaniets@gmail.com', '$2y$12$IW0yv6maV.kMfzFnY038vuL1CtQGhba221n0C6gnhgL4tDLhP8b42', '2023-12-11', '2023-12-11', 'M', 'Kompaniets', 65, true, 0, false, '2023-12-15');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (21, 'Arthur', 'arthur.turconi@gmail.com', '$2y$12$1lG0xwFrM0ToPypxuuCW8eX1rr4fufmwIGj9ObrzvkwQ5xZ0TWJMC', '2023-12-13', '2023-12-19', 'M', 'Turconi', 72, true, 0, true, '2023-12-19');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (22, 'DPO', 'dpo@bmwmottorad.com', '$2y$12$XMnSYjHsQyL8mwpjLcliv.7.PGyomdbP.QuG41zrGKiS5gLWK.L8e', '2023-12-15', '2024-01-09', 'M', 'DPO', 73, true, 2, false, '2024-01-09');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (1, 'Epstein', 'epstein@gmail.com', '$2y$12$l1VhYQ5TBR8yzuhgnX/pau0hXDOfYZfPJdo0pmt20HZ4EmimhKYU2', '2024-01-10', '2024-01-10', 'M', 'Island', 90, true, 0, false, '2024-01-10');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (40, 'Barbapapa', 'barbapapa@gmail.com', '$2y$12$9PfkXcCM93c.3Lvwf2SH/uCLc0hpCunMuwr4erm7xJOIim8DCk1We', '2024-01-15', '2024-01-15', 'M', 'BarbaFamille', 200, true, 0, false, '2024-01-15');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (17, 'Commerce', 'commerce@bmw.fr', '$2y$12$KUrKM0qJinlvy1xl5jVfeOWr8.K4jOyMTXQzpCgGp8R6jv.bw9H5S', '2023-12-13', '2024-01-14', 'M', 'Commerce', 68, true, 1, false, '2024-01-14');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (3, 'Simon', 'simon.cussonait@gmail.com', '$2y$12$UFeLFhns1P0t2o7hT.0IGO2nFpNa4ZUxM3h2svIln7OBLCsfpyb4C', '2024-01-14', '2024-01-14', 'M', 'Cussonait', 91, true, 0, false, '2024-01-14');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (5, 'Stephen', 'stephenh@gmail.com', '$2y$12$/XUw9DXhDgs5OFAtOmDX.u07tIgIjvg80W1OqR8H2a25MOYIMA3yG', '2024-01-14', '2024-01-14', 'M', 'Hawking', 92, true, 0, false, '2024-01-14');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (8, 'Homme', 'paddle@gmail.com', '$2y$12$bxwtT4GVrmAdvGQ9ed1zm.cJFOiztCAy/MwakjnPszyC2tVPrNq2e', '2024-01-14', '2024-01-14', 'M', 'Paddle', 93, true, 0, false, '2024-01-14');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (9, 'pascaline', 'pascaline@coline.fr', '$2y$12$FWapdxZ2yJs1Ew0dSfjp2evBOTWIkUGq./uiyHQbiTY6HqWaObaoO', '2024-01-14', '2024-01-14', 'Mme', 'coline', 94, true, 0, false, '2024-01-14');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (11, 'Dylan', 'dydylan@gmail.com', '$2y$12$GAC8gCTt5aH.HuzhRtDWXOjORnIsFB/Umo2gBAmNy1gqbV6THrdCa', '2024-01-14', '2024-01-14', 'M', 'Milftari', 95, true, 0, false, '2024-01-14');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (12, 'Prenomtest', 'prenom.nom@gmail.com', '$2y$12$0W5tiLtDtO1Glpp1ldCJwu4ssVSxBYIAfjdVENBwOh1g1hnJWK2uS', '2024-01-15', '2024-01-15', 'M', 'Nomtest', 96, true, 0, false, '2024-01-15');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (13, 'ZOUZOU', 'zouzou@gmail.com', '$2y$12$FhQMv53v.yQefDGygh.4SO5qEzCFjxOVtYMB0X80v29JkjzUkpQXO', '2024-01-15', '2024-01-15', 'M', 'ZAZA', 97, true, 0, false, '2024-01-15');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (15, 'Barack', 'barack@maisonblanche.fr', '$2y$12$y2hoGAlJNCNsRJ1A.2R.gucljzCngiGQCwBVzxVhAcxYgutSm6VKa', '2024-01-15', '2024-01-15', 'M', 'Obmana', 98, true, 0, false, '2024-01-15');
+INSERT INTO "BMWMottorad".t_e_users_usr VALUES (41, 'Simon', 'simon.pasgay@gmail.com', '$2y$12$DKszpP7jW53GJgG7LAoKIur3.qf5nzxdnXDBotaGdmRZJTg9E6Sgu', '2024-01-15', '2024-01-15', 'M', 'PasGay', 201, true, 0, false, '2024-01-15');
 
 
 --
