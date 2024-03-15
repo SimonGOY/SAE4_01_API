@@ -6,7 +6,6 @@ using System.Xml.Linq;
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_categorieaccessoire_cta")]
-    [Index(nameof(NomCatAcc), Name = "uq_cta_nom", IsUnique = true)]
     public class CategorieAccessoire
     {
         [Key]

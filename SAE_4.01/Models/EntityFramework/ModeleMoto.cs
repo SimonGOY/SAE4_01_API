@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_modelemoto_mod")]
-    [Index(nameof(IdGamme), nameof(NomMoto), nameof(DescriptifMoto), nameof(PrixMoto), Name = "uq_acc_nom", IsUnique = true)]
     public partial class ModeleMoto
     {
         [Key]
