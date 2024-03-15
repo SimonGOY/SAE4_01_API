@@ -711,158 +711,158 @@ INSERT INTO "BMWMottorad".t_e_client_clt VALUES (201, 201, 'M', 'PasGay', 'Simon
 
 
 --
--- Data for Name: collection; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_collection_cln; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".collection VALUES (1, 'Casual Wear');
-INSERT INTO "BMWMottorad".collection VALUES (2, 'Riders Gear');
-
-
---
--- Data for Name: coloris; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
---
-
-INSERT INTO "BMWMottorad".coloris VALUES (1, 'Noir');
-INSERT INTO "BMWMottorad".coloris VALUES (2, 'Rouge');
-INSERT INTO "BMWMottorad".coloris VALUES (3, 'Camel');
-INSERT INTO "BMWMottorad".coloris VALUES (4, 'Nachtblau');
-INSERT INTO "BMWMottorad".coloris VALUES (5, 'Gris');
-INSERT INTO "BMWMottorad".coloris VALUES (6, 'Gris/bleu');
-INSERT INTO "BMWMottorad".coloris VALUES (7, 'Jaune');
-INSERT INTO "BMWMottorad".coloris VALUES (8, 'Bleu foncé');
-INSERT INTO "BMWMottorad".coloris VALUES (9, 'Khaki');
-INSERT INTO "BMWMottorad".coloris VALUES (10, 'Bleu');
-INSERT INTO "BMWMottorad".coloris VALUES (11, 'Nachtblau/Rot');
-INSERT INTO "BMWMottorad".coloris VALUES (12, 'Jaune néon');
-INSERT INTO "BMWMottorad".coloris VALUES (13, 'Blanc');
-INSERT INTO "BMWMottorad".coloris VALUES (14, 'Olive');
-INSERT INTO "BMWMottorad".coloris VALUES (15, 'Neon Red');
-INSERT INTO "BMWMottorad".coloris VALUES (16, 'Thar');
-INSERT INTO "BMWMottorad".coloris VALUES (17, 'Catamarca');
-INSERT INTO "BMWMottorad".coloris VALUES (18, 'Grey matt');
-INSERT INTO "BMWMottorad".coloris VALUES (19, 'Light white');
-INSERT INTO "BMWMottorad".coloris VALUES (20, 'Lut');
-INSERT INTO "BMWMottorad".coloris VALUES (21, 'Neon orange matt');
-INSERT INTO "BMWMottorad".coloris VALUES (22, 'Night black');
-INSERT INTO "BMWMottorad".coloris VALUES (23, 'Anvil');
-INSERT INTO "BMWMottorad".coloris VALUES (24, 'Black matt');
-INSERT INTO "BMWMottorad".coloris VALUES (25, 'Blue matt');
-INSERT INTO "BMWMottorad".coloris VALUES (27, 'Heritage');
-INSERT INTO "BMWMottorad".coloris VALUES (26, 'Gunmetal');
-INSERT INTO "BMWMottorad".coloris VALUES (28, 'Mallet');
-INSERT INTO "BMWMottorad".coloris VALUES (29, 'Rosslyn');
-INSERT INTO "BMWMottorad".coloris VALUES (30, 'Brun');
-INSERT INTO "BMWMottorad".coloris VALUES (31, 'Orange');
-INSERT INTO "BMWMottorad".coloris VALUES (32, 'Anthracite');
-INSERT INTO "BMWMottorad".coloris VALUES (33, 'Com');
-INSERT INTO "BMWMottorad".coloris VALUES (34, 'Rock');
-INSERT INTO "BMWMottorad".coloris VALUES (35, 'Urban');
-INSERT INTO "BMWMottorad".coloris VALUES (36, 'Neon');
-INSERT INTO "BMWMottorad".coloris VALUES (37, 'Specter');
-INSERT INTO "BMWMottorad".coloris VALUES (38, 'Machine');
-INSERT INTO "BMWMottorad".coloris VALUES (39, 'Thunder');
-INSERT INTO "BMWMottorad".coloris VALUES (0, 'Rien, test');
+INSERT INTO "BMWMottorad".t_e_collection_cln VALUES (1, 'Casual Wear');
+INSERT INTO "BMWMottorad".t_e_collection_cln VALUES (2, 'Riders Gear');
 
 
 --
--- Data for Name: commande; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_coloris_cls; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".commande VALUES (1, 5, '2022-01-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (4, 20, '2022-02-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (5, 24, '2022-03-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (6, 25, '2022-04-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (7, 8, '2022-05-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (8, 49, '2022-06-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (9, 48, '2022-07-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (10, 25, '2022-08-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (11, 47, '2022-09-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (12, 16, '2022-10-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (13, 42, '2022-11-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (14, 2, '2022-12-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (15, 11, '2022-03-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (16, 25, '2022-04-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (17, 25, '2022-11-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (18, 23, '2022-03-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (19, 39, '2022-05-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (20, 16, '2022-06-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (21, 23, '2022-02-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (22, 21, '2022-12-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (23, 10, '2022-10-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (24, 18, '2022-08-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (25, 40, '2022-09-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (26, 20, '2022-07-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (27, 48, '2022-10-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (28, 25, '2022-12-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (29, 49, '2022-01-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (30, 39, '2022-02-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (31, 18, '2023-03-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (32, 26, '2023-04-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (33, 14, '2023-05-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (34, 15, '2023-06-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (35, 21, '2023-07-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (36, 9, '2023-01-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (37, 30, '2023-02-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (38, 17, '2023-03-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (39, 1, '2023-04-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (40, 21, '2023-05-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (41, 24, '2023-06-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (42, 2, '2023-07-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (43, 46, '2023-08-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (44, 30, '2023-09-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (45, 14, '2023-10-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (46, 19, '2023-11-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (47, 46, '2023-12-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (48, 28, '2023-12-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (49, 20, '2023-11-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (50, 18, '2023-03-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (51, 49, '2023-04-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (52, 32, '2023-05-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (53, 28, '2023-06-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (54, 7, '2023-08-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (55, 41, '2023-09-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (56, 8, '2023-11-04', 1);
-INSERT INTO "BMWMottorad".commande VALUES (57, 18, '2023-12-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (58, 21, '2023-12-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (59, 3, '2023-07-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (60, 11, '2023-08-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (61, 30, '2023-09-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (62, 14, '2023-04-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (63, 25, '2023-05-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (64, 17, '2023-07-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (65, 7, '2023-07-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (66, 13, '2023-06-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (67, 20, '2023-03-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (68, 13, '2023-04-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (69, 35, '2023-09-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (70, 19, '2023-01-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (71, 45, '2023-10-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (72, 3, '2023-01-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (73, 8, '2023-02-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (74, 14, '2023-03-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (75, 40, '2023-04-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (76, 44, '2023-05-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (77, 39, '2023-06-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (78, 13, '2023-08-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (79, 39, '2023-09-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (80, 19, '2023-10-22', 1);
-INSERT INTO "BMWMottorad".commande VALUES (96, 62, '2023-02-02', 0);
-INSERT INTO "BMWMottorad".commande VALUES (134, 62, '2023-12-18', 2);
-INSERT INTO "BMWMottorad".commande VALUES (135, 72, '2023-12-18', 0);
-INSERT INTO "BMWMottorad".commande VALUES (136, 72, '2023-12-18', 0);
-INSERT INTO "BMWMottorad".commande VALUES (137, 72, '2023-12-19', 0);
-INSERT INTO "BMWMottorad".commande VALUES (138, 79, '2023-12-19', 0);
-INSERT INTO "BMWMottorad".commande VALUES (139, 81, '2023-12-19', 0);
-INSERT INTO "BMWMottorad".commande VALUES (2, 46, '2022-01-22', 0);
-INSERT INTO "BMWMottorad".commande VALUES (3, 49, '2022-02-22', 0);
-INSERT INTO "BMWMottorad".commande VALUES (129, 70, '2023-12-13', 0);
-INSERT INTO "BMWMottorad".commande VALUES (130, 72, '2023-12-15', 0);
-INSERT INTO "BMWMottorad".commande VALUES (132, 72, '2023-12-17', 0);
-INSERT INTO "BMWMottorad".commande VALUES (133, 72, '2023-12-17', 0);
-INSERT INTO "BMWMottorad".commande VALUES (131, 62, '2023-12-16', 2);
-INSERT INTO "BMWMottorad".commande VALUES (200, 91, '2024-01-14', 0);
-INSERT INTO "BMWMottorad".commande VALUES (400, 201, '2024-01-15', 0);
-INSERT INTO "BMWMottorad".commande VALUES (401, 72, '2024-02-03', 0);
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (1, 'Noir');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (2, 'Rouge');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (3, 'Camel');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (4, 'Nachtblau');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (5, 'Gris');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (6, 'Gris/bleu');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (7, 'Jaune');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (8, 'Bleu foncé');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (9, 'Khaki');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (10, 'Bleu');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (11, 'Nachtblau/Rot');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (12, 'Jaune néon');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (13, 'Blanc');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (14, 'Olive');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (15, 'Neon Red');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (16, 'Thar');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (17, 'Catamarca');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (18, 'Grey matt');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (19, 'Light white');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (20, 'Lut');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (21, 'Neon orange matt');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (22, 'Night black');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (23, 'Anvil');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (24, 'Black matt');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (25, 'Blue matt');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (27, 'Heritage');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (26, 'Gunmetal');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (28, 'Mallet');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (29, 'Rosslyn');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (30, 'Brun');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (31, 'Orange');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (32, 'Anthracite');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (33, 'Com');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (34, 'Rock');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (35, 'Urban');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (36, 'Neon');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (37, 'Specter');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (38, 'Machine');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (39, 'Thunder');
+INSERT INTO "BMWMottorad".t_e_coloris_cls VALUES (0, 'Rien, test');
+
+
+--
+-- Data for Name: t_e_commande_cmd; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+--
+
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (1, 5, '2022-01-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (4, 20, '2022-02-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (5, 24, '2022-03-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (6, 25, '2022-04-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (7, 8, '2022-05-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (8, 49, '2022-06-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (9, 48, '2022-07-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (10, 25, '2022-08-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (11, 47, '2022-09-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (12, 16, '2022-10-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (13, 42, '2022-11-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (14, 2, '2022-12-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (15, 11, '2022-03-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (16, 25, '2022-04-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (17, 25, '2022-11-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (18, 23, '2022-03-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (19, 39, '2022-05-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (20, 16, '2022-06-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (21, 23, '2022-02-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (22, 21, '2022-12-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (23, 10, '2022-10-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (24, 18, '2022-08-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (25, 40, '2022-09-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (26, 20, '2022-07-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (27, 48, '2022-10-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (28, 25, '2022-12-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (29, 49, '2022-01-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (30, 39, '2022-02-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (31, 18, '2023-03-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (32, 26, '2023-04-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (33, 14, '2023-05-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (34, 15, '2023-06-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (35, 21, '2023-07-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (36, 9, '2023-01-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (37, 30, '2023-02-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (38, 17, '2023-03-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (39, 1, '2023-04-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (40, 21, '2023-05-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (41, 24, '2023-06-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (42, 2, '2023-07-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (43, 46, '2023-08-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (44, 30, '2023-09-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (45, 14, '2023-10-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (46, 19, '2023-11-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (47, 46, '2023-12-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (48, 28, '2023-12-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (49, 20, '2023-11-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (50, 18, '2023-03-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (51, 49, '2023-04-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (52, 32, '2023-05-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (53, 28, '2023-06-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (54, 7, '2023-08-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (55, 41, '2023-09-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (56, 8, '2023-11-04', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (57, 18, '2023-12-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (58, 21, '2023-12-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (59, 3, '2023-07-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (60, 11, '2023-08-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (61, 30, '2023-09-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (62, 14, '2023-04-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (63, 25, '2023-05-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (64, 17, '2023-07-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (65, 7, '2023-07-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (66, 13, '2023-06-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (67, 20, '2023-03-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (68, 13, '2023-04-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (69, 35, '2023-09-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (70, 19, '2023-01-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (71, 45, '2023-10-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (72, 3, '2023-01-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (73, 8, '2023-02-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (74, 14, '2023-03-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (75, 40, '2023-04-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (76, 44, '2023-05-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (77, 39, '2023-06-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (78, 13, '2023-08-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (79, 39, '2023-09-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (80, 19, '2023-10-22', 1);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (96, 62, '2023-02-02', 0);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (134, 62, '2023-12-18', 2);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (135, 72, '2023-12-18', 0);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (136, 72, '2023-12-18', 0);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (137, 72, '2023-12-19', 0);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (138, 79, '2023-12-19', 0);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (139, 81, '2023-12-19', 0);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (2, 46, '2022-01-22', 0);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (3, 49, '2022-02-22', 0);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (129, 70, '2023-12-13', 0);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (130, 72, '2023-12-15', 0);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (132, 72, '2023-12-17', 0);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (133, 72, '2023-12-17', 0);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (131, 62, '2023-12-16', 2);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (200, 91, '2024-01-14', 0);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (400, 201, '2024-01-15', 0);
+INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (401, 72, '2024-02-03', 0);
 
 
 --
