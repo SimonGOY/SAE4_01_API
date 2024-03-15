@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using SAE_4._01.Models.EntityFramework;
+
 namespace SAE_4._01
 {
     public class Program
@@ -12,6 +15,9 @@ namespace SAE_4._01
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<BMWDBContext>(options =>
+                    options.UseNpgsql(builder.Configuration.GetConnectionString("SeriesDbContextRemote")));
 
             var app = builder.Build();
 

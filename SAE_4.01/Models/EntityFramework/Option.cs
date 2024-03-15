@@ -6,7 +6,6 @@ using System.Xml.Linq;
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_option_opt")]
-    [Index(nameof(NomOption), nameof(DetailOption), Name = "uq_opt_nom_detail", IsUnique = true)]
     public class Option
     {
         public Option()
