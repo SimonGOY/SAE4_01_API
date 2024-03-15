@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    [Table("t_e_categoriecaracteristique_ctc")]
+    [Table("t_e_categorie_caracteristique_ctc")]
     public partial class CategorieCaracteristique
     {
         [Key]

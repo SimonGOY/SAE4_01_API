@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    [Table("t_r_motoconfigurable_mcf")]
+    [Table("t_r_moto_configurable_mcf")]
     public class MotoConfigurable
     {
         public MotoConfigurable()
