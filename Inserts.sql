@@ -1276,29 +1276,29 @@ INSERT INTO "BMWMottorad".est_lie VALUES (6, 12);
 
 
 --
--- Data for Name: garage; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_r_garage_grg; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".garage VALUES (1, 1);
-INSERT INTO "BMWMottorad".garage VALUES (2, 1);
-INSERT INTO "BMWMottorad".garage VALUES (3, 1);
-INSERT INTO "BMWMottorad".garage VALUES (4, 2);
-INSERT INTO "BMWMottorad".garage VALUES (5, 4);
-INSERT INTO "BMWMottorad".garage VALUES (6, 6);
-INSERT INTO "BMWMottorad".garage VALUES (7, 7);
-INSERT INTO "BMWMottorad".garage VALUES (8, 8);
-INSERT INTO "BMWMottorad".garage VALUES (9, 9);
-INSERT INTO "BMWMottorad".garage VALUES (10, 14);
-INSERT INTO "BMWMottorad".garage VALUES (11, 45);
-INSERT INTO "BMWMottorad".garage VALUES (12, 34);
-INSERT INTO "BMWMottorad".garage VALUES (13, 23);
-INSERT INTO "BMWMottorad".garage VALUES (14, 28);
-INSERT INTO "BMWMottorad".garage VALUES (15, 23);
-INSERT INTO "BMWMottorad".garage VALUES (16, 41);
-INSERT INTO "BMWMottorad".garage VALUES (17, 41);
-INSERT INTO "BMWMottorad".garage VALUES (18, 23);
-INSERT INTO "BMWMottorad".garage VALUES (19, 50);
-INSERT INTO "BMWMottorad".garage VALUES (20, 50);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (1, 1);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (2, 1);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (3, 1);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (4, 2);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (5, 4);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (6, 6);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (7, 7);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (8, 8);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (9, 9);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (10, 14);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (11, 45);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (12, 34);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (13, 23);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (14, 28);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (15, 23);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (16, 41);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (17, 41);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (18, 23);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (19, 50);
+INSERT INTO "BMWMottorad".t_r_garage_grg VALUES (20, 50);
 
 
 --
