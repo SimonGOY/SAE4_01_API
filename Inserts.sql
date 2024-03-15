@@ -17,37 +17,37 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Data for Name: categorieaccessoire; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_categorieaccessoire_cta; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".categorieaccessoire VALUES (1, 'Design');
-INSERT INTO "BMWMottorad".categorieaccessoire VALUES (2, 'Confort & Ergonomie');
-INSERT INTO "BMWMottorad".categorieaccessoire VALUES (3, 'Bagagerie');
-INSERT INTO "BMWMottorad".categorieaccessoire VALUES (4, 'Navigation & Communication');
-INSERT INTO "BMWMottorad".categorieaccessoire VALUES (5, 'Sécurité');
-
-
---
--- Data for Name: gammemoto; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
---
-
-INSERT INTO "BMWMottorad".gammemoto VALUES (1, 'Sport');
-INSERT INTO "BMWMottorad".gammemoto VALUES (2, 'M');
-INSERT INTO "BMWMottorad".gammemoto VALUES (3, 'Tour');
-INSERT INTO "BMWMottorad".gammemoto VALUES (4, 'Roadster');
-INSERT INTO "BMWMottorad".gammemoto VALUES (5, 'Heritage');
-INSERT INTO "BMWMottorad".gammemoto VALUES (6, 'Adventure');
-INSERT INTO "BMWMottorad".gammemoto VALUES (19, 'Compétition');
+INSERT INTO "BMWMottorad".t_e_categorieaccessoire_cta VALUES (1, 'Design');
+INSERT INTO "BMWMottorad".t_e_categorieaccessoire_cta VALUES (2, 'Confort & Ergonomie');
+INSERT INTO "BMWMottorad".t_e_categorieaccessoire_cta VALUES (3, 'Bagagerie');
+INSERT INTO "BMWMottorad".t_e_categorieaccessoire_cta VALUES (4, 'Navigation & Communication');
+INSERT INTO "BMWMottorad".t_e_categorieaccessoire_cta VALUES (5, 'Sécurité');
 
 
 --
--- Data for Name: modelemoto; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_gammemoto_gam; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".modelemoto VALUES (1, 1, 'S 1000 RR', 'La RR est désormais encore plus concentrée et plus précise sur les performances pures. Pour tous ceux qui en veulent toujours plus. D’eux-mêmes. De chaque tour de piste. Et de leur RR. Dans l’esprit de  #NeverStopChallenging. C’est précisément là où la RR se déplace depuis toujours que la conduite est un travail au millimètre. C’est pourquoi nous avons affûté et perfectionné la RR aux endroits décisifs : du nouveau capteur d’angle de braquage avec Brake Slide Assist et Slide Control, ainsi que l’intégration de composants M, jusqu’aux gestes décisifs pour la transformation de la moto pour la piste, en passant par des améliorations dans l’électronique. Et tout cela avec un objectif clair : de nouvelles pole positions. ', 20740);
-INSERT INTO "BMWMottorad".modelemoto VALUES (2, 3, 'K 1600 GTL', 'Un proverbe dit : « Quiconque voyage avec exigence ne voyagera jamais seul. » C’est d’autant plus vrai si vous êtes accompagné. La BMW K 1600 GTL représente les deux. Elle offre des performances touristiques qui ne laissent rien à désirer. Son puissant six-cylindres offre désormais encore plus de dynamisme et de souveraineté : grâce à la géométrie confortable du véhicule, vous pouvez profiter pleinement de chaque kilomètre. Le cockpit a été entièrement repensé. Pour que vous puissiez profiter de chaque sortie de manière encore plus consciente et intensive, il est entièrement orienté vers l’interaction avec le conducteur. Parce que c’est ici que commence le voyage à deux – fidèle à l’esprit de #RideAndShare.', 30790);
-INSERT INTO "BMWMottorad".modelemoto VALUES (3, 5, 'R 18 Classic', 'La R 18 Classic est une véritable moto routière. Elle n''est pas sans rappeler l''âme des premiers cruisers carénés, faits pour avaler les longues routes qui jalonnent le continent américain. Mais la R 18 Classic est une BMW avant tout : elle reprend des éléments intemporels de notre histoire. Le moteur boxer le plus puissant que nous ayons jamais construit constitue le cœur même de cette moto : il évoque chez nous le plaisir de l''évasion, les paysages qui défilent, les longues virées en toute décontraction', 23990);
-INSERT INTO "BMWMottorad".modelemoto VALUES (4, 6, 'F 800 GS', 'Qui dit trajet dit également fiabilité. Avec son nouveau moteur puissant et de nombreuses autres nouveautés, la F 800 GS est le compagnon de voyage idéal pour toutes vos excursions. Préparez vos bagages, allez chercher vos amis et c’est parti. Vous découvrirez ensemble de nouvelles routes et vivrez des aventures inoubliables. Vous ressentirez le #SpiritOfGS au plus près, écouterez le crépitement du feu de camp et laisserez le quotidien loin derrière vous.', 11290);
+INSERT INTO "BMWMottorad".t_e_gammemoto_gam VALUES (1, 'Sport');
+INSERT INTO "BMWMottorad".t_e_gammemoto_gam VALUES (2, 'M');
+INSERT INTO "BMWMottorad".t_e_gammemoto_gam VALUES (3, 'Tour');
+INSERT INTO "BMWMottorad".t_e_gammemoto_gam VALUES (4, 'Roadster');
+INSERT INTO "BMWMottorad".t_e_gammemoto_gam VALUES (5, 'Heritage');
+INSERT INTO "BMWMottorad".t_e_gammemoto_gam VALUES (6, 'Adventure');
+INSERT INTO "BMWMottorad".t_e_gammemoto_gam VALUES (19, 'Compétition');
+
+
+--
+-- Data for Name: t_e_modelemoto_mod; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+--
+
+INSERT INTO "BMWMottorad".t_e_modelemoto_mod VALUES (1, 1, 'S 1000 RR', 'La RR est désormais encore plus concentrée et plus précise sur les performances pures. Pour tous ceux qui en veulent toujours plus. D’eux-mêmes. De chaque tour de piste. Et de leur RR. Dans l’esprit de  #NeverStopChallenging. C’est précisément là où la RR se déplace depuis toujours que la conduite est un travail au millimètre. C’est pourquoi nous avons affûté et perfectionné la RR aux endroits décisifs : du nouveau capteur d’angle de braquage avec Brake Slide Assist et Slide Control, ainsi que l’intégration de composants M, jusqu’aux gestes décisifs pour la transformation de la moto pour la piste, en passant par des améliorations dans l’électronique. Et tout cela avec un objectif clair : de nouvelles pole positions. ', 20740);
+INSERT INTO "BMWMottorad".t_e_modelemoto_mod VALUES (2, 3, 'K 1600 GTL', 'Un proverbe dit : « Quiconque voyage avec exigence ne voyagera jamais seul. » C’est d’autant plus vrai si vous êtes accompagné. La BMW K 1600 GTL représente les deux. Elle offre des performances touristiques qui ne laissent rien à désirer. Son puissant six-cylindres offre désormais encore plus de dynamisme et de souveraineté : grâce à la géométrie confortable du véhicule, vous pouvez profiter pleinement de chaque kilomètre. Le cockpit a été entièrement repensé. Pour que vous puissiez profiter de chaque sortie de manière encore plus consciente et intensive, il est entièrement orienté vers l’interaction avec le conducteur. Parce que c’est ici que commence le voyage à deux – fidèle à l’esprit de #RideAndShare.', 30790);
+INSERT INTO "BMWMottorad".t_e_modelemoto_mod VALUES (3, 5, 'R 18 Classic', 'La R 18 Classic est une véritable moto routière. Elle n''est pas sans rappeler l''âme des premiers cruisers carénés, faits pour avaler les longues routes qui jalonnent le continent américain. Mais la R 18 Classic est une BMW avant tout : elle reprend des éléments intemporels de notre histoire. Le moteur boxer le plus puissant que nous ayons jamais construit constitue le cœur même de cette moto : il évoque chez nous le plaisir de l''évasion, les paysages qui défilent, les longues virées en toute décontraction', 23990);
+INSERT INTO "BMWMottorad".t_e_modelemoto_mod VALUES (4, 6, 'F 800 GS', 'Qui dit trajet dit également fiabilité. Avec son nouveau moteur puissant et de nombreuses autres nouveautés, la F 800 GS est le compagnon de voyage idéal pour toutes vos excursions. Préparez vos bagages, allez chercher vos amis et c’est parti. Vous découvrirez ensemble de nouvelles routes et vivrez des aventures inoubliables. Vous ressentirez le #SpiritOfGS au plus près, écouterez le crépitement du feu de camp et laisserez le quotidien loin derrière vous.', 11290);
 
 
 --
@@ -2447,10 +2447,10 @@ SELECT pg_catalog.setval('"BMWMottorad".caracteristique_idcaracteristique_seq', 
 
 
 --
--- Name: categorieaccessoire_idcatacc_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
+-- Name: t_e_categorieaccessoire_cta_idcatacc_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
 --
 
-SELECT pg_catalog.setval('"BMWMottorad".categorieaccessoire_idcatacc_seq', 1, false);
+SELECT pg_catalog.setval('"BMWMottorad".t_e_categorieaccessoire_cta_idcatacc_seq', 1, false);
 
 
 --
@@ -2531,10 +2531,10 @@ SELECT pg_catalog.setval('"BMWMottorad".equipement_idequipement_seq', 1, false);
 
 
 --
--- Name: gammemoto_idgamme_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
+-- Name: t_e_gammemoto_gam_idgamme_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
 --
 
-SELECT pg_catalog.setval('"BMWMottorad".gammemoto_idgamme_seq', 1, false);
+SELECT pg_catalog.setval('"BMWMottorad".t_e_gammemoto_gam_idgamme_seq', 1, false);
 
 
 --
@@ -2552,10 +2552,10 @@ SELECT pg_catalog.setval('"BMWMottorad".media_idmedia_seq', 1, false);
 
 
 --
--- Name: modelemoto_idmoto_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
+-- Name: t_e_modelemoto_mod_idmoto_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
 --
 
-SELECT pg_catalog.setval('"BMWMottorad".modelemoto_idmoto_seq', 1, false);
+SELECT pg_catalog.setval('"BMWMottorad".t_e_modelemoto_mod_idmoto_seq', 1, false);
 
 
 --
