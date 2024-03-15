@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    [Table("t_e_gammemoto_gam")]
+    [Table("t_e_gamme_moto_gam")]
     public partial class GammeMoto
     {
         [Key]

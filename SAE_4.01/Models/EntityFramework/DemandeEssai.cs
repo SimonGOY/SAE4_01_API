@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    [Table("t_e_demandeessai_dmd")]
+    [Table("t_e_demande_essai_dmd")]
     public partial class DemandeEssai
     {
         [Key]

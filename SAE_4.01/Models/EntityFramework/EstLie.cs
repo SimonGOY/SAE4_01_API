@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    [Table("t_j_estlie_eli")]
+    [Table("t_j_est_lie_eli")]
     public partial class EstLie
     {
         [Key]

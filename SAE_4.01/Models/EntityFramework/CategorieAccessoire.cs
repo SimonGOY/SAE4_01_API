@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    [Table("t_e_categorieaccessoire_cta")]
+    [Table("t_e_categorie_accessoire_cta")]
     public class CategorieAccessoire
     {
         [Key]
