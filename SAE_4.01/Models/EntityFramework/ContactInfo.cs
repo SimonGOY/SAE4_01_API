@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    [Table("t_e_contactinfo_ctf")]
+    [Table("t_e_contact_info_ctf")]
     public class ContactInfo
     {
         [Key]
