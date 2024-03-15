@@ -987,7 +987,7 @@ INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (61, NULL, 'Laval', 'Emilie
 INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (9, 2, 'pantalon xride gore-tex', 'Le pantalon XRide GORE-TEX sait convaincre par des caractéristiques globales de sécurité et un excellent confort. Grâce à des inserts en cuir spécialement disposés et à l’utilisation de matériaux élastiques aux genoux et à la ceinture, le pantalon offre une grande liberté de mouvement ainsi qu’un parfait maintien. Un détail haut de gamme : inserts en cuir de vachette sur les zones exposées en cas de chute.', 'f', 710, 0, true, 'Adventure', 2);
 INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (1, 7, 'casque GS Pure', 'Le casque Enduro GS Pure est le compagnon idéal pour les aventures sur la route ou en tout-terrain. Ce casque peut se transformer rapidement et en toute simplicité en versions MX (cross), naked ou casque Enduro Touring avec visière. Le nouveau pare-soleil avec mécanisme push/pull se commande facilement, même avec des gants.', 'uni', 590, 5, true, 'Adventure', 2);
 INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (13, 6, 'bottes venturegrip gore-tex', 'Adaptées à un usage quotidien, les bottes VentureGrip GORE-TEX robustes conviennent aussi bien au Touring qu’à l’enduro. Conçues en cuir de vachette pleine fleur, les bottes robustes offrent une protection élevée et se distinguent par un confort hors norme. Grâce à la membrane GORE-TEX, elles sont étanches, coupe-vent et très respirantes.', 'uni', 360, 0, false, 'Adventure', 2);
-INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (2, 7, 'casque Bowler', 'Le casque Bowler s’adresse aux motards branchés qui apprécient le design classique et chic. Le look rétro se reflète également dans des détails intéressants, tels que les applications en cuir ou la doublure frappée du logo BMW. La forme ajustée s’adapte de manière optimale à chaque taille. Une large gamme d’accessoires complète le catalogue.', 'uni', 463, 5, false, 'Adventure', 1);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (2, 7, 'casque Bowler', 'Le casque Bowler s’adresse aux motards branchés qui apprécient le design classique et chic. Le look rétro se reflète également dans des détails intéressants, tels que les applications en cuir ou la doublure frappée du logo BMW. La forme ajustée s’adapte de manière optimale à chaque t_r_taille_tle. Une large gamme d’accessoires complète le catalogue.', 'uni', 463, 5, false, 'Adventure', 1);
 INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (5, 5, 'veste xride gore-tex', 'Que ce soit pour profiter d’une conduite sportive ou pour partir à l’aventure sur de longues distances : le blouson XRide GORE-TEX sait convaincre par des caractéristiques globales de sécurité et un grand confort. Grâce à sa matière extérieure élastique, aux inserts en cuir disposés sous forme de plis ergonomiques et aux bandes élastiques, il offre une grande liberté de mouvement et un grand confort en toutes circonstances.', 'f', 910, 0, true, 'Sport', 2);
 INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (14, 6, 'bottes gs competition', 'Une capacité tout-terrain sans compromis : Les bottes GS Competition ont tout ce qu’il faut pour tenir en dehors des sentiers battus. La solide conception de type cadre en polyuréthane, la plaque protège-tibia ajustable et les grands éléments plastiques offrent une protection optimale dans des conditions de conduite extrêmes.', 'h', 400, 0, true, 'Adventure', 1);
 INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (6, 5, 'blouson summerxcursion', 'Le blouson SummerXcursion avec une coupe sportive est le compagnon idéal pour les sorties estivales. La matière extérieure est en polyamide résistant à l’abrasion et assure en permanence une ventilation optimale. Ce blouson à la mode peut ainsi être porté sans problème même lorsqu’il fait très chaud.', 'h', 400, 0, false, 'Roadster', 1);
@@ -995,7 +995,7 @@ INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (8, 2, 'pantalon london', 'C
 INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (3, 7, 'Casque SAO PAULO', 'Très tendance, confortable et en toute sécurité à travers la métropole – c’est ce que représente le casque Sao Paulo à visière longue et pare-soleil intégré. Les éléments de ventilation refermables sur le dessus de la tête et le spoiler empêchent l’accumulation de chaleur. Ils sont extrêmement aérodynamiques et conçus pour être efficaces. Pratique : le rembourrage intérieur amovible et lavable.', 'uni', 100, 5, false, 'Urban Mobility', 2);
 INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (7, 2, 'jean roadcrafted', 'Grâce à ses protecteurs discrets, le jean RoadCrafted pour femme en denim élastique et résistant à l’abrasion conjugue une sécurité et fonctionnalité avec un look classique.', 'f', 393, 0, false, 'Heritage', 1);
 INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (16, 11, 'masque enduro gs pro', 'Parfaite visibilité sur tous les terrains : le masque Enduro GS Pro est parfaitement équipé pour le tout-terrain avec son verre double ventilé. Un revêtement spécial protège le verre contre la buée et les rayures. Particulièrement pratique pour les personnes qui portent des lunettes : le cadre over-the-glasses est facile à porter au-dessus de lunettes normales.', 'uni', 110, 0, false, 'Adventure', 2);
-INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (12, 11, 'sac à dos black collection', 'Le sac à dos Black Collection, grand modèle, a la taille idéale pour les grandes balades et les voyages avec un peu plus de bagages. Avec le compartiment principal imperméable et son compartiment pour ordinateur portable intégré (jusqu’à 15"), vous ne craignez pas les averses. Il est possible d’étendre le volume total de 25 à 30 litres.', 'uni', 191, 0, false, 'Adventure', 2);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (12, 11, 'sac à dos black collection', 'Le sac à dos Black Collection, grand modèle, a la t_r_taille_tle idéale pour les grandes balades et les voyages avec un peu plus de bagages. Avec le compartiment principal imperméable et son compartiment pour ordinateur portable intégré (jusqu’à 15"), vous ne craignez pas les averses. Il est possible d’étendre le volume total de 25 à 30 litres.', 'uni', 191, 0, false, 'Adventure', 2);
 INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (28, 7, 'Casque Xomo Carbon', 'Le casque Xomo Carbon est la preuve qu’une excellente protection ne doit pas être inconfortable. Le casque intégral sport avec coque en matériau composite à base de carbone offre de nombreuses options confortables comme des coussinets pour les joues à conception tridimensionnelle, le système Easy Fit pour porteur de lunettes, un système de visière ergonomique avec fonction Soft Close et un rabat amovible sur le menton.', 'uni', 80000000000000, 5, true, 'Tour', 2);
 INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (17, 11, 'dragonne tour de cou motorsport', 'Dragonne tour de cou bicolore avec logo BMW Motorrad et porte-clés.', 'uni', 20, 0, true, 'Sport', 1);
 INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (22, 8, 'combinaison m prorace comp', 'La combinaison M ProRace Comp combine des exigences sportives élevées avec un pack sécurité complet. Les protecteurs aux épaules, aux coudes, aux hanches et aux genoux assurent la sécurité. Alors qu’une bosse dorsale optimise l’aérodynamisme, les couleurs M Motorsport montrent ce que cette combinaison qui ne passe pas inaperçue représente : des performances de pointe.', 'h', 1710, 0, false, 'Sport', 2);
@@ -1015,192 +1015,192 @@ INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (4, 5, 'blouson schwabing', 
 
 
 --
--- Data for Name: taille; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_r_taille_tle; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".taille VALUES (1, 'xs', '53/54');
-INSERT INTO "BMWMottorad".taille VALUES (2, 's', '55/56');
-INSERT INTO "BMWMottorad".taille VALUES (3, 'm', '57/58');
-INSERT INTO "BMWMottorad".taille VALUES (4, 'l', '58/59');
-INSERT INTO "BMWMottorad".taille VALUES (5, 'xl', '60/61');
-INSERT INTO "BMWMottorad".taille VALUES (6, '2xl', '62/63');
-INSERT INTO "BMWMottorad".taille VALUES (7, '3xl', '64/65');
-INSERT INTO "BMWMottorad".taille VALUES (8, 'xs', '34');
-INSERT INTO "BMWMottorad".taille VALUES (9, 's', '36');
-INSERT INTO "BMWMottorad".taille VALUES (10, 'm', '38');
-INSERT INTO "BMWMottorad".taille VALUES (11, 'm', '40');
-INSERT INTO "BMWMottorad".taille VALUES (12, 'l', '42');
-INSERT INTO "BMWMottorad".taille VALUES (13, 'l', '44');
-INSERT INTO "BMWMottorad".taille VALUES (14, 'xl', '46');
-INSERT INTO "BMWMottorad".taille VALUES (15, '2xl', '48');
-INSERT INTO "BMWMottorad".taille VALUES (16, 'one size', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (17, '30L', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (18, '36', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (19, '37', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (20, '38', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (21, '39', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (22, '40', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (23, '41', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (24, '42', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (25, '43', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (26, '44', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (27, '45', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (28, '46', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (29, '47', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (30, '48', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (31, '49', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (32, '50', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (33, '51', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (34, '52', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (35, '53', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (36, '54', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (37, '55', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (38, '56', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (39, '57', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (40, '58', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (41, '59', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (42, '60', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (43, '61', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (44, '62', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (45, '6', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (46, '7', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (47, '8', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (48, '9', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (49, '10', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (50, '11', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (51, '12', NULL);
-
-
---
--- Data for Name: contenucommande; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
---
-
-INSERT INTO "BMWMottorad".contenucommande VALUES (1, 1, 1, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (2, 2, 2, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (3, 3, 2, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (4, 4, 1, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (5, 5, 1, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (6, 6, 1, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (7, 7, 1, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (8, 8, 1, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (9, 9, 1, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (10, 10, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (11, 11, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (12, 12, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (13, 13, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (14, 14, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (15, 15, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (16, 16, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (17, 17, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (18, 18, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (19, 19, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (20, 20, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (21, 21, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (22, 22, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (23, 23, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (24, 24, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (25, 25, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (26, 26, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (27, 27, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (28, 1, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (29, 2, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (30, 3, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (31, 4, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (32, 5, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (33, 6, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (34, 7, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (35, 8, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (36, 9, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (37, 10, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (38, 11, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (39, 12, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (40, 13, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (41, 14, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (42, 15, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (43, 16, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (44, 17, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (45, 18, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (46, 19, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (47, 20, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (48, 1, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (49, 1, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (50, 2, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (51, 2, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (52, 2, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (53, 2, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (54, 3, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (55, 4, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (56, 5, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (57, 6, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (58, 7, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (59, 8, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (60, 9, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (61, 9, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (62, 6, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (63, 5, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (64, 4, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (65, 3, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (66, 4, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (67, 3, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (68, 2, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (69, 4, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (70, 3, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (71, 2, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (72, 1, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (73, 3, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (74, 6, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (75, 7, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (76, 5, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (77, 4, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (78, 6, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (79, 5, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (80, 8, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (129, 1, 1, 1, 16);
-INSERT INTO "BMWMottorad".contenucommande VALUES (133, 1, 4, 1, 16);
-INSERT INTO "BMWMottorad".contenucommande VALUES (131, 4, 1, 1, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (96, 8, 4, 4, 2);
-INSERT INTO "BMWMottorad".contenucommande VALUES (135, 1, 1, 1, 16);
-INSERT INTO "BMWMottorad".contenucommande VALUES (136, 4, 1, 4, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (137, 6, 1, 8, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (137, 4, 2, 2, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (138, 1, 1, 1, 16);
-INSERT INTO "BMWMottorad".contenucommande VALUES (139, 10, 1, 16, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (400, 1, 1, 1, 16);
-INSERT INTO "BMWMottorad".contenucommande VALUES (401, 1, 1, 1, 16);
-INSERT INTO "BMWMottorad".contenucommande VALUES (401, 6, 1, 8, 3);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (1, 'xs', '53/54');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (2, 's', '55/56');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (3, 'm', '57/58');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (4, 'l', '58/59');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (5, 'xl', '60/61');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (6, '2xl', '62/63');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (7, '3xl', '64/65');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (8, 'xs', '34');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (9, 's', '36');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (10, 'm', '38');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (11, 'm', '40');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (12, 'l', '42');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (13, 'l', '44');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (14, 'xl', '46');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (15, '2xl', '48');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (16, 'one size', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (17, '30L', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (18, '36', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (19, '37', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (20, '38', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (21, '39', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (22, '40', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (23, '41', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (24, '42', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (25, '43', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (26, '44', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (27, '45', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (28, '46', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (29, '47', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (30, '48', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (31, '49', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (32, '50', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (33, '51', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (34, '52', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (35, '53', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (36, '54', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (37, '55', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (38, '56', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (39, '57', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (40, '58', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (41, '59', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (42, '60', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (43, '61', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (44, '62', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (45, '6', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (46, '7', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (47, '8', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (48, '9', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (49, '10', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (50, '11', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (51, '12', NULL);
 
 
 --
--- Data for Name: couleur; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_contenu_commande_ccm; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".couleur VALUES (1, 1, 'Black Storm metallic', 0, 'La peinture Black storm metallic souligne le caractère puissant de la moto. Le bras oscillant, les roues et les étriers de frein dans le ton noir complètent le look sombre. Les teintes sobres mettent d’autant plus en valeur le monogramme « S 1000 RR »', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/s1000rr-P0ND2-softconfigurator-thumbnail.jpg.asset.1661501931495.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/S1000RR-P0ND2-softconfigurator.jpg.asset.1661501931990.jpg');
-INSERT INTO "BMWMottorad".couleur VALUES (2, 2, 'Black Storm metallic', 0, 'La peinture Black storm metallic du modèle de base confère à la moto un look particulièrement dynamique et puissant.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/tour/k1600gtl-2021/2023/softkonfigurator/nsc-k1600gtl-P0ND2-softconfigurator-thumbnail.jpg.asset.1686756193279.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/tour/k1600gtl-2021/2023/softkonfigurator/nsc-k1600gtl-P0ND2-softconfigurator.jpg.asset.1686756194178.jpg');
-INSERT INTO "BMWMottorad".couleur VALUES (3, 3, 'Black Storm metallic', 0, 'La peinture Black storm metallic confère à la moto une élégance remarquable.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0ND2-softconfigurator-thumbnail.jpg.asset.1686752276034.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0ND2-softconfigurator.jpg.asset.1686752276339.jpg');
-INSERT INTO "BMWMottorad".couleur VALUES (4, 3, 'Manhattan metallic matt', 355, 'La peinture Manhattan métallisée mate confère à la moto un style à la fois élégant et expressif. Le moteur et la boîte de vitesses en argent Nürburg, les pièces en aluminium et le guidon en chrome brillant offrent un somptueux contraste avec les surfaces peintes sombres et la selle noire.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0N3M-softconfigurator-thumbnail.jpg.asset.1686752275642.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0N3M-softconfigurator.jpg.asset.1686752275995.jpg');
-INSERT INTO "BMWMottorad".couleur VALUES (5, 4, 'Lightwhite uni', 0, 'Grâce à la peinture Light white uni, la moto fait preuve d’un style à la fois léger et sportif. La selle noire et bleue avec piqûre GS et le guidon noir génèrent des contrastes captivants avec les surfaces peintes claires.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/adventure/f800gs-2023/softconfigurator/nsc-f800gs-P0NB5-softconfigurator-thumbnail.jpg.asset.1693839015111.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/adventure/f800gs-2023/softconfigurator/nsc-f800gs-P0NB5-softconfigurator.jpg.asset.1693839015549.jpg');
-INSERT INTO "BMWMottorad".couleur VALUES (6, 1, 'Light white/M Motorsport', 4640, 'Le pack M avec la peinture Lightwhite uni/M Motorsport, les étriers de frein M bleus et les repose-pieds M confèrent à la moto un look puissant. La selle sport M offre au pilote une tenue optimale pour la chasse aux dixièmes de seconde décisifs. Les roues en carbone M allégées offrent un maximum de dynamisme.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/s1000rr-P0N3H-softconfigurator-thumbnail.jpg.asset.1663315950881.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/S1000RR-P0N3H-softconfigurator.jpg.asset.1661501925748.jpg');
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (1, 1, 1, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (2, 2, 2, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (3, 3, 2, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (4, 4, 1, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (5, 5, 1, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (6, 6, 1, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (7, 7, 1, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (8, 8, 1, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (9, 9, 1, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (10, 10, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (11, 11, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (12, 12, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (13, 13, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (14, 14, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (15, 15, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (16, 16, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (17, 17, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (18, 18, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (19, 19, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (20, 20, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (21, 21, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (22, 22, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (23, 23, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (24, 24, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (25, 25, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (26, 26, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (27, 27, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (28, 1, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (29, 2, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (30, 3, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (31, 4, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (32, 5, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (33, 6, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (34, 7, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (35, 8, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (36, 9, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (37, 10, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (38, 11, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (39, 12, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (40, 13, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (41, 14, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (42, 15, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (43, 16, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (44, 17, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (45, 18, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (46, 19, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (47, 20, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (48, 1, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (49, 1, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (50, 2, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (51, 2, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (52, 2, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (53, 2, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (54, 3, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (55, 4, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (56, 5, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (57, 6, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (58, 7, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (59, 8, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (60, 9, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (61, 9, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (62, 6, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (63, 5, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (64, 4, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (65, 3, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (66, 4, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (67, 3, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (68, 2, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (69, 4, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (70, 3, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (71, 2, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (72, 1, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (73, 3, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (74, 6, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (75, 7, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (76, 5, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (77, 4, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (78, 6, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (79, 5, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (80, 8, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (129, 1, 1, 1, 16);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (133, 1, 4, 1, 16);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (131, 4, 1, 1, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (96, 8, 4, 4, 2);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (135, 1, 1, 1, 16);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (136, 4, 1, 4, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (137, 6, 1, 8, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (137, 4, 2, 2, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (138, 1, 1, 1, 16);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (139, 10, 1, 16, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (400, 1, 1, 1, 16);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (401, 1, 1, 1, 16);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (401, 6, 1, 8, 3);
 
 
 --
--- Data for Name: demandeessai; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_couleur_clr; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".demandeessai VALUES (1, 1, 1, 1, 'j''aimerai voir la photo avant de l''acheter comme cadeau à mon père');
-INSERT INTO "BMWMottorad".demandeessai VALUES (2, 1, 2, 2, 'ça sera bien de voir si la mtot vaut son prix');
-INSERT INTO "BMWMottorad".demandeessai VALUES (3, 2, 3, 3, 'j''adore les motos');
-INSERT INTO "BMWMottorad".demandeessai VALUES (4, 4, 4, 4, 'mes parents vont m''offrir une moto pour l''anniversaire, mais j''aimerai la tester avant');
-INSERT INTO "BMWMottorad".demandeessai VALUES (5, 5, 4, 5, 'c''est pour un cadeau pour pascal colin');
-INSERT INTO "BMWMottorad".demandeessai VALUES (6, 1, 1, 23, 'oziutjz');
-INSERT INTO "BMWMottorad".demandeessai VALUES (7, 1, 1, 25, 'jador mles mot');
-INSERT INTO "BMWMottorad".demandeessai VALUES (8, 1, 1, 27, 'Jadore la moto');
-INSERT INTO "BMWMottorad".demandeessai VALUES (9, 2, 1, 29, 'I like motorbikes');
-INSERT INTO "BMWMottorad".demandeessai VALUES (12, 1, 3, 51, 'srgzrgrzeg');
-INSERT INTO "BMWMottorad".demandeessai VALUES (13, 2, 3, 53, 'zujzg');
-INSERT INTO "BMWMottorad".demandeessai VALUES (14, 5, 1, 55, 'I love motorbikes');
-INSERT INTO "BMWMottorad".demandeessai VALUES (15, 1, 1, 57, 'Bonjour, j''aimerais essayer la moto Btw normalement on est pas censés devoir renseigner les infos quand on est déjà connecté au compte ^^');
-INSERT INTO "BMWMottorad".demandeessai VALUES (16, 1, 1, 59, 'zomgihjzlogerlgerlrehj');
-INSERT INTO "BMWMottorad".demandeessai VALUES (20, 4, 3, 61, 'hehe');
+INSERT INTO "BMWMottorad".t_e_couleur_clr VALUES (1, 1, 'Black Storm metallic', 0, 'La peinture Black storm metallic souligne le caractère puissant de la moto. Le bras oscillant, les roues et les étriers de frein dans le ton noir complètent le look sombre. Les teintes sobres mettent d’autant plus en valeur le monogramme « S 1000 RR »', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/s1000rr-P0ND2-softconfigurator-thumbnail.jpg.asset.1661501931495.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/S1000RR-P0ND2-softconfigurator.jpg.asset.1661501931990.jpg');
+INSERT INTO "BMWMottorad".t_e_couleur_clr VALUES (2, 2, 'Black Storm metallic', 0, 'La peinture Black storm metallic du modèle de base confère à la moto un look particulièrement dynamique et puissant.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/tour/k1600gtl-2021/2023/softkonfigurator/nsc-k1600gtl-P0ND2-softconfigurator-thumbnail.jpg.asset.1686756193279.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/tour/k1600gtl-2021/2023/softkonfigurator/nsc-k1600gtl-P0ND2-softconfigurator.jpg.asset.1686756194178.jpg');
+INSERT INTO "BMWMottorad".t_e_couleur_clr VALUES (3, 3, 'Black Storm metallic', 0, 'La peinture Black storm metallic confère à la moto une élégance remarquable.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0ND2-softconfigurator-thumbnail.jpg.asset.1686752276034.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0ND2-softconfigurator.jpg.asset.1686752276339.jpg');
+INSERT INTO "BMWMottorad".t_e_couleur_clr VALUES (4, 3, 'Manhattan metallic matt', 355, 'La peinture Manhattan métallisée mate confère à la moto un style à la fois élégant et expressif. Le moteur et la boîte de vitesses en argent Nürburg, les pièces en aluminium et le guidon en chrome brillant offrent un somptueux contraste avec les surfaces peintes sombres et la selle noire.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0N3M-softconfigurator-thumbnail.jpg.asset.1686752275642.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0N3M-softconfigurator.jpg.asset.1686752275995.jpg');
+INSERT INTO "BMWMottorad".t_e_couleur_clr VALUES (5, 4, 'Lightwhite uni', 0, 'Grâce à la peinture Light white uni, la moto fait preuve d’un style à la fois léger et sportif. La selle noire et bleue avec piqûre GS et le guidon noir génèrent des contrastes captivants avec les surfaces peintes claires.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/adventure/f800gs-2023/softconfigurator/nsc-f800gs-P0NB5-softconfigurator-thumbnail.jpg.asset.1693839015111.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/adventure/f800gs-2023/softconfigurator/nsc-f800gs-P0NB5-softconfigurator.jpg.asset.1693839015549.jpg');
+INSERT INTO "BMWMottorad".t_e_couleur_clr VALUES (6, 1, 'Light white/M Motorsport', 4640, 'Le pack M avec la peinture Lightwhite uni/M Motorsport, les étriers de frein M bleus et les repose-pieds M confèrent à la moto un look puissant. La selle sport M offre au pilote une tenue optimale pour la chasse aux dixièmes de seconde décisifs. Les roues en carbone M allégées offrent un maximum de dynamisme.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/s1000rr-P0N3H-softconfigurator-thumbnail.jpg.asset.1663315950881.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/S1000RR-P0N3H-softconfigurator.jpg.asset.1661501925748.jpg');
+
+
+--
+-- Data for Name: t_e_demande_essai_dmd; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+--
+
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (1, 1, 1, 1, 'j''aimerai voir la photo avant de l''acheter comme cadeau à mon père');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (2, 1, 2, 2, 'ça sera bien de voir si la mtot vaut son prix');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (3, 2, 3, 3, 'j''adore les motos');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (4, 4, 4, 4, 'mes parents vont m''offrir une moto pour l''anniversaire, mais j''aimerai la tester avant');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (5, 5, 4, 5, 'c''est pour un cadeau pour pascal colin');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (6, 1, 1, 23, 'oziutjz');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (7, 1, 1, 25, 'jador mles mot');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (8, 1, 1, 27, 'Jadore la moto');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (9, 2, 1, 29, 'I like motorbikes');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (12, 1, 3, 51, 'srgzrgrzeg');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (13, 2, 3, 53, 'zujzg');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (14, 5, 1, 55, 'I love motorbikes');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (15, 1, 1, 57, 'Bonjour, j''aimerais essayer la moto Btw normalement on est pas censés devoir renseigner les infos quand on est déjà connecté au compte ^^');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (16, 1, 1, 59, 'zomgihjzlogerlgerlrehj');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (20, 4, 3, 61, 'hehe');
 
 
 --
