@@ -1,9 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
 
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_professionnel_pro")]
+    [Index(nameof(IdClient), Name = "uq_pro_clt_id", IsUnique = true)]
     public partial class Professionnel
     {
         [Key]
@@ -12,9 +15,6 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("clt_id")]
         public int IdClient { get; set; }
-
-        [Column("pro_id2")]
-        public int Id { get; set; }
 
         [Column("pro_nomcompagnie")]
         [StringLength(100)]
