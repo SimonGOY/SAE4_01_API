@@ -17,37 +17,37 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Data for Name: t_e_categorieaccessoire_cta; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_categorie_accessoire_cta; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".t_e_categorieaccessoire_cta VALUES (1, 'Design');
-INSERT INTO "BMWMottorad".t_e_categorieaccessoire_cta VALUES (2, 'Confort & Ergonomie');
-INSERT INTO "BMWMottorad".t_e_categorieaccessoire_cta VALUES (3, 'Bagagerie');
-INSERT INTO "BMWMottorad".t_e_categorieaccessoire_cta VALUES (4, 'Navigation & Communication');
-INSERT INTO "BMWMottorad".t_e_categorieaccessoire_cta VALUES (5, 'Sécurité');
-
-
---
--- Data for Name: t_e_gammemoto_gam; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
---
-
-INSERT INTO "BMWMottorad".t_e_gammemoto_gam VALUES (1, 'Sport');
-INSERT INTO "BMWMottorad".t_e_gammemoto_gam VALUES (2, 'M');
-INSERT INTO "BMWMottorad".t_e_gammemoto_gam VALUES (3, 'Tour');
-INSERT INTO "BMWMottorad".t_e_gammemoto_gam VALUES (4, 'Roadster');
-INSERT INTO "BMWMottorad".t_e_gammemoto_gam VALUES (5, 'Heritage');
-INSERT INTO "BMWMottorad".t_e_gammemoto_gam VALUES (6, 'Adventure');
-INSERT INTO "BMWMottorad".t_e_gammemoto_gam VALUES (19, 'Compétition');
+INSERT INTO "BMWMottorad".t_e_categorie_accessoire_cta VALUES (1, 'Design');
+INSERT INTO "BMWMottorad".t_e_categorie_accessoire_cta VALUES (2, 'Confort & Ergonomie');
+INSERT INTO "BMWMottorad".t_e_categorie_accessoire_cta VALUES (3, 'Bagagerie');
+INSERT INTO "BMWMottorad".t_e_categorie_accessoire_cta VALUES (4, 'Navigation & Communication');
+INSERT INTO "BMWMottorad".t_e_categorie_accessoire_cta VALUES (5, 'Sécurité');
 
 
 --
--- Data for Name: t_e_modelemoto_mod; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_gamme_moto_gam; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".t_e_modelemoto_mod VALUES (1, 1, 'S 1000 RR', 'La RR est désormais encore plus concentrée et plus précise sur les performances pures. Pour tous ceux qui en veulent toujours plus. D’eux-mêmes. De chaque tour de piste. Et de leur RR. Dans l’esprit de  #NeverStopChallenging. C’est précisément là où la RR se déplace depuis toujours que la conduite est un travail au millimètre. C’est pourquoi nous avons affûté et perfectionné la RR aux endroits décisifs : du nouveau capteur d’angle de braquage avec Brake Slide Assist et Slide Control, ainsi que l’intégration de composants M, jusqu’aux gestes décisifs pour la transformation de la moto pour la piste, en passant par des améliorations dans l’électronique. Et tout cela avec un objectif clair : de nouvelles pole positions. ', 20740);
-INSERT INTO "BMWMottorad".t_e_modelemoto_mod VALUES (2, 3, 'K 1600 GTL', 'Un proverbe dit : « Quiconque voyage avec exigence ne voyagera jamais seul. » C’est d’autant plus vrai si vous êtes accompagné. La BMW K 1600 GTL représente les deux. Elle offre des performances touristiques qui ne laissent rien à désirer. Son puissant six-cylindres offre désormais encore plus de dynamisme et de souveraineté : grâce à la géométrie confortable du véhicule, vous pouvez profiter pleinement de chaque kilomètre. Le cockpit a été entièrement repensé. Pour que vous puissiez profiter de chaque sortie de manière encore plus consciente et intensive, il est entièrement orienté vers l’interaction avec le conducteur. Parce que c’est ici que commence le voyage à deux – fidèle à l’esprit de #RideAndShare.', 30790);
-INSERT INTO "BMWMottorad".t_e_modelemoto_mod VALUES (3, 5, 'R 18 Classic', 'La R 18 Classic est une véritable moto routière. Elle n''est pas sans rappeler l''âme des premiers cruisers carénés, faits pour avaler les longues routes qui jalonnent le continent américain. Mais la R 18 Classic est une BMW avant tout : elle reprend des éléments intemporels de notre histoire. Le moteur boxer le plus puissant que nous ayons jamais construit constitue le cœur même de cette moto : il évoque chez nous le plaisir de l''évasion, les paysages qui défilent, les longues virées en toute décontraction', 23990);
-INSERT INTO "BMWMottorad".t_e_modelemoto_mod VALUES (4, 6, 'F 800 GS', 'Qui dit trajet dit également fiabilité. Avec son nouveau moteur puissant et de nombreuses autres nouveautés, la F 800 GS est le compagnon de voyage idéal pour toutes vos excursions. Préparez vos bagages, allez chercher vos amis et c’est parti. Vous découvrirez ensemble de nouvelles routes et vivrez des aventures inoubliables. Vous ressentirez le #SpiritOfGS au plus près, écouterez le crépitement du feu de camp et laisserez le quotidien loin derrière vous.', 11290);
+INSERT INTO "BMWMottorad".t_e_gamme_moto_gam VALUES (1, 'Sport');
+INSERT INTO "BMWMottorad".t_e_gamme_moto_gam VALUES (2, 'M');
+INSERT INTO "BMWMottorad".t_e_gamme_moto_gam VALUES (3, 'Tour');
+INSERT INTO "BMWMottorad".t_e_gamme_moto_gam VALUES (4, 'Roadster');
+INSERT INTO "BMWMottorad".t_e_gamme_moto_gam VALUES (5, 'Heritage');
+INSERT INTO "BMWMottorad".t_e_gamme_moto_gam VALUES (6, 'Adventure');
+INSERT INTO "BMWMottorad".t_e_gamme_moto_gam VALUES (19, 'Compétition');
+
+
+--
+-- Data for Name: t_e_modele_moto_mod; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+--
+
+INSERT INTO "BMWMottorad".t_e_modele_moto_mod VALUES (1, 1, 'S 1000 RR', 'La RR est désormais encore plus concentrée et plus précise sur les performances pures. Pour tous ceux qui en veulent toujours plus. D’eux-mêmes. De chaque tour de piste. Et de leur RR. Dans l’esprit de  #NeverStopChallenging. C’est précisément là où la RR se déplace depuis toujours que la conduite est un travail au millimètre. C’est pourquoi nous avons affûté et perfectionné la RR aux endroits décisifs : du nouveau capteur d’angle de braquage avec Brake Slide Assist et Slide Control, ainsi que l’intégration de composants M, jusqu’aux gestes décisifs pour la transformation de la moto pour la piste, en passant par des améliorations dans l’électronique. Et tout cela avec un objectif clair : de nouvelles pole positions. ', 20740);
+INSERT INTO "BMWMottorad".t_e_modele_moto_mod VALUES (2, 3, 'K 1600 GTL', 'Un proverbe dit : « Quiconque voyage avec exigence ne voyagera jamais seul. » C’est d’autant plus vrai si vous êtes accompagné. La BMW K 1600 GTL représente les deux. Elle offre des performances touristiques qui ne laissent rien à désirer. Son puissant six-cylindres offre désormais encore plus de dynamisme et de souveraineté : grâce à la géométrie confortable du véhicule, vous pouvez profiter pleinement de chaque kilomètre. Le cockpit a été entièrement repensé. Pour que vous puissiez profiter de chaque sortie de manière encore plus consciente et intensive, il est entièrement orienté vers l’interaction avec le conducteur. Parce que c’est ici que commence le voyage à deux – fidèle à l’esprit de #RideAndShare.', 30790);
+INSERT INTO "BMWMottorad".t_e_modele_moto_mod VALUES (3, 5, 'R 18 Classic', 'La R 18 Classic est une véritable moto routière. Elle n''est pas sans rappeler l''âme des premiers cruisers carénés, faits pour avaler les longues routes qui jalonnent le continent américain. Mais la R 18 Classic est une BMW avant tout : elle reprend des éléments intemporels de notre histoire. Le moteur boxer le plus puissant que nous ayons jamais construit constitue le cœur même de cette moto : il évoque chez nous le plaisir de l''évasion, les paysages qui défilent, les longues virées en toute décontraction', 23990);
+INSERT INTO "BMWMottorad".t_e_modele_moto_mod VALUES (4, 6, 'F 800 GS', 'Qui dit trajet dit également fiabilité. Avec son nouveau moteur puissant et de nombreuses autres nouveautés, la F 800 GS est le compagnon de voyage idéal pour toutes vos excursions. Préparez vos bagages, allez chercher vos amis et c’est parti. Vous découvrirez ensemble de nouvelles routes et vivrez des aventures inoubliables. Vous ressentirez le #SpiritOfGS au plus près, écouterez le crépitement du feu de camp et laisserez le quotidien loin derrière vous.', 11290);
 
 
 --
@@ -414,15 +414,15 @@ INSERT INTO "BMWMottorad".t_e_adresse_adr VALUES (201, 'Australie', '56 Rue Pell
 
 
 --
--- Data for Name: t_e_categoriecaracteristique_ctc; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_categorie_caracteristique_ctc; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".t_e_categoriecaracteristique_ctc VALUES (1, 'moteur');
-INSERT INTO "BMWMottorad".t_e_categoriecaracteristique_ctc VALUES (2, 'performance/ consommation');
-INSERT INTO "BMWMottorad".t_e_categoriecaracteristique_ctc VALUES (3, 'équipement électrique');
-INSERT INTO "BMWMottorad".t_e_categoriecaracteristique_ctc VALUES (4, 'transmission');
-INSERT INTO "BMWMottorad".t_e_categoriecaracteristique_ctc VALUES (5, 'châssis / freins');
-INSERT INTO "BMWMottorad".t_e_categoriecaracteristique_ctc VALUES (6, 'dimensions /poids');
+INSERT INTO "BMWMottorad".t_e_categorie_caracteristique_ctc VALUES (1, 'moteur');
+INSERT INTO "BMWMottorad".t_e_categorie_caracteristique_ctc VALUES (2, 'performance/ consommation');
+INSERT INTO "BMWMottorad".t_e_categorie_caracteristique_ctc VALUES (3, 'équipement électrique');
+INSERT INTO "BMWMottorad".t_e_categorie_caracteristique_ctc VALUES (4, 'transmission');
+INSERT INTO "BMWMottorad".t_e_categorie_caracteristique_ctc VALUES (5, 'châssis / freins');
+INSERT INTO "BMWMottorad".t_e_categorie_caracteristique_ctc VALUES (6, 'dimensions /poids');
 
 
 --
@@ -604,20 +604,20 @@ INSERT INTO "BMWMottorad".t_e_caracteristique_car VALUES (1, 1, 1, 'Puissance No
 
 
 --
--- Data for Name: t_e_categorieequipement_cte; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_categorie_equipement_cte; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".t_e_categorieequipement_cte VALUES (1, NULL, 'Casquettes et Bonnets');
-INSERT INTO "BMWMottorad".t_e_categorieequipement_cte VALUES (2, NULL, 'Equipements fonctionnels et Protections');
-INSERT INTO "BMWMottorad".t_e_categorieequipement_cte VALUES (3, 1, 'T-shirt et Tops');
-INSERT INTO "BMWMottorad".t_e_categorieequipement_cte VALUES (4, 3, 'Sweatshirts et Hoodies');
-INSERT INTO "BMWMottorad".t_e_categorieequipement_cte VALUES (5, 3, 'Vestes');
-INSERT INTO "BMWMottorad".t_e_categorieequipement_cte VALUES (6, 2, 'Bottes et Sneakers');
-INSERT INTO "BMWMottorad".t_e_categorieequipement_cte VALUES (7, 2, 'Casques');
-INSERT INTO "BMWMottorad".t_e_categorieequipement_cte VALUES (8, NULL, 'Combinaisons');
-INSERT INTO "BMWMottorad".t_e_categorieequipement_cte VALUES (9, 2, 'Pantalons et Jeans');
-INSERT INTO "BMWMottorad".t_e_categorieequipement_cte VALUES (10, 2, 'Sacs et Accessoires');
-INSERT INTO "BMWMottorad".t_e_categorieequipement_cte VALUES (11, 10, 'Gants');
+INSERT INTO "BMWMottorad".t_e_categorie_equipement_cte VALUES (1, NULL, 'Casquettes et Bonnets');
+INSERT INTO "BMWMottorad".t_e_categorie_equipement_cte VALUES (2, NULL, 'Equipements fonctionnels et Protections');
+INSERT INTO "BMWMottorad".t_e_categorie_equipement_cte VALUES (3, 1, 'T-shirt et Tops');
+INSERT INTO "BMWMottorad".t_e_categorie_equipement_cte VALUES (4, 3, 'Sweatshirts et Hoodies');
+INSERT INTO "BMWMottorad".t_e_categorie_equipement_cte VALUES (5, 3, 'Vestes');
+INSERT INTO "BMWMottorad".t_e_categorie_equipement_cte VALUES (6, 2, 'Bottes et Sneakers');
+INSERT INTO "BMWMottorad".t_e_categorie_equipement_cte VALUES (7, 2, 'Casques');
+INSERT INTO "BMWMottorad".t_e_categorie_equipement_cte VALUES (8, NULL, 'Combinaisons');
+INSERT INTO "BMWMottorad".t_e_categorie_equipement_cte VALUES (9, 2, 'Pantalons et Jeans');
+INSERT INTO "BMWMottorad".t_e_categorie_equipement_cte VALUES (10, 2, 'Sacs et Accessoires');
+INSERT INTO "BMWMottorad".t_e_categorie_equipement_cte VALUES (11, 10, 'Gants');
 
 
 --
@@ -877,29 +877,29 @@ INSERT INTO "BMWMottorad".t_e_concessionnaire_con VALUES (5, 'BMW Motorad ANNECY
 
 
 --
--- Data for Name: t_r_motoconfigurable_mcf; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_r_moto_configurable_mcf; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (1, 1);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (2, 3);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (3, 2);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (4, 4);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (5, 4);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (6, 2);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (7, 3);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (8, 2);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (9, 3);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (10, 1);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (11, 4);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (12, 1);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (13, 4);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (14, 3);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (15, 3);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (16, 2);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (17, 4);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (18, 1);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (19, 3);
-INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (20, 2);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (1, 1);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (2, 3);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (3, 2);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (4, 4);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (5, 4);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (6, 2);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (7, 3);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (8, 2);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (9, 3);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (10, 1);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (11, 4);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (12, 1);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (13, 4);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (14, 3);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (15, 3);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (16, 2);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (17, 4);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (18, 1);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (19, 3);
+INSERT INTO "BMWMottorad".t_r_moto_configurable_mcf VALUES (20, 2);
 
 
 --
@@ -915,69 +915,69 @@ INSERT INTO "BMWMottorad".t_e_offre_ofr VALUES (6, 1, 2, false, 'Sans Financemen
 
 
 --
--- Data for Name: t_e_contactinfo_ctf; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_contact_info_ctf; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (1, 4, 'Mortello', 'Joris', '1987-04-06', 'joris.mortello@gmail.com', '0645785433');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (2, 3, 'Thomas', 'Matthéo', '1999-11-12', 'mattheo.thomas@gmail.com', '0712457888');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (3, 6, 'Delabrouille', 'Luc', '2002-11-16', 'luc.delabrouille@gmail.com', '0645788854');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (4, 2, 'Ruiz', 'Manon', '1987-02-24', 'manon.ruiz@gmail.com', '0612330410');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (5, 1, 'Holmes', 'Sherlock', '1986-01-12', 'sher.holmes@gmail.com', '0645780030');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (6, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (7, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (9, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (10, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (11, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (12, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (13, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (14, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (15, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (16, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (17, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (18, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (19, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (20, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (21, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (22, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (23, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (24, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (25, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (26, NULL, 'Turconi', 'Arthur', '1999-12-08', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (27, NULL, 'Turconi', 'Arthur', '1999-12-08', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (28, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (29, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (30, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (31, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (32, NULL, 'Turconi', 'Arthur', '1999-02-02', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (33, NULL, 'Turconi', 'Arthur', '1999-02-02', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (34, NULL, 'Turconi', 'Arthur', '1999-02-02', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (35, NULL, 'Turconi', 'Arthur', '1999-02-02', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (36, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (37, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (38, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (39, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (40, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (41, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (42, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (43, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (44, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (45, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (46, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (47, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (48, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (49, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (50, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (51, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (52, NULL, 'tutur', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (53, NULL, 'tutur', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (54, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (55, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (56, NULL, 'AAAAAAAAAA', 'AAAAAAAAAA', '1999-11-11', 'css_404_not_found@iutannecy-deptinfo.fr', '0404040404');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (57, NULL, 'AAAAAAAAAA', 'AAAAAAAAAA', '1999-11-11', 'css_404_not_found@iutannecy-deptinfo.fr', '0404040404');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (58, NULL, 'Cussonait', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (59, NULL, 'Cussonait', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (60, NULL, 'Laval', 'Emilie', '1999-12-07', 'emilie.laval@gmail.com', '0649190054');
-INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (61, NULL, 'Laval', 'Emilie', '1999-12-07', 'emilie.laval@gmail.com', '0649190054');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (1, 4, 'Mortello', 'Joris', '1987-04-06', 'joris.mortello@gmail.com', '0645785433');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (2, 3, 'Thomas', 'Matthéo', '1999-11-12', 'mattheo.thomas@gmail.com', '0712457888');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (3, 6, 'Delabrouille', 'Luc', '2002-11-16', 'luc.delabrouille@gmail.com', '0645788854');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (4, 2, 'Ruiz', 'Manon', '1987-02-24', 'manon.ruiz@gmail.com', '0612330410');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (5, 1, 'Holmes', 'Sherlock', '1986-01-12', 'sher.holmes@gmail.com', '0645780030');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (6, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (7, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (9, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (10, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (11, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (12, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (13, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (14, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (15, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (16, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (17, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (18, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (19, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (20, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (21, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (22, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (23, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (24, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (25, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (26, NULL, 'Turconi', 'Arthur', '1999-12-08', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (27, NULL, 'Turconi', 'Arthur', '1999-12-08', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (28, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (29, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (30, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (31, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (32, NULL, 'Turconi', 'Arthur', '1999-02-02', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (33, NULL, 'Turconi', 'Arthur', '1999-02-02', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (34, NULL, 'Turconi', 'Arthur', '1999-02-02', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (35, NULL, 'Turconi', 'Arthur', '1999-02-02', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (36, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (37, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (38, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (39, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (40, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (41, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (42, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (43, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (44, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (45, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (46, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (47, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (48, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (49, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (50, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (51, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (52, NULL, 'tutur', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (53, NULL, 'tutur', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (54, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (55, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (56, NULL, 'AAAAAAAAAA', 'AAAAAAAAAA', '1999-11-11', 'css_404_not_found@iutannecy-deptinfo.fr', '0404040404');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (57, NULL, 'AAAAAAAAAA', 'AAAAAAAAAA', '1999-11-11', 'css_404_not_found@iutannecy-deptinfo.fr', '0404040404');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (58, NULL, 'Cussonait', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (59, NULL, 'Cussonait', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (60, NULL, 'Laval', 'Emilie', '1999-12-07', 'emilie.laval@gmail.com', '0649190054');
+INSERT INTO "BMWMottorad".t_e_contact_info_ctf VALUES (61, NULL, 'Laval', 'Emilie', '1999-12-07', 'emilie.laval@gmail.com', '0649190054');
 
 
 --
@@ -1018,57 +1018,57 @@ INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (4, 5, 'blouson schwabing', 
 -- Data for Name: taille; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".taille VALUES (1, 'xs', '53/54');
-INSERT INTO "BMWMottorad".taille VALUES (2, 's', '55/56');
-INSERT INTO "BMWMottorad".taille VALUES (3, 'm', '57/58');
-INSERT INTO "BMWMottorad".taille VALUES (4, 'l', '58/59');
-INSERT INTO "BMWMottorad".taille VALUES (5, 'xl', '60/61');
-INSERT INTO "BMWMottorad".taille VALUES (6, '2xl', '62/63');
-INSERT INTO "BMWMottorad".taille VALUES (7, '3xl', '64/65');
-INSERT INTO "BMWMottorad".taille VALUES (8, 'xs', '34');
-INSERT INTO "BMWMottorad".taille VALUES (9, 's', '36');
-INSERT INTO "BMWMottorad".taille VALUES (10, 'm', '38');
-INSERT INTO "BMWMottorad".taille VALUES (11, 'm', '40');
-INSERT INTO "BMWMottorad".taille VALUES (12, 'l', '42');
-INSERT INTO "BMWMottorad".taille VALUES (13, 'l', '44');
-INSERT INTO "BMWMottorad".taille VALUES (14, 'xl', '46');
-INSERT INTO "BMWMottorad".taille VALUES (15, '2xl', '48');
-INSERT INTO "BMWMottorad".taille VALUES (16, 'one size', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (17, '30L', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (18, '36', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (19, '37', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (20, '38', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (21, '39', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (22, '40', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (23, '41', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (24, '42', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (25, '43', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (26, '44', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (27, '45', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (28, '46', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (29, '47', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (30, '48', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (31, '49', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (32, '50', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (33, '51', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (34, '52', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (35, '53', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (36, '54', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (37, '55', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (38, '56', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (39, '57', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (40, '58', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (41, '59', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (42, '60', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (43, '61', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (44, '62', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (45, '6', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (46, '7', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (47, '8', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (48, '9', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (49, '10', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (50, '11', NULL);
-INSERT INTO "BMWMottorad".taille VALUES (51, '12', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (1, 'xs', '53/54');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (2, 's', '55/56');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (3, 'm', '57/58');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (4, 'l', '58/59');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (5, 'xl', '60/61');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (6, '2xl', '62/63');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (7, '3xl', '64/65');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (8, 'xs', '34');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (9, 's', '36');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (10, 'm', '38');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (11, 'm', '40');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (12, 'l', '42');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (13, 'l', '44');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (14, 'xl', '46');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (15, '2xl', '48');
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (16, 'one size', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (17, '30L', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (18, '36', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (19, '37', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (20, '38', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (21, '39', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (22, '40', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (23, '41', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (24, '42', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (25, '43', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (26, '44', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (27, '45', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (28, '46', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (29, '47', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (30, '48', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (31, '49', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (32, '50', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (33, '51', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (34, '52', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (35, '53', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (36, '54', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (37, '55', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (38, '56', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (39, '57', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (40, '58', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (41, '59', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (42, '60', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (43, '61', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (44, '62', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (45, '6', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (46, '7', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (47, '8', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (48, '9', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (49, '10', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (50, '11', NULL);
+INSERT INTO "BMWMottorad".t_r_taille_tle VALUES (51, '12', NULL);
 
 
 --
@@ -1310,64 +1310,64 @@ INSERT INTO "BMWMottorad".t_e_infocb_icb VALUES (20, 201, 'eyJpdiI6ImFaUU8vSE5tU
 
 
 --
--- Data for Name: t_r_presentationequipement_pre; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_r_presentation_equipement_pre; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (1, 6, 4);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (2, 6, 3);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (3, 1, 16);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (4, 1, 17);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (5, 10, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (6, 11, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (7, 12, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (8, 13, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (9, 13, 30);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (10, 14, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (11, 15, 13);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (12, 15, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (13, 16, 31);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (14, 17, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (15, 18, 32);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (16, 19, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (17, 5, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (18, 4, 2);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (19, 4, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (20, 7, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (21, 9, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (22, 8, 5);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (23, 2, 23);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (24, 2, 24);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (25, 2, 25);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (26, 2, 26);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (27, 2, 27);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (28, 2, 28);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (29, 2, 29);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (30, 20, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (31, 21, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (32, 22, 13);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (33, 23, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (34, 25, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (35, 26, 6);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (36, 27, 6);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (37, 24, 1);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (38, 1, 18);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (39, 1, 19);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (40, 1, 20);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (41, 1, 21);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (42, 1, 22);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (43, 3, 18);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (44, 3, 33);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (45, 3, 19);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (46, 3, 22);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (47, 3, 34);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (48, 3, 35);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (49, 3, 36);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (50, 28, 24);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (51, 28, 19);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (52, 28, 38);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (53, 28, 15);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (54, 28, 37);
-INSERT INTO "BMWMottorad".t_r_presentationequipement_pre VALUES (55, 28, 39);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (1, 6, 4);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (2, 6, 3);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (3, 1, 16);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (4, 1, 17);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (5, 10, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (6, 11, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (7, 12, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (8, 13, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (9, 13, 30);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (10, 14, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (11, 15, 13);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (12, 15, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (13, 16, 31);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (14, 17, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (15, 18, 32);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (16, 19, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (17, 5, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (18, 4, 2);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (19, 4, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (20, 7, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (21, 9, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (22, 8, 5);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (23, 2, 23);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (24, 2, 24);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (25, 2, 25);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (26, 2, 26);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (27, 2, 27);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (28, 2, 28);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (29, 2, 29);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (30, 20, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (31, 21, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (32, 22, 13);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (33, 23, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (34, 25, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (35, 26, 6);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (36, 27, 6);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (37, 24, 1);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (38, 1, 18);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (39, 1, 19);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (40, 1, 20);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (41, 1, 21);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (42, 1, 22);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (43, 3, 18);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (44, 3, 33);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (45, 3, 19);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (46, 3, 22);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (47, 3, 34);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (48, 3, 35);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (49, 3, 36);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (50, 28, 24);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (51, 28, 19);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (52, 28, 38);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (53, 28, 15);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (54, 28, 37);
+INSERT INTO "BMWMottorad".t_r_presentation_equipement_pre VALUES (55, 28, 39);
 
 
 --
@@ -1668,29 +1668,29 @@ INSERT INTO "BMWMottorad".t_e_media_med VALUES (305, 28, NULL, 'https://www.bmw-
 
 
 --
--- Data for Name: t_e_motodisponible_mdp; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_moto_disponible_mdp; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (1, 20931, 1);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (2, 20984, 3);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (3, 12094, 2);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (4, 11098, 4);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (5, 38591, 4);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (6, 34872, 2);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (7, 11487, 3);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (8, 11248, 2);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (9, 14875, 3);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (10, 10487, 1);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (11, 22895, 4);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (12, 20855, 1);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (13, 23574, 4);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (14, 22584, 3);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (15, 17463, 3);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (16, 16584, 2);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (17, 15685, 4);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (18, 18754, 1);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (19, 18584, 3);
-INSERT INTO "BMWMottorad".t_e_motodisponible_mdp VALUES (20, 19584, 2);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (1, 20931, 1);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (2, 20984, 3);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (3, 12094, 2);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (4, 11098, 4);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (5, 38591, 4);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (6, 34872, 2);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (7, 11487, 3);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (8, 11248, 2);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (9, 14875, 3);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (10, 10487, 1);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (11, 22895, 4);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (12, 20855, 1);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (13, 23574, 4);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (14, 22584, 3);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (15, 17463, 3);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (16, 16584, 2);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (17, 15685, 4);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (18, 18754, 1);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (19, 18584, 3);
+INSERT INTO "BMWMottorad".t_e_moto_disponible_mdp VALUES (20, 19584, 2);
 
 
 --
@@ -2423,240 +2423,3 @@ INSERT INTO "BMWMottorad".t_e_users_usr VALUES (12, 'Prenomtest', 'prenom.nom@gm
 INSERT INTO "BMWMottorad".t_e_users_usr VALUES (13, 'ZOUZOU', 'zouzou@gmail.com', '$2y$12$FhQMv53v.yQefDGygh.4SO5qEzCFjxOVtYMB0X80v29JkjzUkpQXO', '2024-01-15', '2024-01-15', 'M', 'ZAZA', 97, true, 0, false, '2024-01-15');
 INSERT INTO "BMWMottorad".t_e_users_usr VALUES (15, 'Barack', 'barack@maisonblanche.fr', '$2y$12$y2hoGAlJNCNsRJ1A.2R.gucljzCngiGQCwBVzxVhAcxYgutSm6VKa', '2024-01-15', '2024-01-15', 'M', 'Obmana', 98, true, 0, false, '2024-01-15');
 INSERT INTO "BMWMottorad".t_e_users_usr VALUES (41, 'Simon', 'simon.pasgay@gmail.com', '$2y$12$DKszpP7jW53GJgG7LAoKIur3.qf5nzxdnXDBotaGdmRZJTg9E6Sgu', '2024-01-15', '2024-01-15', 'M', 'PasGay', 201, true, 0, false, '2024-01-15');
-
-
---
--- Name: accessoire_idaccessoire_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".accessoire_idaccessoire_seq', 1, false);
-
-
---
--- Name: adresse_numadresse_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".adresse_numadresse_seq', 201, true);
-
-
---
--- Name: caracteristique_idcaracteristique_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".caracteristique_idcaracteristique_seq', 1, false);
-
-
---
--- Name: t_e_categorieaccessoire_cta_idcatacc_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".t_e_categorieaccessoire_cta_idcatacc_seq', 1, false);
-
-
---
--- Name: categoriecaracteristique_idcatcaracteristique_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".categoriecaracteristique_idcatcaracteristique_seq', 1, false);
-
-
---
--- Name: categorieequipement_idcatequipement_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".categorieequipement_idcatequipement_seq', 1, false);
-
-
---
--- Name: client_idclient_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".client_idclient_seq', 201, true);
-
-
---
--- Name: collection_idcollection_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".collection_idcollection_seq', 1, false);
-
-
---
--- Name: coloris_idcoloris_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".coloris_idcoloris_seq', 1, false);
-
-
---
--- Name: commande_idcommande_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".commande_idcommande_seq', 401, true);
-
-
---
--- Name: concessionnaire_idconcessionnaire_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".concessionnaire_idconcessionnaire_seq', 1, false);
-
-
---
--- Name: contactinfo_idcontact_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".contactinfo_idcontact_seq', 61, true);
-
-
---
--- Name: couleur_idcouleur_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".couleur_idcouleur_seq', 1, false);
-
-
---
--- Name: demandeessai_iddemandessai_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".demandeessai_iddemandessai_seq', 20, true);
-
-
---
--- Name: equipement_idequipement_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".equipement_idequipement_seq', 1, false);
-
-
---
--- Name: t_e_gammemoto_gam_idgamme_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".t_e_gammemoto_gam_idgamme_seq', 1, false);
-
-
---
--- Name: infocb_idcarte_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".infocb_idcarte_seq', 20, true);
-
-
---
--- Name: media_idmedia_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".media_idmedia_seq', 1, false);
-
-
---
--- Name: t_e_modelemoto_mod_idmoto_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".t_e_modelemoto_mod_idmoto_seq', 1, false);
-
-
---
--- Name: motoconfigurable_idmotoconfigurable_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".motoconfigurable_idmotoconfigurable_seq', 1, false);
-
-
---
--- Name: motodisponible_idmotodisponible_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".motodisponible_idmotodisponible_seq', 1, false);
-
-
---
--- Name: offre_idoffre_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".offre_idoffre_seq', 1, false);
-
-
---
--- Name: option_idoption_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".option_idoption_seq', 1, false);
-
-
---
--- Name: pack_idpack_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".pack_idpack_seq', 1, false);
-
-
---
--- Name: presentation_eq_idpresentation_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".presentation_eq_idpresentation_seq', 1, false);
-
-
---
--- Name: prive_idprive_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".prive_idprive_seq', 200, true);
-
-
---
--- Name: professionnel_idpro_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".professionnel_idpro_seq', 100, true);
-
-
---
--- Name: reservation_idreservation_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".reservation_idreservation_seq', 1, false);
-
-
---
--- Name: style_idstyle_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".style_idstyle_seq', 1, false);
-
-
---
--- Name: taille_idtaille_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".taille_idtaille_seq', 1, false);
-
-
---
--- Name: telephone_idtelephone_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".telephone_idtelephone_seq', 407, true);
-
-
---
--- Name: transaction_idtransaction_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".transaction_idtransaction_seq', 5, true);
-
-
---
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: BMWMottorad; Owner: s225
---
-
-SELECT pg_catalog.setval('"BMWMottorad".users_id_seq', 41, true);
-
-
---
--- PostgreSQL database dump complete
---
-
