@@ -1260,19 +1260,19 @@ INSERT INTO "BMWMottorad".est_inclus VALUES (9, 6);
 
 
 --
--- Data for Name: est_lie; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_j_estlie_eli; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".est_lie VALUES (1, 20);
-INSERT INTO "BMWMottorad".est_lie VALUES (5, 19);
-INSERT INTO "BMWMottorad".est_lie VALUES (7, 9);
-INSERT INTO "BMWMottorad".est_lie VALUES (10, 16);
-INSERT INTO "BMWMottorad".est_lie VALUES (16, 11);
-INSERT INTO "BMWMottorad".est_lie VALUES (12, 4);
-INSERT INTO "BMWMottorad".est_lie VALUES (11, 1);
-INSERT INTO "BMWMottorad".est_lie VALUES (4, 5);
-INSERT INTO "BMWMottorad".est_lie VALUES (3, 7);
-INSERT INTO "BMWMottorad".est_lie VALUES (6, 12);
+INSERT INTO "BMWMottorad".t_j_estlie_eli VALUES (1, 20);
+INSERT INTO "BMWMottorad".t_j_estlie_eli VALUES (5, 19);
+INSERT INTO "BMWMottorad".t_j_estlie_eli VALUES (7, 9);
+INSERT INTO "BMWMottorad".t_j_estlie_eli VALUES (10, 16);
+INSERT INTO "BMWMottorad".t_j_estlie_eli VALUES (16, 11);
+INSERT INTO "BMWMottorad".t_j_estlie_eli VALUES (12, 4);
+INSERT INTO "BMWMottorad".t_j_estlie_eli VALUES (11, 1);
+INSERT INTO "BMWMottorad".t_j_estlie_eli VALUES (4, 5);
+INSERT INTO "BMWMottorad".t_j_estlie_eli VALUES (3, 7);
+INSERT INTO "BMWMottorad".t_j_estlie_eli VALUES (6, 12);
 
 
 --
