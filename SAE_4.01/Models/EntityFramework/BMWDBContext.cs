@@ -290,6 +290,8 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdCatEquipement)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_equ_cte");
+
+                entity.HasCheckConstraint("ck_eq_sexe", "(equ_sexe)::text = 'f'::text) OR ((equ_sexe)::text = 'h'::text) OR ((equ_sexe)::text = 'uni'::text");
             });
 
             modelBuilder.Entity<EstInclus>(entity =>
