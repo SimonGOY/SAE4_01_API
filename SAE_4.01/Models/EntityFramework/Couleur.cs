@@ -1,10 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
 
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_couleur_clr")]
+    [Index(nameof(NomCouleur),nameof(DescriptionCouleur), Name = "uq_clr_nom", IsUnique = true)]
     public class Couleur
     {
         [Key]
