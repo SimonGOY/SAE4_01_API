@@ -1075,170 +1075,170 @@ INSERT INTO "BMWMottorad".taille VALUES (51, '12', NULL);
 -- Data for Name: contenucommande; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".contenucommande VALUES (1, 1, 1, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (2, 2, 2, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (3, 3, 2, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (4, 4, 1, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (5, 5, 1, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (6, 6, 1, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (7, 7, 1, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (8, 8, 1, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (9, 9, 1, 1, 4);
-INSERT INTO "BMWMottorad".contenucommande VALUES (10, 10, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (11, 11, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (12, 12, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (13, 13, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (14, 14, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (15, 15, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (16, 16, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (17, 17, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (18, 18, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (19, 19, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (20, 20, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (21, 21, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (22, 22, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (23, 23, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (24, 24, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (25, 25, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (26, 26, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (27, 27, 1, 2, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (28, 1, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (29, 2, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (30, 3, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (31, 4, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (32, 5, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (33, 6, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (34, 7, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (35, 8, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (36, 9, 1, 3, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (37, 10, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (38, 11, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (39, 12, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (40, 13, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (41, 14, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (42, 15, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (43, 16, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (44, 17, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (45, 18, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (46, 19, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (47, 20, 1, 4, 10);
-INSERT INTO "BMWMottorad".contenucommande VALUES (48, 1, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (49, 1, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (50, 2, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (51, 2, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (52, 2, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (53, 2, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (54, 3, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (55, 4, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (56, 5, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (57, 6, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (58, 7, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (59, 8, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (60, 9, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (61, 9, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (62, 6, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (63, 5, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (64, 4, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (65, 3, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (66, 4, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (67, 3, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (68, 2, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (69, 4, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (70, 3, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (71, 2, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (72, 1, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (73, 3, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (74, 6, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (75, 7, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (76, 5, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (77, 4, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (78, 6, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (79, 5, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (80, 8, 1, 5, 15);
-INSERT INTO "BMWMottorad".contenucommande VALUES (129, 1, 1, 1, 16);
-INSERT INTO "BMWMottorad".contenucommande VALUES (133, 1, 4, 1, 16);
-INSERT INTO "BMWMottorad".contenucommande VALUES (131, 4, 1, 1, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (96, 8, 4, 4, 2);
-INSERT INTO "BMWMottorad".contenucommande VALUES (135, 1, 1, 1, 16);
-INSERT INTO "BMWMottorad".contenucommande VALUES (136, 4, 1, 4, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (137, 6, 1, 8, 3);
-INSERT INTO "BMWMottorad".contenucommande VALUES (137, 4, 2, 2, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (138, 1, 1, 1, 16);
-INSERT INTO "BMWMottorad".contenucommande VALUES (139, 10, 1, 16, 1);
-INSERT INTO "BMWMottorad".contenucommande VALUES (400, 1, 1, 1, 16);
-INSERT INTO "BMWMottorad".contenucommande VALUES (401, 1, 1, 1, 16);
-INSERT INTO "BMWMottorad".contenucommande VALUES (401, 6, 1, 8, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (1, 1, 1, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (2, 2, 2, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (3, 3, 2, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (4, 4, 1, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (5, 5, 1, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (6, 6, 1, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (7, 7, 1, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (8, 8, 1, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (9, 9, 1, 1, 4);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (10, 10, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (11, 11, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (12, 12, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (13, 13, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (14, 14, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (15, 15, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (16, 16, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (17, 17, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (18, 18, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (19, 19, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (20, 20, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (21, 21, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (22, 22, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (23, 23, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (24, 24, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (25, 25, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (26, 26, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (27, 27, 1, 2, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (28, 1, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (29, 2, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (30, 3, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (31, 4, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (32, 5, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (33, 6, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (34, 7, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (35, 8, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (36, 9, 1, 3, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (37, 10, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (38, 11, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (39, 12, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (40, 13, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (41, 14, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (42, 15, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (43, 16, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (44, 17, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (45, 18, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (46, 19, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (47, 20, 1, 4, 10);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (48, 1, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (49, 1, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (50, 2, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (51, 2, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (52, 2, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (53, 2, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (54, 3, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (55, 4, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (56, 5, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (57, 6, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (58, 7, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (59, 8, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (60, 9, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (61, 9, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (62, 6, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (63, 5, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (64, 4, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (65, 3, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (66, 4, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (67, 3, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (68, 2, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (69, 4, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (70, 3, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (71, 2, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (72, 1, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (73, 3, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (74, 6, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (75, 7, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (76, 5, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (77, 4, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (78, 6, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (79, 5, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (80, 8, 1, 5, 15);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (129, 1, 1, 1, 16);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (133, 1, 4, 1, 16);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (131, 4, 1, 1, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (96, 8, 4, 4, 2);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (135, 1, 1, 1, 16);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (136, 4, 1, 4, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (137, 6, 1, 8, 3);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (137, 4, 2, 2, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (138, 1, 1, 1, 16);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (139, 10, 1, 16, 1);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (400, 1, 1, 1, 16);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (401, 1, 1, 1, 16);
+INSERT INTO "BMWMottorad".t_e_contenu_commande_ccm VALUES (401, 6, 1, 8, 3);
 
 
 --
--- Data for Name: couleur; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_couleur_clr; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".couleur VALUES (1, 1, 'Black Storm metallic', 0, 'La peinture Black storm metallic souligne le caractère puissant de la moto. Le bras oscillant, les roues et les étriers de frein dans le ton noir complètent le look sombre. Les teintes sobres mettent d’autant plus en valeur le monogramme « S 1000 RR »', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/s1000rr-P0ND2-softconfigurator-thumbnail.jpg.asset.1661501931495.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/S1000RR-P0ND2-softconfigurator.jpg.asset.1661501931990.jpg');
-INSERT INTO "BMWMottorad".couleur VALUES (2, 2, 'Black Storm metallic', 0, 'La peinture Black storm metallic du modèle de base confère à la moto un look particulièrement dynamique et puissant.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/tour/k1600gtl-2021/2023/softkonfigurator/nsc-k1600gtl-P0ND2-softconfigurator-thumbnail.jpg.asset.1686756193279.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/tour/k1600gtl-2021/2023/softkonfigurator/nsc-k1600gtl-P0ND2-softconfigurator.jpg.asset.1686756194178.jpg');
-INSERT INTO "BMWMottorad".couleur VALUES (3, 3, 'Black Storm metallic', 0, 'La peinture Black storm metallic confère à la moto une élégance remarquable.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0ND2-softconfigurator-thumbnail.jpg.asset.1686752276034.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0ND2-softconfigurator.jpg.asset.1686752276339.jpg');
-INSERT INTO "BMWMottorad".couleur VALUES (4, 3, 'Manhattan metallic matt', 355, 'La peinture Manhattan métallisée mate confère à la moto un style à la fois élégant et expressif. Le moteur et la boîte de vitesses en argent Nürburg, les pièces en aluminium et le guidon en chrome brillant offrent un somptueux contraste avec les surfaces peintes sombres et la selle noire.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0N3M-softconfigurator-thumbnail.jpg.asset.1686752275642.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0N3M-softconfigurator.jpg.asset.1686752275995.jpg');
-INSERT INTO "BMWMottorad".couleur VALUES (5, 4, 'Lightwhite uni', 0, 'Grâce à la peinture Light white uni, la moto fait preuve d’un style à la fois léger et sportif. La selle noire et bleue avec piqûre GS et le guidon noir génèrent des contrastes captivants avec les surfaces peintes claires.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/adventure/f800gs-2023/softconfigurator/nsc-f800gs-P0NB5-softconfigurator-thumbnail.jpg.asset.1693839015111.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/adventure/f800gs-2023/softconfigurator/nsc-f800gs-P0NB5-softconfigurator.jpg.asset.1693839015549.jpg');
-INSERT INTO "BMWMottorad".couleur VALUES (6, 1, 'Light white/M Motorsport', 4640, 'Le pack M avec la peinture Lightwhite uni/M Motorsport, les étriers de frein M bleus et les repose-pieds M confèrent à la moto un look puissant. La selle sport M offre au pilote une tenue optimale pour la chasse aux dixièmes de seconde décisifs. Les roues en carbone M allégées offrent un maximum de dynamisme.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/s1000rr-P0N3H-softconfigurator-thumbnail.jpg.asset.1663315950881.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/S1000RR-P0N3H-softconfigurator.jpg.asset.1661501925748.jpg');
-
-
---
--- Data for Name: demandeessai; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
---
-
-INSERT INTO "BMWMottorad".demandeessai VALUES (1, 1, 1, 1, 'j''aimerai voir la photo avant de l''acheter comme cadeau à mon père');
-INSERT INTO "BMWMottorad".demandeessai VALUES (2, 1, 2, 2, 'ça sera bien de voir si la mtot vaut son prix');
-INSERT INTO "BMWMottorad".demandeessai VALUES (3, 2, 3, 3, 'j''adore les motos');
-INSERT INTO "BMWMottorad".demandeessai VALUES (4, 4, 4, 4, 'mes parents vont m''offrir une moto pour l''anniversaire, mais j''aimerai la tester avant');
-INSERT INTO "BMWMottorad".demandeessai VALUES (5, 5, 4, 5, 'c''est pour un cadeau pour pascal colin');
-INSERT INTO "BMWMottorad".demandeessai VALUES (6, 1, 1, 23, 'oziutjz');
-INSERT INTO "BMWMottorad".demandeessai VALUES (7, 1, 1, 25, 'jador mles mot');
-INSERT INTO "BMWMottorad".demandeessai VALUES (8, 1, 1, 27, 'Jadore la moto');
-INSERT INTO "BMWMottorad".demandeessai VALUES (9, 2, 1, 29, 'I like motorbikes');
-INSERT INTO "BMWMottorad".demandeessai VALUES (12, 1, 3, 51, 'srgzrgrzeg');
-INSERT INTO "BMWMottorad".demandeessai VALUES (13, 2, 3, 53, 'zujzg');
-INSERT INTO "BMWMottorad".demandeessai VALUES (14, 5, 1, 55, 'I love motorbikes');
-INSERT INTO "BMWMottorad".demandeessai VALUES (15, 1, 1, 57, 'Bonjour, j''aimerais essayer la moto Btw normalement on est pas censés devoir renseigner les infos quand on est déjà connecté au compte ^^');
-INSERT INTO "BMWMottorad".demandeessai VALUES (16, 1, 1, 59, 'zomgihjzlogerlgerlrehj');
-INSERT INTO "BMWMottorad".demandeessai VALUES (20, 4, 3, 61, 'hehe');
+INSERT INTO "BMWMottorad".t_e_couleur_clr VALUES (1, 1, 'Black Storm metallic', 0, 'La peinture Black storm metallic souligne le caractère puissant de la moto. Le bras oscillant, les roues et les étriers de frein dans le ton noir complètent le look sombre. Les teintes sobres mettent d’autant plus en valeur le monogramme « S 1000 RR »', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/s1000rr-P0ND2-softconfigurator-thumbnail.jpg.asset.1661501931495.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/S1000RR-P0ND2-softconfigurator.jpg.asset.1661501931990.jpg');
+INSERT INTO "BMWMottorad".t_e_couleur_clr VALUES (2, 2, 'Black Storm metallic', 0, 'La peinture Black storm metallic du modèle de base confère à la moto un look particulièrement dynamique et puissant.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/tour/k1600gtl-2021/2023/softkonfigurator/nsc-k1600gtl-P0ND2-softconfigurator-thumbnail.jpg.asset.1686756193279.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/tour/k1600gtl-2021/2023/softkonfigurator/nsc-k1600gtl-P0ND2-softconfigurator.jpg.asset.1686756194178.jpg');
+INSERT INTO "BMWMottorad".t_e_couleur_clr VALUES (3, 3, 'Black Storm metallic', 0, 'La peinture Black storm metallic confère à la moto une élégance remarquable.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0ND2-softconfigurator-thumbnail.jpg.asset.1686752276034.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0ND2-softconfigurator.jpg.asset.1686752276339.jpg');
+INSERT INTO "BMWMottorad".t_e_couleur_clr VALUES (4, 3, 'Manhattan metallic matt', 355, 'La peinture Manhattan métallisée mate confère à la moto un style à la fois élégant et expressif. Le moteur et la boîte de vitesses en argent Nürburg, les pièces en aluminium et le guidon en chrome brillant offrent un somptueux contraste avec les surfaces peintes sombres et la selle noire.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0N3M-softconfigurator-thumbnail.jpg.asset.1686752275642.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0N3M-softconfigurator.jpg.asset.1686752275995.jpg');
+INSERT INTO "BMWMottorad".t_e_couleur_clr VALUES (5, 4, 'Lightwhite uni', 0, 'Grâce à la peinture Light white uni, la moto fait preuve d’un style à la fois léger et sportif. La selle noire et bleue avec piqûre GS et le guidon noir génèrent des contrastes captivants avec les surfaces peintes claires.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/adventure/f800gs-2023/softconfigurator/nsc-f800gs-P0NB5-softconfigurator-thumbnail.jpg.asset.1693839015111.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/adventure/f800gs-2023/softconfigurator/nsc-f800gs-P0NB5-softconfigurator.jpg.asset.1693839015549.jpg');
+INSERT INTO "BMWMottorad".t_e_couleur_clr VALUES (6, 1, 'Light white/M Motorsport', 4640, 'Le pack M avec la peinture Lightwhite uni/M Motorsport, les étriers de frein M bleus et les repose-pieds M confèrent à la moto un look puissant. La selle sport M offre au pilote une tenue optimale pour la chasse aux dixièmes de seconde décisifs. Les roues en carbone M allégées offrent un maximum de dynamisme.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/s1000rr-P0N3H-softconfigurator-thumbnail.jpg.asset.1663315950881.jpg', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/S1000RR-P0N3H-softconfigurator.jpg.asset.1661501925748.jpg');
 
 
 --
--- Data for Name: option; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_demande_essai_dmd; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".option VALUES (3, 'Chaine Endurance M', 160, 'Davantage de puissance sur la roue arrière : La chaîne M Endurance associée à des galets avec revêtement DLC se caractérise par une réduction des frottements et de l’entretien. Le revêtement en carbone présente une dureté comparable à celle du diamant et minimise les pertes de rendement. Le revêtement DLC (Diamond-Like Carbon) simplifie également l’entretien.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZMY2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3cnjifG70qbX0x1RCzPheU1vGU');
-INSERT INTO "BMWMottorad".option VALUES (2, 'Capot selle (sans selle)', 115, 'Le cache de selle passager élégant assure un look sportif.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZMY2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3ll7ifG70qbX0x1RCzPheU1vGU');
-INSERT INTO "BMWMottorad".option VALUES (6, 'M Systeme d''Echappement titane', 2451, 'le système d’échappement M Titan d’Akrapovič avec embout en carbone souligne non seulement l’esthétique sportive de la moto, mais augmente aussi ses performances. Par rapport au système de série, il permet de réduire significativement le poids et d’augmenter le couple moteur, en particulier à mi-régimes. Il en résulte une réponse de la poignée des gaz d’une grande sensibilité dans tous les modes de pilotage.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZMY2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3cvfifG70qbX0x1RCzPheU1vGU');
-INSERT INTO "BMWMottorad".option VALUES (4, 'DDC Dynamic Damping Control', 760, 'Le Dynamic Damping Control (DDC) adapte l’amortissement du châssis à la situation de conduite actuelle et assure des performances supérieures grâce à un meilleur contact avec la chaussée. Le système réagit aux manœuvres de conduite telles que le freinage, l’accélération ou les virages de manière entièrement automatique, et ajuste l’amortissement à la perfection en quelques millisecondes.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZMY2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3yK5ifG70qbX0x1RCzPheU1vGU');
-INSERT INTO "BMWMottorad".option VALUES (7, 'Silencieux Sport', 895, 'Le nec plus ultra du haut de gamme : le silencieux Sport slip-on en titane de haute qualité avec embout en carbone délivre un son plus affirmé et souligne l’esthétique sportive. Le poids du silencieux Sport développé par Akrapovič a également été optimisé par rapport au silencieux de série.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZMY2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3cvzifG70qbX0x1RCzPheU1vGU');
-INSERT INTO "BMWMottorad".option VALUES (5, 'Jantes Forgees M', 4, 'Les jantes forgées M anodisées noires réduisent les forces gyroscopiques pour plus d’agilité. Grâce à des disques de frein de 5 mm, elles offrent des performances de freinage supérieures – sur circuit comme sur route.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZMY2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3ZvDifGH3dTUw8jgL3hSntD0nBdKVZjYpMdbhM');
-INSERT INTO "BMWMottorad".option VALUES (10, 'Option 719 Billet pack Aero', 1000, 'L’option 719 &#59 pack design Aero évoque le look inimitable de la Streamliner des années 1930. Les surfaces brossées de la pièce et le revêtement transparent confèrent un style d’époque à ce pack composé du couvercle frontal, du couvre-culasses et du cache de coude d’admission. Les capots en tôle présentent par ailleurs des passages d’air typiques.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZ5j2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3ZvlifG70qbX0x1RCzPheU1vGU');
-INSERT INTO "BMWMottorad".option VALUES (11, 'Option 719 Roue Aero', 790, 'L’option 719 - Jante Aero de coloris argenté confère une touche individuelle à la moto. Cette jante moulée à 6 rayons présente des nervures fraisées.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZ5j2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc36lmifG70qbX0x1RCzPheU1vGU');
-INSERT INTO "BMWMottorad".option VALUES (12, 'Option 719 Roue Icon', 790, 'L’option 719 - Jante Icon de coloris noir mat confère une touche individuelle à la moto. Cette jante moulée à 6 rayons présente des nervures fraisées.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZ5j2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc36ljifG70qbX0x1RCzPheU1vGU');
-INSERT INTO "BMWMottorad".option VALUES (13, 'Selle Option 719', 325, 'La selle noire Option 719, avec ses surpiqûres en losange, impressionne par son look raffiné. Le revêtement de la selle a deux grains différents et s’adapte parfaitement à toutes les peintures disponibles. La selle est dotée sur le côté d’un fanion Option 719.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZ5j2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3Om4ifG70qbX0x1RCzPheU1vGUU');
-INSERT INTO "BMWMottorad".option VALUES (15, 'ESA Dynamic', 395, 'Le Dynamic ESA (Electronic Suspension Adjustment) régule automatiquement l’amortissement de la jambe de suspension en fonction de la conduite. Trois niveaux différents d’adaptation des amortisseurs (Road, Dynamic et Enduro) peuvent être sélectionnés pendant la conduite et la précontrainte de ressort peut être réglée à l’arrêt d’une simple pression sur un bouton.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZTg2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3cvFifG70qbX0x1RCzPheU1vGU');
-INSERT INTO "BMWMottorad".option VALUES (1, 'Appel d''urgence intelligent', 367, 'En cas d’accident, l’appel d’urgence intelligent contacte automatiquement le centre d’appels BMW pour activer la chaîne de sauvetage aussi rapidement que possible. La position du véhicule est alors communiquée et, si possible, une première conversation est établie avec la personne concernée. Le système peut aussi être activé manuellement, par exemple pour assister d’autres usagers de la route.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZMY2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3lscifG70qbX0x1RCzPheU1vGU');
-INSERT INTO "BMWMottorad".option VALUES (8, 'Option 719 Spezial jantes forgees class', 1615, 'Les jantes forgées Classic de qualité supérieure font partie intégrante de l’équipement en option très design du programme Option 719. Les pièces exclusives soulignent le caractère unique de la machine et lui confèrent un look exceptionnel sur la route.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZyd2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3ZvFifGH3dTUw8jgL3hSntD0nBdKVZjYpMdbhM');
-INSERT INTO "BMWMottorad".option VALUES (9, 'Selle Option 719', 220, 'La selle raffinée de l’option 719 se présente dans un marron classique. Elle séduit par un toucher délicat, une marbrure discrète, des coutures décoratives de haute qualité et un gaufrage losange attrayant. Le monogramme GT brodé complète le design exclusif. Cette selle est chauffante et sa hauteur est la même que la selle de série.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZ5j2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3ZvlifG70qbX0x1RCzPheU1vGU');
-INSERT INTO "BMWMottorad".option VALUES (14, 'Bridage 48cv', 0, 'La réduction de puissance à 35 kW (48 ch) permet également aux nouveaux détenteurs du permis UE jusqu’à 25 ans (catégorie A2) de profiter, départ usine, de vraies sensations moto. Le plaisir de conduite reste cependant inchangé. Sur demande, le moteur peut être ramené plus tard à sa pleine puissance.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZTg2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3wleifG70qbX0x1RCzPheU1vGU');
-INSERT INTO "BMWMottorad".option VALUES (16, 'Keyless ride', 235, 'Grâce au système Keyless Ride, la clé de contact restera désormais dans votre poche. Ce système sans clé est extrêmement convivial et permet au conducteur de démarrer sa machine par simple pression d’un bouton. L’antivol de direction et le bouchon du réservoir peuvent également être déverrouillés de cette façon. Il ne vous reste plus qu’à enfourcher votre machine et à prendre la route !', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZTg2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3cv5ifG70qbX0x1RCzPheU1vGU');
-INSERT INTO "BMWMottorad".option VALUES (17, 'Feu diurne', 0, 'Le feu de jour à LED intégré au projecteur garantir une meilleure sécurité dans le trafic. De jour, il améliore la visibilité de la moto grâce à sa technologie LED moderne.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZNc2uzHVPRdgSht5gJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3yl7ifG70qbX0x1RCzPheU1VSe');
-INSERT INTO "BMWMottorad".option VALUES (18, 'Oil Inclusive 3ans / 30 000 km', 370, '///', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZNc2uzHVPRdgSht5gJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3ZseifG70qbX0x1RCzPheU1VSe');
-INSERT INTO "BMWMottorad".option VALUES (20, 'Batterie M', 210, 'Grandes performances, faible poids : La batterie de qualité supérieure Lightweight M bénéficie d’une technologie lithium-ion à la pointe de la modernité et pèse jusqu’à 2,9 kg de moins que la batterie montée en série. L’aide au démarrage parfaite pour les pilotes ambitieux désirant optimiser le poids de leur machine au gramme près.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZdE2uzHVPRdgSht5gJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc36%25mifG70qbX0x1RCzPheU1VSr');
-INSERT INTO "BMWMottorad".option VALUES (21, 'oui', 44444, 'test', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8qFWtBQge5YeBShkg1nfY2L1PJNbrxqn4A&usqp=CAU');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (1, 1, 1, 1, 'j''aimerai voir la photo avant de l''acheter comme cadeau à mon père');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (2, 1, 2, 2, 'ça sera bien de voir si la mtot vaut son prix');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (3, 2, 3, 3, 'j''adore les motos');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (4, 4, 4, 4, 'mes parents vont m''offrir une moto pour l''anniversaire, mais j''aimerai la tester avant');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (5, 5, 4, 5, 'c''est pour un cadeau pour pascal colin');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (6, 1, 1, 23, 'oziutjz');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (7, 1, 1, 25, 'jador mles mot');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (8, 1, 1, 27, 'Jadore la moto');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (9, 2, 1, 29, 'I like motorbikes');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (12, 1, 3, 51, 'srgzrgrzeg');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (13, 2, 3, 53, 'zujzg');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (14, 5, 1, 55, 'I love motorbikes');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (15, 1, 1, 57, 'Bonjour, j''aimerais essayer la moto Btw normalement on est pas censés devoir renseigner les infos quand on est déjà connecté au compte ^^');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (16, 1, 1, 59, 'zomgihjzlogerlgerlrehj');
+INSERT INTO "BMWMottorad".t_e_demande_essai_dmd VALUES (20, 4, 3, 61, 'hehe');
 
 
 --
--- Data for Name: style; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_option_opt; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".style VALUES (5, 'Style Sport', 215, 'En déclinaison Sport, la machine se présente dans le coloris dynamique Racing blue metallic. La selle noire et rouge est dotée du logo GS cousu qui accroche le regard. Les caches de radiateur en Light white uni, ainsi que le guidon argenté, génèrent des contrastes captivants. La bulle teintée complète l’esthétique sportive.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/adventure/f800gs-2023/softconfigurator/nsc-f800gs-P0N2L-softconfigurator-thumbnail.jpg.asset.1693839014662.jpg', 4, 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/adventure/f800gs-2023/softconfigurator/nsc-f800gs-P0N2L-softconfigurator.jpg.asset.1693839015016.jpg');
-INSERT INTO "BMWMottorad".style VALUES (6, 'Style Triple Black', 215, 'Dans la déclinaison Triple Black, la moto se pare d’une élégance discrète. Les surfaces de peinture en Black storm metallic, combinées aux caches de radiateur en Mineral grey metallic mat et à la selle noire et grise, donnent un look ton sur ton captivant.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/adventure/f800gs-2023/softconfigurator/nsc-f800gs-P0ND2-softconfigurator-thumbnail.jpg.asset.1693839015753.jpg', 4, 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/adventure/f800gs-2023/softconfigurator/nsc-f800gs-P0ND2-softconfigurator.jpg.asset.1693839016418.jpg');
-INSERT INTO "BMWMottorad".style VALUES (2, 'Style Exclusive', 750, 'En Style Exclusive, la moto se pare d’une peinture GravityBlue métallisée à la fois sportive et raffinée. Le garde-boue arrière et les cache-radiateurs en Monolith métallisé mat sont parfaitement assortis. Le cache de réservoir en Blackstorm métallisé, les caches des déflecteurs de vent chromés brillants et la baguette chromée de la valise viennent compléter l’allure exclusive.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/tour/k1600gtl-2021/2023/softkonfigurator/nsc-k1600gtl-P0N3N-softconfigurator-thumbnail.jpg.asset.1686756193678.jpg', 2, 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/tour/k1600gtl-2021/2023/softkonfigurator/nsc-k1600gtl-P0N3N-softconfigurator.jpg.asset.1686756194385.jpg');
-INSERT INTO "BMWMottorad".style VALUES (3, 'Option 719 Havanna', 3530, 'La variante de modèle Option 719 « Hanovre » se distingue par son style et son assurance. La peinture Meteoric Dust metallic produit un effet de profondeur spectaculaire et attire tous les regards. Un liseré manuel élégant et des éléments chromés stylés viennent compléter l''esthétique. Autre élément qui attire le regard : la plaquette Option 719 valorisante sur le réservoir.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/tour/k1600gtl-2021/2023/softkonfigurator/nsc-k1600gtl-P0H0L-softconfigurator-thumbnail.jpg.asset.1686756193616.jpg', 2, 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/tour/k1600gtl-2021/2023/softkonfigurator/nsc-k1600gtl-P0H0L-softconfigurator.jpg.asset.1687853537798.jpg');
-INSERT INTO "BMWMottorad".style VALUES (4, 'Style Option 719', 2900, 'La variante de modèle Option 719 « Moon Stone » combine des contrastes saisissants pour former un ensemble stylé. La couleur principale blanc minéral est complétée par des touches de Meteoric Dust et Aurum. La chaîne cinématique noire, le siège Option 719, la roue Aero et de nombreux autres détails haut de gamme attirent tous les regards.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0H0A-softconfigurator-thumbnail.jpg.asset.1686752274898.jpg', 3, 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0H0A-softconfigurator.jpg.asset.1686752275222.jpg');
-INSERT INTO "BMWMottorad".style VALUES (1, 'Style Passion', 375, 'Dans le Style Passion, la peinture Racing red uni confère à la moto un petit quelque chose en plus et attire tous les regards. Des détails noirs tels que les jantes, les étriers de frein et le bras oscillant créent des contrastes saisissants avec la peinture voyante. Un monogramme « S 1000 RR » vient compléter le look dynamique.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/s1000rr-P0NA5-softconfigurator-thumbnail.jpg.asset.1661501925772.jpg', 1, 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/S1000RR-P0NA5-softconfigurator.jpg.asset.1661501931370.jpg');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (3, 'Chaine Endurance M', 160, 'Davantage de puissance sur la roue arrière : La chaîne M Endurance associée à des galets avec revêtement DLC se caractérise par une réduction des frottements et de l’entretien. Le revêtement en carbone présente une dureté comparable à celle du diamant et minimise les pertes de rendement. Le revêtement DLC (Diamond-Like Carbon) simplifie également l’entretien.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZMY2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3cnjifG70qbX0x1RCzPheU1vGU');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (2, 'Capot selle (sans selle)', 115, 'Le cache de selle passager élégant assure un look sportif.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZMY2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3ll7ifG70qbX0x1RCzPheU1vGU');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (6, 'M Systeme d''Echappement titane', 2451, 'le système d’échappement M Titan d’Akrapovič avec embout en carbone souligne non seulement l’esthétique sportive de la moto, mais augmente aussi ses performances. Par rapport au système de série, il permet de réduire significativement le poids et d’augmenter le couple moteur, en particulier à mi-régimes. Il en résulte une réponse de la poignée des gaz d’une grande sensibilité dans tous les modes de pilotage.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZMY2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3cvfifG70qbX0x1RCzPheU1vGU');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (4, 'DDC Dynamic Damping Control', 760, 'Le Dynamic Damping Control (DDC) adapte l’amortissement du châssis à la situation de conduite actuelle et assure des performances supérieures grâce à un meilleur contact avec la chaussée. Le système réagit aux manœuvres de conduite telles que le freinage, l’accélération ou les virages de manière entièrement automatique, et ajuste l’amortissement à la perfection en quelques millisecondes.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZMY2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3yK5ifG70qbX0x1RCzPheU1vGU');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (7, 'Silencieux Sport', 895, 'Le nec plus ultra du haut de gamme : le silencieux Sport slip-on en titane de haute qualité avec embout en carbone délivre un son plus affirmé et souligne l’esthétique sportive. Le poids du silencieux Sport développé par Akrapovič a également été optimisé par rapport au silencieux de série.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZMY2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3cvzifG70qbX0x1RCzPheU1vGU');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (5, 'Jantes Forgees M', 4, 'Les jantes forgées M anodisées noires réduisent les forces gyroscopiques pour plus d’agilité. Grâce à des disques de frein de 5 mm, elles offrent des performances de freinage supérieures – sur circuit comme sur route.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZMY2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3ZvDifGH3dTUw8jgL3hSntD0nBdKVZjYpMdbhM');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (10, 'Option 719 Billet pack Aero', 1000, 'L’option 719 &#59 pack design Aero évoque le look inimitable de la Streamliner des années 1930. Les surfaces brossées de la pièce et le revêtement transparent confèrent un style d’époque à ce pack composé du couvercle frontal, du couvre-culasses et du cache de coude d’admission. Les capots en tôle présentent par ailleurs des passages d’air typiques.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZ5j2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3ZvlifG70qbX0x1RCzPheU1vGU');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (11, 'Option 719 Roue Aero', 790, 'L’option 719 - Jante Aero de coloris argenté confère une touche individuelle à la moto. Cette jante moulée à 6 rayons présente des nervures fraisées.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZ5j2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc36lmifG70qbX0x1RCzPheU1vGU');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (12, 'Option 719 Roue Icon', 790, 'L’option 719 - Jante Icon de coloris noir mat confère une touche individuelle à la moto. Cette jante moulée à 6 rayons présente des nervures fraisées.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZ5j2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc36ljifG70qbX0x1RCzPheU1vGU');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (13, 'Selle Option 719', 325, 'La selle noire Option 719, avec ses surpiqûres en losange, impressionne par son look raffiné. Le revêtement de la selle a deux grains différents et s’adapte parfaitement à toutes les peintures disponibles. La selle est dotée sur le côté d’un fanion Option 719.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZ5j2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3Om4ifG70qbX0x1RCzPheU1vGUU');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (15, 'ESA Dynamic', 395, 'Le Dynamic ESA (Electronic Suspension Adjustment) régule automatiquement l’amortissement de la jambe de suspension en fonction de la conduite. Trois niveaux différents d’adaptation des amortisseurs (Road, Dynamic et Enduro) peuvent être sélectionnés pendant la conduite et la précontrainte de ressort peut être réglée à l’arrêt d’une simple pression sur un bouton.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZTg2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3cvFifG70qbX0x1RCzPheU1vGU');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (1, 'Appel d''urgence intelligent', 367, 'En cas d’accident, l’appel d’urgence intelligent contacte automatiquement le centre d’appels BMW pour activer la chaîne de sauvetage aussi rapidement que possible. La position du véhicule est alors communiquée et, si possible, une première conversation est établie avec la personne concernée. Le système peut aussi être activé manuellement, par exemple pour assister d’autres usagers de la route.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZMY2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3lscifG70qbX0x1RCzPheU1vGU');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (8, 'Option 719 Spezial jantes forgees class', 1615, 'Les jantes forgées Classic de qualité supérieure font partie intégrante de l’équipement en option très design du programme Option 719. Les pièces exclusives soulignent le caractère unique de la machine et lui confèrent un look exceptionnel sur la route.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZyd2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3ZvFifGH3dTUw8jgL3hSntD0nBdKVZjYpMdbhM');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (9, 'Selle Option 719', 220, 'La selle raffinée de l’option 719 se présente dans un marron classique. Elle séduit par un toucher délicat, une marbrure discrète, des coutures décoratives de haute qualité et un gaufrage losange attrayant. Le monogramme GT brodé complète le design exclusif. Cette selle est chauffante et sa hauteur est la même que la selle de série.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZ5j2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3ZvlifG70qbX0x1RCzPheU1vGU');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (14, 'Bridage 48cv', 0, 'La réduction de puissance à 35 kW (48 ch) permet également aux nouveaux détenteurs du permis UE jusqu’à 25 ans (catégorie A2) de profiter, départ usine, de vraies sensations moto. Le plaisir de conduite reste cependant inchangé. Sur demande, le moteur peut être ramené plus tard à sa pleine puissance.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZTg2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3wleifG70qbX0x1RCzPheU1vGU');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (16, 'Keyless ride', 235, 'Grâce au système Keyless Ride, la clé de contact restera désormais dans votre poche. Ce système sans clé est extrêmement convivial et permet au conducteur de démarrer sa machine par simple pression d’un bouton. L’antivol de direction et le bouchon du réservoir peuvent également être déverrouillés de cette façon. Il ne vous reste plus qu’à enfourcher votre machine et à prendre la route !', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZTg2uzHVPRdgShtDoJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3cv5ifG70qbX0x1RCzPheU1vGU');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (17, 'Feu diurne', 0, 'Le feu de jour à LED intégré au projecteur garantir une meilleure sécurité dans le trafic. De jour, il améliore la visibilité de la moto grâce à sa technologie LED moderne.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZNc2uzHVPRdgSht5gJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3yl7ifG70qbX0x1RCzPheU1VSe');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (18, 'Oil Inclusive 3ans / 30 000 km', 370, '///', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZNc2uzHVPRdgSht5gJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc3ZseifG70qbX0x1RCzPheU1VSe');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (20, 'Batterie M', 210, 'Grandes performances, faible poids : La batterie de qualité supérieure Lightweight M bénéficie d’une technologie lithium-ion à la pointe de la modernité et pèse jusqu’à 2,9 kg de moins que la batterie montée en série. L’aide au démarrage parfaite pour les pilotes ambitieux désirant optimiser le poids de leur machine au gramme près.', 'https://prod.cosy.bmw.cloud/h5nbc/cosySec?COSY-EU-100-7331c9Nv2Z7d5y07eRUQlPw7CcVxEaZdE2uzHVPRdgSht5gJE470jR5gswTZdk4%25rxlzK%25yoKG3eTOnvzfAxPs8%25P6P1LSClgpnQ3Qd19m9suNXQ2GEDzfHscCw29cvc36%25mifG70qbX0x1RCzPheU1VSr');
+INSERT INTO "BMWMottorad".t_e_option_opt VALUES (21, 'oui', 44444, 'test', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC8qFWtBQge5YeBShkg1nfY2L1PJNbrxqn4A&usqp=CAU');
+
+
+--
+-- Data for Name: t_e_style_sty; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+--
+
+INSERT INTO "BMWMottorad".t_e_style_sty VALUES (5, 'Style Sport', 215, 'En déclinaison Sport, la machine se présente dans le coloris dynamique Racing blue metallic. La selle noire et rouge est dotée du logo GS cousu qui accroche le regard. Les caches de radiateur en Light white uni, ainsi que le guidon argenté, génèrent des contrastes captivants. La bulle teintée complète l’esthétique sportive.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/adventure/f800gs-2023/softconfigurator/nsc-f800gs-P0N2L-softconfigurator-thumbnail.jpg.asset.1693839014662.jpg', 4, 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/adventure/f800gs-2023/softconfigurator/nsc-f800gs-P0N2L-softconfigurator.jpg.asset.1693839015016.jpg');
+INSERT INTO "BMWMottorad".t_e_style_sty VALUES (6, 'Style Triple Black', 215, 'Dans la déclinaison Triple Black, la moto se pare d’une élégance discrète. Les surfaces de peinture en Black storm metallic, combinées aux caches de radiateur en Mineral grey metallic mat et à la selle noire et grise, donnent un look ton sur ton captivant.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/adventure/f800gs-2023/softconfigurator/nsc-f800gs-P0ND2-softconfigurator-thumbnail.jpg.asset.1693839015753.jpg', 4, 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/adventure/f800gs-2023/softconfigurator/nsc-f800gs-P0ND2-softconfigurator.jpg.asset.1693839016418.jpg');
+INSERT INTO "BMWMottorad".t_e_style_sty VALUES (2, 'Style Exclusive', 750, 'En Style Exclusive, la moto se pare d’une peinture GravityBlue métallisée à la fois sportive et raffinée. Le garde-boue arrière et les cache-radiateurs en Monolith métallisé mat sont parfaitement assortis. Le cache de réservoir en Blackstorm métallisé, les caches des déflecteurs de vent chromés brillants et la baguette chromée de la valise viennent compléter l’allure exclusive.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/tour/k1600gtl-2021/2023/softkonfigurator/nsc-k1600gtl-P0N3N-softconfigurator-thumbnail.jpg.asset.1686756193678.jpg', 2, 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/tour/k1600gtl-2021/2023/softkonfigurator/nsc-k1600gtl-P0N3N-softconfigurator.jpg.asset.1686756194385.jpg');
+INSERT INTO "BMWMottorad".t_e_style_sty VALUES (3, 'Option 719 Havanna', 3530, 'La variante de modèle Option 719 « Hanovre » se distingue par son style et son assurance. La peinture Meteoric Dust metallic produit un effet de profondeur spectaculaire et attire tous les regards. Un liseré manuel élégant et des éléments chromés stylés viennent compléter l''esthétique. Autre élément qui attire le regard : la plaquette Option 719 valorisante sur le réservoir.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/tour/k1600gtl-2021/2023/softkonfigurator/nsc-k1600gtl-P0H0L-softconfigurator-thumbnail.jpg.asset.1686756193616.jpg', 2, 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/tour/k1600gtl-2021/2023/softkonfigurator/nsc-k1600gtl-P0H0L-softconfigurator.jpg.asset.1687853537798.jpg');
+INSERT INTO "BMWMottorad".t_e_style_sty VALUES (4, 'Style Option 719', 2900, 'La variante de modèle Option 719 « Moon Stone » combine des contrastes saisissants pour former un ensemble stylé. La couleur principale blanc minéral est complétée par des touches de Meteoric Dust et Aurum. La chaîne cinématique noire, le siège Option 719, la roue Aero et de nombreux autres détails haut de gamme attirent tous les regards.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0H0A-softconfigurator-thumbnail.jpg.asset.1686752274898.jpg', 3, 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/heritage/r18_classic/2023/softcconfigurator/nsc-r18-classic-P0H0A-softconfigurator.jpg.asset.1686752275222.jpg');
+INSERT INTO "BMWMottorad".t_e_style_sty VALUES (1, 'Style Passion', 375, 'Dans le Style Passion, la peinture Racing red uni confère à la moto un petit quelque chose en plus et attire tous les regards. Des détails noirs tels que les jantes, les étriers de frein et le bras oscillant créent des contrastes saisissants avec la peinture voyante. Un monogramme « S 1000 RR » vient compléter le look dynamique.', 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/s1000rr-P0NA5-softconfigurator-thumbnail.jpg.asset.1661501925772.jpg', 1, 'https://www.bmw-motorrad.fr/content/dam/bmwmotorradnsc/common/images/models/sport/s1000rr/2022/softconfigurator/S1000RR-P0NA5-softconfigurator.jpg.asset.1661501931370.jpg');
 
 
 --
