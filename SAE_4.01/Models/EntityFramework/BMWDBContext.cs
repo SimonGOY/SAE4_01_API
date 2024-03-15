@@ -64,19 +64,12 @@ namespace SAE_4._01.Models.EntityFramework
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-
-                optionsBuilder.UseLoggerFactory(MyLoggerFactory)
-                    .EnableSensitiveDataLogging()
-                    .UseNpgsql("Server=localhost;port=5432;Database=BMWDB; uid=postgres; password=postgres;");
-                //optionsBuilder.UseLazyLoadingProxies();
-            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasDefaultSchema("bmw");
+
             modelBuilder.Entity<Accessoire>(entity =>
             {
                 entity.HasKey(e => e.IdAccessoire)

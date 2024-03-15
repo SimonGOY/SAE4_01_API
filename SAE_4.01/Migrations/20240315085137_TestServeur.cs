@@ -6,12 +6,20 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace SAE_4._01.Migrations
 {
-    public partial class CreationBDCheck : Migration
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.cs
+    public partial class TestServeur : Migration
+========
+    public partial class ContraintesUnique : Migration
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.cs
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "bmw");
+
             migrationBuilder.CreateTable(
                 name: "t_e_categorieaccessoire_cta",
+                schema: "bmw",
                 columns: table => new
                 {
                     cta_id = table.Column<int>(type: "integer", nullable: false)
@@ -25,6 +33,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_categoriecaracteristique_ctc",
+                schema: "bmw",
                 columns: table => new
                 {
                     ctc_id = table.Column<int>(type: "integer", nullable: false)
@@ -38,6 +47,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_categorieequipement_cte",
+                schema: "bmw",
                 columns: table => new
                 {
                     cte_id = table.Column<int>(type: "integer", nullable: false)
@@ -51,6 +61,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_cte_cte",
                         column: x => x.cte_catidcatequipement,
+                        principalSchema: "bmw",
                         principalTable: "t_e_categorieequipement_cte",
                         principalColumn: "cte_id",
                         onDelete: ReferentialAction.Restrict);
@@ -58,6 +69,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_collection_cln",
+                schema: "bmw",
                 columns: table => new
                 {
                     cln_id = table.Column<int>(type: "integer", nullable: false)
@@ -71,6 +83,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_coloris_cls",
+                schema: "bmw",
                 columns: table => new
                 {
                     cls_id = table.Column<int>(type: "integer", nullable: false)
@@ -84,6 +97,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_concessionnaire_con",
+                schema: "bmw",
                 columns: table => new
                 {
                     con_id = table.Column<int>(type: "integer", nullable: false)
@@ -103,6 +117,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_gammemoto_gam",
+                schema: "bmw",
                 columns: table => new
                 {
                     gam_id = table.Column<int>(type: "integer", nullable: false)
@@ -116,6 +131,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_option_opt",
+                schema: "bmw",
                 columns: table => new
                 {
                     opt_id = table.Column<int>(type: "integer", nullable: false)
@@ -132,6 +148,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_parametre_par",
+                schema: "bmw",
                 columns: table => new
                 {
                     par_nom = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
@@ -144,6 +161,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_pays_pay",
+                schema: "bmw",
                 columns: table => new
                 {
                     pay_nom = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false)
@@ -155,6 +173,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_r_taille_tle",
+                schema: "bmw",
                 columns: table => new
                 {
                     tle_id = table.Column<int>(type: "integer", nullable: false)
@@ -169,6 +188,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_equipement_equ",
+                schema: "bmw",
                 columns: table => new
                 {
                     equ_id = table.Column<int>(type: "integer", nullable: false)
@@ -190,12 +210,14 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_equ_cln",
                         column: x => x.cln_idcollection,
+                        principalSchema: "bmw",
                         principalTable: "t_e_collection_cln",
                         principalColumn: "cln_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_equ_cte",
                         column: x => x.cte_idcatequipement,
+                        principalSchema: "bmw",
                         principalTable: "t_e_categorieequipement_cte",
                         principalColumn: "cte_id",
                         onDelete: ReferentialAction.Restrict);
@@ -203,6 +225,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_modelemoto_mod",
+                schema: "bmw",
                 columns: table => new
                 {
                     mod_id = table.Column<int>(type: "integer", nullable: false)
@@ -218,6 +241,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_mod_gam",
                         column: x => x.gam_idgamme,
+                        principalSchema: "bmw",
                         principalTable: "t_e_gammemoto_gam",
                         principalColumn: "gam_id",
                         onDelete: ReferentialAction.Restrict);
@@ -225,6 +249,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_adresse_adr",
+                schema: "bmw",
                 columns: table => new
                 {
                     adr_num = table.Column<int>(type: "integer", nullable: false)
@@ -238,6 +263,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_adr_pay",
                         column: x => x.pay_nom,
+                        principalSchema: "bmw",
                         principalTable: "t_e_pays_pay",
                         principalColumn: "pay_nom",
                         onDelete: ReferentialAction.Restrict);
@@ -245,6 +271,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_stock_stk",
+                schema: "bmw",
                 columns: table => new
                 {
                     tle_id = table.Column<int>(type: "integer", nullable: false),
@@ -258,18 +285,21 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_stk_cls",
                         column: x => x.cls_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_coloris_cls",
                         principalColumn: "cls_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_stk_equ",
                         column: x => x.equ_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_equipement_equ",
                         principalColumn: "equ_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_stk_tle",
                         column: x => x.tle_id,
+                        principalSchema: "bmw",
                         principalTable: "t_r_taille_tle",
                         principalColumn: "tle_id",
                         onDelete: ReferentialAction.Restrict);
@@ -277,6 +307,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_j_estlie_eli",
+                schema: "bmw",
                 columns: table => new
                 {
                     equ_idequipement = table.Column<int>(type: "integer", nullable: false),
@@ -288,6 +319,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_eli_equ",
                         column: x => x.equ_idequipement,
+                        principalSchema: "bmw",
                         principalTable: "t_e_equipement_equ",
                         principalColumn: "equ_id",
                         onDelete: ReferentialAction.Restrict);
@@ -295,6 +327,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_r_presentationequipement_pre",
+                schema: "bmw",
                 columns: table => new
                 {
                     pre_id = table.Column<int>(type: "integer", nullable: false),
@@ -307,12 +340,14 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_pre_cls",
                         column: x => x.col_idcoloris,
+                        principalSchema: "bmw",
                         principalTable: "t_e_coloris_cls",
                         principalColumn: "cls_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_pre_equ",
                         column: x => x.pre_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_equipement_equ",
                         principalColumn: "equ_id",
                         onDelete: ReferentialAction.Restrict);
@@ -320,6 +355,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_accessoire_acc",
+                schema: "bmw",
                 columns: table => new
                 {
                     acc_id = table.Column<int>(type: "integer", nullable: false)
@@ -337,12 +373,14 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_acc_cta",
                         column: x => x.cta_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_categorieaccessoire_cta",
                         principalColumn: "cta_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_acc_mod",
                         column: x => x.mod_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_modelemoto_mod",
                         principalColumn: "mod_id",
                         onDelete: ReferentialAction.Restrict);
@@ -350,6 +388,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_caracteristique_car",
+                schema: "bmw",
                 columns: table => new
                 {
                     car_id = table.Column<int>(type: "integer", nullable: false),
@@ -364,12 +403,14 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_car_ctc",
                         column: x => x.ctc_idcat,
+                        principalSchema: "bmw",
                         principalTable: "t_e_categoriecaracteristique_ctc",
                         principalColumn: "ctc_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_car_mod",
                         column: x => x.car_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_modelemoto_mod",
                         principalColumn: "mod_id",
                         onDelete: ReferentialAction.Restrict);
@@ -377,6 +418,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_couleur_clr",
+                schema: "bmw",
                 columns: table => new
                 {
                     clr_id = table.Column<int>(type: "integer", nullable: false)
@@ -394,6 +436,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_clr_mod",
                         column: x => x.mod_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_modelemoto_mod",
                         principalColumn: "mod_id",
                         onDelete: ReferentialAction.Restrict);
@@ -401,6 +444,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_motodisponible_mdp",
+                schema: "bmw",
                 columns: table => new
                 {
                     mdp_id = table.Column<int>(type: "integer", nullable: false),
@@ -413,6 +457,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_mdp_mod",
                         column: x => x.mdp_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_modelemoto_mod",
                         principalColumn: "mod_id",
                         onDelete: ReferentialAction.Restrict);
@@ -420,6 +465,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_pack_pck",
+                schema: "bmw",
                 columns: table => new
                 {
                     pck_id = table.Column<int>(type: "integer", nullable: false)
@@ -436,6 +482,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_pck_mod",
                         column: x => x.mod_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_modelemoto_mod",
                         principalColumn: "mod_id",
                         onDelete: ReferentialAction.Restrict);
@@ -443,6 +490,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_style_sty",
+                schema: "bmw",
                 columns: table => new
                 {
                     sty_id = table.Column<int>(type: "integer", nullable: false)
@@ -460,6 +508,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_sty_mod",
                         column: x => x.mod_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_modelemoto_mod",
                         principalColumn: "mod_id",
                         onDelete: ReferentialAction.Restrict);
@@ -467,6 +516,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_r_motoconfigurable_mcf",
+                schema: "bmw",
                 columns: table => new
                 {
                     mcf_id = table.Column<int>(type: "integer", nullable: false)
@@ -479,6 +529,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_mcf_mod",
                         column: x => x.mod_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_modelemoto_mod",
                         principalColumn: "mod_id",
                         onDelete: ReferentialAction.Restrict);
@@ -486,6 +537,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_client_clt",
+                schema: "bmw",
                 columns: table => new
                 {
                     clt_id = table.Column<int>(type: "integer", nullable: false)
@@ -505,6 +557,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_clt_adr",
                         column: x => x.adr_numeroadresse,
+                        principalSchema: "bmw",
                         principalTable: "t_e_adresse_adr",
                         principalColumn: "adr_num",
                         onDelete: ReferentialAction.Restrict);
@@ -512,6 +565,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_media_med",
+                schema: "bmw",
                 columns: table => new
                 {
                     med_id = table.Column<int>(type: "integer", nullable: false)
@@ -527,18 +581,21 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_med_equ",
                         column: x => x.equ_idequipement,
+                        principalSchema: "bmw",
                         principalTable: "t_e_equipement_equ",
                         principalColumn: "equ_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_med_mod",
                         column: x => x.mod_idmoto,
+                        principalSchema: "bmw",
                         principalTable: "t_e_modelemoto_mod",
                         principalColumn: "mod_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_med_pre",
                         column: x => x.pre_idpresentation,
+                        principalSchema: "bmw",
                         principalTable: "t_r_presentationequipement_pre",
                         principalColumn: "pre_id",
                         onDelete: ReferentialAction.Restrict);
@@ -546,6 +603,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_j_se_compose_scp",
+                schema: "bmw",
                 columns: table => new
                 {
                     pck_id = table.Column<int>(type: "integer", nullable: false),
@@ -557,12 +615,14 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_scp_opt",
                         column: x => x.opt_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_option_opt",
                         principalColumn: "opt_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_scp_pck",
                         column: x => x.pck_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_pack_pck",
                         principalColumn: "pck_id",
                         onDelete: ReferentialAction.Restrict);
@@ -570,6 +630,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_j_estinclus_ecl",
+                schema: "bmw",
                 columns: table => new
                 {
                     opt_id = table.Column<int>(type: "integer", nullable: false),
@@ -581,12 +642,14 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_ecl_opt",
                         column: x => x.opt_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_option_opt",
                         principalColumn: "opt_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_ecl_sty",
                         column: x => x.sty_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_style_sty",
                         principalColumn: "sty_id",
                         onDelete: ReferentialAction.Restrict);
@@ -594,6 +657,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_offre_ofr",
+                schema: "bmw",
                 columns: table => new
                 {
                     ofr_id = table.Column<int>(type: "integer", nullable: false)
@@ -610,12 +674,14 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_ofr_con",
                         column: x => x.con_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_concessionnaire_con",
                         principalColumn: "con_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_ofr_mcf",
                         column: x => x.mcf_id,
+                        principalSchema: "bmw",
                         principalTable: "t_r_motoconfigurable_mcf",
                         principalColumn: "mcf_id",
                         onDelete: ReferentialAction.Restrict);
@@ -623,6 +689,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_j_specifie_spe",
+                schema: "bmw",
                 columns: table => new
                 {
                     spe_idmoto = table.Column<int>(type: "integer", nullable: false),
@@ -635,12 +702,14 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_spe_mcf",
                         column: x => x.mcf_id,
+                        principalSchema: "bmw",
                         principalTable: "t_r_motoconfigurable_mcf",
                         principalColumn: "mcf_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_spe_opt",
                         column: x => x.opt_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_option_opt",
                         principalColumn: "opt_id",
                         onDelete: ReferentialAction.Restrict);
@@ -648,6 +717,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_commande_cmd",
+                schema: "bmw",
                 columns: table => new
                 {
                     cmd_id = table.Column<int>(type: "integer", nullable: false)
@@ -662,6 +732,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_cmd_clt",
                         column: x => x.clt_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_client_clt",
                         principalColumn: "clt_id",
                         onDelete: ReferentialAction.Restrict);
@@ -669,6 +740,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_infocb_icb",
+                schema: "bmw",
                 columns: table => new
                 {
                     icb_id = table.Column<int>(type: "integer", nullable: false)
@@ -684,6 +756,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_icb_clt",
                         column: x => x.clt_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_client_clt",
                         principalColumn: "clt_id",
                         onDelete: ReferentialAction.Restrict);
@@ -691,12 +764,12 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_prive_prv",
+                schema: "bmw",
                 columns: table => new
                 {
                     prv_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    clt_id = table.Column<int>(type: "integer", nullable: false),
-                    prv_id2 = table.Column<int>(type: "integer", nullable: false)
+                    clt_id = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -704,6 +777,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_prv_clt",
                         column: x => x.clt_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_client_clt",
                         principalColumn: "clt_id",
                         onDelete: ReferentialAction.Restrict);
@@ -711,11 +785,11 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_professionnel_pro",
+                schema: "bmw",
                 columns: table => new
                 {
                     pro_id = table.Column<int>(type: "integer", nullable: false),
                     clt_id = table.Column<int>(type: "integer", nullable: false),
-                    pro_id2 = table.Column<int>(type: "integer", nullable: false),
                     pro_nomcompagnie = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
@@ -724,6 +798,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_pro_clt",
                         column: x => x.pro_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_client_clt",
                         principalColumn: "clt_id",
                         onDelete: ReferentialAction.Restrict);
@@ -731,6 +806,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_reservation_res",
+                schema: "bmw",
                 columns: table => new
                 {
                     res_id = table.Column<int>(type: "integer", nullable: false),
@@ -747,18 +823,21 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_res_clt",
                         column: x => x.clt_idclient,
+                        principalSchema: "bmw",
                         principalTable: "t_e_client_clt",
                         principalColumn: "clt_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_res_con",
                         column: x => x.con_idconcessionnaire,
+                        principalSchema: "bmw",
                         principalTable: "t_e_concessionnaire_con",
                         principalColumn: "con_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_res_mdp",
                         column: x => x.res_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_motodisponible_mdp",
                         principalColumn: "mdp_id",
                         onDelete: ReferentialAction.Restrict);
@@ -766,6 +845,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_telephone_tel",
+                schema: "bmw",
                 columns: table => new
                 {
                     tel_id = table.Column<int>(type: "integer", nullable: false)
@@ -784,6 +864,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "FK_t_e_telephone_tel_t_e_client_clt_clt_id",
                         column: x => x.clt_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_client_clt",
                         principalColumn: "clt_id",
                         onDelete: ReferentialAction.Cascade);
@@ -791,6 +872,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_users_usr",
+                schema: "bmw",
                 columns: table => new
                 {
                     usr_id = table.Column<int>(type: "integer", nullable: false)
@@ -811,6 +893,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_usr_clt",
                         column: x => x.clt_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_client_clt",
                         principalColumn: "clt_id",
                         onDelete: ReferentialAction.Restrict);
@@ -818,6 +901,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_r_garage_grg",
+                schema: "bmw",
                 columns: table => new
                 {
                     mcf_id = table.Column<int>(type: "integer", nullable: false),
@@ -829,12 +913,14 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_grg_clt",
                         column: x => x.clt_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_client_clt",
                         principalColumn: "clt_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_grg_mcf",
                         column: x => x.mcf_id,
+                        principalSchema: "bmw",
                         principalTable: "t_r_motoconfigurable_mcf",
                         principalColumn: "mcf_id",
                         onDelete: ReferentialAction.Restrict);
@@ -842,6 +928,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_r_prefere_prf",
+                schema: "bmw",
                 columns: table => new
                 {
                     clt_id = table.Column<int>(type: "integer", nullable: false),
@@ -853,12 +940,14 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_prf_clt",
                         column: x => x.clt_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_client_clt",
                         principalColumn: "clt_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_prf_con",
                         column: x => x.con_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_concessionnaire_con",
                         principalColumn: "con_id",
                         onDelete: ReferentialAction.Restrict);
@@ -866,6 +955,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_contactinfo_ctf",
+                schema: "bmw",
                 columns: table => new
                 {
                     ctf_id = table.Column<int>(type: "integer", nullable: false)
@@ -885,6 +975,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_ctf_ofr",
                         column: x => x.ofr_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_offre_ofr",
                         principalColumn: "ofr_id",
                         onDelete: ReferentialAction.Restrict);
@@ -892,6 +983,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_contenu_commande_ccm",
+                schema: "bmw",
                 columns: table => new
                 {
                     equ_id = table.Column<int>(type: "integer", nullable: false),
@@ -906,24 +998,28 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_ccm_cls",
                         column: x => x.cls_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_coloris_cls",
                         principalColumn: "cls_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_ccm_cmd",
                         column: x => x.cmd_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_commande_cmd",
                         principalColumn: "cmd_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_ccm_equ",
                         column: x => x.equ_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_equipement_equ",
                         principalColumn: "equ_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_ccm_tle",
                         column: x => x.tle_id,
+                        principalSchema: "bmw",
                         principalTable: "t_r_taille_tle",
                         principalColumn: "tle_id",
                         onDelete: ReferentialAction.Restrict);
@@ -931,6 +1027,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_h_transaction_tct",
+                schema: "bmw",
                 columns: table => new
                 {
                     tct_id = table.Column<int>(type: "integer", nullable: false)
@@ -945,6 +1042,7 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_tct_cmd",
                         column: x => x.cmd_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_commande_cmd",
                         principalColumn: "cmd_id",
                         onDelete: ReferentialAction.Restrict);
@@ -952,6 +1050,7 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateTable(
                 name: "t_e_demandeessai_dmd",
+                schema: "bmw",
                 columns: table => new
                 {
                     dmd_id = table.Column<int>(type: "integer", nullable: false)
@@ -967,18 +1066,21 @@ namespace SAE_4._01.Migrations
                     table.ForeignKey(
                         name: "fk_dmd_con",
                         column: x => x.con_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_concessionnaire_con",
                         principalColumn: "con_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_dmd_ctf",
                         column: x => x.con_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_contactinfo_ctf",
                         principalColumn: "ctf_id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_dmd_mod",
                         column: x => x.con_id,
+                        principalSchema: "bmw",
                         principalTable: "t_e_modelemoto_mod",
                         principalColumn: "mod_id",
                         onDelete: ReferentialAction.Restrict);
@@ -986,201 +1088,346 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_accessoire_acc_cta_id",
+                schema: "bmw",
                 table: "t_e_accessoire_acc",
                 column: "cta_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_accessoire_acc_mod_id",
+                schema: "bmw",
                 table: "t_e_accessoire_acc",
                 column: "mod_id");
 
             migrationBuilder.CreateIndex(
+                name: "uq_acc_nom",
+                schema: "bmw",
+                table: "t_e_accessoire_acc",
+                column: "acc_nom",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_t_e_adresse_adr_pay_nom",
+                schema: "bmw",
                 table: "t_e_adresse_adr",
                 column: "pay_nom");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_caracteristique_car_ctc_idcat",
+                schema: "bmw",
                 table: "t_e_caracteristique_car",
                 column: "ctc_idcat");
 
             migrationBuilder.CreateIndex(
+                name: "uq_cta_nom",
+                schema: "bmw",
+                table: "t_e_categorieaccessoire_cta",
+                column: "cta_nom",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "uq_ctc_nom",
+                schema: "bmw",
+                table: "t_e_categoriecaracteristique_ctc",
+                column: "ctc_nom",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_t_e_categorieequipement_cte_cte_catidcatequipement",
+                schema: "bmw",
                 table: "t_e_categorieequipement_cte",
                 column: "cte_catidcatequipement");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_client_clt_adr_numeroadresse",
+                schema: "bmw",
                 table: "t_e_client_clt",
                 column: "adr_numeroadresse");
 
             migrationBuilder.CreateIndex(
+                name: "uq_cls_nom",
+                schema: "bmw",
+                table: "t_e_coloris_cls",
+                column: "cls_nom",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_t_e_commande_cmd_clt_id",
+                schema: "bmw",
                 table: "t_e_commande_cmd",
                 column: "clt_id");
 
             migrationBuilder.CreateIndex(
+                name: "uq_con_nom",
+                schema: "bmw",
+                table: "t_e_concessionnaire_con",
+                column: "con_nom",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_t_e_contactinfo_ctf_ofr_id",
+                schema: "bmw",
                 table: "t_e_contactinfo_ctf",
                 column: "ofr_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_contenu_commande_ccm_cls_id",
+                schema: "bmw",
                 table: "t_e_contenu_commande_ccm",
                 column: "cls_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_contenu_commande_ccm_cmd_id",
+                schema: "bmw",
                 table: "t_e_contenu_commande_ccm",
                 column: "cmd_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_contenu_commande_ccm_tle_id",
+                schema: "bmw",
                 table: "t_e_contenu_commande_ccm",
                 column: "tle_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_couleur_clr_mod_id",
+                schema: "bmw",
                 table: "t_e_couleur_clr",
                 column: "mod_id");
 
             migrationBuilder.CreateIndex(
+                name: "uq_clr_nom",
+                schema: "bmw",
+                table: "t_e_couleur_clr",
+                columns: new[] { "clr_nom", "clr_description" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_t_e_demandeessai_dmd_con_id",
+                schema: "bmw",
                 table: "t_e_demandeessai_dmd",
                 column: "con_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_equipement_equ_cln_idcollection",
+                schema: "bmw",
                 table: "t_e_equipement_equ",
                 column: "cln_idcollection");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_equipement_equ_cte_idcatequipement",
+                schema: "bmw",
                 table: "t_e_equipement_equ",
                 column: "cte_idcatequipement");
 
             migrationBuilder.CreateIndex(
+                name: "uq_gam_libelle",
+                schema: "bmw",
+                table: "t_e_gammemoto_gam",
+                column: "gam_libelle",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_t_e_infocb_icb_clt_id",
+                schema: "bmw",
                 table: "t_e_infocb_icb",
                 column: "clt_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_media_med_equ_idequipement",
+                schema: "bmw",
                 table: "t_e_media_med",
                 column: "equ_idequipement");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_media_med_mod_idmoto",
+                schema: "bmw",
                 table: "t_e_media_med",
                 column: "mod_idmoto");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_media_med_pre_idpresentation",
+                schema: "bmw",
                 table: "t_e_media_med",
                 column: "pre_idpresentation");
 
             migrationBuilder.CreateIndex(
-                name: "IX_t_e_modelemoto_mod_gam_idgamme",
+                name: "uq_med_lien",
+                schema: "bmw",
+                table: "t_e_media_med",
+                column: "med_lienmedia",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "uq_acc_nom1",
+                schema: "bmw",
                 table: "t_e_modelemoto_mod",
-                column: "gam_idgamme");
+                columns: new[] { "gam_idgamme", "mod_nommoto", "mod_desc", "mod_prix" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_offre_ofr_con_id",
+                schema: "bmw",
                 table: "t_e_offre_ofr",
                 column: "con_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_offre_ofr_mcf_id",
+                schema: "bmw",
                 table: "t_e_offre_ofr",
                 column: "mcf_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_t_e_pack_pck_mod_id",
-                table: "t_e_pack_pck",
-                column: "mod_id");
+                name: "uq_opt_nom_detail",
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.cs
+                schema: "bmw",
+========
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.cs
+                table: "t_e_option_opt",
+                columns: new[] { "opt_nom", "opt_detail" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_t_e_prive_prv_clt_id",
+                name: "uq_pck_mod_id",
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.cs
+                schema: "bmw",
+========
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.cs
+                table: "t_e_pack_pck",
+                column: "mod_id",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "uq_pck_nom",
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.cs
+                schema: "bmw",
+========
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.cs
+                table: "t_e_pack_pck",
+                column: "pck_nom",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "uq_prv_clt_id",
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.cs
+                schema: "bmw",
+========
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.cs
                 table: "t_e_prive_prv",
-                column: "clt_id");
+                column: "clt_id",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "uq_pro_clt_id",
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.cs
+                schema: "bmw",
+========
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.cs
+                table: "t_e_professionnel_pro",
+                column: "clt_id",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_reservation_res_clt_idclient",
+                schema: "bmw",
                 table: "t_e_reservation_res",
                 column: "clt_idclient");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_reservation_res_con_idconcessionnaire",
+                schema: "bmw",
                 table: "t_e_reservation_res",
                 column: "con_idconcessionnaire");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_stock_stk_cls_id",
+                schema: "bmw",
                 table: "t_e_stock_stk",
                 column: "cls_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_stock_stk_equ_id",
+                schema: "bmw",
                 table: "t_e_stock_stk",
                 column: "equ_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_style_sty_mod_id",
+                schema: "bmw",
                 table: "t_e_style_sty",
                 column: "mod_id");
 
             migrationBuilder.CreateIndex(
+                name: "uq_sty_nom_description",
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.cs
+                schema: "bmw",
+========
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.cs
+                table: "t_e_style_sty",
+                columns: new[] { "sty_nom", "sty_description" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_t_e_telephone_tel_clt_id",
+                schema: "bmw",
                 table: "t_e_telephone_tel",
                 column: "clt_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_users_usr_clt_id",
+                schema: "bmw",
                 table: "t_e_users_usr",
                 column: "clt_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_h_transaction_tct_cmd_id",
+                schema: "bmw",
                 table: "t_h_transaction_tct",
                 column: "cmd_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_j_estinclus_ecl_sty_id",
+                schema: "bmw",
                 table: "t_j_estinclus_ecl",
                 column: "sty_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_j_se_compose_scp_opt_id",
+                schema: "bmw",
                 table: "t_j_se_compose_scp",
                 column: "opt_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_j_specifie_spe_mcf_id",
+                schema: "bmw",
                 table: "t_j_specifie_spe",
                 column: "mcf_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_j_specifie_spe_opt_id",
+                schema: "bmw",
                 table: "t_j_specifie_spe",
                 column: "opt_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_r_garage_grg_clt_id",
+                schema: "bmw",
                 table: "t_r_garage_grg",
                 column: "clt_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_r_motoconfigurable_mcf_mod_id",
+                schema: "bmw",
                 table: "t_r_motoconfigurable_mcf",
                 column: "mod_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_r_prefere_prf_con_id",
+                schema: "bmw",
                 table: "t_r_prefere_prf",
                 column: "con_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_r_presentationequipement_pre_col_idcoloris",
+                schema: "bmw",
                 table: "t_r_presentationequipement_pre",
                 column: "col_idcoloris");
         }
@@ -1188,133 +1435,176 @@ namespace SAE_4._01.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "t_e_accessoire_acc");
+                name: "t_e_accessoire_acc",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_caracteristique_car");
+                name: "t_e_caracteristique_car",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_contenu_commande_ccm");
+                name: "t_e_contenu_commande_ccm",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_couleur_clr");
+                name: "t_e_couleur_clr",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_demandeessai_dmd");
+                name: "t_e_demandeessai_dmd",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_infocb_icb");
+                name: "t_e_infocb_icb",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_media_med");
+                name: "t_e_media_med",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_parametre_par");
+                name: "t_e_parametre_par",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_prive_prv");
+                name: "t_e_prive_prv",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_professionnel_pro");
+                name: "t_e_professionnel_pro",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_reservation_res");
+                name: "t_e_reservation_res",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_stock_stk");
+                name: "t_e_stock_stk",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_telephone_tel");
+                name: "t_e_telephone_tel",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_users_usr");
+                name: "t_e_users_usr",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_h_transaction_tct");
+                name: "t_h_transaction_tct",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_j_estinclus_ecl");
+                name: "t_j_estinclus_ecl",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_j_estlie_eli");
+                name: "t_j_estlie_eli",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_j_se_compose_scp");
+                name: "t_j_se_compose_scp",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_j_specifie_spe");
+                name: "t_j_specifie_spe",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_r_garage_grg");
+                name: "t_r_garage_grg",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_r_prefere_prf");
+                name: "t_r_prefere_prf",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_categorieaccessoire_cta");
+                name: "t_e_categorieaccessoire_cta",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_categoriecaracteristique_ctc");
+                name: "t_e_categoriecaracteristique_ctc",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_contactinfo_ctf");
+                name: "t_e_contactinfo_ctf",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_r_presentationequipement_pre");
+                name: "t_r_presentationequipement_pre",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_motodisponible_mdp");
+                name: "t_e_motodisponible_mdp",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_r_taille_tle");
+                name: "t_r_taille_tle",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_commande_cmd");
+                name: "t_e_commande_cmd",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_style_sty");
+                name: "t_e_style_sty",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_pack_pck");
+                name: "t_e_pack_pck",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_option_opt");
+                name: "t_e_option_opt",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_offre_ofr");
+                name: "t_e_offre_ofr",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_coloris_cls");
+                name: "t_e_coloris_cls",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_equipement_equ");
+                name: "t_e_equipement_equ",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_client_clt");
+                name: "t_e_client_clt",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_concessionnaire_con");
+                name: "t_e_concessionnaire_con",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_r_motoconfigurable_mcf");
+                name: "t_r_motoconfigurable_mcf",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_collection_cln");
+                name: "t_e_collection_cln",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_categorieequipement_cte");
+                name: "t_e_categorieequipement_cte",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_adresse_adr");
+                name: "t_e_adresse_adr",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_modelemoto_mod");
+                name: "t_e_modelemoto_mod",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_pays_pay");
+                name: "t_e_pays_pay",
+                schema: "bmw");
 
             migrationBuilder.DropTable(
-                name: "t_e_gammemoto_gam");
+                name: "t_e_gammemoto_gam",
+                schema: "bmw");
         }
     }
 }

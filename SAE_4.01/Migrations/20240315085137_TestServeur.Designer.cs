@@ -12,13 +12,19 @@ using SAE_4._01.Models.EntityFramework;
 namespace SAE_4._01.Migrations
 {
     [DbContext(typeof(BMWDBContext))]
-    [Migration("20240315073901_CreationBDCheck")]
-    partial class CreationBDCheck
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.Designer.cs
+    [Migration("20240315085137_TestServeur")]
+    partial class TestServeur
+========
+    [Migration("20240315081927_ContraintesUnique")]
+    partial class ContraintesUnique
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("bmw")
                 .HasAnnotation("ProductVersion", "6.0.28")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
@@ -68,7 +74,10 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdMoto");
 
-                    b.ToTable("t_e_accessoire_acc");
+                    b.HasIndex(new[] { "NomAccessoire" }, "uq_acc_nom")
+                        .IsUnique();
+
+                    b.ToTable("t_e_accessoire_acc", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Adresse", b =>
@@ -97,7 +106,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("NomPays");
 
-                    b.ToTable("t_e_adresse_adr");
+                    b.ToTable("t_e_adresse_adr", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Caracteristique", b =>
@@ -130,7 +139,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdCatCaracteristique");
 
-                    b.ToTable("t_e_caracteristique_car");
+                    b.ToTable("t_e_caracteristique_car", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.CategorieAccessoire", b =>
@@ -151,7 +160,10 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdCatAcc")
                         .HasName("pk_cta");
 
-                    b.ToTable("t_e_categorieaccessoire_cta");
+                    b.HasIndex(new[] { "NomCatAcc" }, "uq_cta_nom")
+                        .IsUnique();
+
+                    b.ToTable("t_e_categorieaccessoire_cta", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.CategorieCaracteristique", b =>
@@ -172,7 +184,10 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdCatCaracteristique")
                         .HasName("pk_ctc");
 
-                    b.ToTable("t_e_categoriecaracteristique_ctc");
+                    b.HasIndex(new[] { "NomCatCaracteristique" }, "uq_ctc_nom")
+                        .IsUnique();
+
+                    b.ToTable("t_e_categoriecaracteristique_ctc", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.CategorieEquipement", b =>
@@ -199,7 +214,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("CatIdCatEquipement");
 
-                    b.ToTable("t_e_categorieequipement_cte");
+                    b.ToTable("t_e_categorieequipement_cte", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Client", b =>
@@ -248,7 +263,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("NumAdresse");
 
-                    b.ToTable("t_e_client_clt");
+                    b.ToTable("t_e_client_clt", "bmw");
 
                     b.HasCheckConstraint("ck_clt_age", "age((clt_datenaissance)::timestamp with time zone) >= '18 years'::interval");
 
@@ -273,7 +288,7 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdCollection")
                         .HasName("pk_cln");
 
-                    b.ToTable("t_e_collection_cln");
+                    b.ToTable("t_e_collection_cln", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Coloris", b =>
@@ -294,7 +309,10 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdColoris")
                         .HasName("pk_cls");
 
-                    b.ToTable("t_e_coloris_cls");
+                    b.HasIndex(new[] { "NomColoris" }, "uq_cls_nom")
+                        .IsUnique();
+
+                    b.ToTable("t_e_coloris_cls", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Commande", b =>
@@ -323,7 +341,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdClient");
 
-                    b.ToTable("t_e_commande_cmd");
+                    b.ToTable("t_e_commande_cmd", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Concessionnaire", b =>
@@ -367,7 +385,10 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdConcessionnaire")
                         .HasName("pk_con");
 
-                    b.ToTable("t_e_concessionnaire_con");
+                    b.HasIndex(new[] { "NomConcessionnaire" }, "uq_con_nom")
+                        .IsUnique();
+
+                    b.ToTable("t_e_concessionnaire_con", "bmw");
 
                     b.HasCheckConstraint("ck_con_email", "(con_email)::text ~~ '%_@__%.__%'::text");
 
@@ -420,7 +441,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdOffre");
 
-                    b.ToTable("t_e_contactinfo_ctf");
+                    b.ToTable("t_e_contactinfo_ctf", "bmw");
 
                     b.HasCheckConstraint("ck_ctf_datenaissance", "age((ctf_datenaissance)::timestamp with time zone) >= '18 years'::interval");
 
@@ -458,7 +479,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdTaille");
 
-                    b.ToTable("t_e_contenu_commande_ccm");
+                    b.ToTable("t_e_contenu_commande_ccm", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Couleur", b =>
@@ -504,7 +525,10 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdMoto");
 
-                    b.ToTable("t_e_couleur_clr");
+                    b.HasIndex(new[] { "NomCouleur", "DescriptionCouleur" }, "uq_clr_nom")
+                        .IsUnique();
+
+                    b.ToTable("t_e_couleur_clr", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.DemandeEssai", b =>
@@ -538,7 +562,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdConcessionnaire");
 
-                    b.ToTable("t_e_demandeessai_dmd");
+                    b.ToTable("t_e_demandeessai_dmd", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Equipement", b =>
@@ -600,7 +624,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdCollection");
 
-                    b.ToTable("t_e_equipement_equ");
+                    b.ToTable("t_e_equipement_equ", "bmw");
 
                     b.HasCheckConstraint("ck_eq_sexe", "(((equ_sexe)::text = 'f'::text) OR ((equ_sexe)::text = 'h'::text) OR ((equ_sexe)::text = 'uni'::text))");
                 });
@@ -620,7 +644,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdStyle");
 
-                    b.ToTable("t_j_estinclus_ecl");
+                    b.ToTable("t_j_estinclus_ecl", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.EstLie", b =>
@@ -636,7 +660,7 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdEquipement", "EquIdEquipement")
                         .HasName("pk_eli");
 
-                    b.ToTable("t_j_estlie_eli");
+                    b.ToTable("t_j_estlie_eli", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.GammeMoto", b =>
@@ -657,7 +681,10 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdGamme")
                         .HasName("pk_gam");
 
-                    b.ToTable("t_e_gammemoto_gam");
+                    b.HasIndex(new[] { "LibelleGamme" }, "uq_gam_libelle")
+                        .IsUnique();
+
+                    b.ToTable("t_e_gammemoto_gam", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Garage", b =>
@@ -675,7 +702,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdClient");
 
-                    b.ToTable("t_r_garage_grg");
+                    b.ToTable("t_r_garage_grg", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.InfoCB", b =>
@@ -711,7 +738,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdClient");
 
-                    b.ToTable("t_e_infocb_icb");
+                    b.ToTable("t_e_infocb_icb", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Media", b =>
@@ -749,7 +776,10 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdPresentation");
 
-                    b.ToTable("t_e_media_med");
+                    b.HasIndex(new[] { "LienMedia" }, "uq_med_lien")
+                        .IsUnique();
+
+                    b.ToTable("t_e_media_med", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.ModeleMoto", b =>
@@ -783,9 +813,11 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdMoto")
                         .HasName("pk_mod");
 
-                    b.HasIndex("IdGamme");
+                    b.HasIndex(new[] { "IdGamme", "NomMoto", "DescriptifMoto", "PrixMoto" }, "uq_acc_nom")
+                        .IsUnique()
+                        .HasDatabaseName("uq_acc_nom1");
 
-                    b.ToTable("t_e_modelemoto_mod");
+                    b.ToTable("t_e_modelemoto_mod", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.MotoConfigurable", b =>
@@ -806,7 +838,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdMoto");
 
-                    b.ToTable("t_r_motoconfigurable_mcf");
+                    b.ToTable("t_r_motoconfigurable_mcf", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.MotoDisponible", b =>
@@ -826,7 +858,7 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdMotoDisponible")
                         .HasName("pk_mdp");
 
-                    b.ToTable("t_e_motodisponible_mdp");
+                    b.ToTable("t_e_motodisponible_mdp", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Offre", b =>
@@ -863,7 +895,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdMotoConfigurable");
 
-                    b.ToTable("t_e_offre_ofr");
+                    b.ToTable("t_e_offre_ofr", "bmw");
 
                     b.HasCheckConstraint("ck_ofr_financement", "((((ofr_financement)::text = 'Sans Financement'::text) OR ((ofr_financement)::text = 'Financement Particulier'::text) OR ((ofr_financement)::text = 'Financement Professionnel'::text)))");
                 });
@@ -900,7 +932,14 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdOption")
                         .HasName("pk_opt");
 
+                    b.HasIndex(new[] { "NomOption", "DetailOption" }, "uq_opt_nom_detail")
+                        .IsUnique();
+
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.Designer.cs
+                    b.ToTable("t_e_option_opt", "bmw");
+========
                     b.ToTable("t_e_option_opt");
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.Designer.cs
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Pack", b =>
@@ -940,9 +979,19 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdPack")
                         .HasName("pk_pck");
 
-                    b.HasIndex("IdMoto");
+                    b.HasIndex(new[] { "IdMoto" }, "uq_pck_mod_id")
+                        .IsUnique();
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.Designer.cs
+========
 
-                    b.ToTable("t_e_pack_pck");
+                    b.HasIndex(new[] { "NomPack" }, "uq_pck_nom")
+                        .IsUnique();
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.Designer.cs
+
+                    b.HasIndex(new[] { "NomPack" }, "uq_pck_nom")
+                        .IsUnique();
+
+                    b.ToTable("t_e_pack_pck", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Parametres", b =>
@@ -961,7 +1010,7 @@ namespace SAE_4._01.Migrations
                     b.HasKey("NomParametre")
                         .HasName("pk_par");
 
-                    b.ToTable("t_e_parametre_par");
+                    b.ToTable("t_e_parametre_par", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Pays", b =>
@@ -974,7 +1023,7 @@ namespace SAE_4._01.Migrations
                     b.HasKey("NomPays")
                         .HasName("pk_pay");
 
-                    b.ToTable("t_e_pays_pay");
+                    b.ToTable("t_e_pays_pay", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Prefere", b =>
@@ -992,7 +1041,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdConcessionnaire");
 
-                    b.ToTable("t_r_prefere_prf");
+                    b.ToTable("t_r_prefere_prf", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.PresentationEquipement", b =>
@@ -1014,7 +1063,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdColoris");
 
-                    b.ToTable("t_r_presentationequipement_pre");
+                    b.ToTable("t_r_presentationequipement_pre", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Prive", b =>
@@ -1026,10 +1075,6 @@ namespace SAE_4._01.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdPrive"));
 
-                    b.Property<int>("Id")
-                        .HasColumnType("integer")
-                        .HasColumnName("prv_id2");
-
                     b.Property<int>("IdClient")
                         .HasColumnType("integer")
                         .HasColumnName("clt_id");
@@ -1037,9 +1082,10 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdPrive")
                         .HasName("pk_prv");
 
-                    b.HasIndex("IdClient");
+                    b.HasIndex(new[] { "IdClient" }, "uq_prv_clt_id")
+                        .IsUnique();
 
-                    b.ToTable("t_e_prive_prv");
+                    b.ToTable("t_e_prive_prv", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Professionnel", b =>
@@ -1047,10 +1093,6 @@ namespace SAE_4._01.Migrations
                     b.Property<int>("IdPro")
                         .HasColumnType("integer")
                         .HasColumnName("pro_id");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("integer")
-                        .HasColumnName("pro_id2");
 
                     b.Property<int>("IdClient")
                         .HasColumnType("integer")
@@ -1065,7 +1107,14 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdPro")
                         .HasName("pk_pro");
 
+                    b.HasIndex(new[] { "IdClient" }, "uq_pro_clt_id")
+                        .IsUnique();
+
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.Designer.cs
+                    b.ToTable("t_e_professionnel_pro", "bmw");
+========
                     b.ToTable("t_e_professionnel_pro");
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.Designer.cs
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Reservation", b =>
@@ -1103,7 +1152,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdConcessionnaire");
 
-                    b.ToTable("t_e_reservation_res");
+                    b.ToTable("t_e_reservation_res", "bmw");
 
                     b.HasCheckConstraint("ck_res_financement", "((((res_financement)::text = 'Comptant'::text) OR ((res_financement)::text = 'LLD'::text) OR ((res_financement)::text = 'Crédit'::text)))");
                 });
@@ -1123,7 +1172,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdOption");
 
-                    b.ToTable("t_j_se_compose_scp");
+                    b.ToTable("t_j_se_compose_scp", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Specifie", b =>
@@ -1147,7 +1196,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdOption");
 
-                    b.ToTable("t_j_specifie_spe");
+                    b.ToTable("t_j_specifie_spe", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Stock", b =>
@@ -1175,7 +1224,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdEquipement");
 
-                    b.ToTable("t_e_stock_stk");
+                    b.ToTable("t_e_stock_stk", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Style", b =>
@@ -1196,7 +1245,7 @@ namespace SAE_4._01.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("mod_id");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("NomStyle")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("sty_nom");
@@ -1220,7 +1269,14 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdMoto");
 
+                    b.HasIndex(new[] { "NomStyle", "DescriptionStyle" }, "uq_sty_nom_description")
+                        .IsUnique();
+
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.Designer.cs
+                    b.ToTable("t_e_style_sty", "bmw");
+========
                     b.ToTable("t_e_style_sty");
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.Designer.cs
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Taille", b =>
@@ -1247,7 +1303,7 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdTaille")
                         .HasName("pk_tle");
 
-                    b.ToTable("t_r_taille_tle");
+                    b.ToTable("t_r_taille_tle", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Telephone", b =>
@@ -1285,7 +1341,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdClient");
 
-                    b.ToTable("t_e_telephone_tel");
+                    b.ToTable("t_e_telephone_tel", "bmw");
 
                     b.HasCheckConstraint("ck_tel_fonction", "((((tel_fonction)::text = 'Privé'::text) OR ((tel_fonction)::text = 'Professionnel'::text)))");
 
@@ -1322,7 +1378,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdCommande");
 
-                    b.ToTable("t_h_transaction_tct");
+                    b.ToTable("t_h_transaction_tct", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Users", b =>
@@ -1378,7 +1434,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdClient");
 
-                    b.ToTable("t_e_users_usr");
+                    b.ToTable("t_e_users_usr", "bmw");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Accessoire", b =>
