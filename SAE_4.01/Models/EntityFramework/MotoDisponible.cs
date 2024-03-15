@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SAE_4._01.Models.EntityFramework
 {
-    [Table("t_e_motodisponible_mdp")]
+    [Table("t_e_moto_disponible_mdp")]
     public partial class MotoDisponible
     {
         [Key]
