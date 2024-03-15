@@ -1712,11 +1712,11 @@ INSERT INTO "BMWMottorad".pack VALUES (6, 1, 'Pack Touring', 'Avec le pack Touri
 
 
 --
--- Data for Name: parametres; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_parametre_par; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".parametres VALUES ('montantfraislivraison', '120');
-INSERT INTO "BMWMottorad".parametres VALUES ('fraislivraison', '9');
+INSERT INTO "BMWMottorad".t_e_parametre_par VALUES ('montantfraislivraison', '120');
+INSERT INTO "BMWMottorad".t_e_parametre_par VALUES ('fraislivraison', '9');
 
 
 --
