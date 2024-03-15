@@ -6,7 +6,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace SAE_4._01.Migrations
 {
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.cs
     public partial class TestServeur : Migration
+========
+    public partial class ContraintesUnique : Migration
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.cs
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -1273,35 +1277,50 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "uq_opt_nom_detail",
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.cs
                 schema: "bmw",
+========
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.cs
                 table: "t_e_option_opt",
                 columns: new[] { "opt_nom", "opt_detail" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "uq_pck_mod_id",
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.cs
                 schema: "bmw",
+========
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.cs
                 table: "t_e_pack_pck",
                 column: "mod_id",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "uq_pck_nom",
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.cs
                 schema: "bmw",
+========
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.cs
                 table: "t_e_pack_pck",
                 column: "pck_nom",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "uq_prv_clt_id",
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.cs
                 schema: "bmw",
+========
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.cs
                 table: "t_e_prive_prv",
                 column: "clt_id",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "uq_pro_clt_id",
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.cs
                 schema: "bmw",
+========
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.cs
                 table: "t_e_professionnel_pro",
                 column: "clt_id",
                 unique: true);
@@ -1338,7 +1357,10 @@ namespace SAE_4._01.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "uq_sty_nom_description",
+<<<<<<<< HEAD:SAE_4.01/Migrations/20240315085137_TestServeur.cs
                 schema: "bmw",
+========
+>>>>>>>> 9b3e0335cadc3c82873e1a1919dfc0b78f7e816f:SAE_4.01/Migrations/20240315081927_ContraintesUnique.cs
                 table: "t_e_style_sty",
                 columns: new[] { "sty_nom", "sty_description" },
                 unique: true);

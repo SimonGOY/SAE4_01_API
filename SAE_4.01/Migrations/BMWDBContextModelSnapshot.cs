@@ -1090,10 +1090,7 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdPro")
                         .HasName("pk_pro");
 
-                    b.HasIndex(new[] { "IdClient" }, "uq_pro_clt_id")
-                        .IsUnique();
-
-                    b.ToTable("t_e_professionnel_pro", "bmw");
+                    b.ToTable("t_e_professionnel_pro");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Reservation", b =>
@@ -1248,10 +1245,7 @@ namespace SAE_4._01.Migrations
 
                     b.HasIndex("IdMoto");
 
-                    b.HasIndex(new[] { "NomStyle", "DescriptionStyle" }, "uq_sty_nom_description")
-                        .IsUnique();
-
-                    b.ToTable("t_e_style_sty", "bmw");
+                    b.ToTable("t_e_style_sty");
                 });
 
             modelBuilder.Entity("SAE_4._01.Models.EntityFramework.Taille", b =>
