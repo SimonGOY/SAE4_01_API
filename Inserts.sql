@@ -866,152 +866,152 @@ INSERT INTO "BMWMottorad".t_e_commande_cmd VALUES (401, 72, '2024-02-03', 0);
 
 
 --
--- Data for Name: concessionnaire; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_concessionnaire_con; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".concessionnaire VALUES (1, 'dydy automobiles', 'dydy.motorad@gmail.com', 'dydymotorad.fr', '0245786345', '161 Rue de la chaudière 74290 Faverges');
-INSERT INTO "BMWMottorad".concessionnaire VALUES (2, 'couturier motorad', 'couturier.motorad@gmail.com', 'couturiermotorad.fr', '0278848498', '25 Rue de la paix 75100 Paris');
-INSERT INTO "BMWMottorad".concessionnaire VALUES (3, 'moto pas chere', 'motopaschere@gmail.com', 'motopaschere.fr', '0285326515', '40 Boulevard de la pomme 68900 Nice');
-INSERT INTO "BMWMottorad".concessionnaire VALUES (4, 'très bon concessionnaire', 'bonconcessionnaire@contact.fr', 'bonconce.fr', '0278965445', '87 Chemin du cussonant 69700 Toulouse');
-INSERT INTO "BMWMottorad".concessionnaire VALUES (5, 'BMW Motorad ANNECY', 'BMWMOTORADANNECY@contact.fr', 'motoradannecy.fr', '0232320010', '42 Boulevard de la chicane 43090 Poitou');
-
-
---
--- Data for Name: motoconfigurable; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
---
-
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (1, 1);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (2, 3);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (3, 2);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (4, 4);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (5, 4);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (6, 2);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (7, 3);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (8, 2);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (9, 3);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (10, 1);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (11, 4);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (12, 1);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (13, 4);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (14, 3);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (15, 3);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (16, 2);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (17, 4);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (18, 1);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (19, 3);
-INSERT INTO "BMWMottorad".motoconfigurable VALUES (20, 2);
+INSERT INTO "BMWMottorad".t_e_concessionnaire_con VALUES (1, 'dydy automobiles', 'dydy.motorad@gmail.com', 'dydymotorad.fr', '0245786345', '161 Rue de la chaudière 74290 Faverges');
+INSERT INTO "BMWMottorad".t_e_concessionnaire_con VALUES (2, 'couturier motorad', 'couturier.motorad@gmail.com', 'couturiermotorad.fr', '0278848498', '25 Rue de la paix 75100 Paris');
+INSERT INTO "BMWMottorad".t_e_concessionnaire_con VALUES (3, 'moto pas chere', 'motopaschere@gmail.com', 'motopaschere.fr', '0285326515', '40 Boulevard de la pomme 68900 Nice');
+INSERT INTO "BMWMottorad".t_e_concessionnaire_con VALUES (4, 'très bon concessionnaire', 'bonconcessionnaire@contact.fr', 'bonconce.fr', '0278965445', '87 Chemin du cussonant 69700 Toulouse');
+INSERT INTO "BMWMottorad".t_e_concessionnaire_con VALUES (5, 'BMW Motorad ANNECY', 'BMWMOTORADANNECY@contact.fr', 'motoradannecy.fr', '0232320010', '42 Boulevard de la chicane 43090 Poitou');
 
 
 --
--- Data for Name: offre; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_r_motoconfigurable_mcf; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".offre VALUES (1, 15, 1, false, 'Sans Financement');
-INSERT INTO "BMWMottorad".offre VALUES (2, 3, 1, false, 'Sans Financement');
-INSERT INTO "BMWMottorad".offre VALUES (3, 9, 5, true, 'Financement Particulier');
-INSERT INTO "BMWMottorad".offre VALUES (4, 13, 4, true, 'Financement Professionnel');
-INSERT INTO "BMWMottorad".offre VALUES (5, 19, 5, false, 'Financement Professionnel');
-INSERT INTO "BMWMottorad".offre VALUES (6, 1, 2, false, 'Sans Financement');
-
-
---
--- Data for Name: contactinfo; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
---
-
-INSERT INTO "BMWMottorad".contactinfo VALUES (1, 4, 'Mortello', 'Joris', '1987-04-06', 'joris.mortello@gmail.com', '0645785433');
-INSERT INTO "BMWMottorad".contactinfo VALUES (2, 3, 'Thomas', 'Matthéo', '1999-11-12', 'mattheo.thomas@gmail.com', '0712457888');
-INSERT INTO "BMWMottorad".contactinfo VALUES (3, 6, 'Delabrouille', 'Luc', '2002-11-16', 'luc.delabrouille@gmail.com', '0645788854');
-INSERT INTO "BMWMottorad".contactinfo VALUES (4, 2, 'Ruiz', 'Manon', '1987-02-24', 'manon.ruiz@gmail.com', '0612330410');
-INSERT INTO "BMWMottorad".contactinfo VALUES (5, 1, 'Holmes', 'Sherlock', '1986-01-12', 'sher.holmes@gmail.com', '0645780030');
-INSERT INTO "BMWMottorad".contactinfo VALUES (6, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (7, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (9, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".contactinfo VALUES (10, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".contactinfo VALUES (11, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".contactinfo VALUES (12, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".contactinfo VALUES (13, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".contactinfo VALUES (14, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".contactinfo VALUES (15, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".contactinfo VALUES (16, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".contactinfo VALUES (17, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".contactinfo VALUES (18, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".contactinfo VALUES (19, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".contactinfo VALUES (20, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".contactinfo VALUES (21, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".contactinfo VALUES (22, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".contactinfo VALUES (23, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
-INSERT INTO "BMWMottorad".contactinfo VALUES (24, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (25, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (26, NULL, 'Turconi', 'Arthur', '1999-12-08', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (27, NULL, 'Turconi', 'Arthur', '1999-12-08', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (28, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (29, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (30, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (31, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (32, NULL, 'Turconi', 'Arthur', '1999-02-02', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (33, NULL, 'Turconi', 'Arthur', '1999-02-02', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (34, NULL, 'Turconi', 'Arthur', '1999-02-02', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (35, NULL, 'Turconi', 'Arthur', '1999-02-02', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (36, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (37, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (38, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (39, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (40, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (41, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (42, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (43, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (44, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (45, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (46, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (47, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (48, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (49, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (50, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (51, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (52, NULL, 'tutur', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (53, NULL, 'tutur', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (54, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (55, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (56, NULL, 'AAAAAAAAAA', 'AAAAAAAAAA', '1999-11-11', 'css_404_not_found@iutannecy-deptinfo.fr', '0404040404');
-INSERT INTO "BMWMottorad".contactinfo VALUES (57, NULL, 'AAAAAAAAAA', 'AAAAAAAAAA', '1999-11-11', 'css_404_not_found@iutannecy-deptinfo.fr', '0404040404');
-INSERT INTO "BMWMottorad".contactinfo VALUES (58, NULL, 'Cussonait', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (59, NULL, 'Cussonait', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
-INSERT INTO "BMWMottorad".contactinfo VALUES (60, NULL, 'Laval', 'Emilie', '1999-12-07', 'emilie.laval@gmail.com', '0649190054');
-INSERT INTO "BMWMottorad".contactinfo VALUES (61, NULL, 'Laval', 'Emilie', '1999-12-07', 'emilie.laval@gmail.com', '0649190054');
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (1, 1);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (2, 3);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (3, 2);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (4, 4);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (5, 4);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (6, 2);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (7, 3);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (8, 2);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (9, 3);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (10, 1);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (11, 4);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (12, 1);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (13, 4);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (14, 3);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (15, 3);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (16, 2);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (17, 4);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (18, 1);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (19, 3);
+INSERT INTO "BMWMottorad".t_r_motoconfigurable_mcf VALUES (20, 2);
 
 
 --
--- Data for Name: equipement; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_offre_ofr; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".equipement VALUES (9, 2, 'pantalon xride gore-tex', 'Le pantalon XRide GORE-TEX sait convaincre par des caractéristiques globales de sécurité et un excellent confort. Grâce à des inserts en cuir spécialement disposés et à l’utilisation de matériaux élastiques aux genoux et à la ceinture, le pantalon offre une grande liberté de mouvement ainsi qu’un parfait maintien. Un détail haut de gamme : inserts en cuir de vachette sur les zones exposées en cas de chute.', 'f', 710, 0, true, 'Adventure', 2);
-INSERT INTO "BMWMottorad".equipement VALUES (1, 7, 'casque GS Pure', 'Le casque Enduro GS Pure est le compagnon idéal pour les aventures sur la route ou en tout-terrain. Ce casque peut se transformer rapidement et en toute simplicité en versions MX (cross), naked ou casque Enduro Touring avec visière. Le nouveau pare-soleil avec mécanisme push/pull se commande facilement, même avec des gants.', 'uni', 590, 5, true, 'Adventure', 2);
-INSERT INTO "BMWMottorad".equipement VALUES (13, 6, 'bottes venturegrip gore-tex', 'Adaptées à un usage quotidien, les bottes VentureGrip GORE-TEX robustes conviennent aussi bien au Touring qu’à l’enduro. Conçues en cuir de vachette pleine fleur, les bottes robustes offrent une protection élevée et se distinguent par un confort hors norme. Grâce à la membrane GORE-TEX, elles sont étanches, coupe-vent et très respirantes.', 'uni', 360, 0, false, 'Adventure', 2);
-INSERT INTO "BMWMottorad".equipement VALUES (2, 7, 'casque Bowler', 'Le casque Bowler s’adresse aux motards branchés qui apprécient le design classique et chic. Le look rétro se reflète également dans des détails intéressants, tels que les applications en cuir ou la doublure frappée du logo BMW. La forme ajustée s’adapte de manière optimale à chaque taille. Une large gamme d’accessoires complète le catalogue.', 'uni', 463, 5, false, 'Adventure', 1);
-INSERT INTO "BMWMottorad".equipement VALUES (5, 5, 'veste xride gore-tex', 'Que ce soit pour profiter d’une conduite sportive ou pour partir à l’aventure sur de longues distances : le blouson XRide GORE-TEX sait convaincre par des caractéristiques globales de sécurité et un grand confort. Grâce à sa matière extérieure élastique, aux inserts en cuir disposés sous forme de plis ergonomiques et aux bandes élastiques, il offre une grande liberté de mouvement et un grand confort en toutes circonstances.', 'f', 910, 0, true, 'Sport', 2);
-INSERT INTO "BMWMottorad".equipement VALUES (14, 6, 'bottes gs competition', 'Une capacité tout-terrain sans compromis : Les bottes GS Competition ont tout ce qu’il faut pour tenir en dehors des sentiers battus. La solide conception de type cadre en polyuréthane, la plaque protège-tibia ajustable et les grands éléments plastiques offrent une protection optimale dans des conditions de conduite extrêmes.', 'h', 400, 0, true, 'Adventure', 1);
-INSERT INTO "BMWMottorad".equipement VALUES (6, 5, 'blouson summerxcursion', 'Le blouson SummerXcursion avec une coupe sportive est le compagnon idéal pour les sorties estivales. La matière extérieure est en polyamide résistant à l’abrasion et assure en permanence une ventilation optimale. Ce blouson à la mode peut ainsi être porté sans problème même lorsqu’il fait très chaud.', 'h', 400, 0, false, 'Roadster', 1);
-INSERT INTO "BMWMottorad".equipement VALUES (8, 2, 'pantalon london', 'Conçu dans un look moderne à 5 poches, le pantalon London fait bonne figure, même en dehors du monde de la moto. Les protecteurs NP Flex 3D aux genoux offrent d’excellentes capacités d’amortissement des chocs et n’altèrent en rien le confort du pantalon.', 'h', 260, 0, false, 'Urban Mobility', 1);
-INSERT INTO "BMWMottorad".equipement VALUES (3, 7, 'Casque SAO PAULO', 'Très tendance, confortable et en toute sécurité à travers la métropole – c’est ce que représente le casque Sao Paulo à visière longue et pare-soleil intégré. Les éléments de ventilation refermables sur le dessus de la tête et le spoiler empêchent l’accumulation de chaleur. Ils sont extrêmement aérodynamiques et conçus pour être efficaces. Pratique : le rembourrage intérieur amovible et lavable.', 'uni', 100, 5, false, 'Urban Mobility', 2);
-INSERT INTO "BMWMottorad".equipement VALUES (7, 2, 'jean roadcrafted', 'Grâce à ses protecteurs discrets, le jean RoadCrafted pour femme en denim élastique et résistant à l’abrasion conjugue une sécurité et fonctionnalité avec un look classique.', 'f', 393, 0, false, 'Heritage', 1);
-INSERT INTO "BMWMottorad".equipement VALUES (16, 11, 'masque enduro gs pro', 'Parfaite visibilité sur tous les terrains : le masque Enduro GS Pro est parfaitement équipé pour le tout-terrain avec son verre double ventilé. Un revêtement spécial protège le verre contre la buée et les rayures. Particulièrement pratique pour les personnes qui portent des lunettes : le cadre over-the-glasses est facile à porter au-dessus de lunettes normales.', 'uni', 110, 0, false, 'Adventure', 2);
-INSERT INTO "BMWMottorad".equipement VALUES (12, 11, 'sac à dos black collection', 'Le sac à dos Black Collection, grand modèle, a la taille idéale pour les grandes balades et les voyages avec un peu plus de bagages. Avec le compartiment principal imperméable et son compartiment pour ordinateur portable intégré (jusqu’à 15"), vous ne craignez pas les averses. Il est possible d’étendre le volume total de 25 à 30 litres.', 'uni', 191, 0, false, 'Adventure', 2);
-INSERT INTO "BMWMottorad".equipement VALUES (28, 7, 'Casque Xomo Carbon', 'Le casque Xomo Carbon est la preuve qu’une excellente protection ne doit pas être inconfortable. Le casque intégral sport avec coque en matériau composite à base de carbone offre de nombreuses options confortables comme des coussinets pour les joues à conception tridimensionnelle, le système Easy Fit pour porteur de lunettes, un système de visière ergonomique avec fonction Soft Close et un rabat amovible sur le menton.', 'uni', 80000000000000, 5, true, 'Tour', 2);
-INSERT INTO "BMWMottorad".equipement VALUES (17, 11, 'dragonne tour de cou motorsport', 'Dragonne tour de cou bicolore avec logo BMW Motorrad et porte-clés.', 'uni', 20, 0, true, 'Sport', 1);
-INSERT INTO "BMWMottorad".equipement VALUES (22, 8, 'combinaison m prorace comp', 'La combinaison M ProRace Comp combine des exigences sportives élevées avec un pack sécurité complet. Les protecteurs aux épaules, aux coudes, aux hanches et aux genoux assurent la sécurité. Alors qu’une bosse dorsale optimise l’aérodynamisme, les couleurs M Motorsport montrent ce que cette combinaison qui ne passe pas inaperçue représente : des performances de pointe.', 'h', 1710, 0, false, 'Sport', 2);
-INSERT INTO "BMWMottorad".equipement VALUES (26, 10, 'gants gs puna gore-tex', 'Parfaits pour les virées prolongées : Les gants Enduro GS Puna GORE-TEX offrent une protection optimale contre le vent et les intempéries. La membrane respirante GORE-TEX X-TRAFIT™ empêche l’eau et le froid de pénétrer. Les doublures en cuir, le SuperFabric® très résistant à l’abrasion et une protection souple des articulations des doigts viennent compléter ce robuste ensemble.', 'f', 140, 0, true, 'Adventure', 1);
-INSERT INTO "BMWMottorad".equipement VALUES (10, 11, 'sac à dos motorsport', 'Sac à dos pratique avec fermeture par enroulement au look BMW Motorsport.', 'uni', 70, 0, false, 'Adventure', 1);
-INSERT INTO "BMWMottorad".equipement VALUES (20, 9, 'veste de protection', 'Grâce aux protections NP3 Flex au niveau de la poitrine, des bras et du dos, la veste de protection réduit les risques de blessure. La veste s’adapte parfaitement sous l’effet de la chaleur du corps Des matériaux respirants et particulièrement légers garantissent également un grand confort. Pratique : La veste est lavable en machine grâce aux protecteurs amovibles.', 'uni', 230, 0, false, 'Sport', 1);
-INSERT INTO "BMWMottorad".equipement VALUES (21, 9, 'ceinture lombaire pro', 'Avec sa ceinture de protection lombaire avec fonction NP3 Flex à renfort souple, la ceinture lombaire Pro offre une bonne protection du bas du dos. Le système de ceinture en caoutchouc réglable en continu garantit un excellent soutien. En combinaison avec le réglage de largeur en continu, la maille intégrée et proche du corps offre un confort optimal.', 'uni', 90, 0, false, 'Adventure', 1);
-INSERT INTO "BMWMottorad".equipement VALUES (23, 8, 'skin function rr', 'Sous-combinaison une pièce pour une parfaite thermorégulation.', 'h', 110, 0, false, 'Sport', 1);
-INSERT INTO "BMWMottorad".equipement VALUES (18, 11, 'porte-clés gs logo', 'Porte-clés avec impression à plat sur la face avant.', 'uni', 20, 0, true, 'Adventure', 1);
-INSERT INTO "BMWMottorad".equipement VALUES (11, 11, 'sac pour casque bmw motorrad', 'Le sac pour casque RidersTrunk offre suffisamment de place pour vos objets quotidiens. En plus du compartiment principal avec fermeture zippée, il possède un compartiment refermable pour ordinateur portable et deux poches latérales avec bouton-pression. La poignée et la bandoulière permettent de porter facilement ce sac, le compagnon idéal de votre quotidien sur deux roues.', 'uni', 180, 0, true, 'Adventure', 2);
-INSERT INTO "BMWMottorad".equipement VALUES (19, 9, 'protection dosale à bretelles', 'La protection dorsale à bretelles réduit les risques de blessure, grâce à sa protection à fonction NP3 Flex. La protection à bretelles est particulièrement légère ; elle se ressent à peine lors du port. Les sangles d’épaule légèrement rembourrées et parfaitement ergonomiques assurent également un grand confort, de même que la ceinture lombaire intégrée et réglable en largeur.', 'uni', 190, 0, false, 'Adventure', 2);
-INSERT INTO "BMWMottorad".equipement VALUES (15, 6, 'sneakers seoul gore-tex', 'Les sneakers Séoul GORE-TEX ne séduisent pas seulement par leur remarquable esthétique. La membrane GORE-TEX offre une protection contre le vent et l’eau, tandis que la semelle résistante à l’huile et au carburant ainsi que la protection intégrée des talons et des articulations assurent un véritable gain de sécurité. La fermeture éclair dissimulée sur la partie interne garantit une mise en place et un retrait rapides.', 'uni', 250, 0, false, 'Urban Mobility', 2);
-INSERT INTO "BMWMottorad".equipement VALUES (24, 8, 'blouson & pantalon hotlap', 'Conçu en cuir de vachette Nappa extrêmement résistant aux chutes et à l’usure, le blouson Hotlap allie confort et sécurité. Grâce aux nombreux éléments élastiques et aux inserts extensibles en cuir au niveau des épaules et des manches, et malgré la présence de protecteurs, le blouson offre une liberté de mouvement optimale, quelle que soit la position d’assise.', 'h', 1110, 0, false, 'Sport', 2);
-INSERT INTO "BMWMottorad".equipement VALUES (25, 10, 'gants tenda 2in1 gore-tex', 'Fonction 2 en 1 pour plus de confort : les gants sport Tenda 2in1 GORE-TEX, avec système à 2 chambres, cachent bien leur jeu. Alors que la première chambre en cuir kangourou non doublée procure une excellente prise en main du guidon avec la paume de la main, la deuxième, imperméable, car dotée d’une membrane respirante GORE-TEX, offre une protection parfaite contre les aléas de la météo.', 'uni', 200, 0, true, 'Tour', 2);
-INSERT INTO "BMWMottorad".equipement VALUES (27, 10, 'gants reschen gore-tex', 'Parfaits pour les virées prolongées : Les gants Enduro Reschen GORE-TEX offrent une protection optimale contre le vent et les intempéries. La membrane respirante GORE-TEX X-TRAFIT™ empêche l’eau et le froid de pénétrer. Les doublures en cuir, le SuperFabric® très résistant à l’abrasion et une protection souple des articulations des doigts viennent compléter ce robuste ensemble.', 'h', 140, 0, false, 'Adventure', 2);
-INSERT INTO "BMWMottorad".equipement VALUES (4, 5, 'blouson schwabing', 'Le blouson Schwabing au look Heritage fait revivre un classique au design revisité. Les doubles rayures traditionnelles sur les manches ajoutent une touche esthétique particulièrement marquante. Sous le cuir de vachette de haute qualité, les protecteurs NP Flex aux épaules et aux coudes assurent la sécurité, tandis que deux poches extérieures et trois poches intérieures offrent des possibilités de rangement.', 'h', 570, 0, true, 'Adventure', 2);
+INSERT INTO "BMWMottorad".t_e_offre_ofr VALUES (1, 15, 1, false, 'Sans Financement');
+INSERT INTO "BMWMottorad".t_e_offre_ofr VALUES (2, 3, 1, false, 'Sans Financement');
+INSERT INTO "BMWMottorad".t_e_offre_ofr VALUES (3, 9, 5, true, 'Financement Particulier');
+INSERT INTO "BMWMottorad".t_e_offre_ofr VALUES (4, 13, 4, true, 'Financement Professionnel');
+INSERT INTO "BMWMottorad".t_e_offre_ofr VALUES (5, 19, 5, false, 'Financement Professionnel');
+INSERT INTO "BMWMottorad".t_e_offre_ofr VALUES (6, 1, 2, false, 'Sans Financement');
+
+
+--
+-- Data for Name: t_e_contactinfo_ctf; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+--
+
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (1, 4, 'Mortello', 'Joris', '1987-04-06', 'joris.mortello@gmail.com', '0645785433');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (2, 3, 'Thomas', 'Matthéo', '1999-11-12', 'mattheo.thomas@gmail.com', '0712457888');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (3, 6, 'Delabrouille', 'Luc', '2002-11-16', 'luc.delabrouille@gmail.com', '0645788854');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (4, 2, 'Ruiz', 'Manon', '1987-02-24', 'manon.ruiz@gmail.com', '0612330410');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (5, 1, 'Holmes', 'Sherlock', '1986-01-12', 'sher.holmes@gmail.com', '0645780030');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (6, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (7, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (9, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (10, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (11, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (12, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (13, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (14, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (15, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (16, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (17, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (18, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (19, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (20, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (21, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (22, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (23, NULL, 'tutru', 'tutur', '2004-06-23', 'arthur@gmail.com', '0897574823');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (24, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (25, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (26, NULL, 'Turconi', 'Arthur', '1999-12-08', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (27, NULL, 'Turconi', 'Arthur', '1999-12-08', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (28, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (29, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (30, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (31, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (32, NULL, 'Turconi', 'Arthur', '1999-02-02', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (33, NULL, 'Turconi', 'Arthur', '1999-02-02', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (34, NULL, 'Turconi', 'Arthur', '1999-02-02', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (35, NULL, 'Turconi', 'Arthur', '1999-02-02', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (36, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (37, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (38, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (39, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (40, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (41, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (42, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (43, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (44, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (45, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (46, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (47, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (48, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (49, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (50, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (51, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur.turconi@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (52, NULL, 'tutur', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (53, NULL, 'tutur', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (54, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (55, NULL, 'Turconi', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (56, NULL, 'AAAAAAAAAA', 'AAAAAAAAAA', '1999-11-11', 'css_404_not_found@iutannecy-deptinfo.fr', '0404040404');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (57, NULL, 'AAAAAAAAAA', 'AAAAAAAAAA', '1999-11-11', 'css_404_not_found@iutannecy-deptinfo.fr', '0404040404');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (58, NULL, 'Cussonait', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (59, NULL, 'Cussonait', 'Arthur', '2004-06-23', 'arthur@gmail.com', '0783231325');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (60, NULL, 'Laval', 'Emilie', '1999-12-07', 'emilie.laval@gmail.com', '0649190054');
+INSERT INTO "BMWMottorad".t_e_contactinfo_ctf VALUES (61, NULL, 'Laval', 'Emilie', '1999-12-07', 'emilie.laval@gmail.com', '0649190054');
+
+
+--
+-- Data for Name: t_e_equipement_equ; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+--
+
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (9, 2, 'pantalon xride gore-tex', 'Le pantalon XRide GORE-TEX sait convaincre par des caractéristiques globales de sécurité et un excellent confort. Grâce à des inserts en cuir spécialement disposés et à l’utilisation de matériaux élastiques aux genoux et à la ceinture, le pantalon offre une grande liberté de mouvement ainsi qu’un parfait maintien. Un détail haut de gamme : inserts en cuir de vachette sur les zones exposées en cas de chute.', 'f', 710, 0, true, 'Adventure', 2);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (1, 7, 'casque GS Pure', 'Le casque Enduro GS Pure est le compagnon idéal pour les aventures sur la route ou en tout-terrain. Ce casque peut se transformer rapidement et en toute simplicité en versions MX (cross), naked ou casque Enduro Touring avec visière. Le nouveau pare-soleil avec mécanisme push/pull se commande facilement, même avec des gants.', 'uni', 590, 5, true, 'Adventure', 2);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (13, 6, 'bottes venturegrip gore-tex', 'Adaptées à un usage quotidien, les bottes VentureGrip GORE-TEX robustes conviennent aussi bien au Touring qu’à l’enduro. Conçues en cuir de vachette pleine fleur, les bottes robustes offrent une protection élevée et se distinguent par un confort hors norme. Grâce à la membrane GORE-TEX, elles sont étanches, coupe-vent et très respirantes.', 'uni', 360, 0, false, 'Adventure', 2);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (2, 7, 'casque Bowler', 'Le casque Bowler s’adresse aux motards branchés qui apprécient le design classique et chic. Le look rétro se reflète également dans des détails intéressants, tels que les applications en cuir ou la doublure frappée du logo BMW. La forme ajustée s’adapte de manière optimale à chaque taille. Une large gamme d’accessoires complète le catalogue.', 'uni', 463, 5, false, 'Adventure', 1);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (5, 5, 'veste xride gore-tex', 'Que ce soit pour profiter d’une conduite sportive ou pour partir à l’aventure sur de longues distances : le blouson XRide GORE-TEX sait convaincre par des caractéristiques globales de sécurité et un grand confort. Grâce à sa matière extérieure élastique, aux inserts en cuir disposés sous forme de plis ergonomiques et aux bandes élastiques, il offre une grande liberté de mouvement et un grand confort en toutes circonstances.', 'f', 910, 0, true, 'Sport', 2);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (14, 6, 'bottes gs competition', 'Une capacité tout-terrain sans compromis : Les bottes GS Competition ont tout ce qu’il faut pour tenir en dehors des sentiers battus. La solide conception de type cadre en polyuréthane, la plaque protège-tibia ajustable et les grands éléments plastiques offrent une protection optimale dans des conditions de conduite extrêmes.', 'h', 400, 0, true, 'Adventure', 1);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (6, 5, 'blouson summerxcursion', 'Le blouson SummerXcursion avec une coupe sportive est le compagnon idéal pour les sorties estivales. La matière extérieure est en polyamide résistant à l’abrasion et assure en permanence une ventilation optimale. Ce blouson à la mode peut ainsi être porté sans problème même lorsqu’il fait très chaud.', 'h', 400, 0, false, 'Roadster', 1);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (8, 2, 'pantalon london', 'Conçu dans un look moderne à 5 poches, le pantalon London fait bonne figure, même en dehors du monde de la moto. Les protecteurs NP Flex 3D aux genoux offrent d’excellentes capacités d’amortissement des chocs et n’altèrent en rien le confort du pantalon.', 'h', 260, 0, false, 'Urban Mobility', 1);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (3, 7, 'Casque SAO PAULO', 'Très tendance, confortable et en toute sécurité à travers la métropole – c’est ce que représente le casque Sao Paulo à visière longue et pare-soleil intégré. Les éléments de ventilation refermables sur le dessus de la tête et le spoiler empêchent l’accumulation de chaleur. Ils sont extrêmement aérodynamiques et conçus pour être efficaces. Pratique : le rembourrage intérieur amovible et lavable.', 'uni', 100, 5, false, 'Urban Mobility', 2);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (7, 2, 'jean roadcrafted', 'Grâce à ses protecteurs discrets, le jean RoadCrafted pour femme en denim élastique et résistant à l’abrasion conjugue une sécurité et fonctionnalité avec un look classique.', 'f', 393, 0, false, 'Heritage', 1);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (16, 11, 'masque enduro gs pro', 'Parfaite visibilité sur tous les terrains : le masque Enduro GS Pro est parfaitement équipé pour le tout-terrain avec son verre double ventilé. Un revêtement spécial protège le verre contre la buée et les rayures. Particulièrement pratique pour les personnes qui portent des lunettes : le cadre over-the-glasses est facile à porter au-dessus de lunettes normales.', 'uni', 110, 0, false, 'Adventure', 2);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (12, 11, 'sac à dos black collection', 'Le sac à dos Black Collection, grand modèle, a la taille idéale pour les grandes balades et les voyages avec un peu plus de bagages. Avec le compartiment principal imperméable et son compartiment pour ordinateur portable intégré (jusqu’à 15"), vous ne craignez pas les averses. Il est possible d’étendre le volume total de 25 à 30 litres.', 'uni', 191, 0, false, 'Adventure', 2);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (28, 7, 'Casque Xomo Carbon', 'Le casque Xomo Carbon est la preuve qu’une excellente protection ne doit pas être inconfortable. Le casque intégral sport avec coque en matériau composite à base de carbone offre de nombreuses options confortables comme des coussinets pour les joues à conception tridimensionnelle, le système Easy Fit pour porteur de lunettes, un système de visière ergonomique avec fonction Soft Close et un rabat amovible sur le menton.', 'uni', 80000000000000, 5, true, 'Tour', 2);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (17, 11, 'dragonne tour de cou motorsport', 'Dragonne tour de cou bicolore avec logo BMW Motorrad et porte-clés.', 'uni', 20, 0, true, 'Sport', 1);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (22, 8, 'combinaison m prorace comp', 'La combinaison M ProRace Comp combine des exigences sportives élevées avec un pack sécurité complet. Les protecteurs aux épaules, aux coudes, aux hanches et aux genoux assurent la sécurité. Alors qu’une bosse dorsale optimise l’aérodynamisme, les couleurs M Motorsport montrent ce que cette combinaison qui ne passe pas inaperçue représente : des performances de pointe.', 'h', 1710, 0, false, 'Sport', 2);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (26, 10, 'gants gs puna gore-tex', 'Parfaits pour les virées prolongées : Les gants Enduro GS Puna GORE-TEX offrent une protection optimale contre le vent et les intempéries. La membrane respirante GORE-TEX X-TRAFIT™ empêche l’eau et le froid de pénétrer. Les doublures en cuir, le SuperFabric® très résistant à l’abrasion et une protection souple des articulations des doigts viennent compléter ce robuste ensemble.', 'f', 140, 0, true, 'Adventure', 1);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (10, 11, 'sac à dos motorsport', 'Sac à dos pratique avec fermeture par enroulement au look BMW Motorsport.', 'uni', 70, 0, false, 'Adventure', 1);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (20, 9, 'veste de protection', 'Grâce aux protections NP3 Flex au niveau de la poitrine, des bras et du dos, la veste de protection réduit les risques de blessure. La veste s’adapte parfaitement sous l’effet de la chaleur du corps Des matériaux respirants et particulièrement légers garantissent également un grand confort. Pratique : La veste est lavable en machine grâce aux protecteurs amovibles.', 'uni', 230, 0, false, 'Sport', 1);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (21, 9, 'ceinture lombaire pro', 'Avec sa ceinture de protection lombaire avec fonction NP3 Flex à renfort souple, la ceinture lombaire Pro offre une bonne protection du bas du dos. Le système de ceinture en caoutchouc réglable en continu garantit un excellent soutien. En combinaison avec le réglage de largeur en continu, la maille intégrée et proche du corps offre un confort optimal.', 'uni', 90, 0, false, 'Adventure', 1);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (23, 8, 'skin function rr', 'Sous-combinaison une pièce pour une parfaite thermorégulation.', 'h', 110, 0, false, 'Sport', 1);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (18, 11, 'porte-clés gs logo', 'Porte-clés avec impression à plat sur la face avant.', 'uni', 20, 0, true, 'Adventure', 1);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (11, 11, 'sac pour casque bmw motorrad', 'Le sac pour casque RidersTrunk offre suffisamment de place pour vos objets quotidiens. En plus du compartiment principal avec fermeture zippée, il possède un compartiment refermable pour ordinateur portable et deux poches latérales avec bouton-pression. La poignée et la bandoulière permettent de porter facilement ce sac, le compagnon idéal de votre quotidien sur deux roues.', 'uni', 180, 0, true, 'Adventure', 2);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (19, 9, 'protection dosale à bretelles', 'La protection dorsale à bretelles réduit les risques de blessure, grâce à sa protection à fonction NP3 Flex. La protection à bretelles est particulièrement légère ; elle se ressent à peine lors du port. Les sangles d’épaule légèrement rembourrées et parfaitement ergonomiques assurent également un grand confort, de même que la ceinture lombaire intégrée et réglable en largeur.', 'uni', 190, 0, false, 'Adventure', 2);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (15, 6, 'sneakers seoul gore-tex', 'Les sneakers Séoul GORE-TEX ne séduisent pas seulement par leur remarquable esthétique. La membrane GORE-TEX offre une protection contre le vent et l’eau, tandis que la semelle résistante à l’huile et au carburant ainsi que la protection intégrée des talons et des articulations assurent un véritable gain de sécurité. La fermeture éclair dissimulée sur la partie interne garantit une mise en place et un retrait rapides.', 'uni', 250, 0, false, 'Urban Mobility', 2);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (24, 8, 'blouson & pantalon hotlap', 'Conçu en cuir de vachette Nappa extrêmement résistant aux chutes et à l’usure, le blouson Hotlap allie confort et sécurité. Grâce aux nombreux éléments élastiques et aux inserts extensibles en cuir au niveau des épaules et des manches, et malgré la présence de protecteurs, le blouson offre une liberté de mouvement optimale, quelle que soit la position d’assise.', 'h', 1110, 0, false, 'Sport', 2);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (25, 10, 'gants tenda 2in1 gore-tex', 'Fonction 2 en 1 pour plus de confort : les gants sport Tenda 2in1 GORE-TEX, avec système à 2 chambres, cachent bien leur jeu. Alors que la première chambre en cuir kangourou non doublée procure une excellente prise en main du guidon avec la paume de la main, la deuxième, imperméable, car dotée d’une membrane respirante GORE-TEX, offre une protection parfaite contre les aléas de la météo.', 'uni', 200, 0, true, 'Tour', 2);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (27, 10, 'gants reschen gore-tex', 'Parfaits pour les virées prolongées : Les gants Enduro Reschen GORE-TEX offrent une protection optimale contre le vent et les intempéries. La membrane respirante GORE-TEX X-TRAFIT™ empêche l’eau et le froid de pénétrer. Les doublures en cuir, le SuperFabric® très résistant à l’abrasion et une protection souple des articulations des doigts viennent compléter ce robuste ensemble.', 'h', 140, 0, false, 'Adventure', 2);
+INSERT INTO "BMWMottorad".t_e_equipement_equ VALUES (4, 5, 'blouson schwabing', 'Le blouson Schwabing au look Heritage fait revivre un classique au design revisité. Les doubles rayures traditionnelles sur les manches ajoutent une touche esthétique particulièrement marquante. Sous le cuir de vachette de haute qualité, les protecteurs NP Flex aux épaules et aux coudes assurent la sécurité, tandis que deux poches extérieures et trois poches intérieures offrent des possibilités de rangement.', 'h', 570, 0, true, 'Adventure', 2);
 
 
 --
