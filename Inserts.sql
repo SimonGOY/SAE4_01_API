@@ -1853,55 +1853,55 @@ INSERT INTO "BMWMottorad".reservation VALUES (20, 20, 9, 1, '2023-06-20', 'Créd
 
 
 --
--- Data for Name: secompose; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_j_se_compose_scp; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".secompose VALUES (1, 5);
-INSERT INTO "BMWMottorad".secompose VALUES (1, 3);
-INSERT INTO "BMWMottorad".secompose VALUES (1, 7);
-INSERT INTO "BMWMottorad".secompose VALUES (1, 1);
-INSERT INTO "BMWMottorad".secompose VALUES (2, 3);
-INSERT INTO "BMWMottorad".secompose VALUES (2, 6);
-INSERT INTO "BMWMottorad".secompose VALUES (2, 5);
-INSERT INTO "BMWMottorad".secompose VALUES (2, 4);
-INSERT INTO "BMWMottorad".secompose VALUES (3, 2);
-INSERT INTO "BMWMottorad".secompose VALUES (3, 7);
-INSERT INTO "BMWMottorad".secompose VALUES (3, 5);
-INSERT INTO "BMWMottorad".secompose VALUES (3, 6);
-INSERT INTO "BMWMottorad".secompose VALUES (4, 9);
-INSERT INTO "BMWMottorad".secompose VALUES (4, 1);
-INSERT INTO "BMWMottorad".secompose VALUES (4, 7);
-INSERT INTO "BMWMottorad".secompose VALUES (4, 2);
-INSERT INTO "BMWMottorad".secompose VALUES (5, 7);
-INSERT INTO "BMWMottorad".secompose VALUES (5, 8);
-INSERT INTO "BMWMottorad".secompose VALUES (5, 14);
-INSERT INTO "BMWMottorad".secompose VALUES (6, 17);
-INSERT INTO "BMWMottorad".secompose VALUES (6, 9);
-INSERT INTO "BMWMottorad".secompose VALUES (7, 11);
-INSERT INTO "BMWMottorad".secompose VALUES (7, 3);
-INSERT INTO "BMWMottorad".secompose VALUES (7, 8);
-INSERT INTO "BMWMottorad".secompose VALUES (8, 1);
-INSERT INTO "BMWMottorad".secompose VALUES (8, 5);
-INSERT INTO "BMWMottorad".secompose VALUES (9, 7);
-INSERT INTO "BMWMottorad".secompose VALUES (9, 13);
-INSERT INTO "BMWMottorad".secompose VALUES (10, 6);
-INSERT INTO "BMWMottorad".secompose VALUES (10, 12);
-INSERT INTO "BMWMottorad".secompose VALUES (10, 4);
-INSERT INTO "BMWMottorad".secompose VALUES (11, 20);
-INSERT INTO "BMWMottorad".secompose VALUES (11, 12);
-INSERT INTO "BMWMottorad".secompose VALUES (11, 16);
-INSERT INTO "BMWMottorad".secompose VALUES (12, 7);
-INSERT INTO "BMWMottorad".secompose VALUES (12, 15);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (1, 5);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (1, 3);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (1, 7);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (1, 1);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (2, 3);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (2, 6);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (2, 5);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (2, 4);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (3, 2);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (3, 7);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (3, 5);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (3, 6);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (4, 9);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (4, 1);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (4, 7);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (4, 2);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (5, 7);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (5, 8);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (5, 14);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (6, 17);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (6, 9);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (7, 11);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (7, 3);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (7, 8);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (8, 1);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (8, 5);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (9, 7);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (9, 13);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (10, 6);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (10, 12);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (10, 4);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (11, 20);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (11, 12);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (11, 16);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (12, 7);
+INSERT INTO "BMWMottorad".t_j_se_compose_scp VALUES (12, 15);
 
 
 --
--- Data for Name: specifie; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_j_specifie_spe; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".specifie VALUES (1, 1);
-INSERT INTO "BMWMottorad".specifie VALUES (3, 2);
-INSERT INTO "BMWMottorad".specifie VALUES (5, 4);
-INSERT INTO "BMWMottorad".specifie VALUES (6, 3);
+INSERT INTO "BMWMottorad".t_j_specifie_spe VALUES (1, 1);
+INSERT INTO "BMWMottorad".t_j_specifie_spe VALUES (3, 2);
+INSERT INTO "BMWMottorad".t_j_specifie_spe VALUES (5, 4);
+INSERT INTO "BMWMottorad".t_j_specifie_spe VALUES (6, 3);
 
 
 --
