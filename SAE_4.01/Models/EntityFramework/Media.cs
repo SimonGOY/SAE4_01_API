@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_media_med")]
+    [Index(nameof(LienMedia), Name = "uq_med_lien", IsUnique = true)]
     public partial class Media
     {
         [Key]

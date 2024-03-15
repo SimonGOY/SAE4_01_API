@@ -1,9 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
 
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_accessoire_acc")]
+    [Index(nameof(NomAccessoire), Name = "uq_acc_nom", IsUnique = true)]
     public class Accessoire
     {
         [Key]
