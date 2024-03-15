@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace SAE_4._01.Migrations
 {
-    public partial class CreationBDCheck : Migration
+    public partial class ContraintesUnique : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -695,8 +695,7 @@ namespace SAE_4._01.Migrations
                 {
                     prv_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    clt_id = table.Column<int>(type: "integer", nullable: false),
-                    prv_id2 = table.Column<int>(type: "integer", nullable: false)
+                    clt_id = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -715,7 +714,6 @@ namespace SAE_4._01.Migrations
                 {
                     pro_id = table.Column<int>(type: "integer", nullable: false),
                     clt_id = table.Column<int>(type: "integer", nullable: false),
-                    pro_id2 = table.Column<int>(type: "integer", nullable: false),
                     pro_nomcompagnie = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
@@ -1095,14 +1093,34 @@ namespace SAE_4._01.Migrations
                 column: "mcf_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_t_e_pack_pck_mod_id",
-                table: "t_e_pack_pck",
-                column: "mod_id");
+                name: "uq_opt_nom_detail",
+                table: "t_e_option_opt",
+                columns: new[] { "opt_nom", "opt_detail" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_t_e_prive_prv_clt_id",
+                name: "uq_pck_mod_id",
+                table: "t_e_pack_pck",
+                column: "mod_id",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "uq_pck_nom",
+                table: "t_e_pack_pck",
+                column: "pck_nom",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "uq_prv_clt_id",
                 table: "t_e_prive_prv",
-                column: "clt_id");
+                column: "clt_id",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "uq_pro_clt_id",
+                table: "t_e_professionnel_pro",
+                column: "clt_id",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_reservation_res_clt_idclient",
@@ -1128,6 +1146,12 @@ namespace SAE_4._01.Migrations
                 name: "IX_t_e_style_sty_mod_id",
                 table: "t_e_style_sty",
                 column: "mod_id");
+
+            migrationBuilder.CreateIndex(
+                name: "uq_sty_nom_description",
+                table: "t_e_style_sty",
+                columns: new[] { "sty_nom", "sty_description" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_telephone_tel_clt_id",

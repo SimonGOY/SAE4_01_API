@@ -12,8 +12,8 @@ using SAE_4._01.Models.EntityFramework;
 namespace SAE_4._01.Migrations
 {
     [DbContext(typeof(BMWDBContext))]
-    [Migration("20240315073901_CreationBDCheck")]
-    partial class CreationBDCheck
+    [Migration("20240315081927_ContraintesUnique")]
+    partial class ContraintesUnique
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -900,6 +900,9 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdOption")
                         .HasName("pk_opt");
 
+                    b.HasIndex(new[] { "NomOption", "DetailOption" }, "uq_opt_nom_detail")
+                        .IsUnique();
+
                     b.ToTable("t_e_option_opt");
                 });
 
@@ -940,7 +943,11 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdPack")
                         .HasName("pk_pck");
 
-                    b.HasIndex("IdMoto");
+                    b.HasIndex(new[] { "IdMoto" }, "uq_pck_mod_id")
+                        .IsUnique();
+
+                    b.HasIndex(new[] { "NomPack" }, "uq_pck_nom")
+                        .IsUnique();
 
                     b.ToTable("t_e_pack_pck");
                 });
@@ -1026,10 +1033,6 @@ namespace SAE_4._01.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdPrive"));
 
-                    b.Property<int>("Id")
-                        .HasColumnType("integer")
-                        .HasColumnName("prv_id2");
-
                     b.Property<int>("IdClient")
                         .HasColumnType("integer")
                         .HasColumnName("clt_id");
@@ -1037,7 +1040,8 @@ namespace SAE_4._01.Migrations
                     b.HasKey("IdPrive")
                         .HasName("pk_prv");
 
-                    b.HasIndex("IdClient");
+                    b.HasIndex(new[] { "IdClient" }, "uq_prv_clt_id")
+                        .IsUnique();
 
                     b.ToTable("t_e_prive_prv");
                 });
@@ -1047,10 +1051,6 @@ namespace SAE_4._01.Migrations
                     b.Property<int>("IdPro")
                         .HasColumnType("integer")
                         .HasColumnName("pro_id");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("integer")
-                        .HasColumnName("pro_id2");
 
                     b.Property<int>("IdClient")
                         .HasColumnType("integer")
@@ -1064,6 +1064,9 @@ namespace SAE_4._01.Migrations
 
                     b.HasKey("IdPro")
                         .HasName("pk_pro");
+
+                    b.HasIndex(new[] { "IdClient" }, "uq_pro_clt_id")
+                        .IsUnique();
 
                     b.ToTable("t_e_professionnel_pro");
                 });
@@ -1196,7 +1199,7 @@ namespace SAE_4._01.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("mod_id");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("NomStyle")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("sty_nom");
@@ -1219,6 +1222,9 @@ namespace SAE_4._01.Migrations
                         .HasName("pk_sty");
 
                     b.HasIndex("IdMoto");
+
+                    b.HasIndex(new[] { "NomStyle", "DescriptionStyle" }, "uq_sty_nom_description")
+                        .IsUnique();
 
                     b.ToTable("t_e_style_sty");
                 });
