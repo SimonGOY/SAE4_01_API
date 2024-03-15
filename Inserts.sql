@@ -2366,31 +2366,31 @@ INSERT INTO "BMWMottorad".telephone VALUES (407, 201, NULL, 'Fixe', 'Professionn
 
 
 --
--- Data for Name: transaction; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_h_transaction_tct; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".transaction VALUES (6, 129, 'CB', -599.00);
-INSERT INTO "BMWMottorad".transaction VALUES (7, 130, 'CB', -599.00);
-INSERT INTO "BMWMottorad".transaction VALUES (10, 131, 'CB', -1209.00);
-INSERT INTO "BMWMottorad".transaction VALUES (11, 131, 'remboursement', 1200.00);
-INSERT INTO "BMWMottorad".transaction VALUES (12, 132, 'CB', -2360.00);
-INSERT INTO "BMWMottorad".transaction VALUES (13, 133, 'CB', -2360.00);
-INSERT INTO "BMWMottorad".transaction VALUES (14, 131, 'remboursement', 1600.00);
-INSERT INTO "BMWMottorad".transaction VALUES (15, 131, 'remboursement', 7280.00);
-INSERT INTO "BMWMottorad".transaction VALUES (17, 131, 'remboursement', 393.00);
-INSERT INTO "BMWMottorad".transaction VALUES (22, 134, 'CB', -3549.00);
-INSERT INTO "BMWMottorad".transaction VALUES (23, 134, 'remboursement', 3540.00);
-INSERT INTO "BMWMottorad".transaction VALUES (24, 135, 'CB', -590.00);
-INSERT INTO "BMWMottorad".transaction VALUES (25, 136, 'CB', 570.00);
-INSERT INTO "BMWMottorad".transaction VALUES (26, 137, 'CB', 1540.00);
-INSERT INTO "BMWMottorad".transaction VALUES (27, 138, 'CB', 591.00);
-INSERT INTO "BMWMottorad".transaction VALUES (28, 139, 'CB', 79.00);
-INSERT INTO "BMWMottorad".transaction VALUES (29, 130, 'remboursement', -591.00);
-INSERT INTO "BMWMottorad".transaction VALUES (1, 200, 'stripe', 590.00);
-INSERT INTO "BMWMottorad".transaction VALUES (2, 200, 'remboursement', -590.00);
-INSERT INTO "BMWMottorad".transaction VALUES (3, 132, 'remboursement', -2360.00);
-INSERT INTO "BMWMottorad".transaction VALUES (4, 400, 'CB', 590.00);
-INSERT INTO "BMWMottorad".transaction VALUES (5, 401, 'CB', 990.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (6, 129, 'CB', -599.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (7, 130, 'CB', -599.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (10, 131, 'CB', -1209.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (11, 131, 'remboursement', 1200.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (12, 132, 'CB', -2360.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (13, 133, 'CB', -2360.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (14, 131, 'remboursement', 1600.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (15, 131, 'remboursement', 7280.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (17, 131, 'remboursement', 393.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (22, 134, 'CB', -3549.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (23, 134, 'remboursement', 3540.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (24, 135, 'CB', -590.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (25, 136, 'CB', 570.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (26, 137, 'CB', 1540.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (27, 138, 'CB', 591.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (28, 139, 'CB', 79.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (29, 130, 'remboursement', -591.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (1, 200, 'stripe', 590.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (2, 200, 'remboursement', -590.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (3, 132, 'remboursement', -2360.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (4, 400, 'CB', 590.00);
+INSERT INTO "BMWMottorad".t_h_transaction_tct VALUES (5, 401, 'CB', 990.00);
 
 
 --
