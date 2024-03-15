@@ -1729,127 +1729,127 @@ INSERT INTO "BMWMottorad".password_reset_tokens VALUES ('sg.bonneville@gmail.com
 
 
 --
--- Data for Name: prefere; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_r_prefere_prf; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".prefere VALUES (1, 1);
-INSERT INTO "BMWMottorad".prefere VALUES (2, 2);
-INSERT INTO "BMWMottorad".prefere VALUES (3, 3);
-INSERT INTO "BMWMottorad".prefere VALUES (4, 4);
-INSERT INTO "BMWMottorad".prefere VALUES (5, 5);
-INSERT INTO "BMWMottorad".prefere VALUES (6, 1);
-INSERT INTO "BMWMottorad".prefere VALUES (7, 2);
-INSERT INTO "BMWMottorad".prefere VALUES (8, 3);
-INSERT INTO "BMWMottorad".prefere VALUES (9, 4);
-INSERT INTO "BMWMottorad".prefere VALUES (10, 5);
-INSERT INTO "BMWMottorad".prefere VALUES (11, 1);
-INSERT INTO "BMWMottorad".prefere VALUES (12, 2);
-INSERT INTO "BMWMottorad".prefere VALUES (13, 3);
-INSERT INTO "BMWMottorad".prefere VALUES (14, 4);
-INSERT INTO "BMWMottorad".prefere VALUES (15, 5);
-INSERT INTO "BMWMottorad".prefere VALUES (16, 1);
-INSERT INTO "BMWMottorad".prefere VALUES (17, 2);
-INSERT INTO "BMWMottorad".prefere VALUES (18, 3);
-INSERT INTO "BMWMottorad".prefere VALUES (19, 4);
-INSERT INTO "BMWMottorad".prefere VALUES (20, 5);
-INSERT INTO "BMWMottorad".prefere VALUES (21, 1);
-INSERT INTO "BMWMottorad".prefere VALUES (22, 2);
-INSERT INTO "BMWMottorad".prefere VALUES (23, 3);
-INSERT INTO "BMWMottorad".prefere VALUES (24, 4);
-INSERT INTO "BMWMottorad".prefere VALUES (25, 5);
-INSERT INTO "BMWMottorad".prefere VALUES (26, 1);
-INSERT INTO "BMWMottorad".prefere VALUES (27, 2);
-INSERT INTO "BMWMottorad".prefere VALUES (28, 3);
-INSERT INTO "BMWMottorad".prefere VALUES (29, 4);
-INSERT INTO "BMWMottorad".prefere VALUES (30, 5);
-INSERT INTO "BMWMottorad".prefere VALUES (31, 1);
-INSERT INTO "BMWMottorad".prefere VALUES (32, 2);
-INSERT INTO "BMWMottorad".prefere VALUES (33, 3);
-INSERT INTO "BMWMottorad".prefere VALUES (34, 4);
-INSERT INTO "BMWMottorad".prefere VALUES (35, 5);
-INSERT INTO "BMWMottorad".prefere VALUES (36, 1);
-INSERT INTO "BMWMottorad".prefere VALUES (37, 2);
-INSERT INTO "BMWMottorad".prefere VALUES (38, 3);
-INSERT INTO "BMWMottorad".prefere VALUES (39, 4);
-INSERT INTO "BMWMottorad".prefere VALUES (40, 5);
-INSERT INTO "BMWMottorad".prefere VALUES (41, 1);
-INSERT INTO "BMWMottorad".prefere VALUES (42, 2);
-INSERT INTO "BMWMottorad".prefere VALUES (43, 3);
-INSERT INTO "BMWMottorad".prefere VALUES (44, 4);
-INSERT INTO "BMWMottorad".prefere VALUES (45, 5);
-INSERT INTO "BMWMottorad".prefere VALUES (46, 1);
-INSERT INTO "BMWMottorad".prefere VALUES (47, 2);
-INSERT INTO "BMWMottorad".prefere VALUES (48, 3);
-INSERT INTO "BMWMottorad".prefere VALUES (49, 4);
-INSERT INTO "BMWMottorad".prefere VALUES (50, 5);
-INSERT INTO "BMWMottorad".prefere VALUES (1, 2);
-INSERT INTO "BMWMottorad".prefere VALUES (1, 3);
-INSERT INTO "BMWMottorad".prefere VALUES (1, 4);
-INSERT INTO "BMWMottorad".prefere VALUES (1, 5);
-
-
---
--- Data for Name: prive; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
---
-
-INSERT INTO "BMWMottorad".prive VALUES (41, 53);
-INSERT INTO "BMWMottorad".prive VALUES (42, 55);
-INSERT INTO "BMWMottorad".prive VALUES (44, 61);
-INSERT INTO "BMWMottorad".prive VALUES (43, 56);
-INSERT INTO "BMWMottorad".prive VALUES (48, 65);
-INSERT INTO "BMWMottorad".prive VALUES (50, 67);
-INSERT INTO "BMWMottorad".prive VALUES (51, 68);
-INSERT INTO "BMWMottorad".prive VALUES (52, 69);
-INSERT INTO "BMWMottorad".prive VALUES (54, 73);
-INSERT INTO "BMWMottorad".prive VALUES (57, 78);
-INSERT INTO "BMWMottorad".prive VALUES (58, 79);
-INSERT INTO "BMWMottorad".prive VALUES (60, 81);
-INSERT INTO "BMWMottorad".prive VALUES (80, 92);
-INSERT INTO "BMWMottorad".prive VALUES (81, 93);
-INSERT INTO "BMWMottorad".prive VALUES (82, 95);
-INSERT INTO "BMWMottorad".prive VALUES (83, 96);
-INSERT INTO "BMWMottorad".prive VALUES (84, 97);
-INSERT INTO "BMWMottorad".prive VALUES (85, 98);
-INSERT INTO "BMWMottorad".prive VALUES (200, 201);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (1, 1);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (2, 2);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (3, 3);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (4, 4);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (5, 5);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (6, 1);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (7, 2);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (8, 3);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (9, 4);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (10, 5);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (11, 1);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (12, 2);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (13, 3);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (14, 4);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (15, 5);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (16, 1);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (17, 2);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (18, 3);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (19, 4);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (20, 5);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (21, 1);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (22, 2);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (23, 3);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (24, 4);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (25, 5);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (26, 1);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (27, 2);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (28, 3);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (29, 4);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (30, 5);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (31, 1);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (32, 2);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (33, 3);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (34, 4);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (35, 5);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (36, 1);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (37, 2);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (38, 3);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (39, 4);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (40, 5);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (41, 1);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (42, 2);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (43, 3);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (44, 4);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (45, 5);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (46, 1);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (47, 2);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (48, 3);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (49, 4);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (50, 5);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (1, 2);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (1, 3);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (1, 4);
+INSERT INTO "BMWMottorad".t_r_prefere_prf VALUES (1, 5);
 
 
 --
--- Data for Name: professionnel; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_prive_prv; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".professionnel VALUES (17, 72, 'Turconi Billlionaire');
-INSERT INTO "BMWMottorad".professionnel VALUES (18, 75, 'Simon Cusonnant');
-INSERT INTO "BMWMottorad".professionnel VALUES (12, 52, 'Iut Annecy');
-INSERT INTO "BMWMottorad".professionnel VALUES (20, 90, 'EPSTEIN IS SO COOL');
-INSERT INTO "BMWMottorad".professionnel VALUES (21, 91, 'EPSTEIN IS SO COOL');
-INSERT INTO "BMWMottorad".professionnel VALUES (22, 94, 'PPPASSSSSCAAAAAL');
-INSERT INTO "BMWMottorad".professionnel VALUES (100, 200, 'SUPERBARBE');
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (41, 53);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (42, 55);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (44, 61);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (43, 56);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (48, 65);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (50, 67);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (51, 68);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (52, 69);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (54, 73);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (57, 78);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (58, 79);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (60, 81);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (80, 92);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (81, 93);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (82, 95);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (83, 96);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (84, 97);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (85, 98);
+INSERT INTO "BMWMottorad".t_e_prive_prv VALUES (200, 201);
 
 
 --
--- Data for Name: reservation; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+-- Data for Name: t_e_professionnel_pro; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
 --
 
-INSERT INTO "BMWMottorad".reservation VALUES (1, 2, 1, 1, '2023-10-21', 'Comptant');
-INSERT INTO "BMWMottorad".reservation VALUES (2, 6, 3, 1, '2023-09-12', 'LLD');
-INSERT INTO "BMWMottorad".reservation VALUES (3, 7, 24, 1, '2023-01-13', 'LLD');
-INSERT INTO "BMWMottorad".reservation VALUES (4, 8, 26, 2, '2023-01-17', 'Crédit');
-INSERT INTO "BMWMottorad".reservation VALUES (5, 13, 33, 2, '2023-02-19', 'LLD');
-INSERT INTO "BMWMottorad".reservation VALUES (6, 14, 35, 2, '2023-01-12', 'Crédit');
-INSERT INTO "BMWMottorad".reservation VALUES (7, 16, 36, 3, '2023-02-01', 'Comptant');
-INSERT INTO "BMWMottorad".reservation VALUES (8, 17, 38, 3, '2023-03-03', 'Comptant');
-INSERT INTO "BMWMottorad".reservation VALUES (9, 18, 42, 4, '2023-04-29', 'Comptant');
-INSERT INTO "BMWMottorad".reservation VALUES (10, 19, 43, 5, '2023-03-02', 'Crédit');
-INSERT INTO "BMWMottorad".reservation VALUES (11, 20, 49, 5, '2023-01-19', 'LLD');
-INSERT INTO "BMWMottorad".reservation VALUES (12, 1, 2, 5, '2023-03-19', 'Comptant');
-INSERT INTO "BMWMottorad".reservation VALUES (13, 3, 27, 4, '2022-03-01', 'Crédit');
-INSERT INTO "BMWMottorad".reservation VALUES (14, 4, 31, 4, '2023-08-05', 'Comptant');
-INSERT INTO "BMWMottorad".reservation VALUES (15, 5, 50, 3, '2023-06-23', 'Crédit');
-INSERT INTO "BMWMottorad".reservation VALUES (16, 12, 11, 2, '2023-08-17', 'Crédit');
-INSERT INTO "BMWMottorad".reservation VALUES (17, 11, 17, 2, '2023-09-26', 'Comptant');
-INSERT INTO "BMWMottorad".reservation VALUES (18, 15, 18, 2, '2023-04-10', 'Comptant');
-INSERT INTO "BMWMottorad".reservation VALUES (19, 10, 6, 1, '2023-02-08', 'Comptant');
-INSERT INTO "BMWMottorad".reservation VALUES (20, 20, 9, 1, '2023-06-20', 'Crédit');
+INSERT INTO "BMWMottorad".t_e_professionnel_pro VALUES (17, 72, 'Turconi Billlionaire');
+INSERT INTO "BMWMottorad".t_e_professionnel_pro VALUES (18, 75, 'Simon Cusonnant');
+INSERT INTO "BMWMottorad".t_e_professionnel_pro VALUES (12, 52, 'Iut Annecy');
+INSERT INTO "BMWMottorad".t_e_professionnel_pro VALUES (20, 90, 'EPSTEIN IS SO COOL');
+INSERT INTO "BMWMottorad".t_e_professionnel_pro VALUES (21, 91, 'EPSTEIN IS SO COOL');
+INSERT INTO "BMWMottorad".t_e_professionnel_pro VALUES (22, 94, 'PPPASSSSSCAAAAAL');
+INSERT INTO "BMWMottorad".t_e_professionnel_pro VALUES (100, 200, 'SUPERBARBE');
+
+
+--
+-- Data for Name: t_e_reservation_res; Type: TABLE DATA; Schema: BMWMottorad; Owner: s225
+--
+
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (1, 2, 1, 1, '2023-10-21', 'Comptant');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (2, 6, 3, 1, '2023-09-12', 'LLD');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (3, 7, 24, 1, '2023-01-13', 'LLD');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (4, 8, 26, 2, '2023-01-17', 'Crédit');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (5, 13, 33, 2, '2023-02-19', 'LLD');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (6, 14, 35, 2, '2023-01-12', 'Crédit');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (7, 16, 36, 3, '2023-02-01', 'Comptant');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (8, 17, 38, 3, '2023-03-03', 'Comptant');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (9, 18, 42, 4, '2023-04-29', 'Comptant');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (10, 19, 43, 5, '2023-03-02', 'Crédit');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (11, 20, 49, 5, '2023-01-19', 'LLD');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (12, 1, 2, 5, '2023-03-19', 'Comptant');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (13, 3, 27, 4, '2022-03-01', 'Crédit');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (14, 4, 31, 4, '2023-08-05', 'Comptant');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (15, 5, 50, 3, '2023-06-23', 'Crédit');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (16, 12, 11, 2, '2023-08-17', 'Crédit');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (17, 11, 17, 2, '2023-09-26', 'Comptant');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (18, 15, 18, 2, '2023-04-10', 'Comptant');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (19, 10, 6, 1, '2023-02-08', 'Comptant');
+INSERT INTO "BMWMottorad".t_e_reservation_res VALUES (20, 20, 9, 1, '2023-06-20', 'Crédit');
 
 
 --
