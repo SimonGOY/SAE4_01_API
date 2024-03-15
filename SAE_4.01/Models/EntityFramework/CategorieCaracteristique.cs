@@ -6,7 +6,6 @@ using System.ComponentModel.DataAnnotations;
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_categoriecaracteristique_ctc")]
-    [Index(nameof(NomCatCaracteristique), Name = "uq_ctc_nom", IsUnique = true)]
     public partial class CategorieCaracteristique
     {
         [Key]

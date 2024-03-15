@@ -6,7 +6,6 @@ using System.Xml.Linq;
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_style_sty")]
-    [Index(nameof(NomStyle), nameof(DescriptionStyle), Name = "uq_sty_nom_description", IsUnique = true)]
     public class Style
     {
         public Style()

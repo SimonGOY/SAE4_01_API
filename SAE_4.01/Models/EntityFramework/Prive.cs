@@ -6,7 +6,6 @@ using System.Xml.Linq;
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_prive_prv")]
-    [Index(nameof(IdClient), Name = "uq_prv_clt_id", IsUnique = true)]
     public partial class Prive
     {
         [Key]

@@ -7,8 +7,6 @@ using System.Xml.Linq;
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_pack_pck")]
-    [Index(nameof(IdMoto), Name = "uq_pck_mod_id", IsUnique = true)]
-    [Index(nameof(NomPack), Name = "uq_pck_nom", IsUnique = true)]
     public class Pack
     {
         public Pack()

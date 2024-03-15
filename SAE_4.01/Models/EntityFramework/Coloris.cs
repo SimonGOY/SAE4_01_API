@@ -6,7 +6,6 @@ using System.Xml.Linq;
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_coloris_cls")]
-    [Index(nameof(NomColoris), Name = "uq_cls_nom", IsUnique = true)]
     public class Coloris
     {
         [Key]
