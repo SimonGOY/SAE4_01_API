@@ -1,9 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
 
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_style_sty")]
+    [Index(nameof(NomStyle), nameof(DescriptionStyle), Name = "uq_sty_nom_description", IsUnique = true)]
     public class Style
     {
         public Style()
@@ -19,7 +22,7 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdMoto { get; set; }
 
         [Column("sty_nom")]
-        public string Name { get; set; } = null!;
+        public string NomStyle { get; set; } = null!;
 
         [Column("sty_prix")]
         public double PrixStyle { get; set; }
