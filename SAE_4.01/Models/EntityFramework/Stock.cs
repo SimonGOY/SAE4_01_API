@@ -10,6 +10,10 @@ namespace SAE_4._01.Models.EntityFramework
     public partial class Stock
     {
         [Key]
+        [Column("equ_id")]
+        public int IdEquipement { get; set; }
+
+        [Key]
         [Column("tle_id")]
         public int IdTaille { get; set; }
 
@@ -17,10 +21,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("cls_id")]
         public int IdColoris { get; set; }
 
-        [Key]
-        [Column("equ_id")]
-        public int IdEquipement { get; set; }
-
+        
         [Column("stk_quantite")]
         public int Quantite { get; set; }
 
