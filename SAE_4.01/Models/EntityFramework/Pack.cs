@@ -29,7 +29,6 @@ namespace SAE_4._01.Models.EntityFramework
         public string DescriptionPack { get; set; } = null!;
 
         [Column("pck_photo")]
-        [StringLength(50)]
         public string PhotoPack { get; set; } = null!;
 
         [Column("pck_prix", TypeName = "DECIMAL(6,2)")]

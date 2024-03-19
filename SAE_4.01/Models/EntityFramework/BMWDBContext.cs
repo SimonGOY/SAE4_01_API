@@ -538,7 +538,7 @@ namespace SAE_4._01.Models.EntityFramework
 
                 entity.HasOne(d => d.ClientProfessionnel)
                     .WithMany(p => p.ProfessionnelClient)
-                    .HasForeignKey(d => d.IdPro)
+                    .HasForeignKey(d => d.IdClient)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_pro_clt");
 

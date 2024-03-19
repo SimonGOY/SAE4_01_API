@@ -13,16 +13,16 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdMedia { get; set; }
 
         [Column("equ_idequipement")]
-        public int IdEquipement { get; set; }
+        public int? IdEquipement { get; set; }
 
         [Column("mod_idmoto")]
-        public int IdMoto { get; set; }
+        public int? IdMoto { get; set; }
 
         [Column("med_lienmedia")]
         public string LienMedia { get; set; } = null!;
 
         [Column("pre_idpresentation")]
-        public int IdPresentation { get; set; }
+        public int? IdPresentation { get; set; }
 
         [Column("pre_ispresentation")]
         public bool IsPresentation { get; set; }
