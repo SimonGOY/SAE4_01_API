@@ -270,12 +270,12 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasConstraintName("fk_dmd_con");
                 entity.HasOne(d => d.ModeleMotoDemandeEssai)
                     .WithMany(p => p.DemandeEssaiModeleMoto)
-                    .HasForeignKey(d => d.IdConcessionnaire)
+                    .HasForeignKey(d => d.IdMoto)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_dmd_mod");
                 entity.HasOne(d => d.ContactInfoDemandeEssai)
                     .WithMany(p => p.DemandeEssaiContactInfo)
-                    .HasForeignKey(d => d.IdConcessionnaire)
+                    .HasForeignKey(d => d.IdContact)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_dmd_ctf");
             });

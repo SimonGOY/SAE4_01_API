@@ -20,7 +20,7 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("tle_description")]
         [StringLength(8)]
-        public string DescTaille { get; set; } = null!;
+        public string? DescTaille { get; set; }
 
 
         [InverseProperty(nameof(Stock.TailleStock))]

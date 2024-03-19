@@ -7,19 +7,21 @@ namespace SAE_4._01.Models.EntityFramework
     public class ContenuCommande
     {
         [Key]
+        [Column("cmd_id")]
+        public int IdCommande { get; set; }
+        [Key]
         [Column("equ_id")]
         public int IdEquipement { get; set; }
+        [Column("equ_quantite")]
+        public int Quantite { get; set; }
         [Key]
         [Column("tle_id")]
         public int IdTaille { get; set; }
         [Key]
         [Column("cls_id")]
         public int IdColoris { get; set; }
-        [Key]
-        [Column("cmd_id")]
-        public int IdCommande { get; set; }
-        [Column("equ_quantite")]
-        public int Quantite { get; set; }
+       
+        
 
 
         [ForeignKey(nameof(IdEquipement))]
