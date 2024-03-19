@@ -17,9 +17,6 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("sty_id")]
         public int IdStyle { get; set; }
 
-        [Column("mod_id")]
-        public int IdMoto { get; set; }
-
         [Column("sty_nom")]
         public string NomStyle { get; set; } = null!;
 
@@ -31,6 +28,9 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Column("sty_photo")]
         public string PhotoStyle { get; set; } = null!;
+
+        [Column("mod_id")]
+        public int IdMoto { get; set; }
 
         [Column("sty_photomoto")]
         public string PhotoMoto { get; set; } = null!;
