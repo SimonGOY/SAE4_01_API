@@ -17,7 +17,7 @@ namespace SAE_4._01.Models.EntityFramework
         public DateTime DateCommande { get; set; }
 
         [Column("cmd_etat")]
-        public DateTime Etat { get; set; }
+        public int Etat { get; set; }
 
 
         [ForeignKey(nameof(IdClient))]

@@ -13,7 +13,7 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdCatEquipement { get; set; }
 
         [Column("cte_catidcatequipement")]
-        public int CatIdCatEquipement { get; set; }
+        public Nullable<int> CatIdCatEquipement { get; set; }
 
         [Column("cte_libelle")]
         [StringLength(100)]

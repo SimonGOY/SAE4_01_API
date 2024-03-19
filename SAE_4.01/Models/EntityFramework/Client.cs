@@ -34,7 +34,7 @@ namespace SAE_4._01.Models.EntityFramework
         public DateTime DateNaissanceClient { get; set; }
 
         [Column("clt_email")]
-        [StringLength(50)]
+        [StringLength(100)]
         public string EmailClient { get; set; } = null!;
 
         [ForeignKey(nameof(NumAdresse))]
