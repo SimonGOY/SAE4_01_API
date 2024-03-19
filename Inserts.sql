@@ -1245,34 +1245,34 @@ INSERT INTO "bmw".t_e_style_sty VALUES (1, 'Style Passion', 375, 'Dans le Style 
 -- Data for Name: est_inclus; Type: TABLE DATA; Schema: bmw; Owner: s225
 --
 
-INSERT INTO "bmw".est_inclus VALUES (1, 1);
-INSERT INTO "bmw".est_inclus VALUES (3, 2);
-INSERT INTO "bmw".est_inclus VALUES (5, 3);
-INSERT INTO "bmw".est_inclus VALUES (9, 3);
-INSERT INTO "bmw".est_inclus VALUES (8, 3);
-INSERT INTO "bmw".est_inclus VALUES (14, 4);
-INSERT INTO "bmw".est_inclus VALUES (10, 4);
-INSERT INTO "bmw".est_inclus VALUES (11, 4);
-INSERT INTO "bmw".est_inclus VALUES (13, 4);
-INSERT INTO "bmw".est_inclus VALUES (4, 5);
-INSERT INTO "bmw".est_inclus VALUES (2, 5);
-INSERT INTO "bmw".est_inclus VALUES (9, 6);
+INSERT INTO "bmw".t_j_est_inclus_ecl VALUES (1, 1);
+INSERT INTO "bmw".t_j_est_inclus_ecl VALUES (3, 2);
+INSERT INTO "bmw".t_j_est_inclus_ecl VALUES (5, 3);
+INSERT INTO "bmw".t_j_est_inclus_ecl VALUES (9, 3);
+INSERT INTO "bmw".t_j_est_inclus_ecl VALUES (8, 3);
+INSERT INTO "bmw".t_j_est_inclus_ecl VALUES (14, 4);
+INSERT INTO "bmw".t_j_est_inclus_ecl VALUES (10, 4);
+INSERT INTO "bmw".t_j_est_inclus_ecl VALUES (11, 4);
+INSERT INTO "bmw".t_j_est_inclus_ecl VALUES (13, 4);
+INSERT INTO "bmw".t_j_est_inclus_ecl VALUES (4, 5);
+INSERT INTO "bmw".t_j_est_inclus_ecl VALUES (2, 5);
+INSERT INTO "bmw".t_j_est_inclus_ecl VALUES (9, 6);
 
 
 --
 -- Data for Name: t_j_estlie_eli; Type: TABLE DATA; Schema: bmw; Owner: s225
 --
 
-INSERT INTO "bmw".t_j_estlie_eli VALUES (1, 20);
-INSERT INTO "bmw".t_j_estlie_eli VALUES (5, 19);
-INSERT INTO "bmw".t_j_estlie_eli VALUES (7, 9);
-INSERT INTO "bmw".t_j_estlie_eli VALUES (10, 16);
-INSERT INTO "bmw".t_j_estlie_eli VALUES (16, 11);
-INSERT INTO "bmw".t_j_estlie_eli VALUES (12, 4);
-INSERT INTO "bmw".t_j_estlie_eli VALUES (11, 1);
-INSERT INTO "bmw".t_j_estlie_eli VALUES (4, 5);
-INSERT INTO "bmw".t_j_estlie_eli VALUES (3, 7);
-INSERT INTO "bmw".t_j_estlie_eli VALUES (6, 12);
+INSERT INTO "bmw".t_j_est_lie_eli VALUES (1, 20);
+INSERT INTO "bmw".t_j_est_lie_eli VALUES (5, 19);
+INSERT INTO "bmw".t_j_est_lie_eli VALUES (7, 9);
+INSERT INTO "bmw".t_j_est_lie_eli VALUES (10, 16);
+INSERT INTO "bmw".t_j_est_lie_eli VALUES (16, 11);
+INSERT INTO "bmw".t_j_est_lie_eli VALUES (12, 4);
+INSERT INTO "bmw".t_j_est_lie_eli VALUES (11, 1);
+INSERT INTO "bmw".t_j_est_lie_eli VALUES (4, 5);
+INSERT INTO "bmw".t_j_est_lie_eli VALUES (3, 7);
+INSERT INTO "bmw".t_j_est_lie_eli VALUES (6, 12);
 
 
 --
@@ -1305,8 +1305,8 @@ INSERT INTO "bmw".t_r_garage_grg VALUES (20, 50);
 -- Data for Name: t_e_infocb_icb; Type: TABLE DATA; Schema: bmw; Owner: s225
 --
 
-INSERT INTO "bmw".t_e_infocb_icb VALUES (15, 72, 'eyJpdiI6IjdJUHY0Y2lsamVrdXorZ3JWWkxMOGc9PSIsInZhbHVlIjoiUEdGdWJBWUNEK2wwR2JBQU1QU3pKSUlaeDVJS01tMno1akVhRUw0cFNIaz0iLCJtYWMiOiJlNDkxMTVjNDIzMDhhMmI2M2JlNjA4ZDMwZDg2MjQ4YjA4ZTZmMTdkZDY2NDc1OTFkYzVjZDAyOWExY2YwZjk1IiwidGFnIjoiIn0=', 'eyJpdiI6Ik11WFJobEpKVEF3ZXU5OHhvaXE1eUE9PSIsInZhbHVlIjoidmhmb2h4NXNKUDhqUmVaM0NkSHhNQT09IiwibWFjIjoiZWI3MjRjYWM2ZTdmZmUzN2U2MjQyYTQ4YjI4NzgzMDVjODc1MTliYTVkZDE3MzgyNTE5MmRlZTViNTQyYjE3NiIsInRhZyI6IiJ9', 'eyJpdiI6Ii9NNkxvVk5hRVN5RDg5ajFKSVNpdGc9PSIsInZhbHVlIjoidW5SZG1iR1FZV28wVTYvUVo2TWZaQT09IiwibWFjIjoiZTNlYTg5ZmU1NmFlNDQwZmJlMjQyNTNmZDhlNmNlOTQxNjQxNDIwNmMzM2ViMTRlNGYzYjdhMGM1YzgxMmExMyIsInRhZyI6IiJ9');
-INSERT INTO "bmw".t_e_infocb_icb VALUES (20, 201, 'eyJpdiI6ImFaUU8vSE5tUnlxeUgzTjNNeEJBeEE9PSIsInZhbHVlIjoiQWlWclVyclZYdldBcVJWSnVGZ1k0YlRiSFRrSXRKbUE3VmVxaXNaVlpXbz0iLCJtYWMiOiI4MDk3NWFkOWQyY2RlMzFjNzRhOTljMjRkZjFiNTk1OGIzYmIzYmI5NjMyMzY2MTlhZDhhYzA3ZjI4OWQ5ZjI0IiwidGFnIjoiIn0=', 'eyJpdiI6IlNYeUZYQnNmeEsxMndCWjllc3FiRmc9PSIsInZhbHVlIjoiMitNd3lmZUVtbFdxbUROM1huZ1dMUT09IiwibWFjIjoiMDUzODQ4NmJlODM0OGI0ZDM4NjI5NzkyZDI5OTQxZThmZmQwNDE4YTQxYzE0OWY4M2RkZWIxYTg2NDkwYmQwNCIsInRhZyI6IiJ9', 'eyJpdiI6Imh2L0dJRmp2Wm5uNnF1OWlpcFlKNHc9PSIsInZhbHVlIjoiSmVtaHJnNHRkYTA4VVVaYk4raThGUT09IiwibWFjIjoiMTFhZjM0YmU3NmJmOGVhMzY0YWIxYWI2NzEyMmIyYzNmZTJlZTRjMDFiOTk3ZDgyNGY3NzFkOWY4MWVmZDgzNyIsInRhZyI6IiJ9');
+INSERT INTO "bmw".t_e_info_cb_icb VALUES (15, 72, 'eyJpdiI6IjdJUHY0Y2lsamVrdXorZ3JWWkxMOGc9PSIsInZhbHVlIjoiUEdGdWJBWUNEK2wwR2JBQU1QU3pKSUlaeDVJS01tMno1akVhRUw0cFNIaz0iLCJtYWMiOiJlNDkxMTVjNDIzMDhhMmI2M2JlNjA4ZDMwZDg2MjQ4YjA4ZTZmMTdkZDY2NDc1OTFkYzVjZDAyOWExY2YwZjk1IiwidGFnIjoiIn0=', 'eyJpdiI6Ik11WFJobEpKVEF3ZXU5OHhvaXE1eUE9PSIsInZhbHVlIjoidmhmb2h4NXNKUDhqUmVaM0NkSHhNQT09IiwibWFjIjoiZWI3MjRjYWM2ZTdmZmUzN2U2MjQyYTQ4YjI4NzgzMDVjODc1MTliYTVkZDE3MzgyNTE5MmRlZTViNTQyYjE3NiIsInRhZyI6IiJ9', 'eyJpdiI6Ii9NNkxvVk5hRVN5RDg5ajFKSVNpdGc9PSIsInZhbHVlIjoidW5SZG1iR1FZV28wVTYvUVo2TWZaQT09IiwibWFjIjoiZTNlYTg5ZmU1NmFlNDQwZmJlMjQyNTNmZDhlNmNlOTQxNjQxNDIwNmMzM2ViMTRlNGYzYjdhMGM1YzgxMmExMyIsInRhZyI6IiJ9');
+INSERT INTO "bmw".t_e_info_cb_icb VALUES (20, 201, 'eyJpdiI6ImFaUU8vSE5tUnlxeUgzTjNNeEJBeEE9PSIsInZhbHVlIjoiQWlWclVyclZYdldBcVJWSnVGZ1k0YlRiSFRrSXRKbUE3VmVxaXNaVlpXbz0iLCJtYWMiOiI4MDk3NWFkOWQyY2RlMzFjNzRhOTljMjRkZjFiNTk1OGIzYmIzYmI5NjMyMzY2MTlhZDhhYzA3ZjI4OWQ5ZjI0IiwidGFnIjoiIn0=', 'eyJpdiI6IlNYeUZYQnNmeEsxMndCWjllc3FiRmc9PSIsInZhbHVlIjoiMitNd3lmZUVtbFdxbUROM1huZ1dMUT09IiwibWFjIjoiMDUzODQ4NmJlODM0OGI0ZDM4NjI5NzkyZDI5OTQxZThmZmQwNDE4YTQxYzE0OWY4M2RkZWIxYTg2NDkwYmQwNCIsInRhZyI6IiJ9', 'eyJpdiI6Imh2L0dJRmp2Wm5uNnF1OWlpcFlKNHc9PSIsInZhbHVlIjoiSmVtaHJnNHRkYTA4VVVaYk4raThGUT09IiwibWFjIjoiMTFhZjM0YmU3NmJmOGVhMzY0YWIxYWI2NzEyMmIyYzNmZTJlZTRjMDFiOTk3ZDgyNGY3NzFkOWY4MWVmZDgzNyIsInRhZyI6IiJ9');
 
 
 --
