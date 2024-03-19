@@ -9,6 +9,11 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_e_modele_moto_mod")]
     public partial class ModeleMoto
     {
+        public ModeleMoto()
+        {
+            SpecifieModeleMoto = new HashSet<Specifie>();
+        }
+
         [Key]
         [Column("mod_id")]
         public int IdMoto { get; set; }
@@ -58,5 +63,8 @@ namespace SAE_4._01.Models.EntityFramework
 
         [InverseProperty(nameof(Pack.ModeleMotoPack))]
         public virtual ICollection<Pack>? PackModeleMoto { get; set; }
+
+        [InverseProperty(nameof(Specifie.ModeleMotoSpecifie))]
+        public virtual ICollection<Specifie>? SpecifieModeleMoto { get; set; }
     }
 }

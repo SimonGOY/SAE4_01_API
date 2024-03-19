@@ -6,10 +6,7 @@ namespace SAE_4._01.Models.EntityFramework
     [Table("t_r_moto_configurable_mcf")]
     public class MotoConfigurable
     {
-        public MotoConfigurable()
-        {
-            SpecifieMotoConfigurable = new HashSet<Specifie>();
-        }
+        
 
         [Key]
         [Column("mcf_id")]
@@ -30,7 +27,6 @@ namespace SAE_4._01.Models.EntityFramework
         [InverseProperty(nameof(Garage.MotoConfigurableGarage))]
         public virtual ICollection<Garage>? GarageMotoConfigurable { get; set; }
 
-        [InverseProperty(nameof(Specifie.MotoConfigurableSpecifie))]
-        public virtual ICollection<Specifie>? SpecifieMotoConfigurable { get; set; }
+        
     }
 }
