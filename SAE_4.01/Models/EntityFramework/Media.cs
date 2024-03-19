@@ -18,11 +18,15 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("mod_idmoto")]
         public int IdMoto { get; set; }
 
+        [Column("med_lienmedia")]
+        public string LienMedia { get; set; } = null!;
+
         [Column("pre_idpresentation")]
         public int IdPresentation { get; set; }
 
-        [Column("med_lienmedia")]
-        public string LienMedia { get; set; } = null!;
+        [Column("pre_ispresentation")]
+        public bool IsPresentation { get; set; }
+
 
 
         [ForeignKey(nameof(IdEquipement))]
