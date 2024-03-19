@@ -19,11 +19,8 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("equ_id")]
         public int IdEquipement { get; set; }
 
-        [Column("cln_idcollection")]
-        public int IdCollection { get; set; }
-
         [Column("cte_idcatequipement")]
-        public int IdCatEquipement { get; set; }
+        public int? IdCatEquipement { get; set; }
 
         [Column("equ_nom")]
         [StringLength(50)]
@@ -48,6 +45,9 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("equ_segment")]
         [StringLength(30)]
         public string Segment { get; set; } = null!;
+
+        [Column("cln_idcollection")]
+        public int IdCollection { get; set; }
 
 
         [ForeignKey(nameof(IdCollection))]

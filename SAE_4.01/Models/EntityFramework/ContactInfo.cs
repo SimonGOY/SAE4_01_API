@@ -11,7 +11,7 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdContact { get; set; }
 
         [Column("ofr_id")]
-        public int IdOffre { get; set; }
+        public int? IdOffre { get; set; }
 
         [Column("ctf_nom")]
         [StringLength(50)]
