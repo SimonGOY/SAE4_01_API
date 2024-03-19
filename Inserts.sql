@@ -1720,15 +1720,6 @@ INSERT INTO "bmw".t_e_parametre_par VALUES ('fraislivraison', '9');
 
 
 --
--- Data for Name: password_reset_tokens; Type: TABLE DATA; Schema: bmw; Owner: s225
---
-
-INSERT INTO "bmw".password_reset_tokens VALUES ('simon@gmail.com', '$2y$12$vldlWt.7Tkd13v3/YQdtXOvX6FdyIauzNrXTpAQXN7YOEGIC16h4e', '2023-11-20 12:48:00');
-INSERT INTO "bmw".password_reset_tokens VALUES ('simona@gmail.com', '$2y$12$P3KoLTX6Hsz68sTHNUJZjupM76a7KqMZCR5Q.JDomfXWzc6deehtW', '2023-11-21 16:07:36');
-INSERT INTO "bmw".password_reset_tokens VALUES ('sg.bonneville@gmail.com', '$2y$12$tgQsUn3wfATrEvz97ZT25.Zv8wqlJYyxKLfIcKDUtXEl7RlnzvtJS', '2024-01-08 08:18:52');
-
-
---
 -- Data for Name: t_r_prefere_prf; Type: TABLE DATA; Schema: bmw; Owner: s225
 --
 
