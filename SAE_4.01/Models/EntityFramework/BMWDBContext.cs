@@ -108,7 +108,7 @@ namespace SAE_4._01.Models.EntityFramework
 
                 entity.HasOne(d => d.ModeleMotoCaracteristique)
                     .WithMany(p => p.CaracteristiqueModeleMoto)
-                    .HasForeignKey(d => d.IdCaracteristique)
+                    .HasForeignKey(d => d.IdMoto)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_car_mod");
 
