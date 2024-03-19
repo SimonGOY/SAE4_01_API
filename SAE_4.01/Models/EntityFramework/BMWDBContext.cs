@@ -507,7 +507,7 @@ namespace SAE_4._01.Models.EntityFramework
 
                 entity.HasOne(d => d.EquipementPresentationEquipement)
                     .WithMany(p => p.PresentationEquipementEquipement)
-                    .HasForeignKey(d => d.IdPresentation)
+                    .HasForeignKey(d => d.IdEquipement)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_pre_equ");
                 entity.HasOne(d => d.ColorisPresentationEquipement)
