@@ -21,7 +21,17 @@ namespace SAE_4._01.Models.DataManager
             return await _dbContext.Stocks.ToListAsync();
         }
 
-        public async Task<ActionResult<Stock>> GetByIdAsync(int id)
+        public async Task<ActionResult<Stock>> GetByIdEquipementAsync(int id)
+        {
+            return await _dbContext.Stocks.FirstOrDefaultAsync(p => p.IdEquipement == id);
+        }
+
+        public async Task<ActionResult<Stock>> GetByIdTailleAsync(int id)
+        {
+            return await _dbContext.Stocks.FirstOrDefaultAsync(p => p.IdTaille == id);
+        }
+
+        public async Task<ActionResult<Stock>> GetByIdColorisAsync(int id)
         {
             return await _dbContext.Stocks.FirstOrDefaultAsync(p => p.IdColoris == id);
         }
@@ -49,6 +59,11 @@ namespace SAE_4._01.Models.DataManager
         {
             _dbContext.Stocks.Remove(sto);
             await _dbContext.SaveChangesAsync();
+        }
+
+        Task<ActionResult<Stock>> IDataRepository<Stock>.GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

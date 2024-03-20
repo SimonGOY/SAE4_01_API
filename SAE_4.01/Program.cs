@@ -41,6 +41,9 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<Equipement>, EquipementManager>();
             builder.Services.AddScoped<IDataRepository<EstInclus>, EstInclusManager>();
 
+            builder.Services.AddScoped<IDataRepository<Parametres>, ParametresManager>();
+            builder.Services.AddScoped<IDataRepository<Pays>, PaysManager>();
+        #warning faire un IDataRepositoryPrefere personnalisé => 2 keys
             builder.Services.AddScoped<IDataRepository<Prefere>, PrefereManager>();
         #warning faire un IDataRepositoryPresentationEquipement personnalisé => 3 keys
             builder.Services.AddScoped<IDataRepository<PresentationEquipement>, PresentationEquipementManager>();
