@@ -23,7 +23,7 @@ namespace SAE_4._01.Models.DataManager
 
         public async Task<ActionResult<Prive>> GetByIdAsync(int id)
         {
-            return await _dbContext.Prives.FirstOrDefaultAsync(p => p.IdClient == id);
+            return await _dbContext.Prives.FirstOrDefaultAsync(p => p.IdPrive == id);
         }
 
         public async Task AddAsync(Prive entity)
