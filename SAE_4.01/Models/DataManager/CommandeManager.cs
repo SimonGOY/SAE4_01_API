@@ -5,44 +5,46 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SAE_4._01.Models.DataManager
 {
-    public class DemandeEssaiManager : IDataRepository<DemandeEssai>
+    public class CommandeManager : IDataRepository<Commande>
     {
         readonly BMWDBContext _dbContext;
 
-        public DemandeEssaiManager() { }
+        public CommandeManager() { }
 
-        public DemandeEssaiManager(BMWDBContext context)
+        public CommandeManager(BMWDBContext context)
         {
             _dbContext = context;
         }
 
-        public async Task<ActionResult<IEnumerable<DemandeEssai>>> GetAllAsync()
+        public async Task<ActionResult<IEnumerable<Commande>>> GetAllAsync()
         {
-            return await _dbContext.DemandeEssais.ToListAsync();
+            return await _dbContext.Commandes.ToListAsync();
         }
 
-        public async Task<ActionResult<DemandeEssai>> GetByIdAsync(int id)
+        public async Task<ActionResult<Commande>> GetByIdAsync(int id)
         {
-            return await _dbContext.DemandeEssais.FirstOrDefaultAsync(p => p.IdDemandeEssai == id);
+            return await _dbContext.Commandes.FirstOrDefaultAsync(p => p.IdCommande == id);
         }
 
-        public async Task AddAsync(DemandeEssai entity)
+        public async Task AddAsync(Commande entity)
         {
-            await _dbContext.DemandeEssais.AddAsync(entity);
+            await _dbContext.Commandes.AddAsync(entity);
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(DemandeEssai dmd, DemandeEssai entity)
+        public async Task UpdateAsync(Commande cmd, Commande entity)
         {
-            _dbContext.Entry(dmd).State = EntityState.Modified;
-            dmd.IdDemandeEssai = entity.IdDemandeEssai;
-
+            _dbContext.Entry(cmd).State = EntityState.Modified;
+            cmd.IdCommande = entity.IdCommande;
+            cmd.IdClient = entity.IdClient;
+            cmd.DateCommande = entity.DateCommande;
+            cmd.Etat = entity.Etat;
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(DemandeEssai dmd)
+        public async Task DeleteAsync(Commande cmd)
         {
-            _dbContext.DemandeEssais.Remove(dmd);
+            _dbContext.Commandes.Remove(cmd);
             await _dbContext.SaveChangesAsync();
         }
     }
