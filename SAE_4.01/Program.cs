@@ -37,6 +37,9 @@ namespace SAE_4._01
         #warning faire un IDataRepositoryContenuCommande personnalisé
             builder.Services.AddScoped<IDataRepository<ContenuCommande>, ContenuCommandeManager>();
             builder.Services.AddScoped<IDataRepository<Couleur>, CouleurManager>();
+            builder.Services.AddScoped<IDataRepository<DemandeEssai>, DemandeEssaiManager>();
+            builder.Services.AddScoped<IDataRepository<Equipement>, EquipementManager>();
+            builder.Services.AddScoped<IDataRepository<EstInclus>, EstInclusManager>();
 
             builder.Services.AddScoped<IDataRepository<Prefere>, PrefereManager>();
         #warning faire un IDataRepositoryPresentationEquipement personnalisé => 3 keys
