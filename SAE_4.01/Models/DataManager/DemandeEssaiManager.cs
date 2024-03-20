@@ -2,6 +2,7 @@
 using SAE_4._01.Models.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.ConstrainedExecution;
 
 namespace SAE_4._01.Models.DataManager
 {
@@ -36,7 +37,10 @@ namespace SAE_4._01.Models.DataManager
         {
             _dbContext.Entry(dmd).State = EntityState.Modified;
             dmd.IdDemandeEssai = entity.IdDemandeEssai;
-
+            dmd.IdConcessionnaire = entity.IdConcessionnaire;
+            dmd.IdMoto = entity.IdMoto;
+            dmd.IdContact = entity.IdContact;
+            dmd.DescriptifDemandeEssai = entity.DescriptifDemandeEssai;
             await _dbContext.SaveChangesAsync();
         }
 
