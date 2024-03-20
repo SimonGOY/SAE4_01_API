@@ -21,19 +21,19 @@ namespace SAE_4._01.Models.DataManager
             return await _dbContext.Stocks.ToListAsync();
         }
 
-        public async Task<ActionResult<Stock>> GetByIdEquipementAsync(int id)
+        public async Task<ActionResult<IEnumerable<Stock>>> GetByIdEquipementAsync(int id)
         {
-            return await _dbContext.Stocks.FirstOrDefaultAsync(p => p.IdEquipement == id);
+            return await _dbContext.Stocks.Where(p => p.IdEquipement == id).ToListAsync();
         }
 
-        public async Task<ActionResult<Stock>> GetByIdTailleAsync(int id)
+        public async Task<ActionResult<IEnumerable<Stock>>> GetByIdTailleAsync(int id)
         {
-            return await _dbContext.Stocks.FirstOrDefaultAsync(p => p.IdTaille == id);
+            return await _dbContext.Stocks.Where(p => p.IdTaille == id).ToListAsync();
         }
 
-        public async Task<ActionResult<Stock>> GetByIdColorisAsync(int id)
+        public async Task<ActionResult<IEnumerable<Stock>>> GetByIdColorisAsync(int id)
         {
-            return await _dbContext.Stocks.FirstOrDefaultAsync(p => p.IdColoris == id);
+            return await _dbContext.Stocks.Where(p => p.IdColoris == id).ToListAsync();
         }
 
         public async Task AddAsync(Stock entity)

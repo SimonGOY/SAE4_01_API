@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+using Microsoft.Extensions.Options;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
@@ -40,13 +41,14 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<DemandeEssai>, DemandeEssaiManager>();
             builder.Services.AddScoped<IDataRepository<Equipement>, EquipementManager>();
             builder.Services.AddScoped<IDataRepository<EstInclus>, EstInclusManager>();
-        #warning faire un IDataRepositoryContenuCommande personnalisé
+        #warning faire un IDataRepositoryEstLie personnalisé
             builder.Services.AddScoped<IDataRepository<EstLie>, EstLieManager>();
-        #warning faire un IDataRepositoryContenuCommande personnalisé
+        #warning faire un IDataRepositoryGammeMoto personnalisé
             builder.Services.AddScoped<IDataRepository<GammeMoto>, GammeMotoManager>();
             builder.Services.AddScoped<IDataRepository<Garage>, GarageManager>();
-        #warning faire un IDataRepositoryContenuCommande personnalisé
 
+            builder.Services.AddScoped<IDataRepository<Option>, OptionManager>();
+            builder.Services.AddScoped<IDataRepository<Pack>, PackManager>();
             builder.Services.AddScoped<IDataRepository<Parametres>, ParametresManager>();
             builder.Services.AddScoped<IDataRepository<Pays>, PaysManager>();
         #warning faire un IDataRepositoryPrefere personnalisé => 2 keys
@@ -60,7 +62,7 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<SeCompose>, SeComposeManager>();
         #warning faire un IDataRepositorySpecifie personnalisé => 2 keys
             builder.Services.AddScoped<IDataRepository<Specifie>, SpecifieManager>();
-        #warning faire un IDataRepositoryStock personnalisé => 4 keys
+        #warning faire un IDataRepositoryStock personnalisé => 4 keys ? Marche ma
             builder.Services.AddScoped<IDataRepository<Stock>, StockManager>();
             builder.Services.AddScoped<IDataRepository<Style>, StyleManager>();
             builder.Services.AddScoped<IDataRepository<Taille>, TailleManager>();
