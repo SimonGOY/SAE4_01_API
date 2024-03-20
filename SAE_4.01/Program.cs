@@ -34,7 +34,10 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<Commande>, CommandeManager>();
             builder.Services.AddScoped<IDataRepository<Concessionnaire>, ConcessionnaireManager>();
             builder.Services.AddScoped<IDataRepository<ContactInfo>, ContactInfoManager>();
+#warning faire un Idata personnalisé
             builder.Services.AddScoped<IDataRepository<ContenuCommande>, ContenuCommandeManager>();
+            builder.Services.AddScoped<IDataRepository<Couleur>, CouleurManager>();
+
 
 #warning faire un Idata personnalisé
             builder.Services.AddScoped<IDataRepository<Stock>, StockManager>();
