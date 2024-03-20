@@ -51,6 +51,7 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<Media>, MediaManager>();
             builder.Services.AddScoped<IDataRepository<ModeleMoto>, ModeleMotoManager>();
             builder.Services.AddScoped<IDataRepository<MotoConfigurable>, MotoConfigurableManager>();
+            builder.Services.AddScoped<IDataRepository<MotoDisponible>, MotoDisponibleManager>();
 
 
             builder.Services.AddScoped<IDataRepository<Option>, OptionManager>();
