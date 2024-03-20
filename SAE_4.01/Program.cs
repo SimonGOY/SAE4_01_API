@@ -32,6 +32,7 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<Coloris>, ColorisManager>();
             builder.Services.AddScoped<IDataRepository<Commande>, CommandeManager>();
 
+            builder.Services.AddScoped<IDataRepository<Taille>, TailleManager>();
             builder.Services.AddScoped<IDataRepository<Telephone>, TelephoneManager>();
             builder.Services.AddScoped<IDataRepository<Transaction>, TransactionManager>();
             builder.Services.AddScoped<IDataRepository<Users>, UserManager>();
