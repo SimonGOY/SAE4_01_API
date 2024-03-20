@@ -45,7 +45,7 @@ namespace SAE_4._01.Controllers.Tests
         public void GetCLientTest()
         {
             // Arrange
-            Client etu = context.Clients.Find(1);
+            Client? etu = context.Clients.Find(1);
             // Act
             var res = controller.GetClient(1).Result;
             // Assert
@@ -59,14 +59,14 @@ namespace SAE_4._01.Controllers.Tests
             // Arrange
             Random rnd = new Random();
             int chiffre = rnd.Next(1, 1000000000);
-            Client cltIni = context.Clients.Find(1);
+            Client? cltIni = context.Clients.Find(1);
             cltIni.NomClient = "CLIENT CLONE N°" + chiffre;
 
             // Act
             var res = controller.PutClient(1, cltIni);
 
             // Arrange
-            Client cltMaj = context.Clients.Find(1);
+            Client? cltMaj = context.Clients.Find(1);
             Assert.IsNotNull(cltMaj);
             Assert.AreEqual(cltIni, cltMaj);
         }
