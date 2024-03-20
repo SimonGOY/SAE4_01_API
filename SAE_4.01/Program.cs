@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
@@ -31,6 +32,7 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<Collection>, CollectionManager>();
             builder.Services.AddScoped<IDataRepository<Coloris>, ColorisManager>();
 
+            builder.Services.AddScoped<IDataRepository<Style>, StyleManager>();
             builder.Services.AddScoped<IDataRepository<Taille>, TailleManager>();
             builder.Services.AddScoped<IDataRepository<Telephone>, TelephoneManager>();
             builder.Services.AddScoped<IDataRepository<Transaction>, TransactionManager>();
