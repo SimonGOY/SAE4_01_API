@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01
 {
@@ -18,6 +20,8 @@ namespace SAE_4._01
 
             builder.Services.AddDbContext<BMWDBContext>(options =>
                     options.UseNpgsql(builder.Configuration.GetConnectionString("SeriesDbContextRemote")));
+
+            builder.Services.AddScoped<IDataRepository<Client>, ClientManager>();
 
             var app = builder.Build();
 

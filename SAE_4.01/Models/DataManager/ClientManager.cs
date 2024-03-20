@@ -32,14 +32,16 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(Client etu, Client entity)
+        public async Task UpdateAsync(Client clt, Client entity)
         {
-            _dbContext.Entry(etu).State = EntityState.Modified;
-            /*etu.EtudiantId = entity.EtudiantId;
-            etu.Ine = entity.Ine;
-            etu.NomEtudiant = entity.NomEtudiant;
-            etu.PrenomEtudiant = entity.PrenomEtudiant;
-            etu.DateInscription = entity.DateInscription;*/
+            _dbContext.Entry(clt).State = EntityState.Modified;
+            clt.IdClient = entity.IdClient;
+            clt.NumAdresse = entity.NumAdresse;
+            clt.Civilite = entity.Civilite;
+            clt.NomClient = entity.NomClient;
+            clt.PrenomClient = entity.PrenomClient;
+            clt.DateNaissanceClient = entity.DateNaissanceClient;
+            clt.EmailClient = entity.EmailClient;
             await _dbContext.SaveChangesAsync();
         }
 
