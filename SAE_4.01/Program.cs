@@ -40,6 +40,12 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<DemandeEssai>, DemandeEssaiManager>();
             builder.Services.AddScoped<IDataRepository<Equipement>, EquipementManager>();
             builder.Services.AddScoped<IDataRepository<EstInclus>, EstInclusManager>();
+        #warning faire un IDataRepositoryContenuCommande personnalisé
+            builder.Services.AddScoped<IDataRepository<EstLie>, EstLieManager>();
+        #warning faire un IDataRepositoryContenuCommande personnalisé
+            builder.Services.AddScoped<IDataRepository<GammeMoto>, GammeMotoManager>();
+            builder.Services.AddScoped<IDataRepository<Garage>, GarageManager>();
+        #warning faire un IDataRepositoryContenuCommande personnalisé
 
             builder.Services.AddScoped<IDataRepository<Parametres>, ParametresManager>();
             builder.Services.AddScoped<IDataRepository<Pays>, PaysManager>();
