@@ -36,9 +36,12 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<ContactInfo>, ContactInfoManager>();
             builder.Services.AddScoped<IDataRepository<ContenuCommande>, ContenuCommandeManager>();
 
-        #warning faire un IDataRepository personnalisé => 2 keys
+            builder.Services.AddScoped<IDataRepository<Reservation>, ReservationManager>();
+        #warning faire un IDataRepositorySeCompose personnalisé => 2 keys
+            builder.Services.AddScoped<IDataRepository<SeCompose>, SeComposeManager>();
+        #warning faire un IDataRepositorySpecifie personnalisé => 2 keys
             builder.Services.AddScoped<IDataRepository<Specifie>, SpecifieManager>();
-        #warning faire un IDataRepository personnalisé => 4 keys
+        #warning faire un IDataRepositoryStock personnalisé => 4 keys
             builder.Services.AddScoped<IDataRepository<Stock>, StockManager>();
             builder.Services.AddScoped<IDataRepository<Style>, StyleManager>();
             builder.Services.AddScoped<IDataRepository<Taille>, TailleManager>();
