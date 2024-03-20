@@ -11,55 +11,55 @@ namespace SAE_4._01.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LesUsersController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly BMWDBContext _context;
 
-        public LesUsersController(BMWDBContext context)
+        public UsersController(BMWDBContext context)
         {
             _context = context;
         }
 
-        // GET: api/LesUsers
+        // GET: api/Users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Users>>> GetLesUsers()
         {
-            if (_context.LesUsers == null)
-            {
-                return NotFound();
-            }
+          if (_context.LesUsers == null)
+          {
+              return NotFound();
+          }
             return await _context.LesUsers.ToListAsync();
         }
 
-        // GET: api/LesUsers/5
+        // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Users>> GetUsers(int id)
         {
-            if (_context.LesUsers == null)
+          if (_context.LesUsers == null)
+          {
+              return NotFound();
+          }
+            var users = await _context.LesUsers.FindAsync(id);
+
+            if (users == null)
             {
                 return NotFound();
             }
-            var Users = await _context.LesUsers.FindAsync(id);
 
-            if (Users == null)
-            {
-                return NotFound();
-            }
-
-            return Users;
+            return users;
         }
 
-        // PUT: api/LesUsers/5
+        // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers(int id, Users Users)
+        public async Task<IActionResult> PutUsers(int id, Users users)
         {
-            if (id != Users.Id)
+            if (id != users.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(Users).State = EntityState.Modified;
+            _context.Entry(users).State = EntityState.Modified;
 
             try
             {
@@ -80,22 +80,22 @@ namespace SAE_4._01.Controllers
             return NoContent();
         }
 
-        // POST: api/LesUsers
+        // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Users>> PostUsers(Users Users)
+        public async Task<ActionResult<Users>> PostUsers(Users users)
         {
-            if (_context.LesUsers == null)
-            {
-                return Problem("Entity set 'BMWDBContext.LesUsers'  is null.");
-            }
-            _context.LesUsers.Add(Users);
+          if (_context.LesUsers == null)
+          {
+              return Problem("Entity set 'BMWDBContext.LesUsers'  is null.");
+          }
+            _context.LesUsers.Add(users);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUsers", new { id = Users.Id }, Users);
+            return CreatedAtAction("GetUsers", new { id = users.Id }, users);
         }
 
-        // DELETE: api/LesUsers/5
+        // DELETE: api/Users/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUsers(int id)
         {
@@ -103,13 +103,13 @@ namespace SAE_4._01.Controllers
             {
                 return NotFound();
             }
-            var Users = await _context.LesUsers.FindAsync(id);
-            if (Users == null)
+            var users = await _context.LesUsers.FindAsync(id);
+            if (users == null)
             {
                 return NotFound();
             }
 
-            _context.LesUsers.Remove(Users);
+            _context.LesUsers.Remove(users);
             await _context.SaveChangesAsync();
 
             return NoContent();
