@@ -28,6 +28,7 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<CategorieAccessoire>, CategorieAccessoireManager>();
             builder.Services.AddScoped<IDataRepository<CategorieCaracteristique>, CategorieCaracteristiqueManager>();
 
+            builder.Services.AddScoped<IDataRepository<Telephone>, TelephoneManager>();
             builder.Services.AddScoped<IDataRepository<Transaction>, TransactionManager>();
             builder.Services.AddScoped<IDataRepository<Users>, UserManager>();
 
