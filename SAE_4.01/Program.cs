@@ -39,7 +39,9 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<Couleur>, CouleurManager>();
 
 
-#warning faire un Idata personnalisé
+        #warning faire un IDataRepository personnalisé => 2 keys
+            builder.Services.AddScoped<IDataRepository<Specifie>, SpecifieManager>();
+        #warning faire un IDataRepository personnalisé => 4 keys
             builder.Services.AddScoped<IDataRepository<Stock>, StockManager>();
             builder.Services.AddScoped<IDataRepository<Style>, StyleManager>();
             builder.Services.AddScoped<IDataRepository<Taille>, TailleManager>();
