@@ -22,6 +22,9 @@ namespace SAE_4._01
                     options.UseNpgsql(builder.Configuration.GetConnectionString("SeriesDbContextRemote")));
 
             builder.Services.AddScoped<IDataRepository<Client>, ClientManager>();
+            builder.Services.AddScoped<IDataRepository<Accessoire>, AccessoireManager>();
+            builder.Services.AddScoped<IDataRepository<Adresse>, AdresseManager>();
+            builder.Services.AddScoped<IDataRepository<Caracteristique>, CaracteristiqueManager>();
 
             var app = builder.Build();
 
