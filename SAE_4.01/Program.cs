@@ -20,13 +20,15 @@ namespace SAE_4._01
 
             builder.Services.AddDbContext<BMWDBContext>(options =>
                     options.UseNpgsql(builder.Configuration.GetConnectionString("SeriesDbContextRemote")));
-
-            builder.Services.AddScoped<IDataRepository<Client>, ClientManager>();
+          
             builder.Services.AddScoped<IDataRepository<Accessoire>, AccessoireManager>();
             builder.Services.AddScoped<IDataRepository<Adresse>, AdresseManager>();
             builder.Services.AddScoped<IDataRepository<Caracteristique>, CaracteristiqueManager>();
             builder.Services.AddScoped<IDataRepository<CategorieAccessoire>, CategorieAccessoireManager>();
             builder.Services.AddScoped<IDataRepository<CategorieCaracteristique>, CategorieCaracteristiqueManager>();
+            builder.Services.AddScoped<IDataRepository<CategorieEquipement>, CategorieEquipementManager>();
+            builder.Services.AddScoped<IDataRepository<Client>, ClientManager>();
+            builder.Services.AddScoped<IDataRepository<Collection>, CollectionManager>();
 
             builder.Services.AddScoped<IDataRepository<Telephone>, TelephoneManager>();
             builder.Services.AddScoped<IDataRepository<Transaction>, TransactionManager>();
