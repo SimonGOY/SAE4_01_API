@@ -23,7 +23,7 @@ namespace SAE_4._01.Models.DataManager
 
         public async Task<ActionResult<Professionnel>> GetByIdAsync(int id)
         {
-            return await _dbContext.Professionnels.FirstOrDefaultAsync(p => p.IdClient == id);
+            return await _dbContext.Professionnels.FirstOrDefaultAsync(p => p.IdPro == id);
         }
 
         public async Task AddAsync(Professionnel entity)

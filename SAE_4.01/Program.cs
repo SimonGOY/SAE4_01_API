@@ -44,6 +44,10 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<EstLie>, EstLieManager>();
         #warning faire un IDataRepositoryContenuCommande personnalisé
 
+            builder.Services.AddScoped<IDataRepository<Prefere>, PrefereManager>();
+        #warning faire un IDataRepositoryPresentationEquipement personnalisé => 3 keys
+            builder.Services.AddScoped<IDataRepository<PresentationEquipement>, PresentationEquipementManager>();
+            builder.Services.AddScoped<IDataRepository<Prive>, PriveManager>();
             builder.Services.AddScoped<IDataRepository<Professionnel>, ProfessionnelManager>();
             builder.Services.AddScoped<IDataRepository<Reservation>, ReservationManager>();
         #warning faire un IDataRepositorySeCompose personnalisé => 2 keys
