@@ -25,6 +25,8 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<Accessoire>, AccessoireManager>();
             builder.Services.AddScoped<IDataRepository<Adresse>, AdresseManager>();
             builder.Services.AddScoped<IDataRepository<Caracteristique>, CaracteristiqueManager>();
+            builder.Services.AddScoped<IDataRepository<CategorieAccessoire>, CategorieAccessoireManager>();
+            builder.Services.AddScoped<IDataRepository<CategorieCaracteristique>, CategorieCaracteristiqueManager>();
 
             var app = builder.Build();
 
