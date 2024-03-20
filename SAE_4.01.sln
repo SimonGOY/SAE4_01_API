@@ -5,7 +5,12 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAE_4.01", "SAE_4.01\SAE_4.01.csproj", "{E0B0FDE7-73A8-4BB8-89DE-5EB2B5A3C929}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAE_4.01Tests", "SAE_4.01Tests\SAE_4.01Tests.csproj", "{6E969CA2-608C-4D54-AA22-1C2B5E681734}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAE_4.01Tests", "SAE_4.01Tests\SAE_4.01Tests.csproj", "{6E969CA2-608C-4D54-AA22-1C2B5E681734}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0EE72C06-4103-4544-A7A2-2F5B4A5F1DA7}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
