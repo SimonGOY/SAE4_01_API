@@ -46,6 +46,7 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<GammeMoto>, GammeMotoManager>();
             builder.Services.AddScoped<IDataRepository<Garage>, GarageManager>();
         #warning faire un IDataRepositoryContenuCommande personnalisé
+            builder.Services.AddScoped<IDataRepository<InfoCB>, InfoCBManager>();
 
             builder.Services.AddScoped<IDataRepository<Prefere>, PrefereManager>();
         #warning faire un IDataRepositoryPresentationEquipement personnalisé => 3 keys
