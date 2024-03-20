@@ -39,6 +39,7 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<Couleur>, CouleurManager>();
             builder.Services.AddScoped<IDataRepository<DemandeEssai>, DemandeEssaiManager>();
             builder.Services.AddScoped<IDataRepository<Equipement>, EquipementManager>();
+            builder.Services.AddScoped<IDataRepository<EstInclus>, EstInclusManager>();
 
             builder.Services.AddScoped<IDataRepository<Professionnel>, ProfessionnelManager>();
             builder.Services.AddScoped<IDataRepository<Reservation>, ReservationManager>();
