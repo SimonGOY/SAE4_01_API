@@ -38,6 +38,7 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<ContenuCommande>, ContenuCommandeManager>();
             builder.Services.AddScoped<IDataRepository<Couleur>, CouleurManager>();
 
+            builder.Services.AddScoped<IDataRepository<Prive>, PriveManager>();
             builder.Services.AddScoped<IDataRepository<Professionnel>, ProfessionnelManager>();
             builder.Services.AddScoped<IDataRepository<Reservation>, ReservationManager>();
         #warning faire un IDataRepositorySeCompose personnalisé => 2 keys
