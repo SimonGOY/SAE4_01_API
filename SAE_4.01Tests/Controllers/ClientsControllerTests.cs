@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SAE_4._01.Models.EntityFramework;
-//using SAE_4._01.Models.Repository;
+using SAE_4._01.Models.Repository;
 using SAE_4._01.Models.DataManager;
 
 namespace SAE_4._01.Controllers.Tests
@@ -17,7 +17,7 @@ namespace SAE_4._01.Controllers.Tests
     {
         private ClientsController controller;
         private BMWDBContext context;
-        //private IDataRepository<ClientsController> dataRepository;
+        private IDataRepository<Client> dataRepository;
 
         [TestInitialize]
         public void InitTest()
@@ -25,8 +25,8 @@ namespace SAE_4._01.Controllers.Tests
             // Arrange
             var builder = new DbContextOptionsBuilder<BMWDBContext>().UseNpgsql("Server=51.83.36.122; port=5432; Database=sa11; uid=sa11; password=BMW-S4; SearchPath=bmw;");
             context = new BMWDBContext(builder.Options);
-            //dataRepository = new EtudiantManager(context);
-            //controller = new ClientsController(dataRepository);
+            dataRepository = new ClientManager(context);
+            controller = new ClientsController(dataRepository);
         }
 
         [TestMethod()]

@@ -3,7 +3,7 @@ using SAE_4._01.Models.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace ds2_401.Models.DataManager
+namespace SAE_4._01.Models.DataManager
 {
     public class ClientManager : IDataRepository<Client>
     {

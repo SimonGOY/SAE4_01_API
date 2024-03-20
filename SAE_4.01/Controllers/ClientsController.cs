@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,69 +16,57 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public ClientsController(BMWDBContext context)
+        private readonly IDataRepository<Client> dataRepository;
+
+        public ClientsController(IDataRepository<Client> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
 
         // GET: api/Clients
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Client>>> GetClients()
         {
-            if (_context.Clients == null)
-            {
-                return NotFound();
-            }
-            return await _context.Clients.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Clients/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Client>> GetClient(int id)
         {
-            if (_context.Clients == null)
-            {
-                return NotFound();
-            }
-            var Client = await _context.Clients.FindAsync(id);
 
-            if (Client == null)
+            var client = await dataRepository.GetByIdAsync(id);
+
+            if (client == null)
             {
                 return NotFound();
             }
 
-            return Client;
+            return client;
         }
 
         // PUT: api/Clients/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutClient(int id, Client Client)
+        public async Task<IActionResult> PutClient(int id, Client client)
         {
-            if (id != Client.IdClient)
+
+            if (id != client.IdClient)
             {
                 return BadRequest();
             }
 
-            _context.Entry(Client).State = EntityState.Modified;
+            var cltToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (cltToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!ClientExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(cltToUpdate.Value, client);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Clients
