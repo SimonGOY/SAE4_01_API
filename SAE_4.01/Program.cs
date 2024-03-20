@@ -26,6 +26,8 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<Adresse>, AdresseManager>();
             builder.Services.AddScoped<IDataRepository<Caracteristique>, CaracteristiqueManager>();
 
+            builder.Services.AddScoped<IDataRepository<Users>, UserManager>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
