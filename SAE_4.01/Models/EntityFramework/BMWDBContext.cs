@@ -43,7 +43,6 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual DbSet<ModeleMoto> ModeleMotos { get; set; } = null!;
         public virtual DbSet<MotoConfigurable> MotoConfigurables { get; set; } = null!;
         public virtual DbSet<MotoDisponible> MotoDisponibles { get; set; } = null!;
-        public virtual DbSet<Offre> Offres { get; set; } = null!;
         public virtual DbSet<Option> Options { get; set; } = null!;
         public virtual DbSet<Pack> Packs { get; set; } = null!;
         public virtual DbSet<Parametres> Parametres { get; set; } = null!;
@@ -424,24 +423,6 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasConstraintName("fk_mdp_mod");
             });
 
-            modelBuilder.Entity<Offre>(entity =>
-            {
-                entity.HasKey(e => e.IdOffre)
-                    .HasName("pk_ofr");
-
-                entity.HasOne(d => d.MotoConfigurableOffre)
-                    .WithMany(p => p.OffreMotoConfigurable)
-                    .HasForeignKey(d => d.IdMotoConfigurable)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_ofr_mcf");
-                entity.HasOne(d => d.ConcessionnaireOffre)
-                  .WithMany(p => p.OffreConcessionnaire)
-                  .HasForeignKey(d => d.IdConcessionnaire)
-                  .OnDelete(DeleteBehavior.Restrict)
-                  .HasConstraintName("fk_ofr_con");
-
-                entity.HasCheckConstraint("ck_ofr_financement", "((((ofr_financement)::text = 'Sans Financement'::text) OR ((ofr_financement)::text = 'Financement Particulier'::text) OR ((ofr_financement)::text = 'Financement Professionnel'::text)))");
-            });
 
             modelBuilder.Entity<Option>(entity =>
             {

@@ -29,6 +29,7 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<CategorieCaracteristique>, CategorieCaracteristiqueManager>();
             builder.Services.AddScoped<IDataRepository<CategorieEquipement>, CategorieEquipementManager>();
 
+            builder.Services.AddScoped<IDataRepository<Transaction>, TransactionManager>();
             builder.Services.AddScoped<IDataRepository<Users>, UserManager>();
 
             var app = builder.Build();
