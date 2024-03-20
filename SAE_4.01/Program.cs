@@ -46,6 +46,12 @@ namespace SAE_4._01
         #warning faire un IDataRepositoryGammeMoto personnalisé
             builder.Services.AddScoped<IDataRepository<GammeMoto>, GammeMotoManager>();
             builder.Services.AddScoped<IDataRepository<Garage>, GarageManager>();
+        #warning faire un IDataRepositoryContenuCommande personnalisé
+            builder.Services.AddScoped<IDataRepository<InfoCB>, InfoCBManager>();
+            builder.Services.AddScoped<IDataRepository<Media>, MediaManager>();
+            builder.Services.AddScoped<IDataRepository<ModeleMoto>, ModeleMotoManager>();
+            builder.Services.AddScoped<IDataRepository<MotoConfigurable>, MotoConfigurableManager>();
+
 
             builder.Services.AddScoped<IDataRepository<Option>, OptionManager>();
             builder.Services.AddScoped<IDataRepository<Pack>, PackManager>();
