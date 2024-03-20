@@ -607,17 +607,17 @@ INSERT INTO "bmw".t_e_caracteristique_car VALUES (1, 1, 1, 'Puissance Nominale',
 -- Data for Name: t_e_categorie_equipement_cte; Type: TABLE DATA; Schema: bmw; Owner: s225
 --
 
-INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (1, NULL, 'Casquettes et Bonnets');
-INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (2, NULL, 'Equipements fonctionnels et Protections');
-INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (3, 1, 'T-shirt et Tops');
-INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (4, 3, 'Sweatshirts et Hoodies');
-INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (5, 3, 'Vestes');
-INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (6, 2, 'Bottes et Sneakers');
-INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (7, 2, 'Casques');
-INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (8, NULL, 'Combinaisons');
-INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (9, 2, 'Pantalons et Jeans');
-INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (10, 2, 'Sacs et Accessoires');
-INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (11, 10, 'Gants');
+INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (1, 'Casquettes et Bonnets');
+INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (2, 'Equipements fonctionnels et Protections');
+INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (3, 'T-shirt et Tops');
+INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (4, 'Sweatshirts et Hoodies');
+INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (5, 'Vestes');
+INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (6, 'Bottes et Sneakers');
+INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (7, 'Casques');
+INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (8, 'Combinaisons');
+INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (9, 'Pantalons et Jeans');
+INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (10, 'Sacs et Accessoires');
+INSERT INTO "bmw".t_e_categorie_equipement_cte VALUES (11, 'Gants');
 
 
 --

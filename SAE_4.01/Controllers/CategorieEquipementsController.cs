@@ -24,10 +24,10 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CategorieEquipement>>> GetCategorieEquipements()
         {
-          if (_context.CategorieEquipements == null)
-          {
-              return NotFound();
-          }
+            if (_context.CategorieEquipements == null)
+            {
+                return NotFound();
+            }
             return await _context.CategorieEquipements.ToListAsync();
         }
 

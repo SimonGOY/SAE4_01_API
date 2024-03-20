@@ -139,12 +139,6 @@ namespace SAE_4._01.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdCatEquipement)
                     .HasName("pk_cte");
-
-                entity.HasOne(d => d.CategorieEquipementCategorieEquipementFK)
-                    .WithMany(p => p.CategorieEquipementCategorieEquipementProperty)
-                    .HasForeignKey(d => d.CatIdCatEquipement)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_cte_cte");
             });
 
             modelBuilder.Entity<Client>(entity =>
