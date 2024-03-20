@@ -50,5 +50,10 @@ namespace SAE_4._01.Models.DataManager
             _dbContext.Accessoires.Remove(etu);
             await _dbContext.SaveChangesAsync();
         }
+
+        public Task<ActionResult<Stock>> GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

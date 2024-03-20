@@ -46,5 +46,15 @@ namespace SAE_4._01.Models.DataManager
             _dbContext.Adresses.Remove(adr);
             await _dbContext.SaveChangesAsync();
         }
+
+        Task<ActionResult<Stock>> IDataRepository<Adresse>.GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Stock>> IDataRepository<Adresse>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

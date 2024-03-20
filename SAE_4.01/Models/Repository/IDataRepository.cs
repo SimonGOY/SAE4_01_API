@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SAE_4._01.Models.EntityFramework;
 
 namespace SAE_4._01.Models.Repository
 {
@@ -9,5 +10,7 @@ namespace SAE_4._01.Models.Repository
         Task AddAsync(TEntity entity);
         Task UpdateAsync(TEntity entityToUpdate, TEntity entity);
         Task DeleteAsync(TEntity entity);
+        Task<ActionResult<Stock>> GetByIdTailleAsync(int id);
+        Task<ActionResult<Stock>> GetByIdColorisAsync(int id);
     }
 }

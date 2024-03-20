@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,38 +16,52 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public StocksController(BMWDBContext context)
+        private readonly IDataRepository<Stock> dataRepository;
+
+        public StocksController(IDataRepository<Stock> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
 
         // GET: api/Stocks
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Stock>>> GetStocks()
+        public async Task<ActionResult<IEnumerable<Stock>>> GetClients()
         {
-          if (_context.Stocks == null)
-          {
-              return NotFound();
-          }
-            return await _context.Stocks.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
-        // GET: api/Stocks/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Stock>> GetStock(int id)
-        {
-          if (_context.Stocks == null)
-          {
-              return NotFound();
-          }
-            var stock = await _context.Stocks.FindAsync(id);
 
-            if (stock == null)
+
+        // GET: api/Stocks/5
+        [HttpGet("{idtaille}")]
+
+        public async Task<ActionResult<Stock>> GetByIdTaille(int id)
+        {
+
+            var client = await dataRepository.GetByIdTailleAsync(id);
+
+            if (client == null)
             {
                 return NotFound();
             }
 
-            return stock;
+            return client;
+        }
+
+        // GET: api/Stocks/5
+        [HttpGet("{idcou}")]
+
+        public async Task<ActionResult<Stock>> GetByIdColoris(int id)
+        {
+
+            var client = await dataRepository.GetByIdColorisAsync(id);
+
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            return client;
         }
 
         // PUT: api/Stocks/5
