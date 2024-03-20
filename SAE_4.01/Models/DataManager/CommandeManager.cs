@@ -18,12 +18,12 @@ namespace SAE_4._01.Models.DataManager
 
         public async Task<ActionResult<IEnumerable<Commande>>> GetAllAsync()
         {
-            return await _dbContext.LesColoris.ToListAsync();
+            return await _dbContext.Commandes.ToListAsync();
         }
 
         public async Task<ActionResult<Commande>> GetByIdAsync(int id)
         {
-            return await _dbContext.LesColoris.FirstOrDefaultAsync(p => p.IdCommande == id);
+            return await _dbContext.Commandes.FirstOrDefaultAsync(p => p.IdCommande == id);
         }
 
         public async Task AddAsync(Commande entity)
