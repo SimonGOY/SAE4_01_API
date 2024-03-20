@@ -10,9 +10,6 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("ctf_id")]
         public int IdContact { get; set; }
 
-        [Column("ofr_id")]
-        public int? IdOffre { get; set; }
-
         [Column("ctf_nom")]
         [StringLength(50)]
         public string NomContact { get; set; } = null!;
@@ -31,11 +28,6 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("ctf_tel")]
         [StringLength(10)]
         public string TelContact { get; set; } = null!;
-
-
-        [ForeignKey(nameof(IdOffre))]
-        [InverseProperty(nameof(Offre.ContactInfoOffre))]
-        public virtual Offre OffreContactInfo { get; set; } = null!;
 
 
         [InverseProperty(nameof(DemandeEssai.ContactInfoDemandeEssai))]
