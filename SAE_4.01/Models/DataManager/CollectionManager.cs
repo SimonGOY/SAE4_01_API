@@ -32,17 +32,17 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(Collection clt, Collection entity)
+        public async Task UpdateAsync(Collection cln, Collection entity)
         {
-            _dbContext.Entry(clt).State = EntityState.Modified;
-            clt.IdCollection = entity.IdCollection;
-            clt.NomCollection = entity.NomCollection;
+            _dbContext.Entry(cln).State = EntityState.Modified;
+            cln.IdCollection = entity.IdCollection;
+            cln.NomCollection = entity.NomCollection;
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(Collection etu)
+        public async Task DeleteAsync(Collection cln)
         {
-            _dbContext.Collections.Remove(etu);
+            _dbContext.Collections.Remove(cln);
             await _dbContext.SaveChangesAsync();
         }
     }

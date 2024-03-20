@@ -45,9 +45,9 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(Client etu)
+        public async Task DeleteAsync(Client clt)
         {
-            _dbContext.Clients.Remove(etu);
+            _dbContext.Clients.Remove(clt);
             await _dbContext.SaveChangesAsync();
         }
     }
