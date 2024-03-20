@@ -48,6 +48,8 @@ namespace SAE_4._01
         #warning faire un IDataRepositoryContenuCommande personnalisé
             builder.Services.AddScoped<IDataRepository<InfoCB>, InfoCBManager>();
             builder.Services.AddScoped<IDataRepository<Media>, MediaManager>();
+            builder.Services.AddScoped<IDataRepository<ModeleMoto>, ModeleMotoManager>();
+
 
             builder.Services.AddScoped<IDataRepository<Parametres>, ParametresManager>();
             builder.Services.AddScoped<IDataRepository<Pays>, PaysManager>();
