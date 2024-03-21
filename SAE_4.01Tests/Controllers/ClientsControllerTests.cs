@@ -45,12 +45,12 @@ namespace SAE_4._01.Controllers.Tests
         public void GetCLientTest()
         {
             // Arrange
-            Client? etu = context.Clients.Find(1);
+            Client? clt = context.Clients.Find(1);
             // Act
             var res = controller.GetClient(1).Result;
             // Assert
             Assert.IsNotNull(res);
-            Assert.AreEqual(etu, res.Value, "Le client n'est pas le même");
+            Assert.AreEqual(clt, res.Value, "Le client n'est pas le même");
         }
 
         [TestMethod()]
@@ -71,7 +71,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(cltIni, cltMaj);
         }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void PostClientTest()
         {
             // Arrange
@@ -80,21 +80,24 @@ namespace SAE_4._01.Controllers.Tests
 
             Client client = new Client
             {
-                Ine = chiffre.ToString() + "69",
-                NomEtudiant = "BASTARD",
-                PrenomEtudiant = "Moua",
-                FormationId = 1
+                IdClient = chiffre,
+                NumAdresse = 123,
+                Civilite = "",
+                NomClient = "BASTARD",
+                PrenomClient = "Quentin",
+                DateNaissanceClient = new DateTime(2, 18, 2040),
+                EmailClient = "qbastard99@gmail.com"
             };
             // Act
 
             // Assert
-            var result = controller.PostEtudiant(etu).Result;
+            var result = controller.PostClient(client).Result;
             // Assert
-            Etudiant? etuRecup = context.Etudiants.Where(e => e.Ine == etu.Ine).FirstOrDefault();
-            etu.EtudiantId = etuRecup.EtudiantId;
-            Assert.AreEqual(etu, etuRecup, "Etudiants pas identiques"); ;
+            Client? cltRecup = context.Clients.Where(e => e.EmailClient == client.EmailClient).FirstOrDefault();
+            client.IdClient = cltRecup.IdClient;
+            Assert.AreEqual(client, cltRecup, "Etudiants pas identiques"); ;
         }
-
+        /*
         [TestMethod()]
         public void DeleteEtudiantTest()
         {
