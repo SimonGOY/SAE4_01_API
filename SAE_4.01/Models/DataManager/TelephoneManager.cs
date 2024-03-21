@@ -49,12 +49,62 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Telephone>.GetByIdTailleAsync(int id)
+        Task<ActionResult<IEnumerable<Telephone>>> IDataRepository<Telephone>.GetByIdTailleAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Telephone>.GetByIdColorisAsync(int id)
+        Task<ActionResult<IEnumerable<Telephone>>> IDataRepository<Telephone>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Telephone>>> IDataRepository<Telephone>.GetByIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Telephone>>> IDataRepository<Telephone>.GetByIdMotoAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Telephone>>> IDataRepository<Telephone>.GetByIdOptionAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Telephone>>> IDataRepository<Telephone>.GetByIdPackAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Telephone>>> IDataRepository<Telephone>.GetByIdClientAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Telephone>>> IDataRepository<Telephone>.GetByIdConcessionnaireAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Telephone>>> IDataRepository<Telephone>.GetByIdCommandeAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Telephone>>> IDataRepository<Telephone>.GetByIdMotoConfigurableAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Telephone>>> IDataRepository<Telephone>.GetByEquIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Telephone>>> IDataRepository<Telephone>.GetByIdStyleAsync(int id)
         {
             throw new NotImplementedException();
         }

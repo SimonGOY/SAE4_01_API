@@ -47,12 +47,62 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<GammeMoto>.GetByIdTailleAsync(int id)
+        Task<ActionResult<IEnumerable<GammeMoto>>> IDataRepository<GammeMoto>.GetByIdTailleAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<GammeMoto>.GetByIdColorisAsync(int id)
+        Task<ActionResult<IEnumerable<GammeMoto>>> IDataRepository<GammeMoto>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<GammeMoto>>> IDataRepository<GammeMoto>.GetByIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<GammeMoto>>> IDataRepository<GammeMoto>.GetByIdMotoAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<GammeMoto>>> IDataRepository<GammeMoto>.GetByIdOptionAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<GammeMoto>>> IDataRepository<GammeMoto>.GetByIdPackAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<GammeMoto>>> IDataRepository<GammeMoto>.GetByIdClientAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<GammeMoto>>> IDataRepository<GammeMoto>.GetByIdConcessionnaireAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<GammeMoto>>> IDataRepository<GammeMoto>.GetByIdCommandeAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<GammeMoto>>> IDataRepository<GammeMoto>.GetByIdMotoConfigurableAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<GammeMoto>>> IDataRepository<GammeMoto>.GetByEquIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<GammeMoto>>> IDataRepository<GammeMoto>.GetByIdStyleAsync(int id)
         {
             throw new NotImplementedException();
         }

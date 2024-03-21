@@ -22,9 +22,14 @@ namespace SAE_4._01.Models.DataManager
             return await _dbContext.Garages.ToListAsync();
         }
 
-        public async Task<ActionResult<Garage>> GetByIdAsync(int id)
+        public async Task<ActionResult<IEnumerable<Garage>>> GetByIdMotoConfigurableAsync(int id)
         {
-            return await _dbContext.Garages.FirstOrDefaultAsync(p => p.IdMotoConfigurable == id);
+            return await _dbContext.Garages.Where(p => p.IdMotoConfigurable == id).ToListAsync();
+        }
+
+        public async Task<ActionResult<IEnumerable<Garage>>> GetByIdClientAsync(int id)
+        {
+            return await _dbContext.Garages.Where(p => p.IdClient == id).ToListAsync();
         }
 
         public async Task AddAsync(Garage entity)
@@ -47,12 +52,57 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Garage>.GetByIdTailleAsync(int id)
+        Task<ActionResult<Garage>> IDataRepository<Garage>.GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Garage>.GetByIdColorisAsync(int id)
+        Task<ActionResult<IEnumerable<Garage>>> IDataRepository<Garage>.GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Garage>>> IDataRepository<Garage>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Garage>>> IDataRepository<Garage>.GetByIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Garage>>> IDataRepository<Garage>.GetByIdMotoAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Garage>>> IDataRepository<Garage>.GetByIdOptionAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Garage>>> IDataRepository<Garage>.GetByIdPackAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Garage>>> IDataRepository<Garage>.GetByIdConcessionnaireAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Garage>>> IDataRepository<Garage>.GetByIdCommandeAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Garage>>> IDataRepository<Garage>.GetByEquIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Garage>>> IDataRepository<Garage>.GetByIdStyleAsync(int id)
         {
             throw new NotImplementedException();
         }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,9 +16,10 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public PreferesController(BMWDBContext context)
+        private readonly IDataRepository<Prefere> dataRepository;
+        public PreferesController(IDataRepository<Prefere> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
 
         // GET: api/Preferes
@@ -31,24 +33,33 @@ namespace SAE_4._01.Controllers
             return await _context.Preferes.ToListAsync();
         }
 
-        // GET: api/Preferes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Prefere>> GetPrefere(int id)
+        // GET: api/SeCompose/client/5
+        [HttpGet("client/{id}")]
+        public async Task<ActionResult<IEnumerable<Prefere>>> GetByIdClient(int id)
         {
-          if (_context.Preferes == null)
-          {
-              return NotFound();
-          }
-            var prefere = await _context.Preferes.FindAsync(id);
+            var preferes = await dataRepository.GetByIdClientAsync(id);
 
-            if (prefere == null)
+            if (preferes == null || !preferes.Value.Any())
             {
                 return NotFound();
             }
 
-            return prefere;
+            return Ok(preferes);
         }
 
+        // GET: api/SeCompose/concessionnaire/5
+        [HttpGet("concessionnaire/{id}")]
+        public async Task<ActionResult<IEnumerable<Prefere>>> GetByIdConcessionnaire(int id)
+        {
+            var preferes = await dataRepository.GetByIdConcessionnaireAsync(id);
+
+            if (preferes == null || !preferes.Value.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(preferes);
+        }
         // PUT: api/Preferes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

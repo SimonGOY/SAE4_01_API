@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,9 +16,10 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public SeComposeController(BMWDBContext context)
+        private readonly IDataRepository<Specifie> dataRepository;
+        public SeComposeController(IDataRepository<Specifie> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
 
         // GET: api/SeCompose
@@ -31,22 +33,33 @@ namespace SAE_4._01.Controllers
             return await _context.SeComposes.ToListAsync();
         }
 
-        // GET: api/SeCompose/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<SeCompose>> GetSeCompose(int id)
+        // GET: api/SeCompose/Pack/5
+        [HttpGet("pack/{id}")]
+        public async Task<ActionResult<IEnumerable<SeCompose>>> GetByIdPack(int id)
         {
-          if (_context.SeComposes == null)
-          {
-              return NotFound();
-          }
-            var seCompose = await _context.SeComposes.FindAsync(id);
+            var secomposent = await dataRepository.GetByIdPackAsync(id);
 
-            if (seCompose == null)
+            if (secomposent == null || !secomposent.Value.Any())
             {
                 return NotFound();
             }
 
-            return seCompose;
+            return Ok(secomposent);
+        }
+
+
+        // GET: api/SeCompose/Option/5
+        [HttpGet("option/{id}")]
+        public async Task<ActionResult<IEnumerable<SeCompose>>> GetByIdOption(int id)
+        {
+            var secomposent = await dataRepository.GetByIdOptionAsync(id);
+
+            if (secomposent == null || !secomposent.Value.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(secomposent);
         }
 
         // PUT: api/SeCompose/5

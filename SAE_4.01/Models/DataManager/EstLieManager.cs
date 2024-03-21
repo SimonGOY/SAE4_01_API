@@ -22,9 +22,14 @@ namespace SAE_4._01.Models.DataManager
             return await _dbContext.SontLies.ToListAsync();
         }
 
-        public async Task<ActionResult<EstLie>> GetByIdAsync(int id)
+        public async Task<ActionResult<IEnumerable<EstLie>>> GetByIdEquipementAsync(int id)
         {
-            return await _dbContext.SontLies.FirstOrDefaultAsync(p => p.IdEquipement == id);
+            return await _dbContext.SontLies.Where(p => p.IdEquipement == id).ToListAsync();
+        }
+
+        public async Task<ActionResult<IEnumerable<EstLie>>> GetByEquIdEquipementAsync(int id)
+        {
+            return await _dbContext.SontLies.Where(p => p.EquIdEquipement == id).ToListAsync();
         }
 
         public async Task AddAsync(EstLie entity)
@@ -47,12 +52,57 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<EstLie>.GetByIdTailleAsync(int id)
+        Task<ActionResult<EstLie>> IDataRepository<EstLie>.GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<EstLie>.GetByIdColorisAsync(int id)
+        Task<ActionResult<IEnumerable<EstLie>>> IDataRepository<EstLie>.GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<EstLie>>> IDataRepository<EstLie>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<EstLie>>> IDataRepository<EstLie>.GetByIdMotoAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<EstLie>>> IDataRepository<EstLie>.GetByIdOptionAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<EstLie>>> IDataRepository<EstLie>.GetByIdPackAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<EstLie>>> IDataRepository<EstLie>.GetByIdClientAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<EstLie>>> IDataRepository<EstLie>.GetByIdConcessionnaireAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<EstLie>>> IDataRepository<EstLie>.GetByIdCommandeAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<EstLie>>> IDataRepository<EstLie>.GetByIdMotoConfigurableAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<EstLie>>> IDataRepository<EstLie>.GetByIdStyleAsync(int id)
         {
             throw new NotImplementedException();
         }

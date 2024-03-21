@@ -46,12 +46,63 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Coloris>.GetByIdTailleAsync(int id)
+
+        Task<ActionResult<IEnumerable<Coloris>>> IDataRepository<Coloris>.GetByIdTailleAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Coloris>.GetByIdColorisAsync(int id)
+        Task<ActionResult<IEnumerable<Coloris>>> IDataRepository<Coloris>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Coloris>>> IDataRepository<Coloris>.GetByIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Coloris>>> IDataRepository<Coloris>.GetByIdMotoAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Coloris>>> IDataRepository<Coloris>.GetByIdOptionAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Coloris>>> IDataRepository<Coloris>.GetByIdPackAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Coloris>>> IDataRepository<Coloris>.GetByIdClientAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Coloris>>> IDataRepository<Coloris>.GetByIdConcessionnaireAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Coloris>>> IDataRepository<Coloris>.GetByIdCommandeAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Coloris>>> IDataRepository<Coloris>.GetByIdMotoConfigurableAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Coloris>>> IDataRepository<Coloris>.GetByEquIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Coloris>>> IDataRepository<Coloris>.GetByIdStyleAsync(int id)
         {
             throw new NotImplementedException();
         }

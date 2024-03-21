@@ -21,9 +21,24 @@ namespace SAE_4._01.Models.DataManager
             return await _dbContext.ContenuCommandes.ToListAsync();
         }
 
-        public async Task<ActionResult<ContenuCommande>> GetByIdAsync(int id)
+        public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdCommandeAsync(int id)
         {
-            return await _dbContext.ContenuCommandes.FirstOrDefaultAsync(p => p.IdCommande == id);
+            return await _dbContext.ContenuCommandes.Where(p => p.IdCommande == id).ToListAsync();
+        }
+
+        public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdEquipementAsync(int id)
+        {
+            return await _dbContext.ContenuCommandes.Where(p => p.IdEquipement == id).ToListAsync();
+        }
+
+        public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdTailleAsync(int id)
+        {
+            return await _dbContext.ContenuCommandes.Where(p => p.IdTaille == id).ToListAsync();
+        }
+
+        public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdColorisAsync(int id)
+        {
+            return await _dbContext.ContenuCommandes.Where(p => p.IdColoris == id).ToListAsync();
         }
 
         public async Task AddAsync(ContenuCommande entity)
@@ -49,13 +64,47 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<ContenuCommande>.GetByIdTailleAsync(int id)
+        Task<ActionResult<IEnumerable<ContenuCommande>>> IDataRepository<ContenuCommande>.GetByIdMotoAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<ContenuCommande>.GetByIdColorisAsync(int id)
+        Task<ActionResult<IEnumerable<ContenuCommande>>> IDataRepository<ContenuCommande>.GetByIdOptionAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<ContenuCommande>>> IDataRepository<ContenuCommande>.GetByIdPackAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<ContenuCommande>>> IDataRepository<ContenuCommande>.GetByIdClientAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<ContenuCommande>>> IDataRepository<ContenuCommande>.GetByIdConcessionnaireAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<ContenuCommande>>> IDataRepository<ContenuCommande>.GetByIdMotoConfigurableAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<ContenuCommande>>> IDataRepository<ContenuCommande>.GetByEquIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<ContenuCommande>>> IDataRepository<ContenuCommande>.GetByIdStyleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<ContenuCommande>> IDataRepository<ContenuCommande>.GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }

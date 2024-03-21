@@ -48,12 +48,62 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Transaction>.GetByIdTailleAsync(int id)
+        Task<ActionResult<IEnumerable<Transaction>>> IDataRepository<Transaction>.GetByIdTailleAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Transaction>.GetByIdColorisAsync(int id)
+        Task<ActionResult<IEnumerable<Transaction>>> IDataRepository<Transaction>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Transaction>>> IDataRepository<Transaction>.GetByIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Transaction>>> IDataRepository<Transaction>.GetByIdMotoAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Transaction>>> IDataRepository<Transaction>.GetByIdOptionAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Transaction>>> IDataRepository<Transaction>.GetByIdPackAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Transaction>>> IDataRepository<Transaction>.GetByIdClientAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Transaction>>> IDataRepository<Transaction>.GetByIdConcessionnaireAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Transaction>>> IDataRepository<Transaction>.GetByIdCommandeAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Transaction>>> IDataRepository<Transaction>.GetByIdMotoConfigurableAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Transaction>>> IDataRepository<Transaction>.GetByEquIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Transaction>>> IDataRepository<Transaction>.GetByIdStyleAsync(int id)
         {
             throw new NotImplementedException();
         }

@@ -47,12 +47,62 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Adresse>.GetByIdTailleAsync(int id)
+        Task<ActionResult<IEnumerable<Adresse>>> IDataRepository<Adresse>.GetByIdTailleAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Adresse>.GetByIdColorisAsync(int id)
+        Task<ActionResult<IEnumerable<Adresse>>> IDataRepository<Adresse>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Adresse>>> IDataRepository<Adresse>.GetByIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Adresse>>> IDataRepository<Adresse>.GetByIdMotoAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Adresse>>> IDataRepository<Adresse>.GetByIdOptionAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Adresse>>> IDataRepository<Adresse>.GetByIdPackAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Adresse>>> IDataRepository<Adresse>.GetByIdClientAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Adresse>>> IDataRepository<Adresse>.GetByIdConcessionnaireAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Adresse>>> IDataRepository<Adresse>.GetByIdCommandeAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Adresse>>> IDataRepository<Adresse>.GetByIdMotoConfigurableAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Adresse>>> IDataRepository<Adresse>.GetByEquIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Adresse>>> IDataRepository<Adresse>.GetByIdStyleAsync(int id)
         {
             throw new NotImplementedException();
         }

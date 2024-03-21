@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,9 +16,11 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public EstInclusController(BMWDBContext context)
+        private readonly IDataRepository<EstInclus> dataRepository;
+
+        public EstInclusController(IDataRepository<EstInclus> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
 
         // GET: api/EstInclus
@@ -31,22 +34,32 @@ namespace SAE_4._01.Controllers
             return await _context.SontInclus.ToListAsync();
         }
 
-        // GET: api/EstInclus/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<EstInclus>> GetEstInclus(int id)
+        // GET: api/EstInclus/option/5
+        [HttpGet("option/{id}")]
+        public async Task<ActionResult<IEnumerable<EstInclus>>> GetByIdOption(int id)
         {
-          if (_context.SontInclus == null)
-          {
-              return NotFound();
-          }
-            var estInclus = await _context.SontInclus.FindAsync(id);
+            var sontinclus = await dataRepository.GetByIdOptionAsync(id);
 
-            if (estInclus == null)
+            if (sontinclus == null || !sontinclus.Value.Any())
             {
                 return NotFound();
             }
 
-            return estInclus;
+            return Ok(sontinclus);
+        }
+
+        // GET: api/EstInclus/style/5
+        [HttpGet("style/{id}")]
+        public async Task<ActionResult<IEnumerable<EstInclus>>> GetByIdStyle(int id)
+        {
+            var sontinclus = await dataRepository.GetByIdStyleAsync(id);
+
+            if (sontinclus == null || !sontinclus.Value.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(sontinclus);
         }
 
         // PUT: api/EstInclus/5

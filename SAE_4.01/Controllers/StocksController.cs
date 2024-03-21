@@ -46,8 +46,22 @@ namespace SAE_4._01.Controllers
             return Ok(stocks);
         }
 
+        // GET: api/Stocks/equipement/5
+        [HttpGet("equipement/{id}")]
+        public async Task<ActionResult<IEnumerable<Stock>>> GetByEquipementId(int id)
+        {
+            var stocks = await dataRepository.GetByIdEquipementAsync(id);
+
+            if (stocks == null || !stocks.Value.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(stocks);
+        }
+
         // GET: api/Stocks/couleur/5
-        [HttpGet("couleur/{id}")]
+        [HttpGet("coloris/{id}")]
         public async Task<ActionResult<IEnumerable<Stock>>> GetByColorisId(int id)
         {
             var stocks = await dataRepository.GetByIdColorisAsync(id);

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,9 +16,11 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public EstLiesController(BMWDBContext context)
+        private readonly IDataRepository<EstLie> dataRepository;
+
+        public EstLiesController(IDataRepository<EstLie> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
 
         // GET: api/EstLies
@@ -31,22 +34,32 @@ namespace SAE_4._01.Controllers
             return await _context.SontLies.ToListAsync();
         }
 
-        // GET: api/EstLies/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<EstLie>> GetEstLie(int id)
+        // GET: api/EstLie/equipement/5
+        [HttpGet("equipement/{id}")]
+        public async Task<ActionResult<IEnumerable<EstLie>>> GetByIdEquipement(int id)
         {
-          if (_context.SontLies == null)
-          {
-              return NotFound();
-          }
-            var estLie = await _context.SontLies.FindAsync(id);
+            var sontlies = await dataRepository.GetByIdEquipementAsync(id);
 
-            if (estLie == null)
+            if (sontlies == null || !sontlies.Value.Any())
             {
                 return NotFound();
             }
 
-            return estLie;
+            return Ok(sontlies);
+        }
+
+        // GET: api/EstLie/equidequipement/5
+        [HttpGet("equidequipement/{id}")]
+        public async Task<ActionResult<IEnumerable<EstLie>>> GetByEquIdEquipement(int id)
+        {
+            var sontlies = await dataRepository.GetByEquIdEquipementAsync(id);
+
+            if (sontlies == null || !sontlies.Value.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(sontlies);
         }
 
         // PUT: api/EstLies/5

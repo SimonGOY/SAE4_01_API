@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,9 +16,11 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public ContenuCommandesController(BMWDBContext context)
+        private readonly IDataRepository<ContenuCommande> dataRepository;
+
+        public ContenuCommandesController(IDataRepository<ContenuCommande> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
 
         // GET: api/ContenuCommandes
@@ -31,22 +34,60 @@ namespace SAE_4._01.Controllers
             return await _context.ContenuCommandes.ToListAsync();
         }
 
-        // GET: api/ContenuCommandes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<ContenuCommande>> GetContenuCommande(int id)
+        // GET: api/contenucommande/commande/5
+        [HttpGet("commande/{id}")]
+        public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdCommande(int id)
         {
-          if (_context.ContenuCommandes == null)
-          {
-              return NotFound();
-          }
-            var contenuCommande = await _context.ContenuCommandes.FindAsync(id);
+            var contenucommandes = await dataRepository.GetByIdCommandeAsync(id);
 
-            if (contenuCommande == null)
+            if (contenucommandes == null || !contenucommandes.Value.Any())
             {
                 return NotFound();
             }
 
-            return contenuCommande;
+            return Ok(contenucommandes);
+        }
+
+        // GET: api/contenucommande/equipement/5
+        [HttpGet("equipement/{id}")]
+        public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdEquipement(int id)
+        {
+            var contenucommandes = await dataRepository.GetByIdEquipementAsync(id);
+
+            if (contenucommandes == null || !contenucommandes.Value.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(contenucommandes);
+        }
+
+        // GET: api/contenucommande/taille/5
+        [HttpGet("taille/{id}")]
+        public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdTaille(int id)
+        {
+            var contenucommandes = await dataRepository.GetByIdTailleAsync(id);
+
+            if (contenucommandes == null || !contenucommandes.Value.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(contenucommandes);
+        }
+
+        // GET: api/contenucommande/coloris/5
+        [HttpGet("coloris/{id}")]
+        public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdColoris(int id)
+        {
+            var sontinclus = await dataRepository.GetByIdColorisAsync(id);
+
+            if (sontinclus == null || !sontinclus.Value.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(sontinclus);
         }
 
         // PUT: api/ContenuCommandes/5

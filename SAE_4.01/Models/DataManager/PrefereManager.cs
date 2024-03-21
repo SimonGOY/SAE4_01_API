@@ -21,9 +21,14 @@ namespace SAE_4._01.Models.DataManager
             return await _dbContext.Preferes.ToListAsync();
         }
 
-        public async Task<ActionResult<Prefere>> GetByIdAsync(int id)
+        public async Task<ActionResult<IEnumerable<Prefere>>> GetByIdClientAsync(int id)
         {
-            return await _dbContext.Preferes.FirstOrDefaultAsync(p => p.IdClient == id);
+            return await _dbContext.Preferes.Where(p => p.IdClient == id).ToListAsync();
+        }
+
+        public async Task<ActionResult<IEnumerable<Prefere>>> GetByIdConcessionnaireAsync(int id)
+        {
+            return await _dbContext.Preferes.Where(p => p.IdConcessionnaire == id).ToListAsync();
         }
 
         public async Task AddAsync(Prefere entity)
@@ -46,12 +51,57 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Prefere>.GetByIdTailleAsync(int id)
+        Task<ActionResult<Prefere>> IDataRepository<Prefere>.GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Prefere>.GetByIdColorisAsync(int id)
+        Task<ActionResult<IEnumerable<Prefere>>> IDataRepository<Prefere>.GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Prefere>>> IDataRepository<Prefere>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Prefere>>> IDataRepository<Prefere>.GetByIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Prefere>>> IDataRepository<Prefere>.GetByIdMotoAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Prefere>>> IDataRepository<Prefere>.GetByIdOptionAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Prefere>>> IDataRepository<Prefere>.GetByIdPackAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Prefere>>> IDataRepository<Prefere>.GetByIdCommandeAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Prefere>>> IDataRepository<Prefere>.GetByIdMotoConfigurableAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Prefere>>> IDataRepository<Prefere>.GetByEquIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Prefere>>> IDataRepository<Prefere>.GetByIdStyleAsync(int id)
         {
             throw new NotImplementedException();
         }

@@ -21,9 +21,14 @@ namespace SAE_4._01.Models.DataManager
             return await _dbContext.SeComposes.ToListAsync();
         }
 
-        public async Task<ActionResult<SeCompose>> GetByIdAsync(int id)
+        public async Task<ActionResult<IEnumerable<SeCompose>>> GetByIdPackAsync(int id)
         {
-            return await _dbContext.SeComposes.FirstOrDefaultAsync(p => p.IdPack == id);
+            return await _dbContext.SeComposes.Where(p => p.IdPack == id).ToListAsync();
+        }
+
+        public async Task<ActionResult<IEnumerable<SeCompose>>> GetByIdOptionAsync(int id)
+        {
+            return await _dbContext.SeComposes.Where(p => p.IdOption == id).ToListAsync();
         }
 
         public async Task AddAsync(SeCompose entity)
@@ -48,12 +53,57 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<SeCompose>.GetByIdTailleAsync(int id)
+        Task<ActionResult<SeCompose>> IDataRepository<SeCompose>.GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<SeCompose>.GetByIdColorisAsync(int id)
+        Task<ActionResult<IEnumerable<SeCompose>>> IDataRepository<SeCompose>.GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<SeCompose>>> IDataRepository<SeCompose>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<SeCompose>>> IDataRepository<SeCompose>.GetByIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<SeCompose>>> IDataRepository<SeCompose>.GetByIdMotoAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<SeCompose>>> IDataRepository<SeCompose>.GetByIdClientAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<SeCompose>>> IDataRepository<SeCompose>.GetByIdConcessionnaireAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<SeCompose>>> IDataRepository<SeCompose>.GetByIdCommandeAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<SeCompose>>> IDataRepository<SeCompose>.GetByIdMotoConfigurableAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<SeCompose>>> IDataRepository<SeCompose>.GetByEquIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<SeCompose>>> IDataRepository<SeCompose>.GetByIdStyleAsync(int id)
         {
             throw new NotImplementedException();
         }

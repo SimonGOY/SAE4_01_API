@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,9 +16,11 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public SpecifiesController(BMWDBContext context)
+        private readonly IDataRepository<Specifie> dataRepository;
+
+        public SpecifiesController(IDataRepository<Specifie> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
 
         // GET: api/Specifies
@@ -31,22 +34,32 @@ namespace SAE_4._01.Controllers
             return await _context.Specifies.ToListAsync();
         }
 
-        // GET: api/Specifies/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Specifie>> GetSpecifie(int id)
+        // GET: api/Specifies/option/5
+        [HttpGet("option/{id}")]
+        public async Task<ActionResult<IEnumerable<Specifie>>> GetByIdOption(int id)
         {
-          if (_context.Specifies == null)
-          {
-              return NotFound();
-          }
-            var specifie = await _context.Specifies.FindAsync(id);
+          var specifies = await dataRepository.GetByIdOptionAsync(id);
 
-            if (specifie == null)
+            if (specifies == null || !specifies.Value.Any())
             {
                 return NotFound();
             }
 
-            return specifie;
+            return Ok(specifies);
+        }
+
+        // GET: api/Specifies/modelmoto/5
+        [HttpGet("modelmoto/{id}")]
+        public async Task<ActionResult<IEnumerable<Specifie>>> GetByIdMoto(int id)
+        {
+            var specifies = await dataRepository.GetByIdMotoAsync(id);
+
+            if (specifies == null || !specifies.Value.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(specifies);
         }
 
         // PUT: api/Specifies/5

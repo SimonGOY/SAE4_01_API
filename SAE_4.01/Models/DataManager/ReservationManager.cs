@@ -50,12 +50,62 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Reservation>.GetByIdTailleAsync(int id)
+        Task<ActionResult<IEnumerable<Reservation>>> IDataRepository<Reservation>.GetByIdTailleAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Reservation>.GetByIdColorisAsync(int id)
+        Task<ActionResult<IEnumerable<Reservation>>> IDataRepository<Reservation>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Reservation>>> IDataRepository<Reservation>.GetByIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Reservation>>> IDataRepository<Reservation>.GetByIdMotoAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Reservation>>> IDataRepository<Reservation>.GetByIdOptionAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Reservation>>> IDataRepository<Reservation>.GetByIdPackAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Reservation>>> IDataRepository<Reservation>.GetByIdClientAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Reservation>>> IDataRepository<Reservation>.GetByIdConcessionnaireAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Reservation>>> IDataRepository<Reservation>.GetByIdCommandeAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Reservation>>> IDataRepository<Reservation>.GetByIdMotoConfigurableAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Reservation>>> IDataRepository<Reservation>.GetByEquIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Reservation>>> IDataRepository<Reservation>.GetByIdStyleAsync(int id)
         {
             throw new NotImplementedException();
         }

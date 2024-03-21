@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,11 +16,12 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public GaragesController(BMWDBContext context)
-        {
-            _context = context;
-        }
+        private readonly IDataRepository<Garage> dataRepository;
 
+        public GaragesController(IDataRepository<Garage> dataRepo)
+        {
+            dataRepository = dataRepo;
+        }
         // GET: api/Garages
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Garage>>> GetGarages()
@@ -31,22 +33,32 @@ namespace SAE_4._01.Controllers
             return await _context.Garages.ToListAsync();
         }
 
-        // GET: api/Garages/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Garage>> GetGarage(int id)
+        // GET: api/Garage/motoconfigurable/5
+        [HttpGet("motoconfigurable/{id}")]
+        public async Task<ActionResult<IEnumerable<Garage>>> GetByIdMotoConfigurable(int id)
         {
-          if (_context.Garages == null)
-          {
-              return NotFound();
-          }
-            var garage = await _context.Garages.FindAsync(id);
+            var garages = await dataRepository.GetByIdMotoConfigurableAsync(id);
 
-            if (garage == null)
+            if (garages == null || !garages.Value.Any())
             {
                 return NotFound();
             }
 
-            return garage;
+            return Ok(garages);
+        }
+
+        // GET: api/Garage/client/5
+        [HttpGet("client/{id}")]
+        public async Task<ActionResult<IEnumerable<Garage>>> GetByIdClient(int id)
+        {
+            var garages = await dataRepository.GetByIdClientAsync(id);
+
+            if (garages == null || !garages.Value.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(garages);
         }
 
         // PUT: api/Garages/5

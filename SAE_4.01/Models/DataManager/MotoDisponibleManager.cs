@@ -49,12 +49,62 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<MotoDisponible>.GetByIdTailleAsync(int id)
+        Task<ActionResult<IEnumerable<MotoDisponible>>> IDataRepository<MotoDisponible>.GetByIdTailleAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<MotoDisponible>.GetByIdColorisAsync(int id)
+        Task<ActionResult<IEnumerable<MotoDisponible>>> IDataRepository<MotoDisponible>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<MotoDisponible>>> IDataRepository<MotoDisponible>.GetByIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<MotoDisponible>>> IDataRepository<MotoDisponible>.GetByIdMotoAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<MotoDisponible>>> IDataRepository<MotoDisponible>.GetByIdOptionAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<MotoDisponible>>> IDataRepository<MotoDisponible>.GetByIdPackAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<MotoDisponible>>> IDataRepository<MotoDisponible>.GetByIdClientAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<MotoDisponible>>> IDataRepository<MotoDisponible>.GetByIdConcessionnaireAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<MotoDisponible>>> IDataRepository<MotoDisponible>.GetByIdCommandeAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<MotoDisponible>>> IDataRepository<MotoDisponible>.GetByIdMotoConfigurableAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<MotoDisponible>>> IDataRepository<MotoDisponible>.GetByEquIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<MotoDisponible>>> IDataRepository<MotoDisponible>.GetByIdStyleAsync(int id)
         {
             throw new NotImplementedException();
         }

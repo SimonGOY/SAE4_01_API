@@ -35,18 +35,26 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<Commande>, CommandeManager>();
             builder.Services.AddScoped<IDataRepository<Concessionnaire>, ConcessionnaireManager>();
             builder.Services.AddScoped<IDataRepository<ContactInfo>, ContactInfoManager>();
-        #warning faire un IDataRepositoryContenuCommande personnalisé
+
+        #warning IDataRepositoryContenuCommande personnalisé => 4 keys bon
             builder.Services.AddScoped<IDataRepository<ContenuCommande>, ContenuCommandeManager>();
+
             builder.Services.AddScoped<IDataRepository<Couleur>, CouleurManager>();
             builder.Services.AddScoped<IDataRepository<DemandeEssai>, DemandeEssaiManager>();
             builder.Services.AddScoped<IDataRepository<Equipement>, EquipementManager>();
+
+        #warning IDataRepositoryEstInclus personnalisé => 2 keys bon 
             builder.Services.AddScoped<IDataRepository<EstInclus>, EstInclusManager>();
-        #warning faire un IDataRepositoryEstLie personnalisé
+
+        #warning IDataRepositoryEstLie personnalisé => 2 keys bon
             builder.Services.AddScoped<IDataRepository<EstLie>, EstLieManager>();
-        #warning faire un IDataRepositoryGammeMoto personnalisé
+        
             builder.Services.AddScoped<IDataRepository<GammeMoto>, GammeMotoManager>();
+
+        #warning IDataRepositoryGarage personnalisé => 2 keys bon
             builder.Services.AddScoped<IDataRepository<Garage>, GarageManager>();
-        #warning faire un IDataRepositoryContenuCommande personnalisé
+        
+
             builder.Services.AddScoped<IDataRepository<InfoCB>, InfoCBManager>();
             builder.Services.AddScoped<IDataRepository<Media>, MediaManager>();
             builder.Services.AddScoped<IDataRepository<ModeleMoto>, ModeleMotoManager>();
@@ -54,23 +62,31 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<MotoDisponible>, MotoDisponibleManager>();
 
 
+
             builder.Services.AddScoped<IDataRepository<Option>, OptionManager>();
             builder.Services.AddScoped<IDataRepository<Pack>, PackManager>();
             builder.Services.AddScoped<IDataRepository<Parametres>, ParametresManager>();
             builder.Services.AddScoped<IDataRepository<Pays>, PaysManager>();
-        #warning faire un IDataRepositoryPrefere personnalisé => 2 keys
+
+        #warning IDataRepositoryPrefere personnalisé => 2 keys bon
             builder.Services.AddScoped<IDataRepository<Prefere>, PrefereManager>();
-        #warning faire un IDataRepositoryPresentationEquipement personnalisé => 3 keys
+
+        #warning IDataRepositoryPresentationEquipement personnalisé => 3 keys (non?)
             builder.Services.AddScoped<IDataRepository<PresentationEquipement>, PresentationEquipementManager>();
+
             builder.Services.AddScoped<IDataRepository<Prive>, PriveManager>();
             builder.Services.AddScoped<IDataRepository<Professionnel>, ProfessionnelManager>();
             builder.Services.AddScoped<IDataRepository<Reservation>, ReservationManager>();
-        #warning faire un IDataRepositorySeCompose personnalisé => 2 keys
+
+#warning IDataRepositorySeCompose personnalisé => 2 keys pas bon (pack)
             builder.Services.AddScoped<IDataRepository<SeCompose>, SeComposeManager>();
-        #warning faire un IDataRepositorySpecifie personnalisé => 2 keys
+
+        #warning IDataRepositorySpecifie personnalisé => 2 keys bon
             builder.Services.AddScoped<IDataRepository<Specifie>, SpecifieManager>();
-        #warning faire un IDataRepositoryStock personnalisé => 4 keys ? Marche ma
+
+        #warning IDataRepositoryStock personnalisé => 4 keys bon
             builder.Services.AddScoped<IDataRepository<Stock>, StockManager>();
+
             builder.Services.AddScoped<IDataRepository<Style>, StyleManager>();
             builder.Services.AddScoped<IDataRepository<Taille>, TailleManager>();
             builder.Services.AddScoped<IDataRepository<Telephone>, TelephoneManager>();

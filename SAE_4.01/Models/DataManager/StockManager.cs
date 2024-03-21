@@ -66,5 +66,49 @@ namespace SAE_4._01.Models.DataManager
             throw new NotImplementedException();
         }
 
+        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Stock>.GetByIdMotoAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Stock>.GetByIdOptionAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Stock>.GetByIdPackAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Stock>.GetByIdClientAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Stock>.GetByIdConcessionnaireAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Stock>.GetByIdCommandeAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Stock>.GetByIdMotoConfigurableAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Stock>.GetByEquIdEquipementAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Stock>.GetByIdStyleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
