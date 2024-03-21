@@ -95,7 +95,7 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Client? cltRecup = context.Clients.Where(e => e.EmailClient == client.EmailClient).FirstOrDefault();
             client.IdClient = cltRecup.IdClient;
-            Assert.AreEqual(client, cltRecup, "Etudiants pas identiques"); ;
+            Assert.AreEqual(client, cltRecup, "Clients pas identiques"); ;
         }
         /*
         [TestMethod()]
