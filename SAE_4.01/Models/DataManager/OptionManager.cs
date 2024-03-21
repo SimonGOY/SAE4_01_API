@@ -49,12 +49,12 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-        Task<ActionResult<Stock>> IDataRepository<Option>.GetByIdTailleAsync(int id)
+        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Option>.GetByIdTailleAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<Stock>> IDataRepository<Option>.GetByIdColorisAsync(int id)
+        Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Option>.GetByIdColorisAsync(int id)
         {
             throw new NotImplementedException();
         }
