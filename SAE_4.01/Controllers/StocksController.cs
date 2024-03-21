@@ -32,37 +32,36 @@ namespace SAE_4._01.Controllers
 
 
 
-        // GET: api/Stocks/5
-        [HttpGet("{idtaille}")]
-
-        public async Task<ActionResult<Stock>> GetByIdTaille(int id)
+        // GET: api/Stocks/taille/5
+        [HttpGet("taille/{id}")]
+        public async Task<ActionResult<IEnumerable<Stock>>> GetByTailleId(int id)
         {
+            var stocks = await dataRepository.GetByIdTailleAsync(id);
 
-            var client = await dataRepository.GetByIdTailleAsync(id);
-
-            if (client == null)
+            if (stocks == null || !stocks.Value.Any())
             {
                 return NotFound();
             }
 
-            return client;
+            return Ok(stocks);
         }
 
-        // GET: api/Stocks/5
-        [HttpGet("{idcou}")]
-
-        public async Task<ActionResult<Stock>> GetByIdColoris(int id)
+        // GET: api/Stocks/couleur/5
+        [HttpGet("couleur/{id}")]
+        public async Task<ActionResult<IEnumerable<Stock>>> GetByColorisId(int id)
         {
+            var stocks = await dataRepository.GetByIdColorisAsync(id);
 
-            var client = await dataRepository.GetByIdColorisAsync(id);
-
-            if (client == null)
+            if (stocks == null || !stocks.Value.Any())
             {
                 return NotFound();
             }
 
-            return client;
+            return Ok(stocks);
         }
+
+
+
 
         // PUT: api/Stocks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

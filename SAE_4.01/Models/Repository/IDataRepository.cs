@@ -10,7 +10,7 @@ namespace SAE_4._01.Models.Repository
         Task AddAsync(TEntity entity);
         Task UpdateAsync(TEntity entityToUpdate, TEntity entity);
         Task DeleteAsync(TEntity entity);
-        Task<ActionResult<Stock>> GetByIdTailleAsync(int id);
-        Task<ActionResult<Stock>> GetByIdColorisAsync(int id);
+        Task<ActionResult<IEnumerable<Stock>>> GetByIdTailleAsync(int id);
+        Task<ActionResult<IEnumerable<Stock>>> GetByIdColorisAsync(int id);
     }
 }
