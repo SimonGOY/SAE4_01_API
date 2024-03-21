@@ -47,5 +47,15 @@ namespace SAE_4._01.Models.DataManager
             _dbContext.Commandes.Remove(cmd);
             await _dbContext.SaveChangesAsync();
         }
+
+        Task<ActionResult<Stock>> IDataRepository<Commande>.GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Stock>> IDataRepository<Commande>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

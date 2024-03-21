@@ -46,5 +46,15 @@ namespace SAE_4._01.Models.DataManager
             _dbContext.MotoConfigurables.Remove(mcf);
             await _dbContext.SaveChangesAsync();
         }
+
+        Task<ActionResult<Stock>> IDataRepository<MotoConfigurable>.GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Stock>> IDataRepository<MotoConfigurable>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

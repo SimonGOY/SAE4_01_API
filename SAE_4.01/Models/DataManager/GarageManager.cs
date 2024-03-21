@@ -46,5 +46,15 @@ namespace SAE_4._01.Models.DataManager
             _dbContext.Garages.Remove(grg);
             await _dbContext.SaveChangesAsync();
         }
+
+        Task<ActionResult<Stock>> IDataRepository<Garage>.GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Stock>> IDataRepository<Garage>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -47,5 +47,15 @@ namespace SAE_4._01.Models.DataManager
             _dbContext.Transactions.Remove(tra);
             await _dbContext.SaveChangesAsync();
         }
+
+        Task<ActionResult<Stock>> IDataRepository<Transaction>.GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Stock>> IDataRepository<Transaction>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

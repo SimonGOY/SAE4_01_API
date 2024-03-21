@@ -49,5 +49,15 @@ namespace SAE_4._01.Models.DataManager
             _dbContext.ModeleMotos.Remove(mod);
             await _dbContext.SaveChangesAsync();
         }
+
+        Task<ActionResult<Stock>> IDataRepository<ModeleMoto>.GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Stock>> IDataRepository<ModeleMoto>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

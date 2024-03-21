@@ -49,5 +49,15 @@ namespace SAE_4._01.Models.DataManager
             _dbContext.ContactInfos.Remove(ctf);
             await _dbContext.SaveChangesAsync();
         }
+
+        Task<ActionResult<Stock>> IDataRepository<ContactInfo>.GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Stock>> IDataRepository<ContactInfo>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

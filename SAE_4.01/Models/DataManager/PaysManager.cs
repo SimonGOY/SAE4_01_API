@@ -44,5 +44,15 @@ namespace SAE_4._01.Models.DataManager
         {
             throw new NotImplementedException();
         }
+
+        Task<ActionResult<Stock>> IDataRepository<Pays>.GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Stock>> IDataRepository<Pays>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

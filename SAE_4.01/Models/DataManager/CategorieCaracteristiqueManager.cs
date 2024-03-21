@@ -45,5 +45,15 @@ namespace SAE_4._01.Models.DataManager
             _dbContext.CategorieCaracteristiques.Remove(ctc);
             await _dbContext.SaveChangesAsync();
         }
+
+        Task<ActionResult<Stock>> IDataRepository<CategorieCaracteristique>.GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Stock>> IDataRepository<CategorieCaracteristique>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

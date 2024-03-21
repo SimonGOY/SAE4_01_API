@@ -45,5 +45,15 @@ namespace SAE_4._01.Models.DataManager
             _dbContext.CategorieAccessoires.Remove(cat);
             await _dbContext.SaveChangesAsync();
         }
+
+        Task<ActionResult<Stock>> IDataRepository<CategorieAccessoire>.GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Stock>> IDataRepository<CategorieAccessoire>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

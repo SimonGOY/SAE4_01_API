@@ -46,5 +46,15 @@ namespace SAE_4._01.Models.DataManager
             _dbContext.PresentationEquipements.Remove(pre);
             await _dbContext.SaveChangesAsync();
         }
+
+        Task<ActionResult<Stock>> IDataRepository<PresentationEquipement>.GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Stock>> IDataRepository<PresentationEquipement>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

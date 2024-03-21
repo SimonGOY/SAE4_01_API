@@ -48,5 +48,15 @@ namespace SAE_4._01.Models.DataManager
             _dbContext.MotoDisponibles.Remove(mdp);
             await _dbContext.SaveChangesAsync();
         }
+
+        Task<ActionResult<Stock>> IDataRepository<MotoDisponible>.GetByIdTailleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Stock>> IDataRepository<MotoDisponible>.GetByIdColorisAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

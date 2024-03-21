@@ -197,12 +197,6 @@ namespace SAE_4._01.Models.EntityFramework
                 entity.HasKey(e => e.IdContact)
                     .HasName("pk_ctf");
 
-                entity.HasOne(d => d.OffreContactInfo)
-                    .WithMany(p => p.ContactInfoOffre)
-                    .HasForeignKey(d => d.IdOffre)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_ctf_ofr");
-
                 entity.HasCheckConstraint("ck_ctf_datenaissance", "age((ctf_datenaissance)::timestamp with time zone) >= '18 years'::interval");
                 entity.HasCheckConstraint("ck_ctf_email", "(ctf_email)::text ~~'%_@__%.__%'::text");
             });
