@@ -16,8 +16,8 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        private readonly IDataRepository<Specifie> dataRepository;
-        public SeComposeController(IDataRepository<Specifie> dataRepo)
+        private readonly IDataRepository<SeCompose> dataRepository;
+        public SeComposeController(IDataRepository<SeCompose> dataRepo)
         {
             dataRepository = dataRepo;
         }
@@ -26,11 +26,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<SeCompose>>> GetSeComposes()
         {
-          if (_context.SeComposes == null)
-          {
-              return NotFound();
-          }
-            return await _context.SeComposes.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/SeCompose/Pack/5

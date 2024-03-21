@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EstLie>>> GetSontLies()
         {
-          if (_context.SontLies == null)
-          {
-              return NotFound();
-          }
-            return await _context.SontLies.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/EstLie/equipement/5

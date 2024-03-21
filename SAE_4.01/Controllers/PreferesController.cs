@@ -26,11 +26,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Prefere>>> GetPreferes()
         {
-          if (_context.Preferes == null)
-          {
-              return NotFound();
-          }
-            return await _context.Preferes.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/SeCompose/client/5

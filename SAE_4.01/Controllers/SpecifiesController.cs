@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Specifie>>> GetSpecifies()
         {
-          if (_context.Specifies == null)
-          {
-              return NotFound();
-          }
-            return await _context.Specifies.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Specifies/option/5

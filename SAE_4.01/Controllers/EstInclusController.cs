@@ -52,14 +52,7 @@ namespace SAE_4._01.Controllers
         [HttpGet("style/{id}")]
         public async Task<ActionResult<IEnumerable<EstInclus>>> GetByIdStyle(int id)
         {
-            var sontinclus = await dataRepository.GetByIdStyleAsync(id);
-
-            if (sontinclus == null || !sontinclus.Value.Any())
-            {
-                return NotFound();
-            }
-
-            return Ok(sontinclus);
+            return await dataRepository.GetAllAsync();
         }
 
         // PUT: api/EstInclus/5
