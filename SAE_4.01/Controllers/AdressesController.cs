@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,9 +16,11 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public AdressesController(BMWDBContext context)
+        private readonly IDataRepository<Adresse> dataRepository;
+
+        public AdressesController(IDataRepository<Adresse> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
 
         // GET: api/Adresses

@@ -17,6 +17,7 @@ namespace SAE_4._01.Controllers
         private readonly BMWDBContext _context;
 
         private readonly IDataRepository<SeCompose> dataRepository;
+
         public SeComposeController(IDataRepository<SeCompose> dataRepo)
         {
             dataRepository = dataRepo;

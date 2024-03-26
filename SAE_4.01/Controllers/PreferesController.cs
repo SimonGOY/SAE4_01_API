@@ -17,6 +17,7 @@ namespace SAE_4._01.Controllers
         private readonly BMWDBContext _context;
 
         private readonly IDataRepository<Prefere> dataRepository;
+
         public PreferesController(IDataRepository<Prefere> dataRepo)
         {
             dataRepository = dataRepo;
