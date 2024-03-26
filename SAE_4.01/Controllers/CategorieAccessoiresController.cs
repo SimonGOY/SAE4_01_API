@@ -55,25 +55,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(categorieAccessoire).State = EntityState.Modified;
+            var ctaToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (ctaToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!CategorieAccessoireExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(ctaToUpdate.Value, categorieAccessoire);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/CategorieAccessoires
@@ -81,12 +73,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<CategorieAccessoire>> PostCategorieAccessoire(CategorieAccessoire categorieAccessoire)
         {
-          if (_context.CategorieAccessoires == null)
-          {
-              return Problem("Entity set 'BMWDBContext.CategorieAccessoires'  is null.");
-          }
-            _context.CategorieAccessoires.Add(categorieAccessoire);
-            await _context.SaveChangesAsync();
+            if (categorieAccessoire == null)
+            {
+                return Problem("Entity set 'BMWDBContext.CategorieAccessoires'  is null.");
+            }
+            await dataRepository.AddAsync(categorieAccessoire);
 
             return CreatedAtAction("GetCategorieAccessoire", new { id = categorieAccessoire.IdCatAcc }, categorieAccessoire);
         }
@@ -95,18 +86,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategorieAccessoire(int id)
         {
-            if (_context.CategorieAccessoires == null)
-            {
-                return NotFound();
-            }
-            var categorieAccessoire = await _context.CategorieAccessoires.FindAsync(id);
+            var categorieAccessoire = await dataRepository.GetByIdAsync(id);
+
             if (categorieAccessoire == null)
             {
                 return NotFound();
             }
 
-            _context.CategorieAccessoires.Remove(categorieAccessoire);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(categorieAccessoire.Value);
 
             return NoContent();
         }
