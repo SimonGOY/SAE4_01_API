@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MotoDisponible>>> GetMotoDisponibles()
         {
-          if (_context.MotoDisponibles == null)
-          {
-              return NotFound();
-          }
-            return await _context.MotoDisponibles.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/MotoDisponibles/5

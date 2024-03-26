@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Transaction>>> GetTransactions()
         {
-          if (_context.Transactions == null)
-          {
-              return NotFound();
-          }
-            return await _context.Transactions.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Transactions/5

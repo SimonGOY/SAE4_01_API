@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Commande>>> GetCommandes()
         {
-          if (_context.Commandes == null)
-          {
-              return NotFound();
-          }
-            return await _context.Commandes.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Commandes/5

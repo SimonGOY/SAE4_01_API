@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Accessoire>>> GetAccessoires()
         {
-          if (_context.Accessoires == null)
-          {
-              return NotFound();
-          }
-            return await _context.Accessoires.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Accessoires/5

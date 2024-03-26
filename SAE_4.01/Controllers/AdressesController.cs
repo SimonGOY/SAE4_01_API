@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Adresse>>> GetAdresses()
         {
-          if (_context.Adresses == null)
-          {
-              return NotFound();
-          }
-            return await _context.Adresses.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Adresses/5

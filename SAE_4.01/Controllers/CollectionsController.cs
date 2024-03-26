@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Collection>>> GetCollections()
         {
-          if (_context.Collections == null)
-          {
-              return NotFound();
-          }
-            return await _context.Collections.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Collections/5

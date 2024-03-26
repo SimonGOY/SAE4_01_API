@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Reservation>>> GetReservations()
         {
-          if (_context.Reservations == null)
-          {
-              return NotFound();
-          }
-            return await _context.Reservations.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Reservations/5

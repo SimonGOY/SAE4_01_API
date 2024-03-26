@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CategorieCaracteristique>>> GetCategorieCaracteristiques()
         {
-          if (_context.CategorieCaracteristiques == null)
-          {
-              return NotFound();
-          }
-            return await _context.CategorieCaracteristiques.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/CategorieCaracteristiques/5

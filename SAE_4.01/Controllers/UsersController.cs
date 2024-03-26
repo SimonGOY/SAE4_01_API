@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Users>>> GetLesUsers()
         {
-          if (_context.LesUsers == null)
-          {
-              return NotFound();
-          }
-            return await _context.LesUsers.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Users/5

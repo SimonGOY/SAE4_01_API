@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Option>>> GetOptions()
         {
-          if (_context.Options == null)
-          {
-              return NotFound();
-          }
-            return await _context.Options.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Options/5

@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Parametres>>> GetParametres()
         {
-          if (_context.Parametres == null)
-          {
-              return NotFound();
-          }
-            return await _context.Parametres.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Parametres/5

@@ -28,11 +28,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Prive>>> GetPrives()
         {
-          if (_context.Prives == null)
-          {
-              return NotFound();
-          }
-            return await _context.Prives.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Prives/5

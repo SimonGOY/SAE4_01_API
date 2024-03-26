@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<InfoCB>>> GetInfoCBs()
         {
-          if (_context.InfoCBs == null)
-          {
-              return NotFound();
-          }
-            return await _context.InfoCBs.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/InfoCBs/5

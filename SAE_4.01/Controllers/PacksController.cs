@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Pack>>> GetPacks()
         {
-          if (_context.Packs == null)
-          {
-              return NotFound();
-          }
-            return await _context.Packs.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Packs/5

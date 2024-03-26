@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Style>>> GetStyles()
         {
-          if (_context.Styles == null)
-          {
-              return NotFound();
-          }
-            return await _context.Styles.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Styles/5

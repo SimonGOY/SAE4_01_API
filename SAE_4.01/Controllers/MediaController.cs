@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Media>>> GetMedias()
         {
-          if (_context.Medias == null)
-          {
-              return NotFound();
-          }
-            return await _context.Medias.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Media/5

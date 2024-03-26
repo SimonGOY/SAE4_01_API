@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Couleur>>> GetCouleurs()
         {
-          if (_context.Couleurs == null)
-          {
-              return NotFound();
-          }
-            return await _context.Couleurs.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Couleurs/5

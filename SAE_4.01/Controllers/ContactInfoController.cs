@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ContactInfo>>> GetContactInfos()
         {
-          if (_context.ContactInfos == null)
-          {
-              return NotFound();
-          }
-            return await _context.ContactInfos.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/ContactInfoes/5

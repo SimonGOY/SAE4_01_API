@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Concessionnaire>>> GetConcessionnaires()
         {
-          if (_context.Concessionnaires == null)
-          {
-              return NotFound();
-          }
-            return await _context.Concessionnaires.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Concessionnaires/5

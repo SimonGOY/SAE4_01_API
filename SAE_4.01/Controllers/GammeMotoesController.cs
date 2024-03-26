@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GammeMoto>>> GetGammeMotos()
         {
-          if (_context.GammeMotos == null)
-          {
-              return NotFound();
-          }
-            return await _context.GammeMotos.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/GammeMotoes/5

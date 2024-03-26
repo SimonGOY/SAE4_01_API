@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Professionnel>>> GetProfessionnels()
         {
-          if (_context.Professionnels == null)
-          {
-              return NotFound();
-          }
-            return await _context.Professionnels.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Professionnels/5

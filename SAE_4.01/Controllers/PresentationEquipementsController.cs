@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PresentationEquipement>>> GetPresentationEquipements()
         {
-          if (_context.PresentationEquipements == null)
-          {
-              return NotFound();
-          }
-            return await _context.PresentationEquipements.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/PresentationEquipements/5

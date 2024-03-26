@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Taille>>> GetTailles()
         {
-          if (_context.Tailles == null)
-          {
-              return NotFound();
-          }
-            return await _context.Tailles.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Tailles/5

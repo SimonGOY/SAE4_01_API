@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Telephone>>> GetTelephones()
         {
-          if (_context.Telephones == null)
-          {
-              return NotFound();
-          }
-            return await _context.Telephones.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Telephones/5

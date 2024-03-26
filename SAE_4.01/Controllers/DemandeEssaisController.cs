@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DemandeEssai>>> GetDemandeEssais()
         {
-          if (_context.DemandeEssais == null)
-          {
-              return NotFound();
-          }
-            return await _context.DemandeEssais.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/DemandeEssais/5
