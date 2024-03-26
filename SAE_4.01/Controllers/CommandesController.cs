@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Commande>> GetCommande(int id)
         {
-          if (_context.Commandes == null)
-          {
-              return NotFound();
-          }
-            var commande = await _context.Commandes.FindAsync(id);
+
+            var commande = await dataRepository.GetByIdAsync(id);
 
             if (commande == null)
             {

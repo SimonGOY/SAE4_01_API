@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Pack>> GetPack(int id)
         {
-          if (_context.Packs == null)
-          {
-              return NotFound();
-          }
-            var pack = await _context.Packs.FindAsync(id);
+
+            var pack = await dataRepository.GetByIdAsync(id);
 
             if (pack == null)
             {

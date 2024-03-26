@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<InfoCB>> GetInfoCB(int id)
         {
-          if (_context.InfoCBs == null)
-          {
-              return NotFound();
-          }
-            var infoCB = await _context.InfoCBs.FindAsync(id);
+
+            var infoCB = await dataRepository.GetByIdAsync(id);
 
             if (infoCB == null)
             {

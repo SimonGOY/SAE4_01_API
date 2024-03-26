@@ -34,18 +34,15 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ModeleMoto>> GetModeleMoto(int id)
         {
-            if (_context.ModeleMotos == null)
-            {
-                return NotFound();
-            }
-            var ModeleMoto = await _context.ModeleMotos.FindAsync(id);
 
-            if (ModeleMoto == null)
+            var modeleMoto = await dataRepository.GetByIdAsync(id);
+
+            if (modeleMoto == null)
             {
                 return NotFound();
             }
 
-            return ModeleMoto;
+            return modeleMoto;
         }
 
         // PUT: api/ModeleMotos/5

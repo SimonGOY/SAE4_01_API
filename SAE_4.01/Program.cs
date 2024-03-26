@@ -60,33 +60,18 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<ModeleMoto>, ModeleMotoManager>();
             builder.Services.AddScoped<IDataRepository<MotoConfigurable>, MotoConfigurableManager>();
             builder.Services.AddScoped<IDataRepository<MotoDisponible>, MotoDisponibleManager>();
-
-
-
             builder.Services.AddScoped<IDataRepository<Option>, OptionManager>();
             builder.Services.AddScoped<IDataRepository<Pack>, PackManager>();
             builder.Services.AddScoped<IDataRepository<Parametres>, ParametresManager>();
             builder.Services.AddScoped<IDataRepository<Pays>, PaysManager>();
-
-        #warning IDataRepositoryPrefere personnalisé => 2 keys bon
             builder.Services.AddScoped<IDataRepository<Prefere>, PrefereManager>();
-
-        #warning IDataRepositoryPresentationEquipement personnalisé => 3 keys (non?)
             builder.Services.AddScoped<IDataRepository<PresentationEquipement>, PresentationEquipementManager>();
-
             builder.Services.AddScoped<IDataRepository<Prive>, PriveManager>();
             builder.Services.AddScoped<IDataRepository<Professionnel>, ProfessionnelManager>();
             builder.Services.AddScoped<IDataRepository<Reservation>, ReservationManager>();
-
-#warning IDataRepositorySeCompose personnalisé => 2 keys pas bon (pack)
             builder.Services.AddScoped<IDataRepository<SeCompose>, SeComposeManager>();
-
-        #warning IDataRepositorySpecifie personnalisé => 2 keys bon
             builder.Services.AddScoped<IDataRepository<Specifie>, SpecifieManager>();
-
-        #warning IDataRepositoryStock personnalisé => 4 keys bon
             builder.Services.AddScoped<IDataRepository<Stock>, StockManager>();
-
             builder.Services.AddScoped<IDataRepository<Style>, StyleManager>();
             builder.Services.AddScoped<IDataRepository<Taille>, TailleManager>();
             builder.Services.AddScoped<IDataRepository<Telephone>, TelephoneManager>();

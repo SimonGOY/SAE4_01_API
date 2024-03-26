@@ -31,14 +31,10 @@ namespace SAE_4._01.Controllers
         }
 
         // GET: api/Tailles/5
-        [HttpGet("{id}")]
         public async Task<ActionResult<Taille>> GetTaille(int id)
         {
-          if (_context.Tailles == null)
-          {
-              return NotFound();
-          }
-            var taille = await _context.Tailles.FindAsync(id);
+
+            var taille = await dataRepository.GetByIdAsync(id);
 
             if (taille == null)
             {

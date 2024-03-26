@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<DemandeEssai>> GetDemandeEssai(int id)
         {
-          if (_context.DemandeEssais == null)
-          {
-              return NotFound();
-          }
-            var demandeEssai = await _context.DemandeEssais.FindAsync(id);
+
+            var demandeEssai = await dataRepository.GetByIdAsync(id);
 
             if (demandeEssai == null)
             {

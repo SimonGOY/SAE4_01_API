@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Style>> GetStyle(int id)
         {
-          if (_context.Styles == null)
-          {
-              return NotFound();
-          }
-            var style = await _context.Styles.FindAsync(id);
+
+            var style = await dataRepository.GetByIdAsync(id);
 
             if (style == null)
             {

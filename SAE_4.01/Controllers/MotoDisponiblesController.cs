@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<MotoDisponible>> GetMotoDisponible(int id)
         {
-          if (_context.MotoDisponibles == null)
-          {
-              return NotFound();
-          }
-            var motoDisponible = await _context.MotoDisponibles.FindAsync(id);
+
+            var motoDisponible = await dataRepository.GetByIdAsync(id);
 
             if (motoDisponible == null)
             {

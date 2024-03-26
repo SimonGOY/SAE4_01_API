@@ -34,14 +34,14 @@ namespace SAE_4._01.Controllers
         [HttpGet("commande/{id}")]
         public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdCommande(int id)
         {
-            var contenucommandes = await dataRepository.GetByIdCommandeAsync(id);
+            var contenuCommande = await dataRepository.GetByIdCommandeAsync(id);
 
-            if (contenucommandes == null || !contenucommandes.Value.Any())
+            if (contenuCommande == null || !contenuCommande.Value.Any())
             {
                 return NotFound();
             }
 
-            return Ok(contenucommandes);
+            return Ok(contenuCommande);
         }
 
         // GET: api/contenucommande/equipement/5

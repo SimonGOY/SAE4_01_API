@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Option>> GetOption(int id)
         {
-          if (_context.Options == null)
-          {
-              return NotFound();
-          }
-            var option = await _context.Options.FindAsync(id);
+
+            var option = await dataRepository.GetByIdAsync(id);
 
             if (option == null)
             {

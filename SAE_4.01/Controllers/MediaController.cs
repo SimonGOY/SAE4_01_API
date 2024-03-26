@@ -28,11 +28,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Media>> GetMedia(int id)
         {
-          if (_context.Medias == null)
-          {
-              return NotFound();
-          }
-            var media = await _context.Medias.FindAsync(id);
+
+            var media = await dataRepository.GetByIdAsync(id);
 
             if (media == null)
             {
@@ -41,6 +38,13 @@ namespace SAE_4._01.Controllers
 
             return media;
         }
+
+#warning Faire ces gets methods!
+
+        [HttpGet("idmoto/{id}")]
+        [HttpGet("idequipement/{id}")]
+        [HttpGet("idpresentation/{id}")]
+
 
         // PUT: api/Media/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

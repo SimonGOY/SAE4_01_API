@@ -32,13 +32,10 @@ namespace SAE_4._01.Controllers
 
         // GET: api/Pays/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Pays>> GetPays(string id)
+        public async Task<ActionResult<Pays>> GetPays(int id)
         {
-          if (_context.LesPays == null)
-          {
-              return NotFound();
-          }
-            var pays = await _context.LesPays.FindAsync(id);
+
+            var pays = await dataRepository.GetByIdAsync(id);
 
             if (pays == null)
             {

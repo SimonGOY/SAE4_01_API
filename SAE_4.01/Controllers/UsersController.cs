@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Users>> GetUsers(int id)
         {
-          if (_context.LesUsers == null)
-          {
-              return NotFound();
-          }
-            var users = await _context.LesUsers.FindAsync(id);
+
+            var users = await dataRepository.GetByIdAsync(id);
 
             if (users == null)
             {

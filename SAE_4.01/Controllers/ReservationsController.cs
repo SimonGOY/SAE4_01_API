@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Reservation>> GetReservation(int id)
         {
-          if (_context.Reservations == null)
-          {
-              return NotFound();
-          }
-            var reservation = await _context.Reservations.FindAsync(id);
+
+            var reservation = await dataRepository.GetByIdAsync(id);
 
             if (reservation == null)
             {

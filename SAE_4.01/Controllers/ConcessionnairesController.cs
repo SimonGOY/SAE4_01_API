@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Concessionnaire>> GetConcessionnaire(int id)
         {
-          if (_context.Concessionnaires == null)
-          {
-              return NotFound();
-          }
-            var concessionnaire = await _context.Concessionnaires.FindAsync(id);
+
+            var concessionnaire = await dataRepository.GetByIdAsync(id);
 
             if (concessionnaire == null)
             {

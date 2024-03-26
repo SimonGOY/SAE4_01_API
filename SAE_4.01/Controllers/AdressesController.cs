@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Adresse>> GetAdresse(int id)
         {
-          if (_context.Adresses == null)
-          {
-              return NotFound();
-          }
-            var adresse = await _context.Adresses.FindAsync(id);
+
+            var adresse = await dataRepository.GetByIdAsync(id);
 
             if (adresse == null)
             {

@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ContactInfo>> GetContactInfo(int id)
         {
-          if (_context.ContactInfos == null)
-          {
-              return NotFound();
-          }
-            var contactInfo = await _context.ContactInfos.FindAsync(id);
+
+            var contactInfo = await dataRepository.GetByIdAsync(id);
 
             if (contactInfo == null)
             {

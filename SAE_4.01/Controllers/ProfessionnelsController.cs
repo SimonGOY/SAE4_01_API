@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Professionnel>> GetProfessionnel(int id)
         {
-          if (_context.Professionnels == null)
-          {
-              return NotFound();
-          }
-            var professionnel = await _context.Professionnels.FindAsync(id);
+
+            var professionnel = await dataRepository.GetByIdAsync(id);
 
             if (professionnel == null)
             {

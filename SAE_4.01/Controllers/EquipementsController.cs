@@ -34,18 +34,15 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Equipement>> GetEquipement(int id)
         {
-            if (_context.Equipements == null)
-            {
-                return NotFound();
-            }
-            var Equipement = await _context.Equipements.FindAsync(id);
 
-            if (Equipement == null)
+            var equipement = await dataRepository.GetByIdAsync(id);
+
+            if (equipement == null)
             {
                 return NotFound();
             }
 
-            return Equipement;
+            return equipement;
         }
 
         // PUT: api/Equipements/5

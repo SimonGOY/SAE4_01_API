@@ -31,14 +31,10 @@ namespace SAE_4._01.Controllers
         }
 
         // GET: api/Parametres/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Parametres>> GetParametres(string id)
+        public async Task<ActionResult<Parametres>> GetParametres(int id)
         {
-          if (_context.Parametres == null)
-          {
-              return NotFound();
-          }
-            var parametres = await _context.Parametres.FindAsync(id);
+
+            var parametres = await dataRepository.GetByIdAsync(id);
 
             if (parametres == null)
             {

@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Accessoire>> GetAccessoire(int id)
         {
-          if (_context.Accessoires == null)
-          {
-              return NotFound();
-          }
-            var accessoire = await _context.Accessoires.FindAsync(id);
+
+            var accessoire = await dataRepository.GetByIdAsync(id);
 
             if (accessoire == null)
             {

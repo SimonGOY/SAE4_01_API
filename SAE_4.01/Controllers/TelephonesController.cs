@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Telephone>> GetTelephone(int id)
         {
-          if (_context.Telephones == null)
-          {
-              return NotFound();
-          }
-            var telephone = await _context.Telephones.FindAsync(id);
+
+            var telephone = await dataRepository.GetByIdAsync(id);
 
             if (telephone == null)
             {

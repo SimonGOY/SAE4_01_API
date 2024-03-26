@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Caracteristique>> GetCaracteristique(int id)
         {
-          if (_context.Caracteristiques == null)
-          {
-              return NotFound();
-          }
-            var caracteristique = await _context.Caracteristiques.FindAsync(id);
+
+            var caracteristique = await dataRepository.GetByIdAsync(id);
 
             if (caracteristique == null)
             {

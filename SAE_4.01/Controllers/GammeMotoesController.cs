@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<GammeMoto>> GetGammeMoto(int id)
         {
-          if (_context.GammeMotos == null)
-          {
-              return NotFound();
-          }
-            var gammeMoto = await _context.GammeMotos.FindAsync(id);
+
+            var gammeMoto = await dataRepository.GetByIdAsync(id);
 
             if (gammeMoto == null)
             {

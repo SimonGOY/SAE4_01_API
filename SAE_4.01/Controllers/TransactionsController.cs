@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Transaction>> GetTransaction(int id)
         {
-          if (_context.Transactions == null)
-          {
-              return NotFound();
-          }
-            var transaction = await _context.Transactions.FindAsync(id);
+
+            var transaction = await dataRepository.GetByIdAsync(id);
 
             if (transaction == null)
             {

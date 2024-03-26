@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<PresentationEquipement>> GetPresentationEquipement(int id)
         {
-          if (_context.PresentationEquipements == null)
-          {
-              return NotFound();
-          }
-            var presentationEquipement = await _context.PresentationEquipements.FindAsync(id);
+
+            var presentationEquipement = await dataRepository.GetByIdAsync(id);
 
             if (presentationEquipement == null)
             {

@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Couleur>> GetCouleur(int id)
         {
-          if (_context.Couleurs == null)
-          {
-              return NotFound();
-          }
-            var couleur = await _context.Couleurs.FindAsync(id);
+
+            var couleur = await dataRepository.GetByIdAsync(id);
 
             if (couleur == null)
             {

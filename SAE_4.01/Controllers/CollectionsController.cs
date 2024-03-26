@@ -34,11 +34,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Collection>> GetCollection(int id)
         {
-          if (_context.Collections == null)
-          {
-              return NotFound();
-          }
-            var collection = await _context.Collections.FindAsync(id);
+
+            var collection = await dataRepository.GetByIdAsync(id);
 
             if (collection == null)
             {

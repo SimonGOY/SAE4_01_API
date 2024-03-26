@@ -35,11 +35,8 @@ namespace SAE_4._01.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Prive>> GetPrive(int id)
         {
-          if (_context.Prives == null)
-          {
-              return NotFound();
-          }
-            var prive = await _context.Prives.FindAsync(id);
+
+            var prive = await dataRepository.GetByIdAsync(id);
 
             if (prive == null)
             {
