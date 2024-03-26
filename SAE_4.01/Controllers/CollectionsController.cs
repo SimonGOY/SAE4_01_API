@@ -55,25 +55,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(collection).State = EntityState.Modified;
+            var clnToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (clnToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!CollectionExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(clnToUpdate.Value, collection);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Collections
@@ -81,12 +73,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Collection>> PostCollection(Collection collection)
         {
-          if (_context.Collections == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Collections'  is null.");
-          }
-            _context.Collections.Add(collection);
-            await _context.SaveChangesAsync();
+            if (collection == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Collections'  is null.");
+            }
+            await dataRepository.AddAsync(collection);
 
             return CreatedAtAction("GetCollection", new { id = collection.IdCollection }, collection);
         }
@@ -95,18 +86,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCollection(int id)
         {
-            if (_context.Collections == null)
-            {
-                return NotFound();
-            }
-            var collection = await _context.Collections.FindAsync(id);
+            var collection = await dataRepository.GetByIdAsync(id);
+
             if (collection == null)
             {
                 return NotFound();
             }
 
-            _context.Collections.Remove(collection);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(collection.Value);
 
             return NoContent();
         }

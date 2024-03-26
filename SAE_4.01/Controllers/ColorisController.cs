@@ -55,25 +55,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(coloris).State = EntityState.Modified;
+            var clsToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (clsToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!ColorisExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(clsToUpdate.Value, coloris);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Coloris
@@ -81,32 +73,27 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Coloris>> PostColoris(Coloris coloris)
         {
-          if (_context.LesColoris == null)
-          {
-              return Problem("Entity set 'BMWDBContext.LesColoris'  is null.");
-          }
-            _context.LesColoris.Add(coloris);
-            await _context.SaveChangesAsync();
+            if (coloris == null)
+            {
+                return Problem("Entity set 'BMWDBContext.LesColoris'  is null.");
+            }
+            await dataRepository.AddAsync(coloris);
 
-            return CreatedAtAction("GetColoris", new { id = coloris.IdColoris }, coloris);
+            return CreatedAtAction("GetCollection", new { id = coloris.IdColoris }, coloris);
         }
 
         // DELETE: api/Coloris/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteColoris(int id)
         {
-            if (_context.LesColoris == null)
-            {
-                return NotFound();
-            }
-            var coloris = await _context.LesColoris.FindAsync(id);
+            var coloris = await dataRepository.GetByIdAsync(id);
+
             if (coloris == null)
             {
                 return NotFound();
             }
 
-            _context.LesColoris.Remove(coloris);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(coloris.Value);
 
             return NoContent();
         }
