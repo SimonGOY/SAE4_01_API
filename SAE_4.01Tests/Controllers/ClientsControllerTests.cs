@@ -15,7 +15,7 @@ namespace SAE_4._01.Controllers.Tests
     [TestClass()]
     public class ClientsControllerTests
     {
-        /*private ClientsController controller;
+        private ClientsController controller;
         private BMWDBContext context;
         private IDataRepository<Client> dataRepository;
         private Client client;
@@ -23,7 +23,6 @@ namespace SAE_4._01.Controllers.Tests
         [TestInitialize]
         public void InitTest()
         {
-            // Arrange
             var builder = new DbContextOptionsBuilder<BMWDBContext>().UseNpgsql("Server=51.83.36.122; port=5432; Database=sa11; uid=sa11; password=BMW-S4; SearchPath=bmw;");
             context = new BMWDBContext(builder.Options);
             dataRepository = new ClientManager(context);
@@ -33,7 +32,7 @@ namespace SAE_4._01.Controllers.Tests
             {
                 IdClient = 666666666,
                 NumAdresse = 1,
-                Civilite = "Penis",
+                Civilite = "M.",
                 NomClient = "BASTARD",
                 PrenomClient = "Quentin",
                 DateNaissanceClient = new DateTime(2004, 2, 18),
@@ -42,7 +41,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetClientsTest()
+        public void GetClientsTest_RecuperationOK()
         {
             //Arrange
             List<Client> lesCLients = context.Clients.ToList();
@@ -54,7 +53,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetCLientTest()
+        public void GetClientTest_RecuperationOK()
         {
             // Arrange
             Client? clt = context.Clients.Find(1);
@@ -68,44 +67,44 @@ namespace SAE_4._01.Controllers.Tests
         
 
         [TestMethod()]
-        public void PostClientTest()
+        public void PostClientTest_CreationOK()
         {
             
             // Act
             var result = controller.PostClient(client).Result;
             // Assert
-            Client? cltRecup = context.Clients.Where(e => e.IdClient == client.IdClient).FirstOrDefault();
-            client.IdClient = cltRecup.IdClient;
-            Assert.AreEqual(client, cltRecup, "Clients pas identiques"); ;
+            var cltRecup = controller.GetClient(client.IdClient).Result;
+            client.IdClient = cltRecup.Value.IdClient;
+            Assert.AreEqual(client, cltRecup.Value, "Clients pas identiques"); ;
         }
 
         [TestMethod()]
-        public void PutEtudiantTest()
+        public void PutClientTest_ModificationOK()
         {
             // Arrange
-            Client? cltIni = context.Clients.Find(client.IdClient);
-            cltIni.NomClient = "CLIENT CLONE N°" + 2;
+            var cltIni = controller.GetClient(client.IdClient).Result;
+            cltIni.Value.NomClient = "CLIENT CLONE N°" + 2;
 
             // Act
-            var res = controller.PutClient(client.IdClient, cltIni);
+            var res = controller.PutClient(client.IdClient, cltIni.Value).Result;
 
-            // Arrange
-            Client? cltMaj = context.Clients.Find(1);
-            Assert.IsNotNull(cltMaj);
-            Assert.AreEqual(cltIni, cltMaj);
+            // Assert
+            var cltMaj = controller.GetClient(client.IdClient).Result;
+            Assert.IsNotNull(cltMaj.Value);
+            Assert.AreEqual(cltIni.Value, cltMaj.Value, "Client pas identiques");
         }
 
         [TestMethod()]
-        public void ZDeleteCLientTest()
+        public void ZDeleteCLientTest_SuppressionOK()
         {
 
             // Act
-            Client? cltSuppr = context.Clients.Find(client.IdClient);
-            _ = controller.DeleteClient(cltSuppr.IdClient).Result;
+            var cltSuppr = controller.GetClient(client.IdClient).Result;
+            _ = controller.DeleteClient(cltSuppr.Value.IdClient).Result;
 
-            // Arrange
-            Client? res = context.Clients.FirstOrDefault(e => e.IdClient == client.IdClient);
-            Assert.IsNull(res, "utilisateur non supprimé");
-        }*/
+            // Assert
+            var res = controller.GetClient(client.IdClient).Result;
+            Assert.IsNull(res.Value, "client non supprimé");
+        }
     }
 }

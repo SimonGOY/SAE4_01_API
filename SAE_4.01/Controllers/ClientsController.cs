@@ -96,7 +96,7 @@ namespace SAE_4._01.Controllers
                 return NotFound();
             }
 
-            dataRepository.DeleteAsync(client.Value);
+            await dataRepository.DeleteAsync(client.Value);
 
             return NoContent();
         }
