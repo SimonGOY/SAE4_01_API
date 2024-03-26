@@ -64,7 +64,28 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(clt, res.Value, "Le client n'est pas le même");
         }
 
-        
+
+        [TestMethod()]
+        public void GetClientTest_RecuperationFailed()
+        {
+            // Arrange
+            Client? clt = context.Clients.Find(1);
+            // Act
+            var res = controller.GetClient(2).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.AreNotEqual(clt, res.Value, "Le client est le même");
+        }
+
+        [TestMethod()]
+        public void GetClientTest_ClientNExistePas()
+        {
+            var res = controller.GetClient(777777777).Result;
+            // Assert
+            Assert.IsNull(res.Result, "Le client existe");
+            Assert.IsNull(res.Value, "Le client existe");
+        }
+
 
         [TestMethod()]
         public void PostClientTest_CreationOK()

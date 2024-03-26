@@ -43,6 +43,8 @@ namespace SAE_4._01.Controllers
             }
 
             return accessoire;
+
+
         }
 
         // PUT: api/Accessoires/5
@@ -50,30 +52,23 @@ namespace SAE_4._01.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAccessoire(int id, Accessoire accessoire)
         {
+
             if (id != accessoire.IdAccessoire)
             {
                 return BadRequest();
             }
 
-            _context.Entry(accessoire).State = EntityState.Modified;
+            var accToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (accToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!AccessoireExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(accToUpdate.Value, accessoire);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Accessoires
@@ -81,12 +76,12 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Accessoire>> PostAccessoire(Accessoire accessoire)
         {
-          if (_context.Accessoires == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Accessoires'  is null.");
-          }
-            _context.Accessoires.Add(accessoire);
-            await _context.SaveChangesAsync();
+
+            if (accessoire == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Accessoires'  is null.");
+            }
+            await dataRepository.AddAsync(accessoire);
 
             return CreatedAtAction("GetAccessoire", new { id = accessoire.IdAccessoire }, accessoire);
         }
@@ -95,18 +90,15 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAccessoire(int id)
         {
-            if (_context.Accessoires == null)
-            {
-                return NotFound();
-            }
-            var accessoire = await _context.Accessoires.FindAsync(id);
+
+            var accessoire = await dataRepository.GetByIdAsync(id);
+
             if (accessoire == null)
             {
                 return NotFound();
             }
 
-            _context.Accessoires.Remove(accessoire);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(accessoire.Value);
 
             return NoContent();
         }
