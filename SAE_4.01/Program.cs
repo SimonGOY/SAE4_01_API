@@ -93,6 +93,19 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<Transaction>, TransactionManager>();
             builder.Services.AddScoped<IDataRepository<Users>, UserManager>();
 
+            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  policy =>
+                                  {
+                                      policy.WithOrigins("http://localhost:5173"); // add the allowed origins  
+                                  });
+            });
+
+            // services.AddResponseCaching();  
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -108,6 +121,8 @@ namespace SAE_4._01
 
 
             app.MapControllers();
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.Run();
         }
