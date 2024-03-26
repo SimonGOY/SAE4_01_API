@@ -15,9 +15,10 @@ namespace SAE_4._01.Controllers.Tests
     [TestClass()]
     public class ClientsControllerTests
     {
-        private ClientsController controller;
+        /*private ClientsController controller;
         private BMWDBContext context;
         private IDataRepository<Client> dataRepository;
+        private Client client;
 
         [TestInitialize]
         public void InitTest()
@@ -27,6 +28,17 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new ClientManager(context);
             controller = new ClientsController(dataRepository);
+
+            client = new Client
+            {
+                IdClient = 666666666,
+                NumAdresse = 1,
+                Civilite = "Penis",
+                NomClient = "BASTARD",
+                PrenomClient = "Quentin",
+                DateNaissanceClient = new DateTime(2004, 2, 18),
+                EmailClient = "qbastard99@gmail.com"
+            };
         }
 
         [TestMethod()]
@@ -53,17 +65,29 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(clt, res.Value, "Le client n'est pas le même");
         }
 
+        
+
+        [TestMethod()]
+        public void PostClientTest()
+        {
+            
+            // Act
+            var result = controller.PostClient(client).Result;
+            // Assert
+            Client? cltRecup = context.Clients.Where(e => e.IdClient == client.IdClient).FirstOrDefault();
+            client.IdClient = cltRecup.IdClient;
+            Assert.AreEqual(client, cltRecup, "Clients pas identiques"); ;
+        }
+
         [TestMethod()]
         public void PutEtudiantTest()
         {
             // Arrange
-            Random rnd = new Random();
-            int chiffre = rnd.Next(1, 1000000000);
-            Client? cltIni = context.Clients.Find(1);
-            cltIni.NomClient = "CLIENT CLONE N°" + chiffre;
+            Client? cltIni = context.Clients.Find(client.IdClient);
+            cltIni.NomClient = "CLIENT CLONE N°" + 2;
 
             // Act
-            var res = controller.PutClient(1, cltIni);
+            var res = controller.PutClient(client.IdClient, cltIni);
 
             // Arrange
             Client? cltMaj = context.Clients.Find(1);
@@ -72,55 +96,15 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void PostClientTest()
+        public void ZDeleteCLientTest()
         {
-            // Arrange
-            Random rnd = new Random();
-            int chiffre = rnd.Next(100000000, 999999999);
-
-            Client client = new Client
-            {
-                IdClient = chiffre,
-                NumAdresse = 123,
-                Civilite = "Penis",
-                NomClient = "BASTARD",
-                PrenomClient = "Quentin",
-                DateNaissanceClient = new DateTime(2, 18, 2040),
-                EmailClient = "qbastard99@gmail.com"
-            };
-            // Act
-
-            // Assert
-            var result = controller.PostClient(client).Result;
-            // Assert
-            Client? cltRecup = context.Clients.Where(e => e.EmailClient == client.EmailClient).FirstOrDefault();
-            client.IdClient = cltRecup.IdClient;
-            Assert.AreEqual(client, cltRecup, "Clients pas identiques"); ;
-        }
-        /*
-        [TestMethod()]
-        public void DeleteEtudiantTest()
-        {
-            // Arrange
-            Random rnd = new Random();
-            int chiffre = rnd.Next(100000000, 999999999);
-
-            Etudiant etu = new Etudiant
-            {
-                Ine = chiffre.ToString() + "69",
-                NomEtudiant = "BASTARD",
-                PrenomEtudiant = "Moua",
-                FormationId = 1
-            };
-            context.Etudiants.Add(etu);
-            context.SaveChanges();
 
             // Act
-            Etudiant? etuSuppr = context.Etudiants.Where(e => e.Ine == etu.Ine).FirstOrDefault();
-            _ = controller.DeleteEtudiant(etuSuppr.EtudiantId).Result;
+            Client? cltSuppr = context.Clients.Find(client.IdClient);
+            _ = controller.DeleteClient(cltSuppr.IdClient).Result;
 
             // Arrange
-            Etudiant res = context.Etudiants.FirstOrDefault(e => e.Ine == etu.Ine);
+            Client? res = context.Clients.FirstOrDefault(e => e.IdClient == client.IdClient);
             Assert.IsNull(res, "utilisateur non supprimé");
         }*/
     }

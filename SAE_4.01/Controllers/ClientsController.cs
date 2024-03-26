@@ -72,34 +72,31 @@ namespace SAE_4._01.Controllers
         // POST: api/Clients
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Client>> PostClient(Client Client)
+        public async Task<ActionResult<Client>> PostClient(Client client)
         {
-            if (_context.Clients == null)
+            if (client == null)
             {
                 return Problem("Entity set 'BMWDBContext.Clients'  is null.");
             }
-            _context.Clients.Add(Client);
-            await _context.SaveChangesAsync();
+            await dataRepository.AddAsync(client);
 
-            return CreatedAtAction("GetClient", new { id = Client.IdClient }, Client);
+            return CreatedAtAction("GetClient", new { id = client.IdClient }, client);
+
+
         }
 
         // DELETE: api/Clients/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteClient(int id)
         {
-            if (_context.Clients == null)
-            {
-                return NotFound();
-            }
-            var Client = await _context.Clients.FindAsync(id);
-            if (Client == null)
+            var client = await dataRepository.GetByIdAsync(id);
+
+            if (client == null)
             {
                 return NotFound();
             }
 
-            _context.Clients.Remove(Client);
-            await _context.SaveChangesAsync();
+            dataRepository.DeleteAsync(client.Value);
 
             return NoContent();
         }
