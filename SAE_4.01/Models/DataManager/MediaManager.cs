@@ -22,6 +22,7 @@ namespace SAE_4._01.Models.DataManager
             return await _dbContext.Medias.ToListAsync();
         }
 
+
         public async Task<ActionResult<Media>> GetByIdAsync(int id)
         {
             return await _dbContext.Medias.FirstOrDefaultAsync(p => p.IdMedia == id);

@@ -377,6 +377,8 @@ namespace SAE_4._01.Models.EntityFramework
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_med_pre");
 
+                entity.HasCheckConstraint("chk_exclusive_id", "((mod_idmoto IS NOT NULL AND equ_idequipement IS NULL) OR (mod_idmoto IS NULL AND equ_idequipement IS NOT NULL))");
+
                 entity.HasAlternateKey(e => e.LienMedia);
             });
 

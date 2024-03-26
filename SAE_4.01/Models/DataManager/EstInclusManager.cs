@@ -16,6 +16,10 @@ namespace SAE_4._01.Models.DataManager
         {
             _dbContext = context;
         }
+        public async Task<ActionResult<IEnumerable<EstInclus>>> GetAllAsync()
+        {
+            return await _dbContext.SontInclus.ToListAsync(); ;
+        }
 
         public async Task<ActionResult<IEnumerable<EstInclus>>> GetByIdOptionAsync(int id)
         {
@@ -45,11 +49,6 @@ namespace SAE_4._01.Models.DataManager
         {
             _dbContext.SontInclus.Remove(ecl);
             await _dbContext.SaveChangesAsync();
-        }
-
-        Task<ActionResult<IEnumerable<EstInclus>>> IDataRepository<EstInclus>.GetAllAsync()
-        {
-            throw new NotImplementedException();
         }
 
         Task<ActionResult<EstInclus>> IDataRepository<EstInclus>.GetByIdAsync(int id)

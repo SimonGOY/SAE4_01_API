@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
 
@@ -27,7 +28,8 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Media>>> GetMedias()
         {
-            return await dataRepository.GetAllAsync();
+            var medias = await dataRepository.GetAllAsync();
+            return new ActionResult<IEnumerable<Media>>(medias);
         }
 
         // GET: api/Media/5
