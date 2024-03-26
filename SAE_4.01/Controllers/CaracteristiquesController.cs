@@ -55,25 +55,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(caracteristique).State = EntityState.Modified;
+            var carToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (carToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!CaracteristiqueExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(carToUpdate.Value, caracteristique);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Caracteristiques
@@ -81,32 +73,27 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Caracteristique>> PostCaracteristique(Caracteristique caracteristique)
         {
-          if (_context.Caracteristiques == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Caracteristiques'  is null.");
-          }
-            _context.Caracteristiques.Add(caracteristique);
-            await _context.SaveChangesAsync();
+            if (caracteristique == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Caracteristiques'  is null.");
+            }
+            await dataRepository.AddAsync(caracteristique);
 
-            return CreatedAtAction("GetCaracteristique", new { id = caracteristique.IdCaracteristique }, caracteristique);
+            return CreatedAtAction("GetCaracteristique", new { id =     caracteristique.IdCaracteristique }, caracteristique);
         }
 
         // DELETE: api/Caracteristiques/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCaracteristique(int id)
         {
-            if (_context.Caracteristiques == null)
-            {
-                return NotFound();
-            }
-            var caracteristique = await _context.Caracteristiques.FindAsync(id);
+            var caracteristique = await dataRepository.GetByIdAsync(id);
+
             if (caracteristique == null)
             {
                 return NotFound();
             }
 
-            _context.Caracteristiques.Remove(caracteristique);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(caracteristique.Value);
 
             return NoContent();
         }
