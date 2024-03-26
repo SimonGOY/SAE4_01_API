@@ -35,26 +35,14 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<Commande>, CommandeManager>();
             builder.Services.AddScoped<IDataRepository<Concessionnaire>, ConcessionnaireManager>();
             builder.Services.AddScoped<IDataRepository<ContactInfo>, ContactInfoManager>();
-
-        #warning IDataRepositoryContenuCommande personnalisé => 4 keys bon
             builder.Services.AddScoped<IDataRepository<ContenuCommande>, ContenuCommandeManager>();
-
             builder.Services.AddScoped<IDataRepository<Couleur>, CouleurManager>();
             builder.Services.AddScoped<IDataRepository<DemandeEssai>, DemandeEssaiManager>();
             builder.Services.AddScoped<IDataRepository<Equipement>, EquipementManager>();
-
-        #warning IDataRepositoryEstInclus personnalisé => 2 keys bon 
             builder.Services.AddScoped<IDataRepository<EstInclus>, EstInclusManager>();
-
-        #warning IDataRepositoryEstLie personnalisé => 2 keys bon
             builder.Services.AddScoped<IDataRepository<EstLie>, EstLieManager>();
-        
             builder.Services.AddScoped<IDataRepository<GammeMoto>, GammeMotoManager>();
-
-        #warning IDataRepositoryGarage personnalisé => 2 keys bon
             builder.Services.AddScoped<IDataRepository<Garage>, GarageManager>();
-        
-
             builder.Services.AddScoped<IDataRepository<InfoCB>, InfoCBManager>();
             builder.Services.AddScoped<IDataRepository<Media>, MediaManager>();
             builder.Services.AddScoped<IDataRepository<ModeleMoto>, ModeleMotoManager>();
@@ -82,12 +70,16 @@ namespace SAE_4._01
 
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy(name: MyAllowSpecificOrigins,
-                                  policy =>
-                                  {
-                                      policy.WithOrigins("http://localhost:5173"); // add the allowed origins  
-                                  });
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                               .AllowAnyHeader()
+                               .AllowAnyHeader();
+                    });
             });
+
+
 
             // services.AddResponseCaching();  
 
@@ -107,7 +99,7 @@ namespace SAE_4._01
 
             app.MapControllers();
 
-            app.UseCors(MyAllowSpecificOrigins);
+            app.UseCors("AllowAll");
 
             app.Run();
         }
