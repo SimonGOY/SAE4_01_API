@@ -55,25 +55,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(concessionnaire).State = EntityState.Modified;
+            var conToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (conToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!ConcessionnaireExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(conToUpdate.Value, concessionnaire);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Concessionnaires
@@ -81,12 +73,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Concessionnaire>> PostConcessionnaire(Concessionnaire concessionnaire)
         {
-          if (_context.Concessionnaires == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Concessionnaires'  is null.");
-          }
-            _context.Concessionnaires.Add(concessionnaire);
-            await _context.SaveChangesAsync();
+            if (concessionnaire == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Concessionnaires'  is null.");
+            }
+            await dataRepository.AddAsync(concessionnaire);
 
             return CreatedAtAction("GetConcessionnaire", new { id = concessionnaire.IdConcessionnaire }, concessionnaire);
         }
@@ -95,18 +86,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteConcessionnaire(int id)
         {
-            if (_context.Concessionnaires == null)
-            {
-                return NotFound();
-            }
-            var concessionnaire = await _context.Concessionnaires.FindAsync(id);
+            var concessionnaire = await dataRepository.GetByIdAsync(id);
+
             if (concessionnaire == null)
             {
                 return NotFound();
             }
 
-            _context.Concessionnaires.Remove(concessionnaire);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(concessionnaire.Value);
 
             return NoContent();
         }

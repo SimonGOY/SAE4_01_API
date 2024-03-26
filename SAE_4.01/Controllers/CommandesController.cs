@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -55,25 +56,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(commande).State = EntityState.Modified;
+            var cmdToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (cmdToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!CommandeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(cmdToUpdate.Value, commande);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Commandes
@@ -81,12 +74,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Commande>> PostCommande(Commande commande)
         {
-          if (_context.Commandes == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Commandes'  is null.");
-          }
-            _context.Commandes.Add(commande);
-            await _context.SaveChangesAsync();
+            if (commande == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Commandes'  is null.");
+            }
+            await dataRepository.AddAsync(commande);
 
             return CreatedAtAction("GetCommande", new { id = commande.IdCommande }, commande);
         }
@@ -95,18 +87,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCommande(int id)
         {
-            if (_context.Commandes == null)
-            {
-                return NotFound();
-            }
-            var commande = await _context.Commandes.FindAsync(id);
+            var commande = await dataRepository.GetByIdAsync(id);
+
             if (commande == null)
             {
                 return NotFound();
             }
 
-            _context.Commandes.Remove(commande);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(commande.Value);
 
             return NoContent();
         }
