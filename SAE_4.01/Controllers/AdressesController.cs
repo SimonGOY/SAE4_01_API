@@ -55,25 +55,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(adresse).State = EntityState.Modified;
+            var adrToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (adrToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!AdresseExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(adrToUpdate.Value, adresse);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Adresses
@@ -81,12 +73,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Adresse>> PostAdresse(Adresse adresse)
         {
-          if (_context.Adresses == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Adresses'  is null.");
-          }
-            _context.Adresses.Add(adresse);
-            await _context.SaveChangesAsync();
+            if (adresse == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Adresses'  is null.");
+            }
+            await dataRepository.AddAsync(adresse);
 
             return CreatedAtAction("GetAdresse", new { id = adresse.NumAdresse }, adresse);
         }
@@ -95,18 +86,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAdresse(int id)
         {
-            if (_context.Adresses == null)
-            {
-                return NotFound();
-            }
-            var adresse = await _context.Adresses.FindAsync(id);
+            var adresse = await dataRepository.GetByIdAsync(id);
+
             if (adresse == null)
             {
                 return NotFound();
             }
 
-            _context.Adresses.Remove(adresse);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(adresse.Value);
 
             return NoContent();
         }
