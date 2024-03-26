@@ -17,11 +17,6 @@ namespace SAE_4._01.Models.DataManager
             _dbContext = context;
         }
 
-        public async Task<ActionResult<IEnumerable<Media>>> GetAllAsync()
-        {
-            return await _dbContext.Medias.ToListAsync();
-        }
-
         public async Task<ActionResult<Media>> GetByIdAsync(int id)
         {
             return await _dbContext.Medias.FirstOrDefaultAsync(p => p.IdMedia == id);
@@ -107,6 +102,13 @@ namespace SAE_4._01.Models.DataManager
         }
 
         Task<ActionResult<IEnumerable<Media>>> IDataRepository<Media>.GetByIdStyleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+   
+        // Ne fonctionne pasa cause des null sur idmoto ne fonctionne pas
+        // Inutile de coder car jamais utilisée dans l'application
+        public Task<ActionResult<IEnumerable<Media>>> GetAllAsync()
         {
             throw new NotImplementedException();
         }

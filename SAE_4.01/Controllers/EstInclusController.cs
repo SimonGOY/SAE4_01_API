@@ -27,11 +27,7 @@ namespace SAE_4._01.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EstInclus>>> GetSontInclus()
         {
-          if (_context.SontInclus == null)
-          {
-              return NotFound();
-          }
-            return await _context.SontInclus.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/EstInclus/option/5

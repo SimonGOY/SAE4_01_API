@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,20 +16,18 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public ColorisController(BMWDBContext context)
+        private readonly IDataRepository<Coloris> dataRepository;
+
+        public ColorisController(IDataRepository<Coloris> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
 
         // GET: api/Coloris
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Coloris>>> GetLesColoris()
         {
-          if (_context.LesColoris == null)
-          {
-              return NotFound();
-          }
-            return await _context.LesColoris.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Coloris/5

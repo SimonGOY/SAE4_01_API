@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,20 +16,18 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public PresentationEquipementsController(BMWDBContext context)
+        private readonly IDataRepository<PresentationEquipement> dataRepository;
+
+        public PresentationEquipementsController(IDataRepository<PresentationEquipement> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
 
         // GET: api/PresentationEquipements
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PresentationEquipement>>> GetPresentationEquipements()
         {
-          if (_context.PresentationEquipements == null)
-          {
-              return NotFound();
-          }
-            return await _context.PresentationEquipements.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/PresentationEquipements/5

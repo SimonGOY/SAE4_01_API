@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,20 +16,18 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public CommandesController(BMWDBContext context)
+        private readonly IDataRepository<Commande> dataRepository;
+
+        public CommandesController(IDataRepository<Commande> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
 
         // GET: api/Commandes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Commande>>> GetCommandes()
         {
-          if (_context.Commandes == null)
-          {
-              return NotFound();
-          }
-            return await _context.Commandes.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Commandes/5

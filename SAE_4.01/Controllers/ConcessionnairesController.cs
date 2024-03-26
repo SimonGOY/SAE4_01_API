@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,20 +16,18 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public ConcessionnairesController(BMWDBContext context)
+        private readonly IDataRepository<Concessionnaire> dataRepository;
+
+        public ConcessionnairesController(IDataRepository<Concessionnaire> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
 
         // GET: api/Concessionnaires
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Concessionnaire>>> GetConcessionnaires()
         {
-          if (_context.Concessionnaires == null)
-          {
-              return NotFound();
-          }
-            return await _context.Concessionnaires.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Concessionnaires/5

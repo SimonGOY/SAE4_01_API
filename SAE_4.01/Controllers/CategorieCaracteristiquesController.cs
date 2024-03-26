@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,20 +16,18 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public CategorieCaracteristiquesController(BMWDBContext context)
+        private readonly IDataRepository<CategorieCaracteristique> dataRepository;
+
+        public CategorieCaracteristiquesController(IDataRepository<CategorieCaracteristique> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
 
         // GET: api/CategorieCaracteristiques
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CategorieCaracteristique>>> GetCategorieCaracteristiques()
         {
-          if (_context.CategorieCaracteristiques == null)
-          {
-              return NotFound();
-          }
-            return await _context.CategorieCaracteristiques.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/CategorieCaracteristiques/5

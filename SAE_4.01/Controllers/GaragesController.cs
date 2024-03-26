@@ -22,6 +22,7 @@ namespace SAE_4._01.Controllers
         {
             dataRepository = dataRepo;
         }
+
         // GET: api/Garages
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Garage>>> GetGarages()

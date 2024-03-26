@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,20 +16,18 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public ReservationsController(BMWDBContext context)
+        private readonly IDataRepository<Reservation> dataRepository;
+
+        public ReservationsController(IDataRepository<Reservation> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
 
         // GET: api/Reservations
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Reservation>>> GetReservations()
         {
-          if (_context.Reservations == null)
-          {
-              return NotFound();
-          }
-            return await _context.Reservations.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Reservations/5

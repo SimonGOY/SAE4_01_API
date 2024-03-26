@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
+using SAE_4._01.Models.Repository;
 
 namespace SAE_4._01.Controllers
 {
@@ -15,20 +16,19 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        public PrivesController(BMWDBContext context)
+        private readonly IDataRepository<Prive> dataRepository;
+
+        public PrivesController(IDataRepository<Prive> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
+
 
         // GET: api/Prives
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Prive>>> GetPrives()
         {
-          if (_context.Prives == null)
-          {
-              return NotFound();
-          }
-            return await _context.Prives.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Prives/5
