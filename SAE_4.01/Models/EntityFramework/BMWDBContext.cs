@@ -670,6 +670,7 @@ namespace SAE_4._01.Models.EntityFramework
             modelBuilder.Entity<Utilisateur>().Property(e => e.DateCreation).HasDefaultValueSql("now()");
             modelBuilder.Entity<Utilisateur>().Property(e => e.Pays).HasDefaultValue("France");*/
 
+
             OnModelCreatingPartial(modelBuilder);
         }
 
