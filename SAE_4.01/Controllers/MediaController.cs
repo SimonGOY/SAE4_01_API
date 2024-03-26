@@ -24,14 +24,6 @@ namespace SAE_4._01.Controllers
             dataRepository = dataRepo;
         }
 
-        // GET: api/Media
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Media>>> GetMedias()
-        {
-            var medias = await dataRepository.GetAllAsync();
-            return new ActionResult<IEnumerable<Media>>(medias);
-        }
-
         // GET: api/Media/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Media>> GetMedia(int id)
