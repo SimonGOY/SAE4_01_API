@@ -55,11 +55,11 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(users).State = EntityState.Modified;
+            var old = await dataRepository.GetByIdAsync(id);
 
             try
             {
-                await _context.SaveChangesAsync();
+                await dataRepository.UpdateAsync(old.Value, users);
             }
             catch (DbUpdateConcurrencyException)
             {
