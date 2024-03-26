@@ -23,7 +23,7 @@ namespace SAE_4._01.Models.DataManager
 
         public async Task<ActionResult<Users>> GetByIdAsync(int id)
         {
-            return await _dbContext.LesUsers.FirstOrDefaultAsync(p => p.IdClient == id);
+            return await _dbContext.LesUsers.FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task AddAsync(Users entity)
@@ -34,8 +34,6 @@ namespace SAE_4._01.Models.DataManager
 
         public async Task UpdateAsync(Users use, Users entity)
         {
-            _dbContext.Entry(use).State = EntityState.Modified;
-            use.Id = entity.Id;
             use.FirstName = entity.FirstName;
             use.Email = entity.Email;
             use.Password = entity.Password;
@@ -43,13 +41,15 @@ namespace SAE_4._01.Models.DataManager
             use.UpdatedAt = entity.UpdatedAt;
             use.Civilite = entity.Civilite;
             use.LastName = entity.LastName;
-            use.IdClient = entity.IdClient;
             use.IsComplete = entity.IsComplete;
             use.TypeCompte = entity.TypeCompte;
             use.DoubleAuth = entity.DoubleAuth;
             use.LastConnected = entity.LastConnected;
+            use.ClientUsers = entity.ClientUsers;
+
             await _dbContext.SaveChangesAsync();
         }
+
 
         public async Task DeleteAsync(Users use)
         {
