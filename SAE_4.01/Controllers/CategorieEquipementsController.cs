@@ -35,7 +35,7 @@ namespace SAE_4._01.Controllers
         public async Task<ActionResult<CategorieEquipement>> GetCategorieEquipement(int id)
         {
 
-            var categorieEquipement  = await dataRepository.GetByIdAsync(id);
+            var categorieEquipement = await dataRepository.GetByIdAsync(id);
 
             if (categorieEquipement == null)
             {
@@ -55,25 +55,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(categorieEquipement).State = EntityState.Modified;
+            var cteToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (cteToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!CategorieEquipementExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(cteToUpdate.Value, categorieEquipement);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/CategorieEquipements
@@ -81,12 +73,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<CategorieEquipement>> PostCategorieEquipement(CategorieEquipement categorieEquipement)
         {
-          if (_context.CategorieEquipements == null)
-          {
-              return Problem("Entity set 'BMWDBContext.CategorieEquipements'  is null.");
-          }
-            _context.CategorieEquipements.Add(categorieEquipement);
-            await _context.SaveChangesAsync();
+            if (categorieEquipement == null)
+            {
+                return Problem("Entity set 'BMWDBContext.CategorieEquipements'  is null.");
+            }
+            await dataRepository.AddAsync(categorieEquipement);
 
             return CreatedAtAction("GetCategorieEquipement", new { id = categorieEquipement.IdCatEquipement }, categorieEquipement);
         }
@@ -95,18 +86,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategorieEquipement(int id)
         {
-            if (_context.CategorieEquipements == null)
-            {
-                return NotFound();
-            }
-            var categorieEquipement = await _context.CategorieEquipements.FindAsync(id);
+            var categorieEquipement = await dataRepository.GetByIdAsync(id);
+
             if (categorieEquipement == null)
             {
                 return NotFound();
             }
 
-            _context.CategorieEquipements.Remove(categorieEquipement);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(categorieEquipement.Value);
 
             return NoContent();
         }

@@ -31,6 +31,7 @@ namespace SAE_4._01.Controllers
         }
 
         // GET: api/Parametres/5
+        [HttpGet("{id}")]
         public async Task<ActionResult<Parametres>> GetParametres(int id)
         {
 

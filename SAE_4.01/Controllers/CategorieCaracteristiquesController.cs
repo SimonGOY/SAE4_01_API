@@ -55,25 +55,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(categorieCaracteristique).State = EntityState.Modified;
+            var ctcToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (ctcToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!CategorieCaracteristiqueExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(ctcToUpdate.Value, categorieCaracteristique);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/CategorieCaracteristiques
@@ -81,12 +73,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<CategorieCaracteristique>> PostCategorieCaracteristique(CategorieCaracteristique categorieCaracteristique)
         {
-          if (_context.CategorieCaracteristiques == null)
-          {
-              return Problem("Entity set 'BMWDBContext.CategorieCaracteristiques'  is null.");
-          }
-            _context.CategorieCaracteristiques.Add(categorieCaracteristique);
-            await _context.SaveChangesAsync();
+            if (categorieCaracteristique == null)
+            {
+                return Problem("Entity set 'BMWDBContext.CategorieCaracteristique'  is null.");
+            }
+            await dataRepository.AddAsync(categorieCaracteristique);
 
             return CreatedAtAction("GetCategorieCaracteristique", new { id = categorieCaracteristique.IdCatCaracteristique }, categorieCaracteristique);
         }
@@ -95,18 +86,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategorieCaracteristique(int id)
         {
-            if (_context.CategorieCaracteristiques == null)
-            {
-                return NotFound();
-            }
-            var categorieCaracteristique = await _context.CategorieCaracteristiques.FindAsync(id);
+            var categorieCaracteristique = await dataRepository.GetByIdAsync(id);
+
             if (categorieCaracteristique == null)
             {
                 return NotFound();
             }
 
-            _context.CategorieCaracteristiques.Remove(categorieCaracteristique);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(categorieCaracteristique.Value);
 
             return NoContent();
         }
