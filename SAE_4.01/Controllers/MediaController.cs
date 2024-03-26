@@ -39,11 +39,32 @@ namespace SAE_4._01.Controllers
             return media;
         }
 
-#warning Faire ces gets methods!
 
         [HttpGet("idmoto/{id}")]
+        public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdMoto(int id)
+        {
+            var contenuCommande = await dataRepository.GetByIdMotoAsync(id);
+
+            if (contenuCommande == null || !contenuCommande.Value.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(contenuCommande);
+        }
+
         [HttpGet("idequipement/{id}")]
-        [HttpGet("idpresentation/{id}")]
+        public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdEquipement(int id)
+        {
+            var contenuCommande = await dataRepository.GetByIdEquipementAsync(id);
+
+            if (contenuCommande == null || !contenuCommande.Value.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(contenuCommande);
+        }
 
 
         // PUT: api/Media/5
