@@ -23,7 +23,7 @@ namespace SAE_4._01.Models.DataManager
 
         public async Task<ActionResult<Users>> GetByIdAsync(int id)
         {
-            return await _dbContext.LesUsers.FirstOrDefaultAsync(p => p.IdClient == id);
+            return await _dbContext.LesUsers.FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task AddAsync(Users entity)
