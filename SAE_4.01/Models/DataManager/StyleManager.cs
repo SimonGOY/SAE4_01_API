@@ -51,6 +51,11 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task<ActionResult<IEnumerable<Style>>> GetByIdMotoAsync(int id)
+        {
+            return await _dbContext.Styles.Where(p => p.IdMoto == id).ToListAsync();
+        }
+
         Task<ActionResult<IEnumerable<Style>>> IDataRepository<Style>.GetByIdTailleAsync(int id)
         {
             throw new NotImplementedException();
@@ -62,11 +67,6 @@ namespace SAE_4._01.Models.DataManager
         }
 
         Task<ActionResult<IEnumerable<Style>>> IDataRepository<Style>.GetByIdEquipementAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<ActionResult<IEnumerable<Style>>> IDataRepository<Style>.GetByIdMotoAsync(int id)
         {
             throw new NotImplementedException();
         }

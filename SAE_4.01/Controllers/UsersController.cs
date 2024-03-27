@@ -48,32 +48,25 @@ namespace SAE_4._01.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers(int id, Users users)
+        public async Task<IActionResult> PutUser(int id, Users user)
         {
-            if (id != users.Id)
+
+            if (id != user.Id)
             {
                 return BadRequest();
             }
 
-            var old = await dataRepository.GetByIdAsync(id);
+            var usrToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (usrToUpdate == null)
             {
-                await dataRepository.UpdateAsync(old.Value, users);
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!UsersExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(usrToUpdate.Value, user);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Users

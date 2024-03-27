@@ -45,6 +45,20 @@ namespace SAE_4._01.Controllers
             return style;
         }
 
+        [HttpGet("idmoto/{id}")]
+        public async Task<ActionResult<IEnumerable<Style>>> GetCouleurByIdMoto(int id)
+        {
+
+            var couleur = await dataRepository.GetByIdMotoAsync(id);
+
+            if (couleur == null)
+            {
+                return NotFound();
+            }
+
+            return couleur;
+        }
+
         // PUT: api/Styles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
