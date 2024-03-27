@@ -32,6 +32,11 @@ namespace SAE_4._01.Models.DataManager
             return await _dbContext.Garages.Where(p => p.IdClient == id).ToListAsync();
         }
 
+        public async Task<ActionResult<Garage>> GetBy2CompositeKeysAsync(int id1, int id2)
+        {
+            return await _dbContext.Garages.FirstOrDefaultAsync(e => e.IdMotoConfigurable == id1 && e.IdClient == id2);
+        }
+
         public async Task AddAsync(Garage entity)
         {
             await _dbContext.Garages.AddAsync(entity);
@@ -103,6 +108,16 @@ namespace SAE_4._01.Models.DataManager
         }
 
         Task<ActionResult<IEnumerable<Garage>>> IDataRepository<Garage>.GetByIdStyleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Garage>> IDataRepository<Garage>.GetBy3CompositeKeysAsync(int id1, int id2, int id3)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Garage>> IDataRepository<Garage>.GetBy4CompositeKeysAsync(int id1, int id2, int id3, int id4)
         {
             throw new NotImplementedException();
         }

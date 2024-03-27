@@ -31,6 +31,11 @@ namespace SAE_4._01.Models.DataManager
             return await _dbContext.Preferes.Where(p => p.IdConcessionnaire == id).ToListAsync();
         }
 
+        public async Task<ActionResult<Prefere>> GetBy2CompositeKeysAsync(int id1, int id2)
+        {
+            return await _dbContext.Preferes.FirstOrDefaultAsync(e => e.IdClient == id1 && e.IdConcessionnaire == id2);
+        }
+
         public async Task AddAsync(Prefere entity)
         {
             await _dbContext.Preferes.AddAsync(entity);
@@ -102,6 +107,16 @@ namespace SAE_4._01.Models.DataManager
         }
 
         Task<ActionResult<IEnumerable<Prefere>>> IDataRepository<Prefere>.GetByIdStyleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Prefere>> IDataRepository<Prefere>.GetBy3CompositeKeysAsync(int id1, int id2, int id3)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Prefere>> IDataRepository<Prefere>.GetBy4CompositeKeysAsync(int id1, int id2, int id3, int id4)
         {
             throw new NotImplementedException();
         }

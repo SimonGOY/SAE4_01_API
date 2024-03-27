@@ -55,25 +55,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(demandeEssai).State = EntityState.Modified;
+            var dmdToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (dmdToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!DemandeEssaiExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(dmdToUpdate.Value, demandeEssai);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/DemandeEssais
@@ -81,12 +73,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<DemandeEssai>> PostDemandeEssai(DemandeEssai demandeEssai)
         {
-          if (_context.DemandeEssais == null)
-          {
-              return Problem("Entity set 'BMWDBContext.DemandeEssais'  is null.");
-          }
-            _context.DemandeEssais.Add(demandeEssai);
-            await _context.SaveChangesAsync();
+            if (demandeEssai == null)
+            {
+                return Problem("Entity set 'BMWDBContext.DemandeEssais'  is null.");
+            }
+            await dataRepository.AddAsync(demandeEssai);
 
             return CreatedAtAction("GetDemandeEssai", new { id = demandeEssai.IdDemandeEssai }, demandeEssai);
         }
@@ -95,18 +86,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDemandeEssai(int id)
         {
-            if (_context.DemandeEssais == null)
-            {
-                return NotFound();
-            }
-            var demandeEssai = await _context.DemandeEssais.FindAsync(id);
+            var demandeEssai = await dataRepository.GetByIdAsync(id);
+
             if (demandeEssai == null)
             {
                 return NotFound();
             }
 
-            _context.DemandeEssais.Remove(demandeEssai);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(demandeEssai.Value);
 
             return NoContent();
         }

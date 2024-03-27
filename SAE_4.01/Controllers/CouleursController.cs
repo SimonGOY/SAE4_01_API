@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.Pkcs;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -55,25 +56,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(couleur).State = EntityState.Modified;
+            var clrToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (clrToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!CouleurExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(clrToUpdate.Value, couleur);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Couleurs
@@ -81,12 +74,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Couleur>> PostCouleur(Couleur couleur)
         {
-          if (_context.Couleurs == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Couleurs'  is null.");
-          }
-            _context.Couleurs.Add(couleur);
-            await _context.SaveChangesAsync();
+            if (couleur == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Couleurs'  is null.");
+            }
+            await dataRepository.AddAsync(couleur);
 
             return CreatedAtAction("GetCouleur", new { id = couleur.IdCouleur }, couleur);
         }
@@ -95,18 +87,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCouleur(int id)
         {
-            if (_context.Couleurs == null)
-            {
-                return NotFound();
-            }
-            var couleur = await _context.Couleurs.FindAsync(id);
+            var couleur = await dataRepository.GetByIdAsync(id);
+
             if (couleur == null)
             {
                 return NotFound();
             }
 
-            _context.Couleurs.Remove(couleur);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(couleur.Value);
 
             return NoContent();
         }

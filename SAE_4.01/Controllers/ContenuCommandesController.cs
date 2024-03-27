@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.Pkcs;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -86,6 +87,25 @@ namespace SAE_4._01.Controllers
             return Ok(sontinclus);
         }
 
+
+        // PUT: api/ContenuCommandes/commande/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutContactInfo(int id1, int id2, int id3, int id4, ContenuCommande contenuCommande)
+        {
+
+            var ccmToUpdate = await dataRepository.GetBy4CompositeKeysAsync(id1, id2, id3, id4);
+
+            if (ccmToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            // Mettre à jour l'entité existante avec les données de l'entité passée en paramètre
+            await dataRepository.UpdateAsync(ccmToUpdate.Value, contenuCommande);
+            return NoContent();
+        }
+
         // PUT: api/ContenuCommandes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -119,51 +139,35 @@ namespace SAE_4._01.Controllers
 
         // POST: api/ContenuCommandes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
         [HttpPost]
         public async Task<ActionResult<ContenuCommande>> PostContenuCommande(ContenuCommande contenuCommande)
         {
-          if (_context.ContenuCommandes == null)
-          {
-              return Problem("Entity set 'BMWDBContext.ContenuCommandes'  is null.");
-          }
-            _context.ContenuCommandes.Add(contenuCommande);
             try
             {
-                await _context.SaveChangesAsync();
+                await dataRepository.AddAsync(contenuCommande);
+                return CreatedAtAction(nameof(dataRepository.GetBy4CompositeKeysAsync), new { id1 = contenuCommande.IdCommande, id2 = contenuCommande.IdEquipement, id3 = contenuCommande.IdTaille, id4 = contenuCommande.IdColoris }, contenuCommande);
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-                if (ContenuCommandeExists(contenuCommande.IdEquipement))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erreur lors de la création de l'entitee : {ex.Message}");
             }
-
-            return CreatedAtAction("GetContenuCommande", new { id = contenuCommande.IdEquipement }, contenuCommande);
         }
 
         // DELETE: api/ContenuCommandes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteContenuCommande(int id)
+        public async Task<IActionResult> DeleteContenuCommande(int id1, int id2, int id3, int id4)
         {
-            if (_context.ContenuCommandes == null)
-            {
-                return NotFound();
-            }
-            var contenuCommande = await _context.ContenuCommandes.FindAsync(id);
+            var contenuCommande = await dataRepository.GetBy4CompositeKeysAsync( id1, id2, id3, id4);
+
             if (contenuCommande == null)
             {
                 return NotFound();
             }
 
-            _context.ContenuCommandes.Remove(contenuCommande);
-            await _context.SaveChangesAsync();
-
+            await dataRepository.DeleteAsync(contenuCommande.Value);
             return NoContent();
+
         }
 
         private bool ContenuCommandeExists(int id)

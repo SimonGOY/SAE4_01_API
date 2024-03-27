@@ -55,25 +55,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(contactInfo).State = EntityState.Modified;
+            var ctfToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (ctfToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!ContactInfoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(ctfToUpdate.Value, contactInfo);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/ContactInfoes
@@ -81,12 +73,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<ContactInfo>> PostContactInfo(ContactInfo contactInfo)
         {
-          if (_context.ContactInfos == null)
-          {
-              return Problem("Entity set 'BMWDBContext.ContactInfos'  is null.");
-          }
-            _context.ContactInfos.Add(contactInfo);
-            await _context.SaveChangesAsync();
+            if (contactInfo == null)
+            {
+                return Problem("Entity set 'BMWDBContext.ContactInfos'  is null.");
+            }
+            await dataRepository.AddAsync(contactInfo);
 
             return CreatedAtAction("GetContactInfo", new { id = contactInfo.IdContact }, contactInfo);
         }
@@ -95,18 +86,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteContactInfo(int id)
         {
-            if (_context.ContactInfos == null)
-            {
-                return NotFound();
-            }
-            var contactInfo = await _context.ContactInfos.FindAsync(id);
+            var contactInfo = await dataRepository.GetByIdAsync(id);
+
             if (contactInfo == null)
             {
                 return NotFound();
             }
 
-            _context.ContactInfos.Remove(contactInfo);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(contactInfo.Value);
 
             return NoContent();
         }

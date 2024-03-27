@@ -32,6 +32,11 @@ namespace SAE_4._01.Models.DataManager
             return await _dbContext.SontLies.Where(p => p.EquIdEquipement == id).ToListAsync();
         }
 
+        public async Task<ActionResult<EstLie>> GetBy2CompositeKeysAsync(int id1, int id2)
+        {
+            return await _dbContext.SontLies.FirstOrDefaultAsync(e => e.IdEquipement == id1 && e.EquIdEquipement == id2);
+        }
+
         public async Task AddAsync(EstLie entity)
         {
             await _dbContext.SontLies.AddAsync(entity);
@@ -103,6 +108,16 @@ namespace SAE_4._01.Models.DataManager
         }
 
         Task<ActionResult<IEnumerable<EstLie>>> IDataRepository<EstLie>.GetByIdStyleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<EstLie>> IDataRepository<EstLie>.GetBy3CompositeKeysAsync(int id1, int id2, int id3)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<EstLie>> IDataRepository<EstLie>.GetBy4CompositeKeysAsync(int id1, int id2, int id3, int id4)
         {
             throw new NotImplementedException();
         }

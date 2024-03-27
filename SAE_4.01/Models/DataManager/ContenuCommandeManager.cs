@@ -41,6 +41,11 @@ namespace SAE_4._01.Models.DataManager
             return await _dbContext.ContenuCommandes.Where(p => p.IdColoris == id).ToListAsync();
         }
 
+        public async Task<ActionResult<ContenuCommande>> GetBy4CompositeKeysAsync(int id1, int id2, int id3, int id4)
+        {
+            return await _dbContext.ContenuCommandes.FirstOrDefaultAsync(e => e.IdCommande == id1 && e.IdEquipement == id2 && e.IdTaille == id3 && e.IdColoris == id4);
+        }
+
         public async Task AddAsync(ContenuCommande entity)
         {
             await _dbContext.ContenuCommandes.AddAsync(entity);
@@ -105,6 +110,16 @@ namespace SAE_4._01.Models.DataManager
         }
 
         Task<ActionResult<ContenuCommande>> IDataRepository<ContenuCommande>.GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<ContenuCommande>> IDataRepository<ContenuCommande>.GetBy2CompositeKeysAsync(int id1, int id2)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<ContenuCommande>> IDataRepository<ContenuCommande>.GetBy3CompositeKeysAsync(int id1, int id2, int id3)
         {
             throw new NotImplementedException();
         }

@@ -36,6 +36,11 @@ namespace SAE_4._01.Models.DataManager
             return await _dbContext.Stocks.Where(p => p.IdColoris == id).ToListAsync();
         }
 
+        public async Task<ActionResult<Stock>> GetBy3CompositeKeysAsync(int id1, int id2, int id3)
+        {
+            return await _dbContext.Stocks.FirstOrDefaultAsync(e => e.IdEquipement == id1 && e.IdTaille == id2 && e.IdColoris == id3);
+        }
+
         public async Task AddAsync(Stock entity)
         {
             await _dbContext.Stocks.AddAsync(entity);
@@ -107,6 +112,16 @@ namespace SAE_4._01.Models.DataManager
         }
 
         Task<ActionResult<IEnumerable<Stock>>> IDataRepository<Stock>.GetByIdStyleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Stock>> IDataRepository<Stock>.GetBy2CompositeKeysAsync(int id1, int id2)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Stock>> IDataRepository<Stock>.GetBy4CompositeKeysAsync(int id1, int id2, int id3, int id4)
         {
             throw new NotImplementedException();
         }

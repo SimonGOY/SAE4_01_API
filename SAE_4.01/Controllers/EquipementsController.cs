@@ -48,65 +48,52 @@ namespace SAE_4._01.Controllers
         // PUT: api/Equipements/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEquipement(int id, Equipement Equipement)
+        public async Task<IActionResult> PutEquipement(int id, Equipement equipement)
         {
-            if (id != Equipement.IdEquipement)
+            if (id != equipement.IdEquipement)
             {
                 return BadRequest();
             }
 
-            _context.Entry(Equipement).State = EntityState.Modified;
+            var equToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (equToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!EquipementExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(equToUpdate.Value, equipement);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Equipements
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Equipement>> PostEquipement(Equipement Equipement)
+        public async Task<ActionResult<Equipement>> PostEquipement(Equipement equipement)
         {
-            if (_context.Equipements == null)
+            if (equipement == null)
             {
                 return Problem("Entity set 'BMWDBContext.Equipements'  is null.");
             }
-            _context.Equipements.Add(Equipement);
-            await _context.SaveChangesAsync();
+            await dataRepository.AddAsync(equipement);
 
-            return CreatedAtAction("GetEquipement", new { id = Equipement.IdEquipement }, Equipement);
+            return CreatedAtAction("GetEquipement", new { id = equipement.IdEquipement }, equipement);
         }
 
         // DELETE: api/Equipements/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEquipement(int id)
         {
-            if (_context.Equipements == null)
-            {
-                return NotFound();
-            }
-            var Equipement = await _context.Equipements.FindAsync(id);
-            if (Equipement == null)
+            var equipement = await dataRepository.GetByIdAsync(id);
+
+            if (equipement == null)
             {
                 return NotFound();
             }
 
-            _context.Equipements.Remove(Equipement);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(equipement.Value);
 
             return NoContent();
         }

@@ -31,6 +31,11 @@ namespace SAE_4._01.Models.DataManager
             return await _dbContext.SeComposes.Where(p => p.IdOption == id).ToListAsync();
         }
 
+        public async Task<ActionResult<SeCompose>> GetBy2CompositeKeysAsync(int id1, int id2)
+        {
+            return await _dbContext.SeComposes.FirstOrDefaultAsync(e => e.IdPack == id1 && e.IdOption == id2);
+        }
+
         public async Task AddAsync(SeCompose entity)
         {
             await _dbContext.SeComposes.AddAsync(entity);
@@ -104,6 +109,16 @@ namespace SAE_4._01.Models.DataManager
         }
 
         Task<ActionResult<IEnumerable<SeCompose>>> IDataRepository<SeCompose>.GetByIdStyleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<SeCompose>> IDataRepository<SeCompose>.GetBy3CompositeKeysAsync(int id1, int id2, int id3)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<SeCompose>> IDataRepository<SeCompose>.GetBy4CompositeKeysAsync(int id1, int id2, int id3, int id4)
         {
             throw new NotImplementedException();
         }

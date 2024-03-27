@@ -32,6 +32,10 @@ namespace SAE_4._01.Models.DataManager
             return await _dbContext.Specifies.Where(p => p.IdMoto == id).ToListAsync();
         }
 
+        public async Task<ActionResult<Specifie>> GetBy2CompositeKeysAsync(int id1, int id2)
+        {
+            return await _dbContext.Specifies.FirstOrDefaultAsync(e => e.IdOption == id1 && e.IdMoto == id2);
+        }
         public async Task AddAsync(Specifie entity)
         {
             await _dbContext.Specifies.AddAsync(entity);
@@ -105,6 +109,16 @@ namespace SAE_4._01.Models.DataManager
         }
 
         Task<ActionResult<IEnumerable<Specifie>>> IDataRepository<Specifie>.GetByIdStyleAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Specifie>> IDataRepository<Specifie>.GetBy3CompositeKeysAsync(int id1, int id2, int id3)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Specifie>> IDataRepository<Specifie>.GetBy4CompositeKeysAsync(int id1, int id2, int id3, int id4)
         {
             throw new NotImplementedException();
         }

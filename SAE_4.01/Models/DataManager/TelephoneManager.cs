@@ -108,5 +108,20 @@ namespace SAE_4._01.Models.DataManager
         {
             throw new NotImplementedException();
         }
+
+        Task<ActionResult<Telephone>> IDataRepository<Telephone>.GetBy2CompositeKeysAsync(int id1, int id2)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Telephone>> IDataRepository<Telephone>.GetBy3CompositeKeysAsync(int id1, int id2, int id3)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<Telephone>> IDataRepository<Telephone>.GetBy4CompositeKeysAsync(int id1, int id2, int id3, int id4)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
