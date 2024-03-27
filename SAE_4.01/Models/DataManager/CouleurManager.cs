@@ -52,6 +52,12 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
+
+        public async Task<ActionResult<IEnumerable<Couleur>>> GetByIdMotoAsync(int id)
+        {
+            return await _dbContext.Couleurs.Where(p => p.IdMoto == id).ToListAsync();
+        }
+
         Task<ActionResult<IEnumerable<Couleur>>> IDataRepository<Couleur>.GetByIdTailleAsync(int id)
         {
             throw new NotImplementedException();
@@ -67,10 +73,7 @@ namespace SAE_4._01.Models.DataManager
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Couleur>>> IDataRepository<Couleur>.GetByIdMotoAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         Task<ActionResult<IEnumerable<Couleur>>> IDataRepository<Couleur>.GetByIdOptionAsync(int id)
         {
