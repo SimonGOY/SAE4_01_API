@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_parametre_par")]
-    public class Parametres
+    public class Parametre
     {
         [Key]
         [Column("par_nom")]

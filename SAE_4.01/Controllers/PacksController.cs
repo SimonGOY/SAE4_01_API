@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
@@ -69,25 +70,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(pack).State = EntityState.Modified;
+            var pckToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (pckToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!PackExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(pckToUpdate.Value, pack);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Packs
@@ -95,12 +88,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Pack>> PostPack(Pack pack)
         {
-          if (_context.Packs == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Packs'  is null.");
-          }
-            _context.Packs.Add(pack);
-            await _context.SaveChangesAsync();
+            if (pack == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Packs'  is null.");
+            }
+            await dataRepository.AddAsync(pack);
 
             return CreatedAtAction("GetPack", new { id = pack.IdPack }, pack);
         }
@@ -109,18 +101,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePack(int id)
         {
-            if (_context.Packs == null)
-            {
-                return NotFound();
-            }
-            var pack = await _context.Packs.FindAsync(id);
+            var pack = await dataRepository.GetByIdAsync(id);
+
             if (pack == null)
             {
                 return NotFound();
             }
 
-            _context.Packs.Remove(pack);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(pack.Value);
 
             return NoContent();
         }

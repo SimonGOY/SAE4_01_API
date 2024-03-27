@@ -49,7 +49,7 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual DbSet<MotoDisponible> MotoDisponibles { get; set; } = null!;
         public virtual DbSet<Option> Options { get; set; } = null!;
         public virtual DbSet<Pack> Packs { get; set; } = null!;
-        public virtual DbSet<Parametres> Parametres { get; set; } = null!;
+        public virtual DbSet<Parametre> Parametres { get; set; } = null!;
         public virtual DbSet<Pays> LesPays { get; set; } = null!;
         public virtual DbSet<Prefere> Preferes { get; set; } = null!;
         public virtual DbSet<PresentationEquipement> PresentationEquipements { get; set; } = null!;
@@ -446,7 +446,7 @@ namespace SAE_4._01.Models.EntityFramework
                 entity.HasAlternateKey(e => new { e.IdMoto, e.NomPack });
             });
 
-            modelBuilder.Entity<Parametres>(entity =>
+            modelBuilder.Entity<Parametre>(entity =>
             {
                 entity.HasKey(e => e.NomParametre)
                     .HasName("pk_par");

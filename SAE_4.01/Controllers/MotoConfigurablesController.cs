@@ -50,30 +50,22 @@ namespace SAE_4._01.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMotoConfigurable(int id, MotoConfigurable motoConfigurable)
         {
-            if (id != motoConfigurable.IdMotoConfigurable)
+            if (id != motoConfigurable.IdMoto)
             {
                 return BadRequest();
             }
 
-            _context.Entry(motoConfigurable).State = EntityState.Modified;
+            var mcfToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (mcfToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!MotoConfigurableExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(mcfToUpdate.Value, motoConfigurable);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/MotoConfigurables
@@ -81,32 +73,27 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<MotoConfigurable>> PostMotoConfigurable(MotoConfigurable motoConfigurable)
         {
-          if (_context.MotoConfigurables == null)
-          {
-              return Problem("Entity set 'BMWDBContext.MotoConfigurables'  is null.");
-          }
-            _context.MotoConfigurables.Add(motoConfigurable);
-            await _context.SaveChangesAsync();
+            if (motoConfigurable == null)
+            {
+                return Problem("Entity set 'BMWDBContext.MotoConfigurables'  is null.");
+            }
+            await dataRepository.AddAsync(motoConfigurable);
 
-            return CreatedAtAction("GetMotoConfigurable", new { id = motoConfigurable.IdMotoConfigurable }, motoConfigurable);
+            return CreatedAtAction("GetMotoConfigurable", new { id = motoConfigurable.IdMoto }, motoConfigurable);
         }
 
         // DELETE: api/MotoConfigurables/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMotoConfigurable(int id)
         {
-            if (_context.MotoConfigurables == null)
-            {
-                return NotFound();
-            }
-            var motoConfigurable = await _context.MotoConfigurables.FindAsync(id);
+            var motoConfigurable = await dataRepository.GetByIdAsync(id);
+
             if (motoConfigurable == null)
             {
                 return NotFound();
             }
 
-            _context.MotoConfigurables.Remove(motoConfigurable);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(motoConfigurable.Value);
 
             return NoContent();
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Differencing;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
@@ -48,65 +49,52 @@ namespace SAE_4._01.Controllers
         // PUT: api/ModeleMotos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutModeleMoto(int id, ModeleMoto ModeleMoto)
+        public async Task<IActionResult> PutModeleMoto(int id, ModeleMoto modeleMoto)
         {
-            if (id != ModeleMoto.IdMoto)
+            if (id != modeleMoto.IdMoto)
             {
                 return BadRequest();
             }
 
-            _context.Entry(ModeleMoto).State = EntityState.Modified;
+            var modToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (modToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!ModeleMotoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(modToUpdate.Value, modeleMoto);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/ModeleMotos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ModeleMoto>> PostModeleMoto(ModeleMoto ModeleMoto)
+        public async Task<ActionResult<ModeleMoto>> PostModeleMoto(ModeleMoto modeleMoto)
         {
-            if (_context.ModeleMotos == null)
+            if (modeleMoto == null)
             {
-                return Problem("Entity set 'BMWDBContext.ModeleMotos'  is null.");
+                return Problem("Entity set 'BMWDBContext.ModelMotos'  is null.");
             }
-            _context.ModeleMotos.Add(ModeleMoto);
-            await _context.SaveChangesAsync();
+            await dataRepository.AddAsync(modeleMoto);
 
-            return CreatedAtAction("GetModeleMoto", new { id = ModeleMoto.IdMoto }, ModeleMoto);
+            return CreatedAtAction("GetMoto", new { id = modeleMoto.IdMoto }, modeleMoto);
         }
 
         // DELETE: api/ModeleMotos/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteModeleMoto(int id)
         {
-            if (_context.ModeleMotos == null)
-            {
-                return NotFound();
-            }
-            var ModeleMoto = await _context.ModeleMotos.FindAsync(id);
-            if (ModeleMoto == null)
+            var modeleMoto = await dataRepository.GetByIdAsync(id);
+
+            if (modeleMoto == null)
             {
                 return NotFound();
             }
 
-            _context.ModeleMotos.Remove(ModeleMoto);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(modeleMoto.Value);
 
             return NoContent();
         }

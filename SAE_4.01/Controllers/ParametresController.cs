@@ -16,26 +16,26 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        private readonly IDataRepository<Parametres> dataRepository;
+        private readonly IDataRepository<Parametre> dataRepository;
 
-        public ParametresController(IDataRepository<Parametres> dataRepo)
+        public ParametresController(IDataRepository<Parametre> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
         // GET: api/Parametres
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Parametres>>> GetParametres()
+        public async Task<ActionResult<IEnumerable<Parametre>>> GetParametres()
         {
             return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Parametres/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Parametres>> GetParametres(int id)
+        [HttpGet("{nom}")]
+        public async Task<ActionResult<Parametre>> GetParametre(string nom)
         {
 
-            var parametres = await dataRepository.GetByIdAsync(id);
+            var parametres = await dataRepository.GetByNomAsync(nom);
 
             if (parametres == null)
             {
@@ -47,80 +47,53 @@ namespace SAE_4._01.Controllers
 
         // PUT: api/Parametres/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutParametres(string id, Parametres parametres)
+        [HttpPut("{nom}")]
+        public async Task<IActionResult> PutParametre(string nom, Parametre parametre)
         {
-            if (id != parametres.NomParametre)
+            if (nom != parametre.NomParametre)
             {
                 return BadRequest();
             }
 
-            _context.Entry(parametres).State = EntityState.Modified;
+            var parToUpdate = await dataRepository.GetByNomAsync(nom);
 
-            try
+            if (parToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!ParametresExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(parToUpdate.Value, parametre);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Parametres
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Parametres>> PostParametres(Parametres parametres)
+        public async Task<ActionResult<Parametre>> PostParametre(Parametre parametre)
         {
-          if (_context.Parametres == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Parametres'  is null.");
-          }
-            _context.Parametres.Add(parametres);
-            try
+            if (parametre == null)
             {
-                await _context.SaveChangesAsync();
+                return Problem("Entity set 'BMWDBContext.Parametres'  is null.");
             }
-            catch (DbUpdateException)
-            {
-                if (ParametresExists(parametres.NomParametre))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await dataRepository.AddAsync(parametre);
 
-            return CreatedAtAction("GetParametres", new { id = parametres.NomParametre }, parametres);
+            return CreatedAtAction("GetParametre", new { nom = parametre.NomParametre }, parametre);
         }
 
         // DELETE: api/Parametres/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteParametres(string id)
+        public async Task<IActionResult> DeleteParametre(string nom)
         {
-            if (_context.Parametres == null)
-            {
-                return NotFound();
-            }
-            var parametres = await _context.Parametres.FindAsync(id);
-            if (parametres == null)
+            var pack = await dataRepository.GetByNomAsync(nom);
+
+            if (pack == null)
             {
                 return NotFound();
             }
 
-            _context.Parametres.Remove(parametres);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(pack.Value);
 
             return NoContent();
         }

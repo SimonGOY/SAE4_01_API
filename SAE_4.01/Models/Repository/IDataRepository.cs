@@ -7,6 +7,7 @@ namespace SAE_4._01.Models.Repository
     {
         Task<ActionResult<IEnumerable<TEntity>>> GetAllAsync();
         Task<ActionResult<TEntity>> GetByIdAsync(int id);
+        Task<ActionResult<TEntity>> GetByNomAsync(string nom);
         Task AddAsync(TEntity entity);
         Task UpdateAsync(TEntity entityToUpdate, TEntity entity);
         Task DeleteAsync(TEntity entity);
@@ -25,5 +26,7 @@ namespace SAE_4._01.Models.Repository
         Task<ActionResult<IEnumerable<TEntity>>> GetByIdMotoConfigurableAsync(int id);
         Task<ActionResult<IEnumerable<TEntity>>> GetByEquIdEquipementAsync(int id);
         Task<ActionResult<IEnumerable<TEntity>>> GetByIdStyleAsync(int id);
+
+        
     }
 }

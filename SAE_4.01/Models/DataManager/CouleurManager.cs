@@ -129,5 +129,10 @@ namespace SAE_4._01.Models.DataManager
         {
             throw new NotImplementedException();
         }
+
+        Task<ActionResult<Couleur>> IDataRepository<Couleur>.GetByNomAsync(string nom)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

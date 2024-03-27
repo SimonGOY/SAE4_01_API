@@ -55,25 +55,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(option).State = EntityState.Modified;
+            var optToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (optToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!OptionExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(optToUpdate.Value, option);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Options
@@ -81,12 +73,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Option>> PostOption(Option option)
         {
-          if (_context.Options == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Options'  is null.");
-          }
-            _context.Options.Add(option);
-            await _context.SaveChangesAsync();
+            if (option == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Options'  is null.");
+            }
+            await dataRepository.AddAsync(option);
 
             return CreatedAtAction("GetOption", new { id = option.IdOption }, option);
         }
@@ -95,18 +86,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOption(int id)
         {
-            if (_context.Options == null)
-            {
-                return NotFound();
-            }
-            var option = await _context.Options.FindAsync(id);
+            var option = await dataRepository.GetByIdAsync(id);
+
             if (option == null)
             {
                 return NotFound();
             }
 
-            _context.Options.Remove(option);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(option.Value);
 
             return NoContent();
         }

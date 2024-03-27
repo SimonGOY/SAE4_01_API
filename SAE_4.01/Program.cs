@@ -50,7 +50,7 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<MotoDisponible>, MotoDisponibleManager>();
             builder.Services.AddScoped<IDataRepository<Option>, OptionManager>();
             builder.Services.AddScoped<IDataRepository<Pack>, PackManager>();
-            builder.Services.AddScoped<IDataRepository<Parametres>, ParametresManager>();
+            builder.Services.AddScoped<IDataRepository<Parametre>, ParametreManager>();
             builder.Services.AddScoped<IDataRepository<Pays>, PaysManager>();
             builder.Services.AddScoped<IDataRepository<Prefere>, PrefereManager>();
             builder.Services.AddScoped<IDataRepository<PresentationEquipement>, PresentationEquipementManager>();

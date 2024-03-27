@@ -50,30 +50,22 @@ namespace SAE_4._01.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMotoDisponible(int id, MotoDisponible motoDisponible)
         {
-            if (id != motoDisponible.IdMotoDisponible)
+            if (id != motoDisponible.IdMoto)
             {
                 return BadRequest();
             }
 
-            _context.Entry(motoDisponible).State = EntityState.Modified;
+            var mdpToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (mdpToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!MotoDisponibleExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(mdpToUpdate.Value, motoDisponible);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/MotoDisponibles
@@ -81,32 +73,27 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<MotoDisponible>> PostMotoDisponible(MotoDisponible motoDisponible)
         {
-          if (_context.MotoDisponibles == null)
-          {
-              return Problem("Entity set 'BMWDBContext.MotoDisponibles'  is null.");
-          }
-            _context.MotoDisponibles.Add(motoDisponible);
-            await _context.SaveChangesAsync();
+            if (motoDisponible == null)
+            {
+                return Problem("Entity set 'BMWDBContext.MotoDisponibles'  is null.");
+            }
+            await dataRepository.AddAsync(motoDisponible);
 
-            return CreatedAtAction("GetMotoDisponible", new { id = motoDisponible.IdMotoDisponible }, motoDisponible);
+            return CreatedAtAction("GetMotoDisponible", new { id = motoDisponible.IdMoto }, motoDisponible);
         }
 
         // DELETE: api/MotoDisponibles/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMotoDisponible(int id)
         {
-            if (_context.MotoDisponibles == null)
-            {
-                return NotFound();
-            }
-            var motoDisponible = await _context.MotoDisponibles.FindAsync(id);
+            var motoDisponible = await dataRepository.GetByIdAsync(id);
+
             if (motoDisponible == null)
             {
                 return NotFound();
             }
 
-            _context.MotoDisponibles.Remove(motoDisponible);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(motoDisponible.Value);
 
             return NoContent();
         }

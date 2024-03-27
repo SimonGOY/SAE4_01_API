@@ -124,5 +124,10 @@ namespace SAE_4._01.Models.DataManager
         {
             throw new NotImplementedException();
         }
+
+        Task<ActionResult<InfoCB>> IDataRepository<InfoCB>.GetByNomAsync(string nom)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
