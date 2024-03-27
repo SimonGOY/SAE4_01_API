@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -31,11 +32,11 @@ namespace SAE_4._01.Controllers
         }
 
         // GET: api/Pays/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Pays>> GetPays(int id)
+        [HttpGet("{nom}")]
+        public async Task<ActionResult<Pays>> GetPays(string nom)
         {
 
-            var pays = await dataRepository.GetByIdAsync(id);
+            var pays = await dataRepository.GetByNomAsync(nom);
 
             if (pays == null)
             {
@@ -47,33 +48,25 @@ namespace SAE_4._01.Controllers
 
         // PUT: api/Pays/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPays(string id, Pays pays)
+        [HttpPut("{nom}")]
+        public async Task<IActionResult> PutPays(string nom, Pays pays)
         {
-            if (id != pays.NomPays)
+            if (nom != pays.NomPays)
             {
                 return BadRequest();
             }
 
-            _context.Entry(pays).State = EntityState.Modified;
+            var payToUpdate = await dataRepository.GetByNomAsync(nom);
 
-            try
+            if (payToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!PaysExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(payToUpdate.Value, pays);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Pays
@@ -81,53 +74,35 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Pays>> PostPays(Pays pays)
         {
-          if (_context.LesPays == null)
-          {
-              return Problem("Entity set 'BMWDBContext.LesPays'  is null.");
-          }
-            _context.LesPays.Add(pays);
-            try
+            if (pays == null)
             {
-                await _context.SaveChangesAsync();
+                return Problem("Entity set 'BMWDBContext.LesPays'  is null.");
             }
-            catch (DbUpdateException)
-            {
-                if (PaysExists(pays.NomPays))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await dataRepository.AddAsync(pays);
 
-            return CreatedAtAction("GetPays", new { id = pays.NomPays }, pays);
+            return CreatedAtAction("GetPays", new { nom = pays.NomPays }, pays);
         }
 
+
         // DELETE: api/Pays/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePays(string id)
+        [HttpDelete("{nom}")]
+        public async Task<IActionResult> DeletePays(string nom)
         {
-            if (_context.LesPays == null)
-            {
-                return NotFound();
-            }
-            var pays = await _context.LesPays.FindAsync(id);
+            var pays = await dataRepository.GetByNomAsync(nom);
+
             if (pays == null)
             {
                 return NotFound();
             }
 
-            _context.LesPays.Remove(pays);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(pays.Value);
 
             return NoContent();
         }
 
-        private bool PaysExists(string id)
+        private bool PaysExists(string nom)
         {
-            return (_context.LesPays?.Any(e => e.NomPays == id)).GetValueOrDefault();
+            return (_context.LesPays?.Any(e => e.NomPays == nom)).GetValueOrDefault();
         }
     }
 }

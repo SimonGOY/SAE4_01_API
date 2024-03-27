@@ -55,25 +55,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(professionnel).State = EntityState.Modified;
+            var proToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (proToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!ProfessionnelExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(proToUpdate.Value, professionnel);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Professionnels
@@ -81,12 +73,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Professionnel>> PostProfessionnel(Professionnel professionnel)
         {
-          if (_context.Professionnels == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Professionnels'  is null.");
-          }
-            _context.Professionnels.Add(professionnel);
-            await _context.SaveChangesAsync();
+            if (professionnel == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Professionnels'  is null.");
+            }
+            await dataRepository.AddAsync(professionnel);
 
             return CreatedAtAction("GetProfessionnel", new { id = professionnel.IdPro }, professionnel);
         }
@@ -95,18 +86,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProfessionnel(int id)
         {
-            if (_context.Professionnels == null)
-            {
-                return NotFound();
-            }
-            var professionnel = await _context.Professionnels.FindAsync(id);
+            var professionnel = await dataRepository.GetByIdAsync(id);
+
             if (professionnel == null)
             {
                 return NotFound();
             }
 
-            _context.Professionnels.Remove(professionnel);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(professionnel.Value);
 
             return NoContent();
         }

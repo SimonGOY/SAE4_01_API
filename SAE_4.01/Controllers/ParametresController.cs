@@ -83,17 +83,17 @@ namespace SAE_4._01.Controllers
         }
 
         // DELETE: api/Parametres/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{nom}")]
         public async Task<IActionResult> DeleteParametre(string nom)
         {
-            var pack = await dataRepository.GetByNomAsync(nom);
+            var parametre = await dataRepository.GetByNomAsync(nom);
 
-            if (pack == null)
+            if (parametre == null)
             {
                 return NotFound();
             }
 
-            await dataRepository.DeleteAsync(pack.Value);
+            await dataRepository.DeleteAsync(parametre.Value);
 
             return NoContent();
         }

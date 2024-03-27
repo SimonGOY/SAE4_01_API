@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
@@ -55,25 +56,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(presentationEquipement).State = EntityState.Modified;
+            var preToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (preToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!PresentationEquipementExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(preToUpdate.Value, presentationEquipement);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/PresentationEquipements
@@ -81,12 +74,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<PresentationEquipement>> PostPresentationEquipement(PresentationEquipement presentationEquipement)
         {
-          if (_context.PresentationEquipements == null)
-          {
-              return Problem("Entity set 'BMWDBContext.PresentationEquipements'  is null.");
-          }
-            _context.PresentationEquipements.Add(presentationEquipement);
-            await _context.SaveChangesAsync();
+            if (presentationEquipement == null)
+            {
+                return Problem("Entity set 'BMWDBContext.PresentaionEquipements'  is null.");
+            }
+            await dataRepository.AddAsync(presentationEquipement);
 
             return CreatedAtAction("GetPresentationEquipement", new { id = presentationEquipement.IdPresentation }, presentationEquipement);
         }
@@ -95,18 +87,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePresentationEquipement(int id)
         {
-            if (_context.PresentationEquipements == null)
-            {
-                return NotFound();
-            }
-            var presentationEquipement = await _context.PresentationEquipements.FindAsync(id);
+            var presentationEquipement = await dataRepository.GetByIdAsync(id);
+
             if (presentationEquipement == null)
             {
                 return NotFound();
             }
 
-            _context.PresentationEquipements.Remove(presentationEquipement);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(presentationEquipement.Value);
 
             return NoContent();
         }

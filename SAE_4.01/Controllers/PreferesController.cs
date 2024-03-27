@@ -59,32 +59,18 @@ namespace SAE_4._01.Controllers
         }
         // PUT: api/Preferes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPrefere(int id, Prefere prefere)
+        [HttpPut("{id1}/{id2}")]
+        public async Task<IActionResult> PutPrefere(int id1, int id2, Prefere prefere)
         {
-            if (id != prefere.IdClient)
+            var prfToUpdate = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
+            if (prfToUpdate == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(prefere).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PrefereExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            // Mettre à jour l'entité existante avec les données de l'entité passée en paramètre
+            await dataRepository.UpdateAsync(prfToUpdate.Value, prefere);
             return NoContent();
         }
 
@@ -93,47 +79,29 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Prefere>> PostPrefere(Prefere prefere)
         {
-          if (_context.Preferes == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Preferes'  is null.");
-          }
-            _context.Preferes.Add(prefere);
             try
             {
-                await _context.SaveChangesAsync();
+                await dataRepository.AddAsync(prefere);
+                return CreatedAtAction(nameof(dataRepository.GetBy2CompositeKeysAsync), new { id1 = prefere.IdClient, id2 = prefere.IdConcessionnaire }, prefere);
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-                if (PrefereExists(prefere.IdClient))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erreur lors de la création de l'entitee : {ex.Message}");
             }
-
-            return CreatedAtAction("GetPrefere", new { id = prefere.IdClient }, prefere);
         }
 
         // DELETE: api/Preferes/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePrefere(int id)
+        [HttpDelete("{id1}/{id2}")]
+        public async Task<IActionResult> DeletePrefere(int id1, int id2)
         {
-            if (_context.Preferes == null)
-            {
-                return NotFound();
-            }
-            var prefere = await _context.Preferes.FindAsync(id);
+            var prefere = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
             if (prefere == null)
             {
                 return NotFound();
             }
 
-            _context.Preferes.Remove(prefere);
-            await _context.SaveChangesAsync();
-
+            await dataRepository.DeleteAsync(prefere.Value);
             return NoContent();
         }
 

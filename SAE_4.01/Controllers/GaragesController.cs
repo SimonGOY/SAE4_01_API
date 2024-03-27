@@ -92,7 +92,7 @@ namespace SAE_4._01.Controllers
         }
 
         // DELETE: api/Garages/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id1}/{id2}")]
         public async Task<IActionResult> DeleteGarage(int id1, int id2)
         {
             var garage = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);

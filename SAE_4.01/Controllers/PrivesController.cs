@@ -56,25 +56,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(prive).State = EntityState.Modified;
+            var prvToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (prvToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!PriveExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(prvToUpdate.Value, prive);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Prives
@@ -82,12 +74,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Prive>> PostPrive(Prive prive)
         {
-          if (_context.Prives == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Prives'  is null.");
-          }
-            _context.Prives.Add(prive);
-            await _context.SaveChangesAsync();
+            if (prive == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Prives'  is null.");
+            }
+            await dataRepository.AddAsync(prive);
 
             return CreatedAtAction("GetPrive", new { id = prive.IdPrive }, prive);
         }
@@ -96,18 +87,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePrive(int id)
         {
-            if (_context.Prives == null)
-            {
-                return NotFound();
-            }
-            var prive = await _context.Prives.FindAsync(id);
+            var prive = await dataRepository.GetByIdAsync(id);
+
             if (prive == null)
             {
                 return NotFound();
             }
 
-            _context.Prives.Remove(prive);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(prive.Value);
 
             return NoContent();
         }
