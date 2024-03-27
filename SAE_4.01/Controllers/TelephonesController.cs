@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
 
@@ -55,25 +56,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(telephone).State = EntityState.Modified;
+            var telToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (telToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!TelephoneExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(telToUpdate.Value, telephone);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Telephones
@@ -81,12 +74,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Telephone>> PostTelephone(Telephone telephone)
         {
-          if (_context.Telephones == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Telephones'  is null.");
-          }
-            _context.Telephones.Add(telephone);
-            await _context.SaveChangesAsync();
+            if (telephone == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Telephones'  is null.");
+            }
+            await dataRepository.AddAsync(telephone);
 
             return CreatedAtAction("GetTelephone", new { id = telephone.Id }, telephone);
         }
@@ -95,18 +87,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTelephone(int id)
         {
-            if (_context.Telephones == null)
-            {
-                return NotFound();
-            }
-            var telephone = await _context.Telephones.FindAsync(id);
+            var telephone = await dataRepository.GetByIdAsync(id);
+
             if (telephone == null)
             {
                 return NotFound();
             }
 
-            _context.Telephones.Remove(telephone);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(telephone.Value);
 
             return NoContent();
         }

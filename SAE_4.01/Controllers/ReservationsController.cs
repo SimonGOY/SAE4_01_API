@@ -55,25 +55,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(reservation).State = EntityState.Modified;
+            var resToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (resToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!ReservationExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(resToUpdate.Value, reservation);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Reservations
@@ -81,26 +73,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Reservation>> PostReservation(Reservation reservation)
         {
-          if (_context.Reservations == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Reservations'  is null.");
-          }
-            _context.Reservations.Add(reservation);
-            try
+            if (reservation == null)
             {
-                await _context.SaveChangesAsync();
+                return Problem("Entity set 'BMWDBContext.Reservations'  is null.");
             }
-            catch (DbUpdateException)
-            {
-                if (ReservationExists(reservation.IdReservation))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await dataRepository.AddAsync(reservation);
 
             return CreatedAtAction("GetReservation", new { id = reservation.IdReservation }, reservation);
         }
@@ -109,18 +86,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteReservation(int id)
         {
-            if (_context.Reservations == null)
-            {
-                return NotFound();
-            }
-            var reservation = await _context.Reservations.FindAsync(id);
+            var reservation = await dataRepository.GetByIdAsync(id);
+
             if (reservation == null)
             {
                 return NotFound();
             }
 
-            _context.Reservations.Remove(reservation);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(reservation.Value);
 
             return NoContent();
         }

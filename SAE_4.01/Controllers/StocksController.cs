@@ -79,32 +79,18 @@ namespace SAE_4._01.Controllers
 
         // PUT: api/Stocks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutStock(int id, Stock stock)
+        [HttpPut("{id1}/{id2}/{id3}")]
+        public async Task<IActionResult> PutStock(int id1, int id2, int id3, Stock stock)
         {
-            if (id != stock.IdTaille)
+            var stkToUpdate = await dataRepository.GetBy3CompositeKeysAsync(id1, id2, id3);
+
+            if (stkToUpdate == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(stock).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!StockExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            // Mettre à jour l'entité existante avec les données de l'entité passée en paramètre
+            await dataRepository.UpdateAsync(stkToUpdate.Value, stock);
             return NoContent();
         }
 
@@ -113,47 +99,29 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Stock>> PostStock(Stock stock)
         {
-          if (_context.Stocks == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Stocks'  is null.");
-          }
-            _context.Stocks.Add(stock);
             try
             {
-                await _context.SaveChangesAsync();
+                await dataRepository.AddAsync(stock);
+                return CreatedAtAction(nameof(dataRepository.GetBy3CompositeKeysAsync), new { id1 = stock.IdTaille, id2 = stock.IdEquipement , id3 = stock.IdColoris }, stock);
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-                if (StockExists(stock.IdTaille))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erreur lors de la création de l'entitee : {ex.Message}");
             }
-
-            return CreatedAtAction("GetStock", new { id = stock.IdTaille }, stock);
         }
 
         // DELETE: api/Stocks/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteStock(int id)
+        [HttpDelete("{id1}/{id2}/{id3}")]
+        public async Task<IActionResult> DeleteStock(int id1, int id2, int id3)
         {
-            if (_context.Stocks == null)
-            {
-                return NotFound();
-            }
-            var stock = await _context.Stocks.FindAsync(id);
+            var stock = await dataRepository.GetBy3CompositeKeysAsync(id1, id2, id3);
+
             if (stock == null)
             {
                 return NotFound();
             }
 
-            _context.Stocks.Remove(stock);
-            await _context.SaveChangesAsync();
-
+            await dataRepository.DeleteAsync(stock.Value);
             return NoContent();
         }
 

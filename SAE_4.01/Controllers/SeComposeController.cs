@@ -61,32 +61,18 @@ namespace SAE_4._01.Controllers
 
         // PUT: api/SeCompose/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutSeCompose(int id, SeCompose seCompose)
+        [HttpPut("{id1}/{id2}")]
+        public async Task<IActionResult> PutSeCompose(int id1, int id2, SeCompose seCompose)
         {
-            if (id != seCompose.IdPack)
+            var scpToUpdate = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
+            if (scpToUpdate == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(seCompose).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SeComposeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            // Mettre à jour l'entité existante avec les données de l'entité passée en paramètre
+            await dataRepository.UpdateAsync(scpToUpdate.Value, seCompose);
             return NoContent();
         }
 
@@ -95,47 +81,29 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<SeCompose>> PostSeCompose(SeCompose seCompose)
         {
-          if (_context.SeComposes == null)
-          {
-              return Problem("Entity set 'BMWDBContext.SeComposes'  is null.");
-          }
-            _context.SeComposes.Add(seCompose);
             try
             {
-                await _context.SaveChangesAsync();
+                await dataRepository.AddAsync(seCompose);
+                return CreatedAtAction(nameof(dataRepository.GetBy2CompositeKeysAsync), new { id1 = seCompose.IdPack, id2 = seCompose.IdOption }, seCompose);
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-                if (SeComposeExists(seCompose.IdPack))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erreur lors de la création de l'entitee : {ex.Message}");
             }
-
-            return CreatedAtAction("GetSeCompose", new { id = seCompose.IdPack }, seCompose);
         }
 
         // DELETE: api/SeCompose/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSeCompose(int id)
+        [HttpDelete("{id1}/{id2}")]
+        public async Task<IActionResult> DeleteSeCompose(int id1, int id2)
         {
-            if (_context.SeComposes == null)
-            {
-                return NotFound();
-            }
-            var seCompose = await _context.SeComposes.FindAsync(id);
+            var seCompose = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
             if (seCompose == null)
             {
                 return NotFound();
             }
 
-            _context.SeComposes.Remove(seCompose);
-            await _context.SaveChangesAsync();
-
+            await dataRepository.DeleteAsync(seCompose.Value);
             return NoContent();
         }
 

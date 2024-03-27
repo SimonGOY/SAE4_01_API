@@ -72,34 +72,29 @@ namespace SAE_4._01.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Users>> PostUsers(Users users)
+        public async Task<ActionResult<Users>> PostUsers(Users user)
         {
-          if (_context.LesUsers == null)
-          {
-              return Problem("Entity set 'BMWDBContext.LesUsers'  is null.");
-          }
-            _context.LesUsers.Add(users);
-            await _context.SaveChangesAsync();
+            if (user == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Users'  is null.");
+            }
+            await dataRepository.AddAsync(user);
 
-            return CreatedAtAction("GetUsers", new { id = users.Id }, users);
+            return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUsers(int id)
         {
-            if (_context.LesUsers == null)
-            {
-                return NotFound();
-            }
-            var users = await _context.LesUsers.FindAsync(id);
-            if (users == null)
+            var user = await dataRepository.GetByIdAsync(id);
+
+            if (user == null)
             {
                 return NotFound();
             }
 
-            _context.LesUsers.Remove(users);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(user.Value);
 
             return NoContent();
         }

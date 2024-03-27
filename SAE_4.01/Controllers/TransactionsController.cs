@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
 
@@ -55,25 +56,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(transaction).State = EntityState.Modified;
+            var tctToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (tctToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!TransactionExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(tctToUpdate.Value, transaction);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Transactions
@@ -81,12 +74,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Transaction>> PostTransaction(Transaction transaction)
         {
-          if (_context.Transactions == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Transactions'  is null.");
-          }
-            _context.Transactions.Add(transaction);
-            await _context.SaveChangesAsync();
+            if (transaction == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Transactions'  is null.");
+            }
+            await dataRepository.AddAsync(transaction);
 
             return CreatedAtAction("GetTransaction", new { id = transaction.IdTransaction }, transaction);
         }
@@ -95,18 +87,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTransaction(int id)
         {
-            if (_context.Transactions == null)
-            {
-                return NotFound();
-            }
-            var transaction = await _context.Transactions.FindAsync(id);
+            var transaction = await dataRepository.GetByIdAsync(id);
+
             if (transaction == null)
             {
                 return NotFound();
             }
 
-            _context.Transactions.Remove(transaction);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(transaction.Value);
 
             return NoContent();
         }

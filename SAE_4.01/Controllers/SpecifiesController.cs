@@ -60,32 +60,18 @@ namespace SAE_4._01.Controllers
 
         // PUT: api/Specifies/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutSpecifie(int id, Specifie specifie)
+        [HttpPut("{id1}/{id2}")]
+        public async Task<IActionResult> PutSpecifie(int id1, int id2, Specifie specifie)
         {
-            if (id != specifie.IdMoto)
+            var speToUpdate = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
+            if (speToUpdate == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(specifie).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SpecifieExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            // Mettre à jour l'entité existante avec les données de l'entité passée en paramètre
+            await dataRepository.UpdateAsync(speToUpdate.Value, specifie);
             return NoContent();
         }
 
@@ -94,47 +80,29 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Specifie>> PostSpecifie(Specifie specifie)
         {
-          if (_context.Specifies == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Specifies'  is null.");
-          }
-            _context.Specifies.Add(specifie);
             try
             {
-                await _context.SaveChangesAsync();
+                await dataRepository.AddAsync(specifie);
+                return CreatedAtAction(nameof(dataRepository.GetBy2CompositeKeysAsync), new { id1 = specifie.IdOption, id2 = specifie.IdMoto }, specifie);
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-                if (SpecifieExists(specifie.IdMoto))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erreur lors de la création de l'entitee : {ex.Message}");
             }
-
-            return CreatedAtAction("GetSpecifie", new { id = specifie.IdMoto }, specifie);
         }
 
         // DELETE: api/Specifies/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSpecifie(int id)
+        [HttpDelete("{id1}/{id2}")]
+        public async Task<IActionResult> DeleteSpecifie(int id1, int id2)
         {
-            if (_context.Specifies == null)
-            {
-                return NotFound();
-            }
-            var specifie = await _context.Specifies.FindAsync(id);
+            var specifie = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
             if (specifie == null)
             {
                 return NotFound();
             }
 
-            _context.Specifies.Remove(specifie);
-            await _context.SaveChangesAsync();
-
+            await dataRepository.DeleteAsync(specifie.Value);
             return NoContent();
         }
 

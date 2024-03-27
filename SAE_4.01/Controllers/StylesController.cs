@@ -69,25 +69,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(style).State = EntityState.Modified;
+            var styToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (styToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!StyleExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(styToUpdate.Value, style);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Styles
@@ -95,12 +87,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Style>> PostStyle(Style style)
         {
-          if (_context.Styles == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Styles'  is null.");
-          }
-            _context.Styles.Add(style);
-            await _context.SaveChangesAsync();
+            if (style == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Styles'  is null.");
+            }
+            await dataRepository.AddAsync(style);
 
             return CreatedAtAction("GetStyle", new { id = style.IdStyle }, style);
         }
@@ -109,18 +100,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteStyle(int id)
         {
-            if (_context.Styles == null)
-            {
-                return NotFound();
-            }
-            var style = await _context.Styles.FindAsync(id);
+            var style = await dataRepository.GetByIdAsync(id);
+
             if (style == null)
             {
                 return NotFound();
             }
 
-            _context.Styles.Remove(style);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(style.Value);
 
             return NoContent();
         }

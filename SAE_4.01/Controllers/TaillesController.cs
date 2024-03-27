@@ -55,25 +55,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(taille).State = EntityState.Modified;
+            var tleToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (tleToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!TailleExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(tleToUpdate.Value, taille);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Tailles
@@ -81,12 +73,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Taille>> PostTaille(Taille taille)
         {
-          if (_context.Tailles == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Tailles'  is null.");
-          }
-            _context.Tailles.Add(taille);
-            await _context.SaveChangesAsync();
+            if (taille == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Tailles'  is null.");
+            }
+            await dataRepository.AddAsync(taille);
 
             return CreatedAtAction("GetTaille", new { id = taille.IdTaille }, taille);
         }
@@ -95,18 +86,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTaille(int id)
         {
-            if (_context.Tailles == null)
-            {
-                return NotFound();
-            }
-            var taille = await _context.Tailles.FindAsync(id);
+            var taille = await dataRepository.GetByIdAsync(id);
+
             if (taille == null)
             {
                 return NotFound();
             }
 
-            _context.Tailles.Remove(taille);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(taille.Value);
 
             return NoContent();
         }
