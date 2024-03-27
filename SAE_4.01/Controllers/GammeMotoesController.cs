@@ -55,25 +55,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(gammeMoto).State = EntityState.Modified;
+            var gamToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (gamToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!GammeMotoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(gamToUpdate.Value, gammeMoto);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/GammeMotoes
@@ -81,12 +73,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<GammeMoto>> PostGammeMoto(GammeMoto gammeMoto)
         {
-          if (_context.GammeMotos == null)
-          {
-              return Problem("Entity set 'BMWDBContext.GammeMotos'  is null.");
-          }
-            _context.GammeMotos.Add(gammeMoto);
-            await _context.SaveChangesAsync();
+            if (gammeMoto == null)
+            {
+                return Problem("Entity set 'BMWDBContext.GammeMotos'  is null.");
+            }
+            await dataRepository.AddAsync(gammeMoto);
 
             return CreatedAtAction("GetGammeMoto", new { id = gammeMoto.IdGamme }, gammeMoto);
         }
@@ -95,18 +86,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGammeMoto(int id)
         {
-            if (_context.GammeMotos == null)
-            {
-                return NotFound();
-            }
-            var gammeMoto = await _context.GammeMotos.FindAsync(id);
+            var gammeMoto = await dataRepository.GetByIdAsync(id);
+
             if (gammeMoto == null)
             {
                 return NotFound();
             }
 
-            _context.GammeMotos.Remove(gammeMoto);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(gammeMoto.Value);
 
             return NoContent();
         }

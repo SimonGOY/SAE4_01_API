@@ -77,25 +77,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(media).State = EntityState.Modified;
+            var medToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (medToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!MediaExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(medToUpdate.Value, media);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/Media
@@ -103,12 +95,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Media>> PostMedia(Media media)
         {
-          if (_context.Medias == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Medias'  is null.");
-          }
-            _context.Medias.Add(media);
-            await _context.SaveChangesAsync();
+            if (media == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Medias'  is null.");
+            }
+            await dataRepository.AddAsync(media);
 
             return CreatedAtAction("GetMedia", new { id = media.IdMedia }, media);
         }
@@ -117,18 +108,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMedia(int id)
         {
-            if (_context.Medias == null)
-            {
-                return NotFound();
-            }
-            var media = await _context.Medias.FindAsync(id);
+            var media = await dataRepository.GetByIdAsync(id);
+
             if (media == null)
             {
                 return NotFound();
             }
 
-            _context.Medias.Remove(media);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(media.Value);
 
             return NoContent();
         }

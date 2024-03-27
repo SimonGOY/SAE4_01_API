@@ -60,32 +60,18 @@ namespace SAE_4._01.Controllers
 
         // PUT: api/EstLies/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEstLie(int id, EstLie estLie)
+        [HttpPut("{id1}/{id2}")]
+        public async Task<IActionResult> PutEstLie(int id1, int id2, EstLie estLie)
         {
-            if (id != estLie.IdEquipement)
+            var eliToUpdate = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
+            if (eliToUpdate == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(estLie).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EstLieExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            // Mettre à jour l'entité existante avec les données de l'entité passée en paramètre
+            await dataRepository.UpdateAsync(eliToUpdate.Value, estLie);
             return NoContent();
         }
 
@@ -94,47 +80,29 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<EstLie>> PostEstLie(EstLie estLie)
         {
-          if (_context.SontLies == null)
-          {
-              return Problem("Entity set 'BMWDBContext.SontLies'  is null.");
-          }
-            _context.SontLies.Add(estLie);
             try
             {
-                await _context.SaveChangesAsync();
+                await dataRepository.AddAsync(estLie);
+                return CreatedAtAction(nameof(dataRepository.GetBy2CompositeKeysAsync), new { id1 = estLie.IdEquipement, id2 = estLie.EquIdEquipement }, estLie);
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-                if (EstLieExists(estLie.IdEquipement))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erreur lors de la création de l'entitee : {ex.Message}");
             }
-
-            return CreatedAtAction("GetEstLie", new { id = estLie.IdEquipement }, estLie);
         }
 
         // DELETE: api/EstLies/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEstLie(int id)
+        [HttpDelete("{id1}/{id2}")]
+        public async Task<IActionResult> DeleteEstLie(int id1, int id2)
         {
-            if (_context.SontLies == null)
-            {
-                return NotFound();
-            }
-            var estLie = await _context.SontLies.FindAsync(id);
+            var estLie = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
             if (estLie == null)
             {
                 return NotFound();
             }
 
-            _context.SontLies.Remove(estLie);
-            await _context.SaveChangesAsync();
-
+            await dataRepository.DeleteAsync(estLie.Value);
             return NoContent();
         }
 

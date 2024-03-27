@@ -60,32 +60,18 @@ namespace SAE_4._01.Controllers
 
         // PUT: api/Garages/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutGarage(int id, Garage garage)
+        [HttpPut("{id1}/{id2}")]
+        public async Task<IActionResult> PutGarage(int id1, int id2 , Garage garage)
         {
-            if (id != garage.IdMotoConfigurable)
+            var grgToUpdate = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
+            if (grgToUpdate == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(garage).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!GarageExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            // Mettre à jour l'entité existante avec les données de l'entité passée en paramètre
+            await dataRepository.UpdateAsync(grgToUpdate.Value, garage);
             return NoContent();
         }
 
@@ -94,47 +80,29 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Garage>> PostGarage(Garage garage)
         {
-          if (_context.Garages == null)
-          {
-              return Problem("Entity set 'BMWDBContext.Garages'  is null.");
-          }
-            _context.Garages.Add(garage);
             try
             {
-                await _context.SaveChangesAsync();
+                await dataRepository.AddAsync(garage);
+                return CreatedAtAction(nameof(dataRepository.GetBy2CompositeKeysAsync), new { id1 = garage.IdMotoConfigurable, id2 = garage.IdClient }, garage);
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-                if (GarageExists(garage.IdMotoConfigurable))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erreur lors de la création de l'entitee : {ex.Message}");
             }
-
-            return CreatedAtAction("GetGarage", new { id = garage.IdMotoConfigurable }, garage);
         }
 
         // DELETE: api/Garages/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteGarage(int id)
+        public async Task<IActionResult> DeleteGarage(int id1, int id2)
         {
-            if (_context.Garages == null)
-            {
-                return NotFound();
-            }
-            var garage = await _context.Garages.FindAsync(id);
+            var garage = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
             if (garage == null)
             {
                 return NotFound();
             }
 
-            _context.Garages.Remove(garage);
-            await _context.SaveChangesAsync();
-
+            await dataRepository.DeleteAsync(garage.Value);
             return NoContent();
         }
 

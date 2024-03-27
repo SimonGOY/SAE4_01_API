@@ -53,32 +53,19 @@ namespace SAE_4._01.Controllers
 
         // PUT: api/EstInclus/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEstInclus(int id, EstInclus estInclus)
+        [HttpPut("{id1}/{id2}")]
+        public async Task<IActionResult> PutEstInclus(int id1, int id2, EstInclus estInclus)
         {
-            if (id != estInclus.IdOption)
+
+            var eclToUpdate = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
+            if (eclToUpdate == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
-            _context.Entry(estInclus).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EstInclusExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            // Mettre à jour l'entité existante avec les données de l'entité passée en paramètre
+            await dataRepository.UpdateAsync(eclToUpdate.Value, estInclus);
             return NoContent();
         }
 
@@ -87,47 +74,29 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<EstInclus>> PostEstInclus(EstInclus estInclus)
         {
-          if (_context.SontInclus == null)
-          {
-              return Problem("Entity set 'BMWDBContext.SontInclus'  is null.");
-          }
-            _context.SontInclus.Add(estInclus);
             try
             {
-                await _context.SaveChangesAsync();
+                await dataRepository.AddAsync(estInclus);
+                return CreatedAtAction(nameof(dataRepository.GetBy2CompositeKeysAsync), new { id1 = estInclus.IdOption, id2 = estInclus.IdStyle}, estInclus);
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-                if (EstInclusExists(estInclus.IdOption))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erreur lors de la création de l'entitee : {ex.Message}");
             }
-
-            return CreatedAtAction("GetEstInclus", new { id = estInclus.IdOption }, estInclus);
         }
 
         // DELETE: api/EstInclus/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEstInclus(int id)
+        [HttpDelete("{id1}/{id2}")]
+        public async Task<IActionResult> DeleteEstInclus(int id1, int id2)
         {
-            if (_context.SontInclus == null)
-            {
-                return NotFound();
-            }
-            var estInclus = await _context.SontInclus.FindAsync(id);
+            var estInclus = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
             if (estInclus == null)
             {
                 return NotFound();
             }
 
-            _context.SontInclus.Remove(estInclus);
-            await _context.SaveChangesAsync();
-
+            await dataRepository.DeleteAsync(estInclus.Value);
             return NoContent();
         }
 

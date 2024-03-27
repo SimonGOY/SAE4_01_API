@@ -90,7 +90,7 @@ namespace SAE_4._01.Controllers
 
         // PUT: api/ContenuCommandes/commande/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("{id1}/{id2}/{id3}/{id4}")]
         public async Task<IActionResult> PutContactInfo(int id1, int id2, int id3, int id4, ContenuCommande contenuCommande)
         {
 
@@ -103,37 +103,6 @@ namespace SAE_4._01.Controllers
 
             // Mettre à jour l'entité existante avec les données de l'entité passée en paramètre
             await dataRepository.UpdateAsync(ccmToUpdate.Value, contenuCommande);
-            return NoContent();
-        }
-
-        // PUT: api/ContenuCommandes/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutContenuCommande(int id, ContenuCommande contenuCommande)
-        {
-            if (id != contenuCommande.IdEquipement)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(contenuCommande).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ContenuCommandeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
             return NoContent();
         }
 
@@ -155,7 +124,7 @@ namespace SAE_4._01.Controllers
         }
 
         // DELETE: api/ContenuCommandes/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id1}/{id2}/{id3}/{id4}")]
         public async Task<IActionResult> DeleteContenuCommande(int id1, int id2, int id3, int id4)
         {
             var contenuCommande = await dataRepository.GetBy4CompositeKeysAsync( id1, id2, id3, id4);

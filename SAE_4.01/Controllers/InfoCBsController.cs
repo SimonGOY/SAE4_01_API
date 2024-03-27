@@ -55,25 +55,17 @@ namespace SAE_4._01.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(infoCB).State = EntityState.Modified;
+            var icbToUpdate = await dataRepository.GetByIdAsync(id);
 
-            try
+            if (icbToUpdate == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!InfoCBExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                await dataRepository.UpdateAsync(icbToUpdate.Value, infoCB);
+                return NoContent();
             }
-
-            return NoContent();
         }
 
         // POST: api/InfoCBs
@@ -81,12 +73,11 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<InfoCB>> PostInfoCB(InfoCB infoCB)
         {
-          if (_context.InfoCBs == null)
-          {
-              return Problem("Entity set 'BMWDBContext.InfoCBs'  is null.");
-          }
-            _context.InfoCBs.Add(infoCB);
-            await _context.SaveChangesAsync();
+            if (infoCB == null)
+            {
+                return Problem("Entity set 'BMWDBContext.InfoCbs'  is null.");
+            }
+            await dataRepository.AddAsync(infoCB);
 
             return CreatedAtAction("GetInfoCB", new { id = infoCB.IdCarte }, infoCB);
         }
@@ -95,18 +86,14 @@ namespace SAE_4._01.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteInfoCB(int id)
         {
-            if (_context.InfoCBs == null)
-            {
-                return NotFound();
-            }
-            var infoCB = await _context.InfoCBs.FindAsync(id);
+            var infoCB = await dataRepository.GetByIdAsync(id);
+
             if (infoCB == null)
             {
                 return NotFound();
             }
 
-            _context.InfoCBs.Remove(infoCB);
-            await _context.SaveChangesAsync();
+            await dataRepository.DeleteAsync(infoCB.Value);
 
             return NoContent();
         }
