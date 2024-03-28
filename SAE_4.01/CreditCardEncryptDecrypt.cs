@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace SAE_4._01
 {
     //classe pour crypter/décrypter les cartes bancaires car la clé ne doit pas passer côté client pour que les cartes cryptées dans la base soient protégées.
-    public class CreditCardHash
+    public class CreditCardEncryptDecrypt
     {
         private byte[] key = Convert.FromBase64String("72hqKV6F/3bBlAJzPVDWJ0CxzIqlVD6066/rk9V84jU="); //La même que celle de "SAE4_01_Laravel_Base".
         private const int bcryptWorkFactor = 15;
