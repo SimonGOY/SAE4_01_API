@@ -32,11 +32,11 @@ namespace SAE_4._01.Models.DataManager
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(CategorieAccessoire cat, CategorieAccessoire entity)
+        public async Task UpdateAsync(CategorieAccessoire cta, CategorieAccessoire entity)
         {
-            _dbContext.Entry(cat).State = EntityState.Modified;
-            cat.IdCatAcc = entity.IdCatAcc;
-            cat.NomCatAcc = entity.NomCatAcc;
+            _dbContext.Entry(cta).State = EntityState.Modified;
+            cta.IdCatAcc = entity.IdCatAcc;
+            cta.NomCatAcc = entity.NomCatAcc;
             await _dbContext.SaveChangesAsync();
         }
 
