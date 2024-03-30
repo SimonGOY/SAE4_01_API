@@ -8,7 +8,6 @@ namespace SAE_4._01
     public class CreditCardEncryptDecrypt
     {
         private byte[] key = Convert.FromBase64String("72hqKV6F/3bBlAJzPVDWJ0CxzIqlVD6066/rk9V84jU="); //La même que celle de "SAE4_01_Laravel_Base".
-        private const int bcryptWorkFactor = 15;
 
         public string Encrypt(string card)
         {

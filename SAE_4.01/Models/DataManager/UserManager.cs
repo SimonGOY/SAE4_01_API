@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SAE_4._01.Models.DataManager
 {
-    public class UserManager : IDataRepository<Users>
+    public class UserManager : IDataRepository<User>
     {
         readonly BMWDBContext _dbContext;
 
@@ -16,23 +16,23 @@ namespace SAE_4._01.Models.DataManager
             _dbContext = context;
         }
 
-        public async Task<ActionResult<IEnumerable<Users>>> GetAllAsync()
+        public async Task<ActionResult<IEnumerable<User>>> GetAllAsync()
         {
             return await _dbContext.LesUsers.ToListAsync();
         }
 
-        public async Task<ActionResult<Users>> GetByIdAsync(int id)
+        public async Task<ActionResult<User>> GetByIdAsync(int id)
         {
             return await _dbContext.LesUsers.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task AddAsync(Users entity)
+        public async Task AddAsync(User entity)
         {
             await _dbContext.LesUsers.AddAsync(entity);
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(Users use, Users entity)
+        public async Task UpdateAsync(User use, User entity)
         {
             use.FirstName = entity.FirstName;
             use.Email = entity.Email;
@@ -51,88 +51,88 @@ namespace SAE_4._01.Models.DataManager
         }
 
 
-        public async Task DeleteAsync(Users use)
+        public async Task DeleteAsync(User use)
         {
             _dbContext.LesUsers.Remove(use);
             await _dbContext.SaveChangesAsync();
         }
 
-        Task<ActionResult<IEnumerable<Users>>> IDataRepository<Users>.GetByIdTailleAsync(int id)
+        Task<ActionResult<IEnumerable<User>>> IDataRepository<User>.GetByIdTailleAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Users>>> IDataRepository<Users>.GetByIdColorisAsync(int id)
+        Task<ActionResult<IEnumerable<User>>> IDataRepository<User>.GetByIdColorisAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Users>>> IDataRepository<Users>.GetByIdEquipementAsync(int id)
+        Task<ActionResult<IEnumerable<User>>> IDataRepository<User>.GetByIdEquipementAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Users>>> IDataRepository<Users>.GetByIdMotoAsync(int id)
+        Task<ActionResult<IEnumerable<User>>> IDataRepository<User>.GetByIdMotoAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Users>>> IDataRepository<Users>.GetByIdOptionAsync(int id)
+        Task<ActionResult<IEnumerable<User>>> IDataRepository<User>.GetByIdOptionAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Users>>> IDataRepository<Users>.GetByIdPackAsync(int id)
+        Task<ActionResult<IEnumerable<User>>> IDataRepository<User>.GetByIdPackAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Users>>> IDataRepository<Users>.GetByIdClientAsync(int id)
+        Task<ActionResult<IEnumerable<User>>> IDataRepository<User>.GetByIdClientAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Users>>> IDataRepository<Users>.GetByIdConcessionnaireAsync(int id)
+        Task<ActionResult<IEnumerable<User>>> IDataRepository<User>.GetByIdConcessionnaireAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Users>>> IDataRepository<Users>.GetByIdCommandeAsync(int id)
+        Task<ActionResult<IEnumerable<User>>> IDataRepository<User>.GetByIdCommandeAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Users>>> IDataRepository<Users>.GetByIdMotoConfigurableAsync(int id)
+        Task<ActionResult<IEnumerable<User>>> IDataRepository<User>.GetByIdMotoConfigurableAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Users>>> IDataRepository<Users>.GetByEquIdEquipementAsync(int id)
+        Task<ActionResult<IEnumerable<User>>> IDataRepository<User>.GetByEquIdEquipementAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<Users>>> IDataRepository<Users>.GetByIdStyleAsync(int id)
+        Task<ActionResult<IEnumerable<User>>> IDataRepository<User>.GetByIdStyleAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<Users>> IDataRepository<Users>.GetBy2CompositeKeysAsync(int id1, int id2)
+        Task<ActionResult<User>> IDataRepository<User>.GetBy2CompositeKeysAsync(int id1, int id2)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<Users>> IDataRepository<Users>.GetBy3CompositeKeysAsync(int id1, int id2, int id3)
+        Task<ActionResult<User>> IDataRepository<User>.GetBy3CompositeKeysAsync(int id1, int id2, int id3)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<Users>> IDataRepository<Users>.GetBy4CompositeKeysAsync(int id1, int id2, int id3, int id4)
+        Task<ActionResult<User>> IDataRepository<User>.GetBy4CompositeKeysAsync(int id1, int id2, int id3, int id4)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<Users>> IDataRepository<Users>.GetByNomAsync(string nom)
+        Task<ActionResult<User>> IDataRepository<User>.GetByNomAsync(string nom)
         {
             throw new NotImplementedException();
         }

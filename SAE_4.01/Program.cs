@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
-using Microsoft.Extensions.Options;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace SAE_4._01
 {
@@ -64,7 +65,7 @@ namespace SAE_4._01
             builder.Services.AddScoped<IDataRepository<Taille>, TailleManager>();
             builder.Services.AddScoped<IDataRepository<Telephone>, TelephoneManager>();
             builder.Services.AddScoped<IDataRepository<Transaction>, TransactionManager>();
-            builder.Services.AddScoped<IDataRepository<Users>, UserManager>();
+            builder.Services.AddScoped<IDataRepository<User>, UserManager>();
 
             var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -77,6 +78,31 @@ namespace SAE_4._01
                                .AllowAnyHeader()
                                .AllowAnyHeader();
                     });
+            });
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                    ValidAudience = builder.Configuration["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"])),
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
+
+            builder.Services.AddAuthorization(config =>
+            {
+                config.AddPolicy(Policies.Type0, Policies.Type0Policy());
+                config.AddPolicy(Policies.Type1, Policies.Type1Policy());
+                config.AddPolicy(Policies.Type2, Policies.Type2Policy());
             });
 
 
@@ -94,6 +120,7 @@ namespace SAE_4._01
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

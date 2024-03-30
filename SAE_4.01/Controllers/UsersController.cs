@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,23 +17,24 @@ namespace SAE_4._01.Controllers
     {
         private readonly BMWDBContext _context;
 
-        private readonly IDataRepository<Users> dataRepository;
+        private readonly IDataRepository<User> dataRepository;
 
-        public UsersController(IDataRepository<Users> dataRepo)
+        public UsersController(IDataRepository<User> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Users>>> GetLesUsers()
+        //[Authorize(Policy = Policies.Type0)] pour limiter l'accès aux utilisateurs avec l'attribut type compte à 0 (en passant par le login controller qui donne le token jwt)
+        public async Task<ActionResult<IEnumerable<User>>> GetLesUsers()
         {
             return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Users>> GetUsers(int id)
+        public async Task<ActionResult<User>> GetUsers(int id)
         {
 
             var users = await dataRepository.GetByIdAsync(id);
@@ -48,7 +50,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, Users user)
+        public async Task<IActionResult> PutUser(int id, User user)
         {
 
             if (id != user.Id)
@@ -72,7 +74,7 @@ namespace SAE_4._01.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Users>> PostUsers(Users user)
+        public async Task<ActionResult<User>> PostUsers(User user)
         {
             if (user == null)
             {

@@ -63,7 +63,7 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual DbSet<Taille> Tailles { get; set; } = null!;
         public virtual DbSet<Telephone> Telephones { get; set; } = null!;
         public virtual DbSet<Transaction> Transactions { get; set; } = null!;
-        public virtual DbSet<Users> LesUsers { get; set; } = null!;
+        public virtual DbSet<User> LesUsers { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -643,7 +643,7 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasConstraintName("fk_tct_cmd");
             });
 
-            modelBuilder.Entity<Users>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.Id)
                     .HasName("pk_usr");
@@ -653,6 +653,8 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdClient)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_usr_clt");
+
+                entity.HasAlternateKey(e => e.Email);
             });
 
             /*modelBuilder.Entity<Notation>(entity =>

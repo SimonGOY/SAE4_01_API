@@ -18,8 +18,8 @@ namespace SAE_4._01.Controllers.Tests
     {
         private UsersController controller;
         private BMWDBContext context;
-        private IDataRepository<Users> dataRepository;
-        private Users user;
+        private IDataRepository<User> dataRepository;
+        private User user;
 
         [TestInitialize]
         public void InitTest()
@@ -29,7 +29,7 @@ namespace SAE_4._01.Controllers.Tests
             dataRepository = new UserManager(context);
             controller = new UsersController(dataRepository);
 
-            user = new Users
+            user = new User
             {
                 Id = 666666666,
                 FirstName = "Simon",
@@ -52,7 +52,7 @@ namespace SAE_4._01.Controllers.Tests
         public void GetUserssTest_RecuperationOK()
         {
             //Arrange
-            List<Users> lesCLients = context.LesUsers.ToList();
+            List<User> lesCLients = context.LesUsers.ToList();
             // Act
             var res = controller.GetLesUsers().Result;
             // Assert
@@ -64,7 +64,7 @@ namespace SAE_4._01.Controllers.Tests
         public void GetUsersTest_RecuperationOK()
         {
             // Arrange
-            Users? clt = context.LesUsers.Find(1);
+            User? clt = context.LesUsers.Find(1);
             // Act
             var res = controller.GetUsers(1).Result;
             // Assert
@@ -77,7 +77,7 @@ namespace SAE_4._01.Controllers.Tests
         public void GetUsersTest_RecuperationFailed()
         {
             // Arrange
-            Users? clt = context.LesUsers.Find(1);
+            User? clt = context.LesUsers.Find(1);
             // Act
             var res = controller.GetUsers(2).Result;
             // Assert
