@@ -87,7 +87,7 @@ namespace SAE_4._01.Controllers
             return Ok(sontinclus);
         }
 
-        [HttpGet("{id}/{id}/{id}/{id}")]
+        [HttpGet("{id1}/{id2}/{id3}/{id4}")]
         public async Task<ActionResult<ContenuCommande>> GetByIds(int id1, int id2, int id3, int id4)
         {
             var contenuCommande = await dataRepository.GetBy4CompositeKeysAsync(id1, id2, id3, id4);
