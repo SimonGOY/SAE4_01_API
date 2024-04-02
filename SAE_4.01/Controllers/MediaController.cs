@@ -41,7 +41,7 @@ namespace SAE_4._01.Controllers
 
 
         [HttpGet("idmoto/{id}")]
-        public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdMoto(int id)
+        public async Task<ActionResult<IEnumerable<Media>>> GetByIdMoto(int id)
         {
             var contenuCommande = await dataRepository.GetByIdMotoAsync(id);
 
@@ -54,7 +54,7 @@ namespace SAE_4._01.Controllers
         }
 
         [HttpGet("idequipement/{id}")]
-        public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdEquipement(int id)
+        public async Task<ActionResult<IEnumerable<Media>>> GetByIdEquipement(int id)
         {
             var contenuCommande = await dataRepository.GetByIdEquipementAsync(id);
 
