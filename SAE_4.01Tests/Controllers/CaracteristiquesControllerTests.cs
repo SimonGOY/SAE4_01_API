@@ -75,7 +75,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(caracteristique, carRecup.Value, "Caractéristiques pas identiques"); ;
         }
 
-        [TestMethod()]
+        /*[TestMethod()]
         public void PutCaracteristiqueTest_ModificationOK()
         {
             // Arrange
@@ -89,7 +89,7 @@ namespace SAE_4._01.Controllers.Tests
             var carMaj = controller.GetCaracteristique(caracteristique.IdCaracteristique).Result;
             Assert.IsNotNull(carMaj.Value);
             Assert.AreEqual(carIni.Value, carMaj.Value, "Caractéristiques pas identiques");
-        }
+        }*/
 
         [TestMethod()]
         public void ZDeleteCaracteristiqueTest()

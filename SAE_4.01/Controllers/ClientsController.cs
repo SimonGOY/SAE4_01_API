@@ -43,6 +43,22 @@ namespace SAE_4._01.Controllers
             }
 
             return client;
+        }      
+
+        // POST: api/Clients
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        public async Task<ActionResult<Client>> PostClient(Client client)
+        {
+            if (client == null)
+            {
+                return Problem("Entity set 'BMWDBContext.Clients'  is null.");
+            }
+            await dataRepository.AddAsync(client);
+
+            return CreatedAtAction("GetClient", new { id = client.IdClient }, client);
+
+
         }
 
         // PUT: api/Clients/5
@@ -67,22 +83,6 @@ namespace SAE_4._01.Controllers
                 await dataRepository.UpdateAsync(cltToUpdate.Value, client);
                 return NoContent();
             }
-        }
-
-        // POST: api/Clients
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Client>> PostClient(Client client)
-        {
-            if (client == null)
-            {
-                return Problem("Entity set 'BMWDBContext.Clients'  is null.");
-            }
-            await dataRepository.AddAsync(client);
-
-            return CreatedAtAction("GetClient", new { id = client.IdClient }, client);
-
-
         }
 
         // DELETE: api/Clients/5
