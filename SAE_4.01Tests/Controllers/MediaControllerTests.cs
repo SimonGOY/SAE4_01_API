@@ -15,38 +15,33 @@ namespace SAE_4._01.Controllers.Tests
     [TestClass()]
     public class MediaControllerTests
     {
-        private MediaController controller;
+        private MediaMotoController controller;
         private BMWDBContext context;
-        private IDataRepository<Media> dataRepository;
-        private Media medequ;
-        private Media medmoto;
+        private IDataRepository<MediaMoto> dataRepository;
+        private MediaMoto medequ;
+        private MediaMoto medmoto;
 
         [TestInitialize]
         public void InitTest()
         {
             var builder = new DbContextOptionsBuilder<BMWDBContext>().UseNpgsql("Server=51.83.36.122; port=5432; Database=sa11; uid=sa11; password=BMW-S4; SearchPath=bmw;");
             context = new BMWDBContext(builder.Options);
-            dataRepository = new MediaManager(context);
-            controller = new MediaController(dataRepository);
+            dataRepository = new MediaMotoManager(context);
+            controller = new MediaMotoController(dataRepository);
 
-            medequ = new Media
+            medequ = new MediaMoto
             {
-                IdMedia = 666666666,
-                IdEquipement = 1,
-                IdMoto = null,
+                IdMediaMoto = 666666666,
+                IdMoto = 1,
                 LienMedia = "monimoto.com/media/moto-sportives.jpg",
-                IdPresentation = 1,
-                IsPresentation = true
+
             };
 
-            medmoto = new Media
+            medmoto = new MediaMoto
             {
-                IdMedia = 777777777,
-                IdEquipement = 1,
-                IdMoto = null,
+                IdMediaMoto = 777777777,
+                IdMoto = 2,
                 LienMedia = "monimoto.com/media/moto-sportives.jpg",
-                IdPresentation = 1,
-                IsPresentation = true
             };
         }
 

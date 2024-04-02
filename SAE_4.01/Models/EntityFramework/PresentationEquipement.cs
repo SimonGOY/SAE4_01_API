@@ -26,9 +26,5 @@ namespace SAE_4._01.Models.EntityFramework
         [ForeignKey(nameof(IdColoris))]
         [InverseProperty(nameof(Coloris.PresentationEquipementColoris))]
         public virtual Coloris ColorisPresentationEquipement { get; set; } = null!;
-
-
-        [InverseProperty(nameof(Media.PresentationEquipementMedia))]
-        public virtual ICollection<Media>? MediaPresentationEquipement { get; set; }
     }
 }
