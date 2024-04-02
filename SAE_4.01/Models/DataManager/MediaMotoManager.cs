@@ -22,7 +22,7 @@ namespace SAE_4._01.Models.DataManager
             return await _dbContext.MediasMoto.FirstOrDefaultAsync(p => p.IdMediaMoto == id);
         }
 
-        public async Task<ActionResult<IEnumerable<MediaMoto>>>GetByIdEquipementAsync(int id)
+        public async Task<ActionResult<IEnumerable<MediaMoto>>>GetByIdMotoAsync(int id)
         {
             return await _dbContext.MediasMoto.Where(p => p.IdMoto == id).ToListAsync();
         }
@@ -54,11 +54,6 @@ namespace SAE_4._01.Models.DataManager
         }
 
         Task<ActionResult<IEnumerable<MediaMoto>>> IDataRepository<MediaMoto>.GetByIdColorisAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<ActionResult<IEnumerable<MediaMoto>>> IDataRepository<MediaMoto>.GetByIdMotoAsync(int id)
         {
             throw new NotImplementedException();
         }
@@ -126,6 +121,11 @@ namespace SAE_4._01.Models.DataManager
         }
 
         Task<ActionResult<MediaMoto>> IDataRepository<MediaMoto>.GetByNomAsync(string nom)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ActionResult<IEnumerable<MediaMoto>>> IDataRepository<MediaMoto>.GetByIdEquipementAsync(int id)
         {
             throw new NotImplementedException();
         }
