@@ -13,20 +13,20 @@ namespace SAE_4._01.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MediaController : ControllerBase
+    public class MediaEquipementController : ControllerBase
     {
         private readonly BMWDBContext _context;
 
-        private readonly IDataRepository<Media> dataRepository;
+        private readonly IDataRepository<MediaEquipement> dataRepository;
 
-        public MediaController(IDataRepository<Media> dataRepo)
+        public MediaEquipementController(IDataRepository<MediaEquipement> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
         // GET: api/Media/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Media>> GetMedia(int id)
+        public async Task<ActionResult<MediaEquipement>> GetMedia(int id)
         {
 
             var media = await dataRepository.GetByIdAsync(id);
@@ -40,21 +40,8 @@ namespace SAE_4._01.Controllers
         }
 
 
-        [HttpGet("idmoto/{id}")]
-        public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdMoto(int id)
-        {
-            var contenuCommande = await dataRepository.GetByIdMotoAsync(id);
-
-            if (contenuCommande == null || !contenuCommande.Value.Any())
-            {
-                return NotFound();
-            }
-
-            return Ok(contenuCommande);
-        }
-
         [HttpGet("idequipement/{id}")]
-        public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdEquipement(int id)
+        public async Task<ActionResult<IEnumerable<MediaEquipement>>> GetByIdEquipement(int id)
         {
             var contenuCommande = await dataRepository.GetByIdEquipementAsync(id);
 
@@ -70,9 +57,9 @@ namespace SAE_4._01.Controllers
         // PUT: api/Media/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMedia(int id, Media media)
+        public async Task<IActionResult> PutMedia(int id, MediaEquipement media)
         {
-            if (id != media.IdMedia)
+            if (id != media.IdMediaEquipement)
             {
                 return BadRequest();
             }
@@ -93,7 +80,7 @@ namespace SAE_4._01.Controllers
         // POST: api/Media
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Media>> PostMedia(Media media)
+        public async Task<ActionResult<MediaEquipement>> PostMedia(MediaEquipement media)
         {
             if (media == null)
             {
@@ -101,7 +88,7 @@ namespace SAE_4._01.Controllers
             }
             await dataRepository.AddAsync(media);
 
-            return CreatedAtAction("GetMedia", new { id = media.IdMedia }, media);
+            return CreatedAtAction("GetMedia", new { id = media.IdMediaEquipement }, media);
         }
 
         // DELETE: api/Media/5
@@ -122,7 +109,7 @@ namespace SAE_4._01.Controllers
 
         private bool MediaExists(int id)
         {
-            return (_context.Medias?.Any(e => e.IdMedia == id)).GetValueOrDefault();
+            return (_context.MediasEquipement?.Any(e => e.IdMediaEquipement == id)).GetValueOrDefault();
         }
     }
 }

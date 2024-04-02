@@ -46,8 +46,8 @@ namespace SAE_4._01.Models.EntityFramework
         [InverseProperty(nameof(DemandeEssai.ModeleMotoDemandeEssai))]
         public virtual ICollection<DemandeEssai>? DemandeEssaiModeleMoto { get; set; }
 
-        [InverseProperty(nameof(Media.ModeleMotoMedia))]
-        public virtual ICollection<Media>? MediaModeleMoto { get; set; }
+        [InverseProperty(nameof(MediaMoto.ModeleMotoMedia))]
+        public virtual ICollection<MediaMoto>? MediaModeleMoto { get; set; }
 
         [InverseProperty(nameof(Couleur.ModeleMotoCouleur))]
         public virtual ICollection<Couleur>? CouleurModeleMoto { get; set; }
