@@ -57,7 +57,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetEquipementTest()
+        public void GetEquipementTest_RecuperationOK()
         {
             // Arrange
             Equipement? dem = context.Equipements.Find(1);
@@ -66,6 +66,27 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsNotNull(res.Value);
             Assert.AreEqual(dem, res.Value, "L' equipement n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void GetEquipementTest_RecuperationFailed()
+        {
+            // Arrange
+            Equipement? dem = context.Equipements.Find(2);
+            // Act
+            var res = controller.GetEquipement(1).Result;
+            // Assert
+            Assert.IsNotNull(res.Value);
+            Assert.AreNotEqual(dem, res.Value, "L' equipement est le même");
+        }
+
+        [TestMethod()]
+        public void GetDemandeTest_EquipementNExistePas()
+        {
+            var res = controller.GetEquipement(777777777).Result;
+            // Assert
+            Assert.IsNull(res.Result, "L'equipement existe");
+            Assert.IsNull(res.Value, "L'equipement existe");
         }
 
         [Priority(2)]
