@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -62,6 +63,22 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsNotNull(res.Value);
             Assert.AreEqual(car, res.Value, "La caractéristique n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void GetCaracteristiqueTest_Moq_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Caracteristique>>();
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(caracteristique);
+
+            var controller = new CaracteristiquesController(mockRepository.Object);
+            // Act
+            var res = controller.GetCaracteristique(1).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(caracteristique, res.Value as Caracteristique, "La caractéristique n'est pas le même");
         }
 
         [TestMethod()]
