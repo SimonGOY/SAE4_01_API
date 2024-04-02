@@ -66,7 +66,7 @@ namespace SAE_4._01.Controllers.Tests
         public void GetContenuCommandeTest_RecuperationFailed()
         {
             // Arrange
-            ContenuCommande? con = context.ContenuCommandes.Find(1,1,1,1);
+            ContenuCommande? con = context.ContenuCommandes.Find(1);
             // Act
             var res = controller.GetByIds(2, 2, 2, 2).Result;
             // Assert
