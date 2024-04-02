@@ -13,7 +13,7 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdMediaEquipement { get; set; }
 
         [Column("equ_idequipement")]
-        public int? IdEquipement { get; set; }
+        public int IdEquipement { get; set; }
 
         [Column("med_lienmedia")]
         public string LienMedia { get; set; } = null!;

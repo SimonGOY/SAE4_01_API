@@ -13,7 +13,7 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdMediaMoto { get; set; }
 
         [Column("mod_idmoto")]
-        public int? IdMoto { get; set; }
+        public int IdMoto { get; set; }
 
         [Column("med_lienmedia")]
         public string LienMedia { get; set; } = null!;
