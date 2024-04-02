@@ -15,11 +15,12 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("equ_idequipement")]
         public int IdEquipement { get; set; }
 
-        [Column("med_lienmedia")]
+        [Column("meq_lienmedia")]
         public string LienMedia { get; set; } = null!;
 
         [ForeignKey(nameof(IdEquipement))]
         [InverseProperty(nameof(Equipement.MediaEquipements))]
         public virtual Equipement EquipementMedia { get; set; } = null!;
+
     }
 }

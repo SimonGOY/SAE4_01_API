@@ -15,7 +15,7 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("mod_idmoto")]
         public int IdMoto { get; set; }
 
-        [Column("med_lienmedia")]
+        [Column("mem_lienmedia")]
         public string LienMedia { get; set; } = null!;
 
 
