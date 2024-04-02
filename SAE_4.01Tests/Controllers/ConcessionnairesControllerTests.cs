@@ -66,9 +66,29 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(con, res.Value, "Le concessionnaire n'est pas la même");
         }
 
-       
         [TestMethod()]
-        public void PostConcessionnaireTest()
+        public void GetConcessionnaireTest_RecuperationFailed()
+        {
+            // Arrange
+            Concessionnaire? con = context.Concessionnaires.Find(1);
+            // Act
+            var res = controller.GetConcessionnaire(2).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.AreNotEqual(con, res.Value, "Le concessionnaire est le même");
+        }
+
+        [TestMethod()]
+        public void GetConcessionnaireTest_CollecNExistePas()
+        {
+            var res = controller.GetConcessionnaire(777777777).Result;
+            // Assert
+            Assert.IsNull(res.Result, "Le concessionnaire existe");
+            Assert.IsNull(res.Value, "Le concessionnaire existe");
+        }
+
+        [TestMethod()]
+        public void PostConcessionnaireTest_CreationOK()
         {
             // Act
             var result = controller.PostConcessionnaire(con).Result;

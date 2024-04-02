@@ -87,11 +87,23 @@ namespace SAE_4._01.Controllers
             return Ok(sontinclus);
         }
 
+        [HttpGet("{id}/{id}/{id}/{id}")]
+        public async Task<ActionResult<ContenuCommande>> GetByIds(int id1, int id2, int id3, int id4)
+        {
+            var contenuCommande = await dataRepository.GetBy4CompositeKeysAsync(id1, id2, id3, id4);
+
+            if (contenuCommande == null)
+            {
+                return NotFound();
+            }
+
+            return contenuCommande;
+        }
 
         // PUT: api/ContenuCommandes/commande/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id1}/{id2}/{id3}/{id4}")]
-        public async Task<IActionResult> PutContactInfo(int id1, int id2, int id3, int id4, ContenuCommande contenuCommande)
+        public async Task<IActionResult> PutContenuCommande(int id1, int id2, int id3, int id4, ContenuCommande contenuCommande)
         {
 
             var ccmToUpdate = await dataRepository.GetBy4CompositeKeysAsync(id1, id2, id3, id4);
