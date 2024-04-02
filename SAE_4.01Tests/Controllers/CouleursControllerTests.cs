@@ -44,13 +44,13 @@ namespace SAE_4._01.Controllers.Tests
         [TestMethod()]
         public void GetCouleursTest_RecuperationsOK()
         {
-            // Arrange
-            Couleur? cou = context.Couleurs.Find(1);
+            //Arrange
+            List<Couleur> lesCouls = context.Couleurs.ToList();
             // Act
-            var res = controller.GetCouleur(1).Result;
+            var res = controller.GetCouleurs().Result;
             // Assert
             Assert.IsNotNull(res);
-            Assert.AreEqual(cou, res.Value, "La couleur n'est pas la même");
+            CollectionAssert.AreEqual(lesCouls, res.Value.ToList(), "Les listes de couleurs ne sont pas identiques");
         }
 
         [TestMethod()]
@@ -61,7 +61,7 @@ namespace SAE_4._01.Controllers.Tests
             // Act
             var res = controller.GetCouleur(1).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreEqual(cou, res.Value, "La couleur n'est pas la même");
         }
 
@@ -73,7 +73,7 @@ namespace SAE_4._01.Controllers.Tests
             // Act
             var res = controller.GetCouleur(2).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreNotEqual(cou, res.Value, "La couleur est la même");
         }
 
@@ -87,18 +87,19 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void PostCouleurTest_CreationOK()
+        public void __PostCouleurTest_CreationOK()
         {
             // Act
             var result = controller.PostCouleur(couleur).Result;
             // Assert
             var couRecup = controller.GetCouleur(couleur.IdCouleur).Result;
             couleur.IdCouleur = couRecup.Value.IdCouleur;
+
             Assert.AreEqual(couleur, couRecup.Value, "Couleur pas identiques");
         }
 
-        /*[TestMethod()]
-        public void PutCouleurTest_ModificationOK()
+        [TestMethod()]
+        public void _PutCouleurTest_ModificationOK()
         {
             // Arrange
             var couIni = controller.GetCouleur(couleur.IdCouleur).Result;
@@ -111,7 +112,7 @@ namespace SAE_4._01.Controllers.Tests
             var couMaj = controller.GetCouleur(couleur.IdCouleur).Result;
             Assert.IsNotNull(couMaj.Value);
             Assert.AreEqual(couIni.Value, couMaj.Value, "couleurs pas identiques");
-        }*/
+        }
 
         [TestMethod()]
         public void ZDeleteCouleurTest()

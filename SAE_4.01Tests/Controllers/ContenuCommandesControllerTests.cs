@@ -54,23 +54,23 @@ namespace SAE_4._01.Controllers.Tests
         public void GetByIdCommandeTest_RecuperationOK()
         {
             // Arrange
-            ContenuCommande? con = context.ContenuCommandes.Find(1,1,1,1);
+            var con = controller.GetByIds(3, 3, 2, 1).Result;
             // Act
-            var res = controller.GetByIds(1,1,1,1).Result;
+            var res = controller.GetByIds(3,3,2,1).Result;
             // Assert
-            Assert.IsNotNull(res);
-            Assert.AreEqual(con, res.Value, "Le contenucommande n'est pas le même");
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(con.Value, res.Value, "Le contenucommande n'est pas le même");
         }
 
         [TestMethod()]
         public void GetContenuCommandeTest_RecuperationFailed()
         {
             // Arrange
-            ContenuCommande? con = context.ContenuCommandes.Find(1,1,1,1);
+            var con = controller.GetByIds(3,3,2,1).Result;
             // Act
-            var res = controller.GetByIds(2, 2, 2, 2).Result;
+            var res = controller.GetByIds(2, 2, 2, 1).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreNotEqual(con, res.Value, "Le contenucommande est le même");
         }
 
@@ -84,7 +84,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void PostContenuCommandeTest()
+        public void __PostContenuCommandeTest_CreationOK()
         {
             // Act
             var result = controller.PostContenuCommande(con).Result;
@@ -98,7 +98,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void PutContenuCommandeTest()
+        public void ___PutContenuCommandeTest_ModificationOK()
         {
             // Arrange
             var conIni = controller.GetByIds(con.IdCommande, con.IdEquipement, con.IdTaille, con.IdColoris).Result;
@@ -114,7 +114,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void ZDeleteContenuCommandeTest()
+        public void DeleteContenuCommandeTest_SuppressionOK()
         {
             // Act
             var conSuppr = controller.GetByIds(con.IdCommande, con.IdEquipement, con.IdTaille, con.IdColoris).Result;

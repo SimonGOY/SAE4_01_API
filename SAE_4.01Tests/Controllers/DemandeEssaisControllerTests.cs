@@ -41,24 +41,24 @@ namespace SAE_4._01.Controllers.Tests
         [TestMethod()]
         public void GetDemandeEssaisTest_RecuperationsOK()
         {
-            // Arrange
-            DemandeEssai? dem = context.DemandeEssais.Find(1);
+            //Arrange
+            List<DemandeEssai> lesDems = context.DemandeEssais.ToList();
             // Act
-            var res = controller.GetDemandeEssai(1).Result;
+            var res = controller.GetDemandeEssais().Result;
             // Assert
             Assert.IsNotNull(res);
-            Assert.AreEqual(dem, res.Value, "La couleur n'est pas la même");
+            CollectionAssert.AreEqual(lesDems, res.Value.ToList(), "Les listes de demandes ne sont pas identiques");
         }
 
         [TestMethod()]
         public void GetDemandeEssaiTest_RecuperationOK()
         {
             // Arrange
-            DemandeEssai? dem = context.DemandeEssais.Find(1);
+            DemandeEssai? dem = context.DemandeEssais.Find(2);
             // Act
-            var res = controller.GetDemandeEssai(1).Result;
+            var res = controller.GetDemandeEssai(2).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreEqual(dem, res.Value, "La demande n'est pas la même");
         }
 
@@ -66,11 +66,11 @@ namespace SAE_4._01.Controllers.Tests
         public void GetDemandeEssaiTest_RecuperationFailed()
         {
             // Arrange
-            DemandeEssai? dem = context.DemandeEssais.Find(1);
+            DemandeEssai? dem = context.DemandeEssais.Find(20);
             // Act
             var res = controller.GetDemandeEssai(2).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreNotEqual(dem, res.Value, "La demande est la même");
         }
 
@@ -84,7 +84,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void PostDemandeEssaiTest_CreationOK()
+        public void __PostDemandeEssaiTest_CreationOK()
         {
             // Act
             var result = controller.PostDemandeEssai(demande).Result;
@@ -94,8 +94,8 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(demande, demRecup.Value, "Demandes pas identiques");
         }
 
-        /*[TestMethod()]
-        public void PutDemandeEssaiTest_ModificationOK()
+        [TestMethod()]
+        public void __PutDemandeEssaiTest_ModificationOK()
         {
             // Arrange
             var demIni = controller.GetDemandeEssai(demande.IdDemandeEssai).Result;
@@ -108,10 +108,10 @@ namespace SAE_4._01.Controllers.Tests
             var demMaj = controller.GetDemandeEssai(demande.IdDemandeEssai).Result;
             Assert.IsNotNull(demMaj.Value);
             Assert.AreEqual(demIni.Value, demMaj.Value, "demandes pas identiques");
-        }*/
+        }
 
         [TestMethod()]
-        public void ZDeleteDemandeEssaiTest_SuppressionOK()
+        public void DeleteDemandeEssaiTest_SuppressionOK()
         {
             // Act
             var demSuppr = controller.GetDemandeEssai(demande.IdDemandeEssai).Result;

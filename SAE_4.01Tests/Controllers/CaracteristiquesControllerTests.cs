@@ -60,12 +60,12 @@ namespace SAE_4._01.Controllers.Tests
             // Act
             var res = controller.GetCaracteristique(1).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreEqual(car, res.Value, "La caractéristique n'est pas le même");
         }
 
         [TestMethod()]
-        public void PostCaracteristiqueTest_CreationOK()
+        public void __PostCaracteristiqueTest_CreationOK()
         {
             // Act
             var result = controller.PostCaracteristique(caracteristique).Result;
@@ -75,8 +75,8 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(caracteristique, carRecup.Value, "Caractéristiques pas identiques"); ;
         }
 
-        /*[TestMethod()]
-        public void PutCaracteristiqueTest_ModificationOK()
+        [TestMethod()]
+        public void __PutCaracteristiqueTest_ModificationOK()
         {
             // Arrange
             var carIni = controller.GetCaracteristique(caracteristique.IdCaracteristique).Result;
@@ -89,10 +89,10 @@ namespace SAE_4._01.Controllers.Tests
             var carMaj = controller.GetCaracteristique(caracteristique.IdCaracteristique).Result;
             Assert.IsNotNull(carMaj.Value);
             Assert.AreEqual(carIni.Value, carMaj.Value, "Caractéristiques pas identiques");
-        }*/
+        }
 
         [TestMethod()]
-        public void ZDeleteCaracteristiqueTest_SuppressionOK()
+        public void DeleteCaracteristiqueTest_SuppressionOK()
         {
             // Act
             var carSuppr = controller.GetCaracteristique(caracteristique.IdCaracteristique).Result;

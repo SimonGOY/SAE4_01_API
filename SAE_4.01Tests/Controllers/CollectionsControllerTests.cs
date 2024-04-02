@@ -56,7 +56,7 @@ namespace SAE_4._01.Controllers.Tests
             // Act
             var res = controller.GetCollection(1).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreEqual(col, res.Value, "La collec n'est pas la même");
         }
 
@@ -69,7 +69,7 @@ namespace SAE_4._01.Controllers.Tests
             // Act
             var res = controller.GetCollection(2).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreNotEqual(clt, res.Value, "La collec est la même");
         }
 
@@ -83,7 +83,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void PostCollectionTest_CreationOK()
+        public void __PostCollectionTest_CreationOK()
         {
             // Act
             var result = controller.PostCollection(collec).Result;
@@ -93,8 +93,8 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(collec, colRecup.Value, "Clients pas identiques");
         }
 
-        /*[TestMethod()]
-        public void PutCollectionTest_ModificationOK()
+        [TestMethod()]
+        public void __PutCollectionTest_ModificationOK()
         {
             // Arrange
             var colIni = controller.GetCollection(collec.IdCollection).Result;
@@ -107,10 +107,10 @@ namespace SAE_4._01.Controllers.Tests
             var cltMaj = controller.GetCollection(collec.IdCollection).Result;
             Assert.IsNotNull(cltMaj.Value);
             Assert.AreEqual(colIni.Value, cltMaj.Value, "Collec pas identiques");
-        }*/
+        }
 
         [TestMethod()]
-        public void ZDeleteCollectionTest_SuppressionOK()
+        public void DeleteCollectionTest_SuppressionOK()
         {
             // Act
             var colSuppr = controller.GetCollection(collec.IdCollection).Result;

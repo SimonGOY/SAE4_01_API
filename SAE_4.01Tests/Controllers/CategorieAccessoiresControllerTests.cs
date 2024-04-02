@@ -37,6 +37,15 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
+        public void PostDel()
+        {
+            PostCategorieAccessoireTest_CreationOK();
+            //Ne peut pas etre modifier du fait de sa configuration
+            //PutCategorieAccessoireTest_ModificationOK();
+            DeleteCategorieAccessoireTest_SuppressionOK();
+        }
+
+        [TestMethod()]
         public void GetCategorieAccessoiresTest_RecuperationOK()
         {
             //Arrange
@@ -56,11 +65,10 @@ namespace SAE_4._01.Controllers.Tests
             // Act
             var res = controller.GetCategorieAccessoire(1).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreEqual(cta, res.Value, "La catégorie accessoire n'est pas la même");
         }
 
-        [TestMethod()]
         public void PostCategorieAccessoireTest_CreationOK()
         {
             // Act
@@ -71,8 +79,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(categorieAccessoire, ctaRecup.Value, "Catégories accessoires pas identiques"); ;
         }
 
-        /*[TestMethod()]
-        public void YPutCategorieAccessoireTest_ModificationOK()
+        /*public void PutCategorieAccessoireTest_ModificationOK()
         {
             // Arrange
             var ctaIni = controller.GetCategorieAccessoire(categorieAccessoire.IdCatAcc).Result;
@@ -87,8 +94,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(ctaIni.Value, ctaMaj.Value, "Client pas identiques");
         }*/
 
-        [TestMethod()]
-        public void ZDeleteCategorieAccessoireTest_SuppressionOK()
+        public void DeleteCategorieAccessoireTest_SuppressionOK()
         {
             // Act
             var ctaSuppr = controller.GetCategorieAccessoire(categorieAccessoire.IdCatAcc).Result;

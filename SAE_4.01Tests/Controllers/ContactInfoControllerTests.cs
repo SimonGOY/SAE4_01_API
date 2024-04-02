@@ -60,7 +60,7 @@ namespace SAE_4._01.Controllers.Tests
             // Act
             var res = controller.GetContactInfo(1).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreEqual(con, res.Value, "Le contact n'est pas le même");
         }
 
@@ -72,7 +72,7 @@ namespace SAE_4._01.Controllers.Tests
             // Act
             var res = controller.GetContactInfo(2).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreNotEqual(con, res.Value, "Le contact est le même");
         }
 
@@ -86,7 +86,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void PostContactInfoTest_CreationOK_MeublagePlusdeMeublage()//Meublage car le test ne s'effectue pas dans le bon ordre sinon (wtf)
+        public void __PostContactInfoTest_CreationOK()
         {
             // Act
             var result = controller.PostContactInfo(con).Result;
@@ -96,8 +96,8 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(con, conRecup.Value, "Contacts pas identiques");
         }
 
-        /*[TestMethod()]
-        public void PutContactInfoTest_ModificationOK()
+        [TestMethod()]
+        public void _PutContactInfoTest_ModificationOK()
         {
             // Arrange
             var conIni = controller.GetContactInfo(con.IdContact).Result;
@@ -110,10 +110,10 @@ namespace SAE_4._01.Controllers.Tests
             var conMaj = controller.GetContactInfo(con.IdContact).Result;
             Assert.IsNotNull(conMaj.Value);
             Assert.AreEqual(conIni.Value, conMaj.Value, "contacts pas identiques");
-        }*/
+        }
 
         [TestMethod()]
-        public void ZDeleteContactInfoTest_SuppressionOK()
+        public void DeleteContactInfoTest_SuppressionOK()
         {
             // Act
             var conSuppr = controller.GetContactInfo(con.IdContact).Result;
