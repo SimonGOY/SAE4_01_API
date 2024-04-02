@@ -92,7 +92,7 @@ namespace SAE_4._01.Controllers.Tests
         }*/
 
         [TestMethod()]
-        public void ZDeleteCaracteristiqueTest()
+        public void ZDeleteCaracteristiqueTest_SuppressionOK()
         {
             // Act
             var carSuppr = controller.GetCaracteristique(caracteristique.IdCaracteristique).Result;

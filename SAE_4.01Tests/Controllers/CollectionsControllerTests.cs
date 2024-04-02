@@ -49,7 +49,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetCollectionTest_RécupérationOK()
+        public void GetCollectionTest_RecuperationOK()
         {
             // Arrange
             Collection? col = context.Collections.Find(1);
@@ -110,7 +110,7 @@ namespace SAE_4._01.Controllers.Tests
         }*/
 
         [TestMethod()]
-        public void ZDeleteCollectionTest()
+        public void ZDeleteCollectionTest_SuppressionOK()
         {
             // Act
             var colSuppr = controller.GetCollection(collec.IdCollection).Result;

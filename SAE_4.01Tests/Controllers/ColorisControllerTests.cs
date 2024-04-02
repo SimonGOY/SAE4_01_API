@@ -108,7 +108,7 @@ namespace SAE_4._01.Controllers.Tests
         }*/
 
         [TestMethod()]
-        public void ZDeleteColorisTest()
+        public void ZDeleteColorisTest_SuppressionOK()
         {
             // Act
             var colSuppr = controller.GetColoris(color.IdColoris).Result;

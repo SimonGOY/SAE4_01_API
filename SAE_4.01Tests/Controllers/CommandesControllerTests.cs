@@ -112,7 +112,7 @@ namespace SAE_4._01.Controllers.Tests
         }*/
 
         [TestMethod()]
-        public void ZDeleteCommandeTest()
+        public void ZDeleteCommandeTest_SuppressionOK()
         {
             // Act
             var colSuppr = controller.GetCommande(com.IdCommande).Result;

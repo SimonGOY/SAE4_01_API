@@ -18,7 +18,7 @@ namespace SAE_4._01.Controllers.Tests
         private AdressesController controller;
         private BMWDBContext context;
         private IDataRepository<Adresse> dataRepository;
-        private Adresse accessoire;
+        private Adresse adresse;
 
         [TestInitialize]
         public void InitTest()
@@ -28,7 +28,7 @@ namespace SAE_4._01.Controllers.Tests
             dataRepository = new AdresseManager(context);
             controller = new AdressesController(dataRepository);
 
-            accessoire = new Adresse
+            adresse = new Adresse
             {
                 NumAdresse = 666666666,
                 NomPays = "Testanie",

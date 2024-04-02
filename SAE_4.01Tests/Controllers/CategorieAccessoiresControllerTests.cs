@@ -88,7 +88,7 @@ namespace SAE_4._01.Controllers.Tests
         }*/
 
         [TestMethod()]
-        public void ZDeleteCategorieAccessoireTest()
+        public void ZDeleteCategorieAccessoireTest_SuppressionOK()
         {
             // Act
             var ctaSuppr = controller.GetCategorieAccessoire(categorieAccessoire.IdCatAcc).Result;
