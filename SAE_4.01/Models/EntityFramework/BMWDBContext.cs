@@ -2,6 +2,7 @@
 
 
 
+using Microsoft.CodeAnalysis.Differencing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Data;
@@ -43,7 +44,8 @@ namespace SAE_4._01.Models.EntityFramework
         public virtual DbSet<GammeMoto> GammeMotos { get; set; } = null!;
         public virtual DbSet<Garage> Garages { get; set; } = null!;
         public virtual DbSet<InfoCB> InfoCBs { get; set; } = null!;
-        public virtual DbSet<Media> Medias { get; set; } = null!;
+        public virtual DbSet<MediaMoto> MediasMoto { get; set; } = null!;
+        public virtual DbSet<MediaEquipement> MediasEquipement { get; set; } = null!;
         public virtual DbSet<ModeleMoto> ModeleMotos { get; set; } = null!;
         public virtual DbSet<MotoConfigurable> MotoConfigurables { get; set; } = null!;
         public virtual DbSet<MotoDisponible> MotoDisponibles { get; set; } = null!;
@@ -287,6 +289,7 @@ namespace SAE_4._01.Models.EntityFramework
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_equ_cte");
 
+
                 entity.HasCheckConstraint("ck_eq_sexe", "(((equ_sexe)::text = 'f'::text) OR ((equ_sexe)::text = 'h'::text) OR ((equ_sexe)::text = 'uni'::text))");
             });
 
@@ -360,31 +363,31 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasConstraintName("fk_icb_clt");
             });
 
-            modelBuilder.Entity<Media>(entity =>
+            modelBuilder.Entity<MediaMoto>(entity =>
             {
-                entity.HasKey(e => e.IdMedia)
-                    .HasName("pk_med");
+                entity.HasKey(e => e.IdMediaMoto)
+                    .HasName("pk_mem");
 
-                entity.HasOne(d => d.EquipementMedia)
-                    .WithMany(p => p.MediaEquipement)
-                    .HasForeignKey(d => d.IdEquipement)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_med_equ");
                 entity.HasOne(d => d.ModeleMotoMedia)
                     .WithMany(p => p.MediaModeleMoto)
                     .HasForeignKey(d => d.IdMoto)
                     .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_med_mod");
-                entity.HasOne(d => d.PresentationEquipementMedia)
-                    .WithMany(p => p.MediaPresentationEquipement)
-                    .HasForeignKey(d => d.IdPresentation)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("fk_med_pre");
-
-                entity.HasCheckConstraint("chk_exclusive_id", "((mod_idmoto IS NOT NULL AND equ_idequipement IS NULL) OR (mod_idmoto IS NULL AND equ_idequipement IS NOT NULL))");
-
-                entity.HasAlternateKey(e => e.LienMedia);
+                    .HasConstraintName("fk_mem_mod");
             });
+
+            modelBuilder.Entity<MediaEquipement>(entity =>
+            {
+                entity.HasKey(e => e.IdMediaEquipement)
+                    .HasName("pk_meq");
+
+                entity.HasOne(d => d.EquipementMedia)
+                    .WithMany(p => p.MediaEquipements)
+                    .HasForeignKey(d => d.IdEquipement)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("fk_meq_equ");
+
+            });
+
 
             modelBuilder.Entity<ModeleMoto>(entity =>
             {
