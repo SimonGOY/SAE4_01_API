@@ -77,6 +77,36 @@ namespace SAE_4._01.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+
+        [HttpGet("Profile")]
+        public async Task<User> GetUserProfileAsync()
+        {
+            // Get JWT token from request headers
+            string token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+
+            // Validate and extract user identity
+            string userId = GetUserIdFromToken(token);
+
+            // Retrieve user profile from database using the userId
+
+            var usersResult = await dataRepository.GetAllAsync();
+
+            var users = usersResult.Value as IEnumerable<User>;
+
+            return users.SingleOrDefault(x => x.Email.ToUpper() == userId.ToUpper());
+        }
+
+        private string GetUserIdFromToken(string jwtToken)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var token = tokenHandler.ReadJwtToken(jwtToken);
+
+            // Example: extracting user ID from 'sub' claim
+            var userId = token.Claims.FirstOrDefault(claim => claim.Type == JwtRegisteredClaimNames.Sub)?.Value;
+
+            return userId;
+        }
     }
 
     public class LoginRequest
