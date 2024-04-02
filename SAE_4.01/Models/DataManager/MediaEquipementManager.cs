@@ -17,6 +17,11 @@ namespace SAE_4._01.Models.DataManager
             _dbContext = context;
         }
 
+        public async Task<ActionResult<IEnumerable<MediaEquipement>>> GetAllAsync()
+        {
+            return await _dbContext.MediasEquipement.ToListAsync();
+        }
+
         public async Task<ActionResult<MediaEquipement>> GetByIdAsync(int id)
         {
             return await _dbContext.MediasEquipement.FirstOrDefaultAsync(p => p.IdMediaEquipement == id);
@@ -103,12 +108,6 @@ namespace SAE_4._01.Models.DataManager
             throw new NotImplementedException();
         }
    
-        // Ne fonctionne pasa cause des null sur idmoto ne fonctionne pas
-        // Inutile de coder car jamais utilisée dans l'application
-        public Task<ActionResult<IEnumerable<MediaEquipement>>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
 
         Task<ActionResult<MediaEquipement>> IDataRepository<MediaEquipement>.GetBy2CompositeKeysAsync(int id1, int id2)
         {
@@ -126,6 +125,11 @@ namespace SAE_4._01.Models.DataManager
         }
 
         Task<ActionResult<MediaEquipement>> IDataRepository<MediaEquipement>.GetByNomAsync(string nom)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ActionResult<MediaEquipement>> GetReference(int id)
         {
             throw new NotImplementedException();
         }

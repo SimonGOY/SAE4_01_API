@@ -24,7 +24,14 @@ namespace SAE_4._01.Controllers
             dataRepository = dataRepo;
         }
 
-        // GET: api/Media/5
+        // GET: api/MediaMoto
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<MediaMoto>>> GetContenuCommandes()
+        {
+            return await dataRepository.GetAllAsync();
+        }
+
+        // GET: api/MediaMoto/5
         [HttpGet("{id}")]
         public async Task<ActionResult<MediaMoto>> GetMedia(int id)
         {
@@ -43,18 +50,31 @@ namespace SAE_4._01.Controllers
         [HttpGet("idmoto/{id}")]
         public async Task<ActionResult<IEnumerable<MediaMoto>>> GetByIdMoto(int id)
         {
-            var contenuCommande = await dataRepository.GetByIdMotoAsync(id);
+            var moto = await dataRepository.GetByIdMotoAsync(id);
 
-            if (contenuCommande == null || !contenuCommande.Value.Any())
+            if (moto == null || !moto.Value.Any())
             {
                 return NotFound();
             }
 
-            return Ok(contenuCommande);
+            return Ok(moto);
+        }
+
+        [HttpGet("reference/{id}")]
+        public async Task<ActionResult<MediaMoto>> GetReference(int id)
+        {
+            var media = await dataRepository.GetReference(id);
+
+            if (media == null)
+            {
+                return NotFound();
+            }
+
+            return media;
         }
 
 
-        // PUT: api/Media/5
+        // PUT: api/MediaMoto/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMedia(int id, MediaMoto media)
@@ -77,7 +97,7 @@ namespace SAE_4._01.Controllers
             }
         }
 
-        // POST: api/Media
+        // POST: api/MediaMoto
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<MediaMoto>> PostMedia(MediaMoto media)
@@ -91,7 +111,7 @@ namespace SAE_4._01.Controllers
             return CreatedAtAction("GetMedia", new { id = media.IdMediaMoto }, media);
         }
 
-        // DELETE: api/Media/5
+        // DELETE: api/MediaMoto/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMedia(int id)
         {

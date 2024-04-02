@@ -17,6 +17,11 @@ namespace SAE_4._01.Models.DataManager
             _dbContext = context;
         }
 
+        public async Task<ActionResult<IEnumerable<MediaMoto>>> GetAllAsync()
+        {
+            return await _dbContext.MediasMoto.ToListAsync();
+        }
+
         public async Task<ActionResult<MediaMoto>> GetByIdAsync(int id)
         {
             return await _dbContext.MediasMoto.FirstOrDefaultAsync(p => p.IdMediaMoto == id);
@@ -26,6 +31,13 @@ namespace SAE_4._01.Models.DataManager
         {
             return await _dbContext.MediasMoto.Where(p => p.IdMoto == id).ToListAsync();
         }
+
+        // Sera utilisée dans ce controller comme GetReference pour eviter d'ajouter une nouvelle méthode non implémentée dans tous les controllers
+        public async Task<ActionResult<MediaMoto>> GetReference(int id)
+        {
+            return await _dbContext.MediasMoto.FirstOrDefaultAsync(p => p.IsReference && p.IdMoto == id);
+        }
+
 
         public async Task AddAsync(MediaMoto entity)
         {
@@ -97,13 +109,7 @@ namespace SAE_4._01.Models.DataManager
         {
             throw new NotImplementedException();
         }
-   
-        // Ne fonctionne pasa cause des null sur idmoto ne fonctionne pas
-        // Inutile de coder car jamais utilisée dans l'application
-        public Task<ActionResult<IEnumerable<MediaMoto>>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
+
 
         Task<ActionResult<MediaMoto>> IDataRepository<MediaMoto>.GetBy2CompositeKeysAsync(int id1, int id2)
         {
@@ -120,12 +126,12 @@ namespace SAE_4._01.Models.DataManager
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<MediaMoto>> IDataRepository<MediaMoto>.GetByNomAsync(string nom)
+        Task<ActionResult<IEnumerable<MediaMoto>>> IDataRepository<MediaMoto>.GetByIdEquipementAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<IEnumerable<MediaMoto>>> IDataRepository<MediaMoto>.GetByIdEquipementAsync(int id)
+        public Task<ActionResult<MediaMoto>> GetByNomAsync(string nom)
         {
             throw new NotImplementedException();
         }
