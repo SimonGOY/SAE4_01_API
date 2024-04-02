@@ -59,7 +59,7 @@ namespace SAE_4._01.Controllers.Tests
             // Act
             var res = controller.GetCommande(1).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreEqual(cmd, res.Value, "La commande n'est pas la même");
         }
 
@@ -71,7 +71,7 @@ namespace SAE_4._01.Controllers.Tests
             // Act
             var res = controller.GetCommande(2).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreNotEqual(cmd, res.Value, "La commande est le même");
         }
 
@@ -85,7 +85,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void PostCommandeTest_CreationOK()
+        public void __PostCommandeTest_CreationOK()
         {
             // Act
             var result = controller.PostCommande(com).Result;
@@ -95,8 +95,8 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(com, cmdRecup.Value, "Coloris pas identiques");
         }
 
-        /*[TestMethod()]
-        public void PutCommandeTest_ModificationOK()
+        [TestMethod()]
+        public void __PutCommandeTest_ModificationOK()
         {
             // Arrange
             var cmdIni = controller.GetCommande(com.IdCommande).Result;
@@ -109,10 +109,10 @@ namespace SAE_4._01.Controllers.Tests
             var cmdMaj = controller.GetCommande(com.IdCommande).Result;
             Assert.IsNotNull(cmdMaj.Value);
             Assert.AreEqual(cmdIni.Value, cmdMaj.Value, "color pas identiques");
-        }*/
+        }
 
         [TestMethod()]
-        public void ZDeleteCommandeTest_SuppressionOK()
+        public void DeleteCommandeTest_SuppressionOK()
         {
             // Act
             var colSuppr = controller.GetCommande(com.IdCommande).Result;

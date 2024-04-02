@@ -27,6 +27,8 @@ namespace SAE_4._01.Models.Repository
         Task<ActionResult<IEnumerable<TEntity>>> GetByEquIdEquipementAsync(int id);
         Task<ActionResult<IEnumerable<TEntity>>> GetByIdStyleAsync(int id);
 
-        
+        Task<ActionResult<TEntity>> GetReference(int id);
+
+
     }
 }

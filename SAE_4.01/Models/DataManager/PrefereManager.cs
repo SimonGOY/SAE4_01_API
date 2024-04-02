@@ -125,5 +125,10 @@ namespace SAE_4._01.Models.DataManager
         {
             throw new NotImplementedException();
         }
+
+        public Task<ActionResult<Prefere>> GetReference(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

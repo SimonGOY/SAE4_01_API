@@ -60,7 +60,7 @@ namespace SAE_4._01.Controllers.Tests
             // Act
             var res = controller.GetClient(1).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreEqual(clt, res.Value, "Le client n'est pas le même");
         }
 
@@ -73,7 +73,7 @@ namespace SAE_4._01.Controllers.Tests
             // Act
             var res = controller.GetClient(2).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreNotEqual(clt, res.Value, "Le client est le même");
         }
 
@@ -88,7 +88,7 @@ namespace SAE_4._01.Controllers.Tests
 
 
         [TestMethod()]
-        public void PostClientTest_CreationOK()
+        public void __PostClientTest_CreationOK()
         {
             
             // Act
@@ -99,8 +99,8 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(client, cltRecup.Value, "Clients pas identiques");
         }
 
-        /*[TestMethod()]
-        public void PutClientTest_ModificationOK()
+        [TestMethod()]
+        public void _PutClientTest_ModificationOK()
         {
             // Arrange
             var cltIni = controller.GetClient(client.IdClient).Result;
@@ -113,10 +113,10 @@ namespace SAE_4._01.Controllers.Tests
             var cltMaj = controller.GetClient(client.IdClient).Result;
             Assert.IsNotNull(cltMaj.Value);
             Assert.AreEqual(cltIni.Value, cltMaj.Value, "Client pas identiques");
-        }*/
+        }
 
         [TestMethod()]
-        public void ZDeleteCLientTest_SuppressionOK()
+        public void DeleteCLientTest_SuppressionOK()
         {
 
             // Act

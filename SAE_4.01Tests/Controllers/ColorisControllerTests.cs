@@ -36,6 +36,13 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
+        public void PostDel()
+        {
+            PostColorisTest_CreationOk();
+            DeleteColorisTest_SuppressionOK();
+        }
+
+        [TestMethod()]
         public void GetLesColorisTest_RecuperationsOK()
         {
             //Arrange
@@ -55,7 +62,7 @@ namespace SAE_4._01.Controllers.Tests
             // Act
             var res = controller.GetColoris(1).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreEqual(col, res.Value, "La color n'est pas la même");
         }
 
@@ -67,7 +74,7 @@ namespace SAE_4._01.Controllers.Tests
             // Act
             var res = controller.GetColoris(2).Result;
             // Assert
-            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
             Assert.AreNotEqual(col, res.Value, "Le coloris est la même");
         }
 
@@ -80,7 +87,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNull(res.Value, "Le coloris existe");
         }
 
-        [TestMethod()]
         public void PostColorisTest_CreationOk()
         {
             // Act
@@ -91,24 +97,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(color, colRecup.Value, "Coloris pas identiques");
         }
 
-        /*[TestMethod()]
-        public void PutColorisTest_ModificationOK()
-        {
-            // Arrange
-            var colIni = controller.GetColoris(color.IdColoris).Result;
-            colIni.Value.NomColoris = "COLO CLONE N°" + 2;
-
-            // Act
-            var res = controller.PutColoris(color.IdColoris, colIni.Value).Result;
-
-            // Assert
-            var colMaj = controller.GetColoris(color.IdColoris).Result;
-            Assert.IsNotNull(colMaj.Value);
-            Assert.AreEqual(colIni.Value, colMaj.Value, "color pas identiques");
-        }*/
-
-        [TestMethod()]
-        public void ZDeleteColorisTest_SuppressionOK()
+        public void DeleteColorisTest_SuppressionOK()
         {
             // Act
             var colSuppr = controller.GetColoris(color.IdColoris).Result;
