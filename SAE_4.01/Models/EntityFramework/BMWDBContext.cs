@@ -373,6 +373,9 @@ namespace SAE_4._01.Models.EntityFramework
                     .HasForeignKey(d => d.IdMoto)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("fk_mem_mod");
+
+                entity.Property(e => e.IsReference) 
+                    .HasDefaultValue(false);
             });
 
             modelBuilder.Entity<MediaEquipement>(entity =>

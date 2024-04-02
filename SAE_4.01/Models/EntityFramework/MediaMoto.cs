@@ -18,6 +18,9 @@ namespace SAE_4._01.Models.EntityFramework
         [Column("mem_lienmedia")]
         public string LienMedia { get; set; } = null!;
 
+        [Column("mem_reference")]
+        public Boolean IsReference { get; set; }
+
 
         [ForeignKey(nameof(IdMoto))]
         [InverseProperty(nameof(ModeleMoto.MediaModeleMoto))]

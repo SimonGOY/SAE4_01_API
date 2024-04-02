@@ -24,7 +24,14 @@ namespace SAE_4._01.Controllers
             dataRepository = dataRepo;
         }
 
-        // GET: api/Media/5
+        // GET: api/MediaEquipement
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<MediaEquipement>>> GetContenuCommandes()
+        {
+            return await dataRepository.GetAllAsync();
+        }
+
+        // GET: api/MediaEquipement/5
         [HttpGet("{id}")]
         public async Task<ActionResult<MediaEquipement>> GetMedia(int id)
         {
@@ -54,7 +61,7 @@ namespace SAE_4._01.Controllers
         }
 
 
-        // PUT: api/Media/5
+        // PUT: api/MediaEquipement/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMedia(int id, MediaEquipement media)
@@ -77,7 +84,7 @@ namespace SAE_4._01.Controllers
             }
         }
 
-        // POST: api/Media
+        // POST: api/MediaEquipement
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<MediaEquipement>> PostMedia(MediaEquipement media)
@@ -91,7 +98,7 @@ namespace SAE_4._01.Controllers
             return CreatedAtAction("GetMedia", new { id = media.IdMediaEquipement }, media);
         }
 
-        // DELETE: api/Media/5
+        // DELETE: api/MediaEquipement/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMedia(int id)
         {
