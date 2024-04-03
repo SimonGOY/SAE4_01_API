@@ -124,7 +124,7 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var medMaj = controller.GetMedia(mediaEquipement.IdMediaEquipement).Result;
             Assert.IsNotNull(medMaj.Value);
-            Assert.AreEqual(medIni.Value, medMaj.Value, "demandes pas identiques");
+            Assert.AreEqual(medIni.Value, medMaj.Value, "medias pas identiques");
         }
 
         public void DeleteMediaTest_SuppressionOK()
@@ -135,7 +135,7 @@ namespace SAE_4._01.Controllers.Tests
 
             // Assert
             var res = controller.GetMedia(mediaEquipement.IdMediaEquipement).Result;
-            Assert.IsNull(res.Value, "infoCB non supprimé");
+            Assert.IsNull(res.Value, "medias non supprimé");
         }
 
         // ---------------------------------------- Tests Moq ----------------------------------------
