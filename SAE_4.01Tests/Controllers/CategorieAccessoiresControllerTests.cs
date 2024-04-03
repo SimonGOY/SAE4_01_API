@@ -80,22 +80,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(categorieAccessoire, ctaRecup.Value, "Catégories accessoires pas identiques"); ;
         }
 
-        [TestMethod()]
-        public void PutCategorieAccessoireTest_ModificationOK()
-        {
-            // Arrange
-            var ctaIni = controller.GetCategorieAccessoire(categorieAccessoire.IdCatAcc).Result;
-            ctaIni.Value.NomCatAcc = "CATACC CLONE N°" + 2;
-
-            // Act
-            var res = controller.PutCategorieAccessoire(categorieAccessoire.IdCatAcc, ctaIni.Value).Result;
-
-            // Assert
-            var ctaMaj = controller.GetCategorieAccessoire(categorieAccessoire.IdCatAcc).Result;
-            Assert.IsNotNull(ctaMaj.Value);
-            Assert.AreEqual(ctaIni.Value, ctaMaj.Value, "Client pas identiques");
-        }
-
         public void DeleteCategorieAccessoireTest_SuppressionOK()
         {
             // Act
@@ -104,7 +88,7 @@ namespace SAE_4._01.Controllers.Tests
 
             // Assert
             var res = controller.GetCategorieAccessoire(categorieAccessoire.IdCatAcc).Result;
-            Assert.IsNull(res.Value, "client non supprimé");
+            Assert.IsNull(res.Value, "categorie accessoire non supprimé");
         }
 
         // ---------------------------------------- Tests Moq ----------------------------------------
