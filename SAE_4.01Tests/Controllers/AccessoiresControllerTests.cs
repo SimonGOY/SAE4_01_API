@@ -20,6 +20,7 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<Accessoire> dataRepository;
         private Accessoire accessoire;
+        private Accessoire accessoire_bis;
         private Mock mockRepository;
 
         [TestInitialize]
@@ -54,5 +55,45 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNotNull(res);
             CollectionAssert.AreEqual(lesAccessoires, res.Value.ToList(), "Les listes de clients ne sont pas identiques");
         }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetByIdClientTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Accessoire>>();
+            var accessoires = new List<Accessoire>
+                {
+                    accessoire
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(accessoires);
+
+            var controller = new AccessoiresController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetAccessoires().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(accessoires, res.Value as IEnumerable<Accessoire>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetAccessoireTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Accessoire>>();
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(accessoire);
+
+            var controller = new AccessoiresController(mockRepository.Object);
+            // Act
+            var res = controller.GetAccessoire(1).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(accessoire, res.Value as Accessoire, "Le concessionnaire n'est pas le même");
+        }
+
     }
 }

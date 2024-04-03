@@ -88,7 +88,7 @@ namespace SAE_4._01.Controllers.Tests
         // ---------------------------------------- Tests Moq ----------------------------------------
 
         [TestMethod()]
-        public void Moq_GetByIdClientTest_RecuperationOK()
+        public void Moq_GetByIdEquipementTest_RecuperationOK()
         {
             // Arrange
             var mockRepository = new Mock<IDataRepository<MediaEquipement>>();
