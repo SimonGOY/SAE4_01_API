@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -108,6 +109,24 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetGammeMoto(gammeMoto.IdGamme).Result;
             Assert.IsNull(res.Value, "gammes non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetEquipementTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<GammeMoto>>();
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(gammeMoto);
+
+            var controller = new GammeMotoesController(mockRepository.Object);
+            // Act
+            var res = controller.GetGammeMoto(1).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(gammeMoto, res.Value as GammeMoto, "La gammeMoto n'est pas la même");
         }
     }
 }

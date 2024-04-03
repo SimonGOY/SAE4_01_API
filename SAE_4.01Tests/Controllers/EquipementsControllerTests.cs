@@ -130,8 +130,10 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNull(res.Value, "equipement non supprimé");
         }
 
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
         [TestMethod()]
-        public void Moq_GetDemandeEssaiTest_RecuperationOK()
+        public void Moq_GetEquipementTest_RecuperationOK()
         {
             // Arrange
             var mockRepository = new Mock<IDataRepository<Equipement>>();
@@ -143,7 +145,7 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
-            Assert.AreEqual(equipement, res.Value as Equipement, "La demande n'est pas la même");
+            Assert.AreEqual(equipement, res.Value as Equipement, "L'equipement n'est pas la même");
         }
     }
 }
