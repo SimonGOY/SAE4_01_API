@@ -95,5 +95,26 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(accessoire, res.Value as Accessoire, "Le concessionnaire n'est pas le même");
         }
 
+
+        [TestMethod()]
+        public void Moq_GetByIdMotoTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Accessoire>>();
+            var accessoires = new List<Accessoire>
+                {
+                    accessoire
+                };
+            mockRepository.Setup(x => x.GetByIdMotoAsync(1)).ReturnsAsync(accessoires);
+
+            var controller = new AccessoiresController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetByIdMoto(1).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(accessoires, res.Value as IEnumerable<Accessoire>, "La liste n'est pas le même");
+        }
     }
 }

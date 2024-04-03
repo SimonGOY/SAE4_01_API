@@ -61,17 +61,19 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(med, res.Value, "Le mediaEqu n'est pas le même");
         }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void GetByIdEquipementTest_RecuperationOK()
         {
             //Arrange
-            List<MediaEquipement> lesMeds = context.MediasEquipement.ToList();
+            List<MediaEquipement> lesMeds = context.MediasEquipement.Where(p=> p.IdEquipement == 1).ToList();
             // Act
             var res = controller.GetByIdEquipement(1).Result;
+            var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.MediaEquipement>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
+
             // Assert
             Assert.IsNotNull(res);
-            CollectionAssert.AreEqual(lesMeds, res.Value.ToList(), "Les listes de mediaEqu ne sont pas identiques");
-        }*/
+            CollectionAssert.AreEqual(lesMeds, res_cast as List<MediaEquipement> , "Les listes de mediaEqu ne sont pas identiques");
+        }
 
         [TestMethod()]
         public void GetInfoCBTest_RecuperationFailed()
@@ -139,6 +141,27 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetMediaEquipementsTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<MediaEquipement>>();
+            var medias = new List<MediaEquipement>
+                {
+                    mediaEquipement
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(medias);
+
+            var controller = new MediaEquipementController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetMediaEquipements().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(medias, res.Value as IEnumerable<MediaEquipement>, "La liste n'est pas le même");
+        }
 
         [TestMethod()]
         public void Moq_GetByIdEquipementTest_RecuperationOK()

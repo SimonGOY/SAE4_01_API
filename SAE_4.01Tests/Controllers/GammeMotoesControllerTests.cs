@@ -114,6 +114,27 @@ namespace SAE_4._01.Controllers.Tests
         // ---------------------------------------- Tests Moq ----------------------------------------
 
         [TestMethod()]
+        public void Moq_GetGammeMotosTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<GammeMoto>>();
+            var gammes = new List<GammeMoto>
+                {
+                    gammeMoto
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(gammes);
+
+            var controller = new GammeMotoesController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetGammeMotos().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(gammes, res.Value as IEnumerable<GammeMoto>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
         public void Moq_GetEquipementTest_RecuperationOK()
         {
             // Arrange

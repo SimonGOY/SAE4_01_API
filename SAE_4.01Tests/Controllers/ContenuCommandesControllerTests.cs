@@ -131,7 +131,28 @@ namespace SAE_4._01.Controllers.Tests
         // ---------------------------------------- Tests Moq ----------------------------------------
 
         [TestMethod()]
-        public async Task Moq_GetByIdCommandeTest_RecuperationOK()
+        public void Moq_GetContenuCommandesTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<ContenuCommande>>();
+            var commande = new List<ContenuCommande>
+                {
+                    contenuCommande
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(commande);
+
+            var controller = new ContenuCommandesController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetContenuCommandes().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(commande, res.Value as IEnumerable<ContenuCommande>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetByIdCommandeTest_RecuperationOK()
         {
             // Arrange
             var mockRepository = new Mock<IDataRepository<ContenuCommande>>();

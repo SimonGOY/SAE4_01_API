@@ -130,6 +130,27 @@ namespace SAE_4._01.Controllers.Tests
         // ---------------------------------------- Tests Moq ----------------------------------------
 
         [TestMethod()]
+        public void Moq_GetCouleursTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Couleur>>();
+            var couleurs = new List<Couleur>
+                {
+                    couleur
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(couleurs);
+
+            var controller = new CouleursController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetCouleurs().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(couleurs, res.Value as IEnumerable<Couleur>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
         public void Moq_GetCouleurTest_RecuperationOK()
         {
             // Arrange

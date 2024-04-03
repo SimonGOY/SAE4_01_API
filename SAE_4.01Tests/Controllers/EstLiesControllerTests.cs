@@ -113,6 +113,27 @@ namespace SAE_4._01.Controllers.Tests
         // ---------------------------------------- Tests Moq ----------------------------------------
 
         [TestMethod()]
+        public void Moq_GetSontLiesTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<EstLie>>();
+            var sontLies = new List<EstLie>
+                {
+                    estLie
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(sontLies);
+
+            var controller = new EstLiesController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetSontLies().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(sontLies, res.Value as IEnumerable<EstLie>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
         public void Moq_GetByEquIdEquipementTest_RecuperationOK()
         {
             // Arrange

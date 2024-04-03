@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -150,6 +151,50 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNull(res.Value, "media non supprimé");
         }
 
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetMediaEquipementsTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<MediaMoto>>();
+            var medias = new List<MediaMoto>
+                {
+                    mediaMoto
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(medias);
+
+            var controller = new MediaMotoController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetMediaMotos().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(medias, res.Value as IEnumerable<MediaMoto>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetByIdEquipementTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<MediaMoto>>();
+            var medias = new List<MediaMoto>
+                {
+                    mediaMoto
+                };
+            mockRepository.Setup(x => x.GetByIdMotoAsync(1)).ReturnsAsync(medias);
+
+            var controller = new MediaMotoController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetByIdMoto(1).Result;
+            var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.MediaMoto>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Result);
+            Assert.AreEqual(medias, res_cast as IEnumerable<MediaMoto>, "Le media n'est pas le même");
+        }
 
     }
 }

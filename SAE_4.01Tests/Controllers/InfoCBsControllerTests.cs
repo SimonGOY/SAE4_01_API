@@ -131,6 +131,27 @@ namespace SAE_4._01.Controllers.Tests
         // ---------------------------------------- Tests Moq ----------------------------------------
 
         [TestMethod()]
+        public void Moq_GetInfoCBsTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<InfoCB>>();
+            var infos = new List<InfoCB>
+                {
+                    infoCB
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(infos);
+
+            var controller = new InfoCBsController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetInfoCBs().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(infos, res.Value as IEnumerable<InfoCB>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
         public void Moq_GetByIdClientTest_RecuperationOK()
         {
             // Arrange

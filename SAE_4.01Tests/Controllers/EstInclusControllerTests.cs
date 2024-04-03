@@ -113,6 +113,27 @@ namespace SAE_4._01.Controllers.Tests
         // ---------------------------------------- Tests Moq ----------------------------------------
 
         [TestMethod()]
+        public void Moq_GetSontInclusTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<EstInclus>>();
+            var sontInclus = new List<EstInclus>
+                {
+                    estInclus
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(sontInclus);
+
+            var controller = new EstInclusController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetSontInclus().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(sontInclus, res.Value as IEnumerable<EstInclus>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
         public void Moq_GetByIdOptionTest_RecuperationOK()
         {
             // Arrange
