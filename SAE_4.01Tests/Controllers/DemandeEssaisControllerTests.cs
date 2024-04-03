@@ -138,7 +138,7 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
-            Assert.AreEqual(demande, res.Value as DemandeEssai, "Le contactInfo n'est pas le même");
+            Assert.AreEqual(demande, res.Value as DemandeEssai, "La demande n'est pas la même");
         }
     }
 }

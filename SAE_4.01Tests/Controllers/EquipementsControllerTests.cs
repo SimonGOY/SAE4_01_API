@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -127,6 +128,22 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetEquipement(equipement.IdEquipement).Result;
             Assert.IsNull(res.Value, "equipement non supprimé");
+        }
+
+        [TestMethod()]
+        public void Moq_GetDemandeEssaiTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Equipement>>();
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(equipement);
+
+            var controller = new EquipementsController(mockRepository.Object);
+            // Act
+            var res = controller.GetEquipement(1).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(equipement, res.Value as Equipement, "La demande n'est pas la même");
         }
     }
 }
