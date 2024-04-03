@@ -113,6 +113,27 @@ namespace SAE_4._01.Controllers.Tests
         // ---------------------------------------- Tests Moq ----------------------------------------
 
         [TestMethod()]
+        public void Moq_GetGaragesTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Garage>>();
+            var garages = new List<Garage>
+                {
+                    garage
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(garages);
+
+            var controller = new GaragesController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetGarages().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(garages, res.Value as IEnumerable<Garage>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
         public void Moq_GetByIdClientTest_RecuperationOK()
         {
             // Arrange

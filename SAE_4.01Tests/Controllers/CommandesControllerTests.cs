@@ -93,7 +93,7 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var cmdRecup = controller.GetCommande(commande.IdCommande).Result;
             commande.IdCommande = cmdRecup.Value.IdCommande;
-            Assert.AreEqual(commande, cmdRecup.Value, "Coloris pas identiques");
+            Assert.AreEqual(commande, cmdRecup.Value, "Commande pas identiques");
         }
 
         [TestMethod()]
@@ -125,6 +125,27 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetCommandesTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Commande>>();
+            var commandes = new List<Commande>
+                {
+                    commande
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(commandes);
+
+            var controller = new CommandesController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetCommandes().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(commandes, res.Value as IEnumerable<Commande>, "La liste n'est pas le même");
+        }
 
         [TestMethod()]
         public void Moq_GetCommandeTest_RecuperationOK()
