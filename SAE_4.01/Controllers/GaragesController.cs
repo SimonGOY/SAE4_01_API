@@ -58,6 +58,19 @@ namespace SAE_4._01.Controllers
             return Ok(garages);
         }
 
+        [HttpGet("{id1}/{id2}")]
+        public async Task<ActionResult<Garage>> GetByIds(int id1, int id2)
+        {
+            var garage = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
+            if (garage == null)
+            {
+                return NotFound();
+            }
+
+            return garage;
+        }
+
         // PUT: api/Garages/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id1}/{id2}")]

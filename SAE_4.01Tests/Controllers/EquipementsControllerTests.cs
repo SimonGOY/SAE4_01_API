@@ -89,7 +89,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNull(res.Value, "L'equipement existe");
         }
 
-        [Priority(2)]
         [TestMethod()]
         public void __PostEquipementTest_CreationOK()
         {
@@ -101,7 +100,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(equipement, demRecup.Value, "Equipements pas identiques");
         }
 
-        [Priority(0)]
         [TestMethod()]
         public void _PutEquipementTest_ModificationOK()
         {

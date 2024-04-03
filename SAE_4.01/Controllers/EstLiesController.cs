@@ -58,6 +58,19 @@ namespace SAE_4._01.Controllers
             return Ok(sontlies);
         }
 
+        [HttpGet("{id1}/{id2}")]
+        public async Task<ActionResult<EstLie>> GetByIds(int id1, int id2)
+        {
+            var estLie = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
+            if (estLie == null)
+            {
+                return NotFound();
+            }
+
+            return estLie;
+        }
+
         // PUT: api/EstLies/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id1}/{id2}")]

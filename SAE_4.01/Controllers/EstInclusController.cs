@@ -51,6 +51,19 @@ namespace SAE_4._01.Controllers
             return await dataRepository.GetAllAsync();
         }
 
+        [HttpGet("{id1}/{id2}")]
+        public async Task<ActionResult<EstInclus>> GetByIds(int id1, int id2)
+        {
+            var estInclus = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
+            if (estInclus == null)
+            {
+                return NotFound();
+            }
+
+            return estInclus;
+        }
+
         // PUT: api/EstInclus/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id1}/{id2}")]
