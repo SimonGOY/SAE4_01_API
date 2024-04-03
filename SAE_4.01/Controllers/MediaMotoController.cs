@@ -26,7 +26,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/MediaMoto
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MediaMoto>>> GetContenuCommandes()
+        public async Task<ActionResult<IEnumerable<MediaMoto>>> GetMediaMotos()
         {
             return await dataRepository.GetAllAsync();
         }

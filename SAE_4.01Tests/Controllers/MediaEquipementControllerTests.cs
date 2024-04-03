@@ -40,48 +40,101 @@ namespace SAE_4._01.Controllers.Tests
         public void GetMediaEquipementsTest_RecuperationsOK()
         {
             //Arrange
-            List<MediaEquipement> lesInfos = context.MediasEquipement.ToList();
+            List<MediaEquipement> lesMeds = context.MediasEquipement.ToList();
             // Act
             var res = controller.GetMediaEquipements().Result;
             // Assert
             Assert.IsNotNull(res);
-            CollectionAssert.AreEqual(lesInfos, res.Value.ToList(), "Les listes de mediaEqu ne sont pas identiques");
+            CollectionAssert.AreEqual(lesMeds, res.Value.ToList(), "Les listes de mediaEqu ne sont pas identiques");
         }
 
         [TestMethod()]
-        public void GetMediaTest()
+        public void GetMediaTest_RecuperationOK()
         {
             // Arrange
-            MediaEquipement? inf = context.MediasEquipement.Find(1);
+            MediaEquipement? med = context.MediasEquipement.Find(1);
             // Act
             var res = controller.GetMedia(1).Result;
             // Assert
             Assert.IsNotNull(res.Value);
-            Assert.AreEqual(inf, res.Value, "L'e mediaEqu n'est pas le même");
+            Assert.AreEqual(med, res.Value, "Le mediaEqu n'est pas le même");
+        }
+
+        /*[TestMethod()]
+        public void GetByIdEquipementTest_RecuperationOK()
+        {
+            //Arrange
+            List<MediaEquipement> lesMeds = context.MediasEquipement.ToList();
+            // Act
+            var res = controller.GetByIdEquipement(1).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            CollectionAssert.AreEqual(lesMeds, res.Value.ToList(), "Les listes de mediaEqu ne sont pas identiques");
+        }*/
+
+        [TestMethod()]
+        public void GetInfoCBTest_RecuperationFailed()
+        {
+            // Arrange
+            MediaEquipement? med = context.MediasEquipement.Find(1);
+            // Act
+            var res = controller.GetMedia(2).Result;
+            // Assert
+            Assert.IsNotNull(res.Value);
+            Assert.AreNotEqual(med, res.Value, "Le media est le même");
         }
 
         [TestMethod()]
-        public void GetByIdEquipementTest()
+        public void GetInfoCBTest_EquipementNExistePas()
         {
-
+            var res = controller.GetMedia(777777777).Result;
+            // Assert
+            Assert.IsNull(res.Result, "Le media existe");
+            Assert.IsNull(res.Value, "Le media existe");
         }
 
         [TestMethod()]
-        public void PutMediaTest()
+        public void PostPutDeleteTest()
         {
-
+            PostMediaTest_CreationOK();
+            PutMediaTest_ModificationOK();
+            DeleteMediaTest_SuppressionOK();
         }
 
-        [TestMethod()]
-        public void PostMediaTest()
+        public void PostMediaTest_CreationOK()
         {
-
+            // Act
+            var result = controller.PostMedia(mediaEquipement).Result;
+            // Assert
+            var medRecup = controller.GetMedia(mediaEquipement.IdMediaEquipement).Result;
+            mediaEquipement.IdEquipement = medRecup.Value.IdEquipement;
+            Assert.AreEqual(mediaEquipement, medRecup.Value, "medias pas identiques");
         }
 
-        [TestMethod()]
-        public void DeleteMediaTest()
+        public void PutMediaTest_ModificationOK()
         {
+            // Arrange
+            var medIni = controller.GetMedia(mediaEquipement.IdMediaEquipement).Result;
+            medIni.Value.LienMedia = "nintendo-town.fr/wp-content/uploads/2018/09/Professeur_Layton_et_l_Etrange_Village.jpg";
 
+            // Act
+            var res = controller.PutMedia(mediaEquipement.IdMediaEquipement, medIni.Value).Result;
+
+            // Assert
+            var medMaj = controller.GetMedia(mediaEquipement.IdMediaEquipement).Result;
+            Assert.IsNotNull(medMaj.Value);
+            Assert.AreEqual(medIni.Value, medMaj.Value, "demandes pas identiques");
+        }
+
+        public void DeleteMediaTest_SuppressionOK()
+        {
+            // Act
+            var infSuppr = controller.GetMedia(mediaEquipement.IdMediaEquipement).Result;
+            _ = controller.DeleteMedia(mediaEquipement.IdMediaEquipement).Result;
+
+            // Assert
+            var res = controller.GetMedia(mediaEquipement.IdMediaEquipement).Result;
+            Assert.IsNull(res.Value, "infoCB non supprimé");
         }
     }
 }
