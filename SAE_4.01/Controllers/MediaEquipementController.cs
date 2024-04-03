@@ -26,7 +26,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/MediaEquipement
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MediaEquipement>>> GetContenuCommandes()
+        public async Task<ActionResult<IEnumerable<MediaEquipement>>> GetMediaEquipements()
         {
             return await dataRepository.GetAllAsync();
         }
