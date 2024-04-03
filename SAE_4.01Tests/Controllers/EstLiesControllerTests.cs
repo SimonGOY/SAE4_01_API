@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -107,6 +108,52 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetByIds(estLie.IdEquipement, estLie.EquIdEquipement).Result;
             Assert.IsNull(res.Value, "estLie non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetByEquIdEquipementTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<EstLie>>();
+            var liste = new List<EstLie>
+                {
+                    estLie
+                };
+            mockRepository.Setup(x => x.GetByEquIdEquipementAsync(1)).ReturnsAsync(liste);
+
+            var controller = new EstLiesController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetByEquIdEquipement(1).Result;
+            var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.EstLie>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Result);
+            Assert.AreEqual(liste, res_cast as IEnumerable<EstLie>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetByIdEquipementTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<EstLie>>();
+            var liste = new List<EstLie>
+                {
+                    estLie
+                };
+            mockRepository.Setup(x => x.GetByIdEquipementAsync(1)).ReturnsAsync(liste);
+
+            var controller = new EstLiesController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetByIdEquipement(1).Result;
+            var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.EstLie>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Result);
+            Assert.AreEqual(liste, res_cast as IEnumerable<EstLie>, "La liste n'est pas le même");
         }
     }
 }

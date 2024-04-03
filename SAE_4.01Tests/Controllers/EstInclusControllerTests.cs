@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -107,6 +108,51 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetByIds(estInclus.IdOption, estInclus.IdStyle).Result;
             Assert.IsNull(res.Value, "estinclus non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetByIdOptionTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<EstInclus>>();
+            var liste = new List<EstInclus>
+                {
+                    estInclus
+                };
+            mockRepository.Setup(x => x.GetByIdOptionAsync(1)).ReturnsAsync(liste);
+
+            var controller = new EstInclusController(mockRepository.Object);
+            
+            // Act
+            var res = controller.GetByIdOption(1).Result;
+            var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.EstInclus>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Result);
+            Assert.AreEqual(liste, res_cast as IEnumerable<EstInclus>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetByIdStyleAsyncTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<EstInclus>>();
+            var liste = new List<EstInclus>
+                {
+                    estInclus
+                };
+            mockRepository.Setup(x => x.GetByIdStyleAsync(1)).ReturnsAsync(liste);
+
+            var controller = new EstInclusController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetByIdStyle(1).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(liste, res.Value as IEnumerable<EstInclus>, "La liste n'est pas le même");
         }
     }
 }

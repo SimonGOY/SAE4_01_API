@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -124,6 +125,24 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetCouleur(couleur.IdCouleur).Result;
             Assert.IsNull(res.Value, "couleur non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetCouleurTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Couleur>>();
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(couleur);
+
+            var controller = new CouleursController(mockRepository.Object);
+            // Act
+            var res = controller.GetCouleur(1).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(couleur, res.Value as Couleur, "Le contactInfo n'est pas le même");
         }
     }
 }

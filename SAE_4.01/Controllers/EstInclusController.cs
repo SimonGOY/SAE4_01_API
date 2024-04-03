@@ -48,7 +48,7 @@ namespace SAE_4._01.Controllers
         [HttpGet("style/{id}")]
         public async Task<ActionResult<IEnumerable<EstInclus>>> GetByIdStyle(int id)
         {
-            return await dataRepository.GetAllAsync();
+            return await dataRepository.GetByIdStyleAsync(id);
         }
 
         [HttpGet("{id1}/{id2}")]

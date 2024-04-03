@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -20,7 +21,7 @@ namespace SAE_4._01.Controllers.Tests
         private CommandesController controller;
         private BMWDBContext context;
         private IDataRepository<Commande> dataRepository;
-        private Commande com;
+        private Commande commande;
 
         [TestInitialize]
         public void InitTest()
@@ -30,7 +31,7 @@ namespace SAE_4._01.Controllers.Tests
             dataRepository = new CommandeManager(context);
             controller = new CommandesController(dataRepository);
 
-            com = new Commande()
+            commande = new Commande()
             {
                 IdCommande = 666666666,
                 IdClient = 1,
@@ -88,25 +89,25 @@ namespace SAE_4._01.Controllers.Tests
         public void __PostCommandeTest_CreationOK()
         {
             // Act
-            var result = controller.PostCommande(com).Result;
+            var result = controller.PostCommande(commande).Result;
             // Assert
-            var cmdRecup = controller.GetCommande(com.IdCommande).Result;
-            com.IdCommande = cmdRecup.Value.IdCommande;
-            Assert.AreEqual(com, cmdRecup.Value, "Coloris pas identiques");
+            var cmdRecup = controller.GetCommande(commande.IdCommande).Result;
+            commande.IdCommande = cmdRecup.Value.IdCommande;
+            Assert.AreEqual(commande, cmdRecup.Value, "Coloris pas identiques");
         }
 
         [TestMethod()]
         public void __PutCommandeTest_ModificationOK()
         {
             // Arrange
-            var cmdIni = controller.GetCommande(com.IdCommande).Result;
+            var cmdIni = controller.GetCommande(commande.IdCommande).Result;
             cmdIni.Value.Etat = 2;
 
             // Act
-            var res = controller.PutCommande(com.IdCommande, cmdIni.Value).Result;
+            var res = controller.PutCommande(commande.IdCommande, cmdIni.Value).Result;
 
             // Assert
-            var cmdMaj = controller.GetCommande(com.IdCommande).Result;
+            var cmdMaj = controller.GetCommande(commande.IdCommande).Result;
             Assert.IsNotNull(cmdMaj.Value);
             Assert.AreEqual(cmdIni.Value, cmdMaj.Value, "color pas identiques");
         }
@@ -115,12 +116,30 @@ namespace SAE_4._01.Controllers.Tests
         public void DeleteCommandeTest_SuppressionOK()
         {
             // Act
-            var colSuppr = controller.GetCommande(com.IdCommande).Result;
-            _ = controller.DeleteCommande(com.IdCommande).Result;
+            var colSuppr = controller.GetCommande(commande.IdCommande).Result;
+            _ = controller.DeleteCommande(commande.IdCommande).Result;
 
             // Assert
-            var res = controller.GetCommande(com.IdCommande).Result;
+            var res = controller.GetCommande(commande.IdCommande).Result;
             Assert.IsNull(res.Value, "colo non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetCommandeTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Commande>>();
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(commande);
+
+            var controller = new CommandesController(mockRepository.Object);
+            // Act
+            var res = controller.GetCommande(1).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(commande, res.Value as Commande, "Le coloris n'est pas le même");
         }
     }
 }

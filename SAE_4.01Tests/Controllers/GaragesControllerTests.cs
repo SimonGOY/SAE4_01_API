@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -107,6 +108,30 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetByIds(garage.IdMotoConfigurable, garage.IdClient).Result;
             Assert.IsNull(res.Value, "garage non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetByEquIdEquipementTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Garage>>();
+            var garages = new List<Garage>
+                {
+                    garage
+                };
+            mockRepository.Setup(x => x.GetByEquIdEquipementAsync(1)).ReturnsAsync(garages);
+
+            var controller = new GaragesController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetByIdClient(10).Result;
+            var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.Garage>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Result);
+            Assert.AreEqual(garages, res_cast as IEnumerable<EstLie>, "La liste n'est pas le même");
         }
     }
 }
