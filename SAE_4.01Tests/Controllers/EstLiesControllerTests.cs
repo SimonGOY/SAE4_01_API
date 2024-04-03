@@ -48,7 +48,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetEontLieTest_RecuperationOK()
+        public void GetEstLieTest_RecuperationOK()
         {
             // Arrange
             var est = context.SontLies.Find(1, 20);
