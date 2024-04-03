@@ -75,7 +75,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetContenuCommandeTest_CollecNExistePas()
+        public void GetContenuCommandeTest_ContenuNExistePas()
         {
             var res = controller.GetByIds(777777777, 2, 2, 2).Result;
             // Assert
