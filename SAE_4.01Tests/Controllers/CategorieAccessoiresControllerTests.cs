@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -103,6 +104,24 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetCategorieAccessoire(categorieAccessoire.IdCatAcc).Result;
             Assert.IsNull(res.Value, "client non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetCategorieAccessoireTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<CategorieAccessoire>>();
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(categorieAccessoire);
+
+            var controller = new CategorieAccessoiresController(mockRepository.Object);
+            // Act
+            var res = controller.GetCategorieAccessoire(1).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(categorieAccessoire, res.Value as CategorieAccessoire, "La CategorieAccessoire n'est pas le même");
         }
     }
 }

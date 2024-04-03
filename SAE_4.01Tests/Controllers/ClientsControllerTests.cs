@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
 using SAE_4._01.Models.DataManager;
+using Moq;
 
 namespace SAE_4._01.Controllers.Tests
 {
@@ -126,6 +127,24 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetClient(client.IdClient).Result;
             Assert.IsNull(res.Value, "client non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetClientTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Client>>();
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(client);
+
+            var controller = new ClientsController(mockRepository.Object);
+            // Act
+            var res = controller.GetClient(1).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(client, res.Value as Client, "Le client n'est pas le même");
         }
     }
 }

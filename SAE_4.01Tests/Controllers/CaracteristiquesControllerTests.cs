@@ -66,22 +66,6 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetCaracteristiqueTest_Moq_RecuperationOK()
-        {
-            // Arrange
-            var mockRepository = new Mock<IDataRepository<Caracteristique>>();
-            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(caracteristique);
-
-            var controller = new CaracteristiquesController(mockRepository.Object);
-            // Act
-            var res = controller.GetCaracteristique(1).Result;
-            // Assert
-            Assert.IsNotNull(res);
-            Assert.IsNotNull(res.Value);
-            Assert.AreEqual(caracteristique, res.Value as Caracteristique, "La caractéristique n'est pas le même");
-        }
-
-        [TestMethod()]
         public void __PostCaracteristiqueTest_CreationOK()
         {
             // Act
@@ -118,6 +102,24 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetCaracteristique (caracteristique.IdCaracteristique).Result;
             Assert.IsNull(res.Value, "caracteristique non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetCaracteristiqueTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Caracteristique>>();
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(caracteristique);
+
+            var controller = new CaracteristiquesController(mockRepository.Object);
+            // Act
+            var res = controller.GetCaracteristique(1).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(caracteristique, res.Value as Caracteristique, "La caracteristique n'est pas le même");
         }
     }
 }

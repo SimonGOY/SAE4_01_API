@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -19,7 +20,7 @@ namespace SAE_4._01.Controllers.Tests
         private CollectionsController controller;
         private BMWDBContext context;
         private IDataRepository<Collection> dataRepository;
-        private Collection collec;
+        private Collection collection;
 
         [TestInitialize]
         public void InitTest()
@@ -29,7 +30,7 @@ namespace SAE_4._01.Controllers.Tests
             dataRepository = new CollectionManager(context);
             controller = new CollectionsController(dataRepository);
 
-            collec = new Collection
+            collection = new Collection
             {
                 IdCollection = 666666666,
                 NomCollection = "Printemps été 2024"
@@ -45,7 +46,7 @@ namespace SAE_4._01.Controllers.Tests
             var res = controller.GetCollections().Result;
             // Assert
             Assert.IsNotNull(res);
-            CollectionAssert.AreEqual(lesCollecs, res.Value.ToList(), "Les listes de collec ne sont pas identiques");
+            CollectionAssert.AreEqual(lesCollecs, res.Value.ToList(), "Les listes de collection ne sont pas identiques");
         }
 
         [TestMethod()]
@@ -57,7 +58,7 @@ namespace SAE_4._01.Controllers.Tests
             var res = controller.GetCollection(1).Result;
             // Assert
             Assert.IsNotNull(res.Value);
-            Assert.AreEqual(col, res.Value, "La collec n'est pas la même");
+            Assert.AreEqual(col, res.Value, "La collection n'est pas la même");
         }
 
 
@@ -70,7 +71,7 @@ namespace SAE_4._01.Controllers.Tests
             var res = controller.GetCollection(2).Result;
             // Assert
             Assert.IsNotNull(res.Value);
-            Assert.AreNotEqual(clt, res.Value, "La collec est la même");
+            Assert.AreNotEqual(clt, res.Value, "La collection est la même");
         }
 
         [TestMethod()]
@@ -78,33 +79,33 @@ namespace SAE_4._01.Controllers.Tests
         {
             var res = controller.GetCollection(777777777).Result;
             // Assert
-            Assert.IsNull(res.Result, "La collec existe");
-            Assert.IsNull(res.Value, "La collec existe");
+            Assert.IsNull(res.Result, "La collection existe");
+            Assert.IsNull(res.Value, "La collection existe");
         }
 
         [TestMethod()]
         public void __PostCollectionTest_CreationOK()
         {
             // Act
-            var result = controller.PostCollection(collec).Result;
+            var result = controller.PostCollection(collection).Result;
             // Assert
-            var colRecup = controller.GetCollection(collec.IdCollection).Result;
-            collec.IdCollection = colRecup.Value.IdCollection;
-            Assert.AreEqual(collec, colRecup.Value, "Clients pas identiques");
+            var colRecup = controller.GetCollection(collection.IdCollection).Result;
+            collection.IdCollection = colRecup.Value.IdCollection;
+            Assert.AreEqual(collection, colRecup.Value, "Clients pas identiques");
         }
 
         [TestMethod()]
         public void __PutCollectionTest_ModificationOK()
         {
             // Arrange
-            var colIni = controller.GetCollection(collec.IdCollection).Result;
+            var colIni = controller.GetCollection(collection.IdCollection).Result;
             colIni.Value.NomCollection = "COLLEC CLONE N°" + 2;
 
             // Act
-            var res = controller.PutCollection(collec.IdCollection, colIni.Value).Result;
+            var res = controller.PutCollection(collection.IdCollection, colIni.Value).Result;
 
             // Assert
-            var cltMaj = controller.GetCollection(collec.IdCollection).Result;
+            var cltMaj = controller.GetCollection(collection.IdCollection).Result;
             Assert.IsNotNull(cltMaj.Value);
             Assert.AreEqual(colIni.Value, cltMaj.Value, "Collec pas identiques");
         }
@@ -113,12 +114,30 @@ namespace SAE_4._01.Controllers.Tests
         public void DeleteCollectionTest_SuppressionOK()
         {
             // Act
-            var colSuppr = controller.GetCollection(collec.IdCollection).Result;
-            _ = controller.DeleteCollection(collec.IdCollection).Result;
+            var colSuppr = controller.GetCollection(collection.IdCollection).Result;
+            _ = controller.DeleteCollection(collection.IdCollection).Result;
 
             // Assert
-            var res = controller.GetCollection(collec.IdCollection).Result;
-            Assert.IsNull(res.Value, "collec non supprimé");
+            var res = controller.GetCollection(collection.IdCollection).Result;
+            Assert.IsNull(res.Value, "collection non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetCollectionTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Collection>>();
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(collection);
+
+            var controller = new CollectionsController(mockRepository.Object);
+            // Act
+            var res = controller.GetCollection(1).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(collection, res.Value as Collection, "La collection n'est pas le même");
         }
     }
 }
