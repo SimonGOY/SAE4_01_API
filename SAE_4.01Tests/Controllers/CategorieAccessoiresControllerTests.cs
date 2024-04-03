@@ -80,7 +80,8 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(categorieAccessoire, ctaRecup.Value, "Catégories accessoires pas identiques"); ;
         }
 
-        /*public void PutCategorieAccessoireTest_ModificationOK()
+        [TestMethod()]
+        public void PutCategorieAccessoireTest_ModificationOK()
         {
             // Arrange
             var ctaIni = controller.GetCategorieAccessoire(categorieAccessoire.IdCatAcc).Result;
@@ -93,7 +94,7 @@ namespace SAE_4._01.Controllers.Tests
             var ctaMaj = controller.GetCategorieAccessoire(categorieAccessoire.IdCatAcc).Result;
             Assert.IsNotNull(ctaMaj.Value);
             Assert.AreEqual(ctaIni.Value, ctaMaj.Value, "Client pas identiques");
-        }*/
+        }
 
         public void DeleteCategorieAccessoireTest_SuppressionOK()
         {

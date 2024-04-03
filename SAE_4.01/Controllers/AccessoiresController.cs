@@ -47,8 +47,9 @@ namespace SAE_4._01.Controllers
 
         }
 
+        // GET: api/Accessoires/idmoto/5
         [HttpGet("idmoto/{id}")]
-        public async Task<ActionResult<IEnumerable<Accessoire>>> GetCouleurByIdMoto(int id)
+        public async Task<ActionResult<IEnumerable<Accessoire>>> GetByIdMoto(int id)
         {
 
             var couleur = await dataRepository.GetByIdMotoAsync(id);
