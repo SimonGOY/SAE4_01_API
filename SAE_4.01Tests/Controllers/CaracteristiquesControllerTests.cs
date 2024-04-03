@@ -107,6 +107,27 @@ namespace SAE_4._01.Controllers.Tests
         // ---------------------------------------- Tests Moq ----------------------------------------
 
         [TestMethod()]
+        public void Moq_GetCaracteristiquesTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Caracteristique>>();
+            var caracteristiques = new List<Caracteristique>
+                {
+                    caracteristique
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(caracteristiques);
+
+            var controller = new CaracteristiquesController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetCaracteristiques().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(caracteristiques, res.Value as IEnumerable<Caracteristique>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
         public void Moq_GetCaracteristiqueTest_RecuperationOK()
         {
             // Arrange

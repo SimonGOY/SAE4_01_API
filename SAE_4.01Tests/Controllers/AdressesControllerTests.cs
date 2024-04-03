@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -36,16 +37,43 @@ namespace SAE_4._01.Controllers.Tests
             };
         }
 
-        /*[TestMethod()]
-        public void GetAccessoires_RecuperationOK()
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetAdressesTest_RecuperationOK()
         {
-            //Arrange
-            List<Adresse> lesAccessoires = context.Adresses.ToList();
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Adresse>>();
+            var adresses = new List<Adresse>
+                {
+                    adresse
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(adresses);
+
+            var controller = new AdressesController(mockRepository.Object);
+
             // Act
             var res = controller.GetAdresses().Result;
             // Assert
             Assert.IsNotNull(res);
-            CollectionAssert.AreEqual(lesAccessoires, res.Value.ToList(), "Les listes de clients ne sont pas identiques");
-        }*/
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(adresses, res.Value as IEnumerable<Adresse>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetAdresseTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Adresse>>();
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(adresse);
+
+            var controller = new AdressesController(mockRepository.Object);
+            // Act
+            var res = controller.GetAdresse(1).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(adresse, res.Value as Adresse, "Le concessionnaire n'est pas le même");
+        }
     }
 }

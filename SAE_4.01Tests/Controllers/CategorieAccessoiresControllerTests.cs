@@ -109,6 +109,27 @@ namespace SAE_4._01.Controllers.Tests
         // ---------------------------------------- Tests Moq ----------------------------------------
 
         [TestMethod()]
+        public void Moq_GetCategorieAccessoiresTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<CategorieAccessoire>>();
+            var categoriesAccessoire = new List<CategorieAccessoire>
+                {
+                    categorieAccessoire
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(categoriesAccessoire);
+
+            var controller = new CategorieAccessoiresController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetCategorieAccessoires().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(categoriesAccessoire, res.Value as IEnumerable<CategorieAccessoire>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
         public void Moq_GetCategorieAccessoireTest_RecuperationOK()
         {
             // Arrange
