@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -18,7 +19,7 @@ namespace SAE_4._01.Controllers.Tests
         private ColorisController controller;
         private BMWDBContext context;
         private IDataRepository<Coloris> dataRepository;
-        private Coloris color;
+        private Coloris coloris;
 
         [TestInitialize]
         public void InitTest()
@@ -28,7 +29,7 @@ namespace SAE_4._01.Controllers.Tests
             dataRepository = new ColorisManager(context);
             controller = new ColorisController(dataRepository);
 
-            color = new Coloris
+            coloris = new Coloris
             {
                 IdColoris = 666666666,
                 NomColoris = "Marron Chiasse"
@@ -63,7 +64,7 @@ namespace SAE_4._01.Controllers.Tests
             var res = controller.GetColoris(1).Result;
             // Assert
             Assert.IsNotNull(res.Value);
-            Assert.AreEqual(col, res.Value, "La color n'est pas la même");
+            Assert.AreEqual(col, res.Value, "La coloris n'est pas la même");
         }
 
         [TestMethod()]
@@ -90,22 +91,40 @@ namespace SAE_4._01.Controllers.Tests
         public void PostColorisTest_CreationOk()
         {
             // Act
-            var result = controller.PostColoris(color).Result;
+            var result = controller.PostColoris(coloris).Result;
             // Assert
-            var colRecup = controller.GetColoris(color.IdColoris).Result;
-            color.IdColoris = colRecup.Value.IdColoris;
-            Assert.AreEqual(color, colRecup.Value, "Coloris pas identiques");
+            var colRecup = controller.GetColoris(coloris.IdColoris).Result;
+            coloris.IdColoris = colRecup.Value.IdColoris;
+            Assert.AreEqual(coloris, colRecup.Value, "Coloris pas identiques");
         }
 
         public void DeleteColorisTest_SuppressionOK()
         {
             // Act
-            var colSuppr = controller.GetColoris(color.IdColoris).Result;
-            _ = controller.DeleteColoris(color.IdColoris).Result;
+            var colSuppr = controller.GetColoris(coloris.IdColoris).Result;
+            _ = controller.DeleteColoris(coloris.IdColoris).Result;
 
             // Assert
-            var res = controller.GetColoris(color.IdColoris).Result;
+            var res = controller.GetColoris(coloris.IdColoris).Result;
             Assert.IsNull(res.Value, "colo non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetColorisTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<Coloris>>();
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(coloris);
+
+            var controller = new ColorisController(mockRepository.Object);
+            // Act
+            var res = controller.GetColoris(1).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(coloris, res.Value as Coloris, "La collection n'est pas le même");
         }
     }
 }
