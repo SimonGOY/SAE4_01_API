@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -95,45 +96,23 @@ namespace SAE_4._01.Controllers.Tests
         }
 
 
-        /*[TestMethod()]
-        public void PostUsersTest_CreationOK()
-        {
-
-            // Act
-            var result = controller.PostUsers(user).Result;
-            // Assert
-            var cltRecup = controller.GetUsers(user.Id).Result;
-            user.Id = cltRecup.Value.Id;
-            Assert.AreEqual(user, cltRecup.Value, "LesUsers pas identiques"); ;
-        }
+        // ---------------------------------------- Tests Moq ----------------------------------------
 
         [TestMethod()]
-        public void PutUsersTest_ModificationOK()
+        public void Moq_GetByIdClientTest_RecuperationOK()
         {
             // Arrange
-            var cltIni = controller.GetUsers(user.Id).Result;
-            cltIni.Value.FirstName = "CLIENT CLONE N°" + 2;
+            var mockRepository = new Mock<IDataRepository<User>>();
+            mockRepository.Setup(x => x.GetByIdAsync(15)).ReturnsAsync(user);
+
+            var controller = new UsersController(mockRepository.Object);
 
             // Act
-            var res = controller.PutUser(user.Id, cltIni.Value).Result;
-
+            var res = controller.GetUsers(15).Result;
             // Assert
-            var cltMaj = controller.GetUsers(user.Id).Result;
-            Assert.IsNotNull(cltMaj.Value);
-            Assert.AreEqual(cltIni.Value, cltMaj.Value, "Users pas identiques");
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(user, res.Value as User, "Les infoCB n'est pas le même");
         }
-
-        [TestMethod()]
-        public void ZDeleteCLientTest_SuppressionOK()
-        {
-
-            // Act
-            var cltSuppr = controller.GetUsers(user.Id).Result;
-            _ = controller.DeleteUsers(cltSuppr.Value.Id).Result;
-
-            // Assert
-            var res = controller.GetUsers(user.Id).Result;
-            Assert.IsNull(res.Value, "user non supprimé");
-        }*/
     }
 }

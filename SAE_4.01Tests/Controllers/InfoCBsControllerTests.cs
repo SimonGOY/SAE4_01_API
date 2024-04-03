@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -125,6 +126,25 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetInfoCB(infoCB.IdCarte).Result;
             Assert.IsNull(res.Value, "infoCB non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetByIdClientTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<InfoCB>>();
+            mockRepository.Setup(x => x.GetByIdAsync(15)).ReturnsAsync(infoCB);
+
+            var controller = new InfoCBsController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetInfoCB(15).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(infoCB, res.Value as InfoCB, "Les infoCB n'est pas le même");
         }
     }
 }

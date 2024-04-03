@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -82,6 +83,30 @@ namespace SAE_4._01.Controllers.Tests
         public void DeleteMediaTest()
         {
 
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetByIdClientTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<MediaEquipement>>();
+            var medias = new List<MediaEquipement>
+                {
+                    mediaEquipement
+                };
+            mockRepository.Setup(x => x.GetByIdEquipementAsync(1)).ReturnsAsync(medias);
+
+            var controller = new MediaEquipementController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetByIdEquipement(1).Result;
+            var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.MediaEquipement>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Result);
+            Assert.AreEqual(medias, res_cast as IEnumerable<MediaEquipement>, "Le media n'est pas le même");
         }
     }
 }
