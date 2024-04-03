@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -7,6 +9,7 @@ using SAE_4._01.Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.Pkcs;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,7 +21,7 @@ namespace SAE_4._01.Controllers.Tests
         private ContenuCommandesController controller;
         private BMWDBContext context;
         private IDataRepository<ContenuCommande> dataRepository;
-        private ContenuCommande con;
+        private ContenuCommande contenuCommande;
 
         [TestInitialize]
         public void ContenuCommandesControllerTest()
@@ -28,7 +31,7 @@ namespace SAE_4._01.Controllers.Tests
             dataRepository = new ContenuCommandeManager(context);
             controller = new ContenuCommandesController(dataRepository);
 
-            con = new ContenuCommande
+            contenuCommande = new ContenuCommande
             {
                 IdCommande = 1,
                 IdColoris = 1,
@@ -54,24 +57,24 @@ namespace SAE_4._01.Controllers.Tests
         public void GetByIdCommandeTest_RecuperationOK()
         {
             // Arrange
-            var con = controller.GetByIds(3, 3, 2, 1).Result;
+            var contenuCommande = controller.GetByIds(3, 3, 2, 1).Result;
             // Act
             var res = controller.GetByIds(3,3,2,1).Result;
             // Assert
             Assert.IsNotNull(res.Value);
-            Assert.AreEqual(con.Value, res.Value, "Le contenucommande n'est pas le même");
+            Assert.AreEqual(contenuCommande.Value, res.Value, "Le contenucommande n'est pas le même");
         }
 
         [TestMethod()]
         public void GetContenuCommandeTest_RecuperationFailed()
         {
             // Arrange
-            var con = controller.GetByIds(3,3,2,1).Result;
+            var contenuCommande = controller.GetByIds(3,3,2,1).Result;
             // Act
             var res = controller.GetByIds(2, 2, 2, 1).Result;
             // Assert
             Assert.IsNotNull(res.Value);
-            Assert.AreNotEqual(con, res.Value, "Le contenucommande est le même");
+            Assert.AreNotEqual(contenuCommande, res.Value, "Le contenucommande est le même");
         }
 
         [TestMethod()]
@@ -87,28 +90,28 @@ namespace SAE_4._01.Controllers.Tests
         public void __PostContenuCommandeTest_CreationOK()
         {
             // Act
-            var result = controller.PostContenuCommande(con).Result;
+            var result = controller.PostContenuCommande(contenuCommande).Result;
             // Assert
-            var conRecup = controller.GetByIds(con.IdCommande, con.IdEquipement, con.IdTaille, con.IdColoris).Result;
-            con.IdCommande = conRecup.Value.IdCommande;
-            con.IdEquipement = conRecup.Value.IdEquipement;
-            con.IdTaille = conRecup.Value.IdTaille;
-            con.IdColoris = conRecup.Value.IdColoris;
-            Assert.AreEqual(con, conRecup.Value, "Contenucommandes pas identiques");
+            var conRecup = controller.GetByIds(contenuCommande.IdCommande, contenuCommande.IdEquipement, contenuCommande.IdTaille, contenuCommande.IdColoris).Result;
+            contenuCommande.IdCommande = conRecup.Value.IdCommande;
+            contenuCommande.IdEquipement = conRecup.Value.IdEquipement;
+            contenuCommande.IdTaille = conRecup.Value.IdTaille;
+            contenuCommande.IdColoris = conRecup.Value.IdColoris;
+            Assert.AreEqual(contenuCommande, conRecup.Value, "Contenucommandes pas identiques");
         }
 
         [TestMethod()]
         public void ___PutContenuCommandeTest_ModificationOK()
         {
             // Arrange
-            var conIni = controller.GetByIds(con.IdCommande, con.IdEquipement, con.IdTaille, con.IdColoris).Result;
+            var conIni = controller.GetByIds(contenuCommande.IdCommande, contenuCommande.IdEquipement, contenuCommande.IdTaille, contenuCommande.IdColoris).Result;
             conIni.Value.Quantite = 6;
 
             // Act
-            var res = controller.PutContenuCommande(con.IdCommande, con.IdEquipement, con.IdTaille, con.IdColoris, conIni.Value).Result;
+            var res = controller.PutContenuCommande(contenuCommande.IdCommande, contenuCommande.IdEquipement, contenuCommande.IdTaille, contenuCommande.IdColoris, conIni.Value).Result;
 
             // Assert
-            var conMaj = controller.GetByIds(con.IdCommande, con.IdEquipement, con.IdTaille, con.IdColoris).Result;
+            var conMaj = controller.GetByIds(contenuCommande.IdCommande, contenuCommande.IdEquipement, contenuCommande.IdTaille, contenuCommande.IdColoris).Result;
             Assert.IsNotNull(conMaj.Value);
             Assert.AreEqual(conIni.Value, conMaj.Value, "Contenucommandes pas identiques");
         }
@@ -117,12 +120,38 @@ namespace SAE_4._01.Controllers.Tests
         public void DeleteContenuCommandeTest_SuppressionOK()
         {
             // Act
-            var conSuppr = controller.GetByIds(con.IdCommande, con.IdEquipement, con.IdTaille, con.IdColoris).Result;
-            _ = controller.DeleteContenuCommande(con.IdCommande, con.IdEquipement, con.IdTaille, con.IdColoris).Result;
+            var conSuppr = controller.GetByIds(contenuCommande.IdCommande, contenuCommande.IdEquipement, contenuCommande.IdTaille, contenuCommande.IdColoris).Result;
+            _ = controller.DeleteContenuCommande(contenuCommande.IdCommande, contenuCommande.IdEquipement, contenuCommande.IdTaille, contenuCommande.IdColoris).Result;
 
             // Assert
-            var res = controller.GetByIds(con.IdCommande, con.IdEquipement, con.IdTaille, con.IdColoris).Result;
+            var res = controller.GetByIds(contenuCommande.IdCommande, contenuCommande.IdEquipement, contenuCommande.IdTaille, contenuCommande.IdColoris).Result;
             Assert.IsNull(res.Value, "contact non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public async Task Moq_GetByIdCommandeTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<ContenuCommande>>();
+            List<ContenuCommande> commande = new List<ContenuCommande>
+                {
+                    contenuCommande
+                };
+            mockRepository.Setup(x => x.GetByIdCommandeAsync(1)).ReturnsAsync(commande);
+
+            var controller = new ContenuCommandesController(mockRepository.Object);
+
+            // Act
+            var res = controller.GetByIdCommande(1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Result);
+            /*Assert.AreEqual(commande, res.Result as IEnumerable<ContenuCommande>, "Pas égal");*/
+            var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.ContenuCommande>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
+            Assert.AreEqual(commande, res_cast as IEnumerable<ContenuCommande>, "La commande n'est pas le même");
         }
     }
 }

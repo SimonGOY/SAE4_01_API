@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -19,7 +20,7 @@ namespace SAE_4._01.Controllers.Tests
         private ContactInfoController controller;
         private BMWDBContext context;
         private IDataRepository<ContactInfo> dataRepository;
-        private ContactInfo con;
+        private ContactInfo contactInfo;
 
         [TestInitialize]
         public void InitTest()
@@ -29,7 +30,7 @@ namespace SAE_4._01.Controllers.Tests
             dataRepository = new ContactInfoManager(context);
             controller = new ContactInfoController(dataRepository);
 
-            con = new ContactInfo
+            contactInfo = new ContactInfo
             {
                 IdContact = 666666666,
                 NomContact = "Von Koopa",
@@ -56,24 +57,24 @@ namespace SAE_4._01.Controllers.Tests
         public void GetContactInfoTest_RecuperationOK()
         {
             // Arrange
-            ContactInfo? con = context.ContactInfos.Find(1);
+            ContactInfo? contactInfo = context.ContactInfos.Find(1);
             // Act
             var res = controller.GetContactInfo(1).Result;
             // Assert
             Assert.IsNotNull(res.Value);
-            Assert.AreEqual(con, res.Value, "Le contact n'est pas le même");
+            Assert.AreEqual(contactInfo, res.Value, "Le contact n'est pas le même");
         }
 
         [TestMethod()]
         public void GetConcessionnaireTest_RecuperationFailed()
         {
             // Arrange
-            ContactInfo? con = context.ContactInfos.Find(1);
+            ContactInfo? contactInfo = context.ContactInfos.Find(1);
             // Act
             var res = controller.GetContactInfo(2).Result;
             // Assert
             Assert.IsNotNull(res.Value);
-            Assert.AreNotEqual(con, res.Value, "Le contact est le même");
+            Assert.AreNotEqual(contactInfo, res.Value, "Le contact est le même");
         }
 
         [TestMethod()]
@@ -89,25 +90,25 @@ namespace SAE_4._01.Controllers.Tests
         public void __PostContactInfoTest_CreationOK()
         {
             // Act
-            var result = controller.PostContactInfo(con).Result;
+            var result = controller.PostContactInfo(contactInfo).Result;
             // Assert
-            var conRecup = controller.GetContactInfo(con.IdContact).Result;
-            con.IdContact = conRecup.Value.IdContact;
-            Assert.AreEqual(con, conRecup.Value, "Contacts pas identiques");
+            var conRecup = controller.GetContactInfo(contactInfo.IdContact).Result;
+            contactInfo.IdContact = conRecup.Value.IdContact;
+            Assert.AreEqual(contactInfo, conRecup.Value, "Contacts pas identiques");
         }
 
         [TestMethod()]
         public void _PutContactInfoTest_ModificationOK()
         {
             // Arrange
-            var conIni = controller.GetContactInfo(con.IdContact).Result;
+            var conIni = controller.GetContactInfo(contactInfo.IdContact).Result;
             conIni.Value.NomContact = "Beethoven";
 
             // Act
-            var res = controller.PutContactInfo(con.IdContact, conIni.Value).Result;
+            var res = controller.PutContactInfo(contactInfo.IdContact, conIni.Value).Result;
 
             // Assert
-            var conMaj = controller.GetContactInfo(con.IdContact).Result;
+            var conMaj = controller.GetContactInfo(contactInfo.IdContact).Result;
             Assert.IsNotNull(conMaj.Value);
             Assert.AreEqual(conIni.Value, conMaj.Value, "contacts pas identiques");
         }
@@ -116,12 +117,30 @@ namespace SAE_4._01.Controllers.Tests
         public void DeleteContactInfoTest_SuppressionOK()
         {
             // Act
-            var conSuppr = controller.GetContactInfo(con.IdContact).Result;
-            _ = controller.DeleteContactInfo(con.IdContact).Result;
+            var conSuppr = controller.GetContactInfo(contactInfo.IdContact).Result;
+            _ = controller.DeleteContactInfo(contactInfo.IdContact).Result;
 
             // Assert
-            var res = controller.GetContactInfo(con.IdContact).Result;
+            var res = controller.GetContactInfo(contactInfo.IdContact).Result;
             Assert.IsNull(res.Value, "contact non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetContactInfoTest_RecuperationOK()
+        {
+            // Arrange
+            var mockRepository = new Mock<IDataRepository<ContactInfo>>();
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(contactInfo);
+
+            var controller = new ContactInfoController(mockRepository.Object);
+            // Act
+            var res = controller.GetContactInfo(1).Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(contactInfo, res.Value as ContactInfo, "Le contactInfo n'est pas le même");
         }
     }
 }

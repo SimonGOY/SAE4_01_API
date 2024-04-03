@@ -124,7 +124,7 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
-            Assert.AreEqual(coloris, res.Value as Coloris, "La collection n'est pas le même");
+            Assert.AreEqual(coloris, res.Value as Coloris, "Le coloris n'est pas le même");
         }
     }
 }
