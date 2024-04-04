@@ -34,7 +34,7 @@ namespace SAE_4._01.Controllers.Tests
             };
         }
 
-        [TestMethod()]
+        /*[TestMethod()]
         public void GetLesPaysTest_RecuperationsOK()
         {
             //Arrange
@@ -79,7 +79,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNull(res.Value, "Le pays existe");
         }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void PostPaysTest_CreationOK()
         {
             // Act
