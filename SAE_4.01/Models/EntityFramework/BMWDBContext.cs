@@ -654,6 +654,9 @@ namespace SAE_4._01.Models.EntityFramework
                 entity.HasKey(e => e.Id)
                     .HasName("pk_usr");
 
+                entity.Property(e => e.Id)
+                    .ValueGeneratedOnAdd();
+
                 entity.HasOne(d => d.ClientUsers)
                     .WithMany(p => p.UsersClient)
                     .HasForeignKey(d => d.IdClient)

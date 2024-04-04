@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
 
@@ -27,14 +30,14 @@ namespace SAE_4._01.Controllers
         // GET: api/Users
         [HttpGet]
         //[Authorize(Policy = Policies.Type0)] pour limiter l'accès aux utilisateurs avec l'attribut type compte à 0 (en passant par le login controller qui donne le token jwt)
-        public async Task<ActionResult<IEnumerable<User>>> GetLesUsers()
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUsers(int id)
+        public async Task<ActionResult<User>> GetUserById(int id)
         {
 
             var users = await dataRepository.GetByIdAsync(id);
@@ -73,8 +76,36 @@ namespace SAE_4._01.Controllers
 
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /*[HttpPost]
+        public async Task<ActionResult<User>> PostUser([FromBody]UserPostRequest userRequest)
+        {
+            User user = new User
+            {
+                //Id = dataRepository.GetAllAsync()
+                FirstName = userRequest.FirstName,
+                Email = userRequest.Email,
+                Password = userRequest.Password,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
+                Civilite = userRequest.Civilite,
+                LastName = userRequest.LastName,
+                //IdClient = 147,
+                IsComplete = true,
+                TypeCompte = 0,
+                DoubleAuth = false,
+                LastConnected = DateTime.Now,
+                //ClientUsers = new Client()
+            };
+
+            await dataRepository.AddAsync(user);
+
+            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+        }*/
+
+        // POST: api/Users
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUsers(User user)
+        public async Task<ActionResult<User>> PostUser(User user)
         {
             if (user == null)
             {
@@ -87,7 +118,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsers(int id)
+        public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await dataRepository.GetByIdAsync(id);
 
@@ -101,9 +132,38 @@ namespace SAE_4._01.Controllers
             return NoContent();
         }
 
-        private bool UsersExists(int id)
+        private bool UserExists(int id)
         {
             return (_context.LesUsers?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+    }
+
+    public class UserPostRequest
+    {
+        //public int Id { get; set; }
+
+        public string FirstName { get; set; } = null!;
+
+        public string LastName { get; set; } = null!;
+
+        public string Email { get; set; } = null!;
+
+        public string Password { get; set; } = null!;
+
+        public string Civilite { get; set; } = null!;
+
+        //public DateTime CreatedAt { get; set; }
+
+        //public DateTime UpdatedAt { get; set; }
+
+        //public int IdClient { get; set; }
+
+        //public bool IsComplete { get; set; }
+
+        //public int TypeCompte { get; set; }
+
+        //public bool DoubleAuth { get; set; }
+
+        //public DateTime LastConnected { get; set; }
     }
 }

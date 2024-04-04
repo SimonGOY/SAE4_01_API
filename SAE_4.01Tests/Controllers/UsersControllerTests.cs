@@ -53,12 +53,12 @@ namespace SAE_4._01.Controllers.Tests
         public void GetUserssTest_RecuperationOK()
         {
             //Arrange
-            List<User> lesCLients = context.LesUsers.ToList();
+            List<User> lesUsers = context.LesUsers.ToList();
             // Act
-            var res = controller.GetLesUsers().Result;
+            var res = controller.GetUsers().Result;
             // Assert
             Assert.IsNotNull(res);
-            CollectionAssert.AreEqual(lesCLients, res.Value.ToList(), "Les listes de clients ne sont pas identiques");
+            CollectionAssert.AreEqual(lesUsers, res.Value.ToList(), "Les listes de clients ne sont pas identiques");
         }
 
         [TestMethod()]
@@ -67,7 +67,7 @@ namespace SAE_4._01.Controllers.Tests
             // Arrange
             User? clt = context.LesUsers.Find(1);
             // Act
-            var res = controller.GetUsers(1).Result;
+            var res = controller.GetUserById(1).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.AreEqual(clt, res.Value, "Le user n'est pas le même");
@@ -80,7 +80,7 @@ namespace SAE_4._01.Controllers.Tests
             // Arrange
             User? clt = context.LesUsers.Find(1);
             // Act
-            var res = controller.GetUsers(2).Result;
+            var res = controller.GetUserById(2).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.AreNotEqual(clt, res.Value, "Le user est le même");
@@ -89,7 +89,7 @@ namespace SAE_4._01.Controllers.Tests
         [TestMethod()]
         public void GetUsersTest_UsersNExistePas()
         {
-            var res = controller.GetUsers(777777777).Result;
+            var res = controller.GetUserById(777777777).Result;
             // Assert
             Assert.IsNull(res.Result, "Le user existe");
             Assert.IsNull(res.Value, "Le user existe");
@@ -112,7 +112,7 @@ namespace SAE_4._01.Controllers.Tests
             var controller = new UsersController(mockRepository.Object);
 
             // Act
-            var res = controller.GetLesUsers().Result;
+            var res = controller.GetUsers().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -129,7 +129,7 @@ namespace SAE_4._01.Controllers.Tests
             var controller = new UsersController(mockRepository.Object);
 
             // Act
-            var res = controller.GetUsers(15).Result;
+            var res = controller.GetUserById(15).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
