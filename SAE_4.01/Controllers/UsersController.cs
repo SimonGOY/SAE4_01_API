@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
+using MessagePack.Formatters;
 
 namespace SAE_4._01.Controllers
 {
@@ -21,6 +22,8 @@ namespace SAE_4._01.Controllers
         private readonly BMWDBContext _context;
 
         private readonly IDataRepository<User> dataRepository;
+
+        private readonly IDataRepository<Client> dataRepositoryClient;
 
         public UsersController(IDataRepository<User> dataRepo)
         {
@@ -76,12 +79,22 @@ namespace SAE_4._01.Controllers
 
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPost]
+        [HttpPost]
         public async Task<ActionResult<User>> PostUser([FromBody]UserPostRequest userRequest)
         {
+            var clientResponse = await new ClientsController(dataRepositoryClient).PostClient(new ClientPostRequest
+            {
+                Civilite = userRequest.Civilite,
+                NomClient = userRequest.LastName,
+                PrenomClient = userRequest.FirstName,
+                EmailClient = userRequest.Email
+            });
+
+            var client = ((CreatedAtActionResult)clientResponse.Result).Value as Client;
+
             User user = new User
             {
-                //Id = dataRepository.GetAllAsync()
+                Id = GetMaxId().Result.Value + 1,
                 FirstName = userRequest.FirstName,
                 Email = userRequest.Email,
                 Password = userRequest.Password,
@@ -89,9 +102,9 @@ namespace SAE_4._01.Controllers
                 UpdatedAt = DateTime.Now,
                 Civilite = userRequest.Civilite,
                 LastName = userRequest.LastName,
-                //IdClient = 147,
+                IdClient = client.IdClient,
                 IsComplete = true,
-                TypeCompte = 0,
+                TypeCompte = 2,
                 DoubleAuth = false,
                 LastConnected = DateTime.Now,
                 //ClientUsers = new Client()
@@ -100,11 +113,11 @@ namespace SAE_4._01.Controllers
             await dataRepository.AddAsync(user);
 
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
-        }*/
+        }
 
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        /*[HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
             if (user == null)
@@ -114,7 +127,7 @@ namespace SAE_4._01.Controllers
             await dataRepository.AddAsync(user);
 
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
-        }
+        }*/
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
@@ -136,6 +149,25 @@ namespace SAE_4._01.Controllers
         {
             return (_context.LesUsers?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        private async Task<ActionResult<int>> GetMaxId()
+        {
+            ActionResult<IEnumerable<User>> actionResult = await dataRepository.GetAllAsync();
+
+            IEnumerable<User> users = actionResult.Value;
+
+            int max = 0;
+
+            foreach (User user in users)
+            {
+                if (user.Id > max)
+                {
+                    max = user.Id;
+                }
+            }
+
+            return max;
+        }
     }
 
     public class UserPostRequest
@@ -155,8 +187,6 @@ namespace SAE_4._01.Controllers
         //public DateTime CreatedAt { get; set; }
 
         //public DateTime UpdatedAt { get; set; }
-
-        //public int IdClient { get; set; }
 
         //public bool IsComplete { get; set; }
 

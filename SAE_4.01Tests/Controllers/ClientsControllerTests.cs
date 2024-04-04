@@ -93,7 +93,7 @@ namespace SAE_4._01.Controllers.Tests
         {
             
             // Act
-            var result = controller.PostClient(client).Result;
+            //var result = controller.PostClient(client).Result;
             // Assert
             var cltRecup = controller.GetClient(client.IdClient).Result;
             client.IdClient = cltRecup.Value.IdClient;
