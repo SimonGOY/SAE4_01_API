@@ -30,7 +30,7 @@ namespace SAE_4._01.Controllers.Tests
             controller = new PaysController(dataRepository);
 
             pays = new Pays() {
-                NomPays = "Bombardiaa",
+                NomPays = "Bombardia",
             };
         }
 
