@@ -84,12 +84,12 @@ namespace SAE_4._01.Controllers.Tests
         [TestMethod()]
         public void PostPutDelete()
         {
-            PostParametreTest();
-            PutParametreTest();
-            DeleteParametreTest();
+            PostParametreTest_CreationOK();
+            PutParametreTest_ModificationOK();
+            DeleteParametreTest_SuppressionOK();
         }
 
-        public void PostParametreTest()
+        public void PostParametreTest_CreationOK()
         {
             // Act
             var result = controller.PostParametre(parametre).Result;
@@ -99,7 +99,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(parametre, parRecup.Value, "parametre pas identiques");
         }
 
-        public void PutParametreTest()
+        public void PutParametreTest_ModificationOK()
         {
             // Arrange
             var parIni = controller.GetParametre(parametre.NomParametre).Result;
@@ -114,7 +114,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(parIni.Value, parMaj.Value, "parametre pas identiques");
         }
 
-        public void DeleteParametreTest()
+        public void DeleteParametreTest_SuppressionOK()
         {
             // Act
             var parSuppr = controller.GetParametre(parametre.NomParametre).Result;
