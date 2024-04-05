@@ -25,9 +25,10 @@ namespace SAE_4._01.Controllers
 
         private readonly IDataRepository<Client> dataRepositoryClient;
 
-        public UsersController(IDataRepository<User> dataRepo)
+        public UsersController(IDataRepository<User> dataRepo, IDataRepository<Client> dataRepoClient)
         {
             dataRepository = dataRepo;
+            dataRepositoryClient = dataRepoClient;
         }
 
         // GET: api/Users
@@ -82,12 +83,14 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser([FromBody]UserPostRequest userRequest)
         {
+            //créer un client pour l'utiliser dans le user qui est créé après
             var clientResponse = await new ClientsController(dataRepositoryClient).PostClient(new ClientPostRequest
             {
                 Civilite = userRequest.Civilite,
                 NomClient = userRequest.LastName,
                 PrenomClient = userRequest.FirstName,
-                EmailClient = userRequest.Email
+                EmailClient = userRequest.Email,
+                DateNaissanceClient = userRequest.DateNaissanceClient
             });
 
             var client = ((CreatedAtActionResult)clientResponse.Result).Value as Client;
@@ -112,7 +115,9 @@ namespace SAE_4._01.Controllers
 
             await dataRepository.AddAsync(user);
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            user.ClientUsers = null; // pour pouvoir renvoyer un json plus petit sinon on reçoit une erreur au lieu du user convertit en json
+
+            return CreatedAtAction("GetUserById", new { id = user.Id }, user);
         }
 
         // POST: api/Users
@@ -183,6 +188,8 @@ namespace SAE_4._01.Controllers
         public string Password { get; set; } = null!;
 
         public string Civilite { get; set; } = null!;
+
+        public DateTime DateNaissanceClient { get; set; }
 
         //public DateTime CreatedAt { get; set; }
 
