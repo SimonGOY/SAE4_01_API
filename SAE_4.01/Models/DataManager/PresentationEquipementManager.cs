@@ -23,7 +23,7 @@ namespace SAE_4._01.Models.DataManager
 
         public async Task<ActionResult<PresentationEquipement>> GetByIdAsync(int id)
         {
-            return await _dbContext.PresentationEquipements.FirstOrDefaultAsync(p => p.IdColoris == id);
+            return await _dbContext.PresentationEquipements.FirstOrDefaultAsync(p => p.IdPresentation == id);
         }
 
         public async Task AddAsync(PresentationEquipement entity)
