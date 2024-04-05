@@ -59,6 +59,19 @@ namespace SAE_4._01.Controllers
             return Ok(secomposent);
         }
 
+        [HttpGet("{id1}/{id2}")]
+        public async Task<ActionResult<SeCompose>> GetByIds(int id1, int id2)
+        {
+            var secompose = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
+            if (secompose == null)
+            {
+                return NotFound();
+            }
+
+            return secompose;
+        }
+
         // PUT: api/SeCompose/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id1}/{id2}")]

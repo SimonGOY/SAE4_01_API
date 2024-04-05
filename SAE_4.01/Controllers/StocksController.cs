@@ -75,7 +75,18 @@ namespace SAE_4._01.Controllers
         }
 
 
+        [HttpGet("{id1}/{id2}/{id3}")]
+        public async Task<ActionResult<Stock>> GetByIds(int id1, int id2, int id3)
+        {
+            var stock = await dataRepository.GetBy3CompositeKeysAsync(id1, id2, id3);
 
+            if (stock == null)
+            {
+                return NotFound();
+            }
+
+            return stock;
+        }
 
         // PUT: api/Stocks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

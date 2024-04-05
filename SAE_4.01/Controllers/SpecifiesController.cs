@@ -58,6 +58,19 @@ namespace SAE_4._01.Controllers
             return Ok(specifies);
         }
 
+        [HttpGet("{id1}/{id2}")]
+        public async Task<ActionResult<Specifie>> GetByIds(int id1, int id2)
+        {
+            var specifies = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
+
+            if (specifies == null)
+            {
+                return NotFound();
+            }
+
+            return specifies;
+        }
+
         // PUT: api/Specifies/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id1}/{id2}")]
