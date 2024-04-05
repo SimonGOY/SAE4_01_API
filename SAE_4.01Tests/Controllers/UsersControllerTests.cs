@@ -28,7 +28,7 @@ namespace SAE_4._01.Controllers.Tests
             var builder = new DbContextOptionsBuilder<BMWDBContext>().UseNpgsql("Server=51.83.36.122; port=5432; Database=sa11; uid=sa11; password=BMW-S4; SearchPath=bmw;");
             context = new BMWDBContext(builder.Options);
             dataRepository = new UserManager(context);
-            controller = new UsersController(dataRepository);
+            controller = new UsersController(dataRepository, null);
 
             user = new User
             {
@@ -109,7 +109,7 @@ namespace SAE_4._01.Controllers.Tests
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(users);
 
-            var controller = new UsersController(mockRepository.Object);
+            var controller = new UsersController(mockRepository.Object, null);
 
             // Act
             var res = controller.GetUsers().Result;
@@ -126,7 +126,7 @@ namespace SAE_4._01.Controllers.Tests
             var mockRepository = new Mock<IDataRepository<User>>();
             mockRepository.Setup(x => x.GetByIdAsync(15)).ReturnsAsync(user);
 
-            var controller = new UsersController(mockRepository.Object);
+            var controller = new UsersController(mockRepository.Object, null);
 
             // Act
             var res = controller.GetUserById(15).Result;

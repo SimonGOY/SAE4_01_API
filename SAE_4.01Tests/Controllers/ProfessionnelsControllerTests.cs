@@ -53,12 +53,33 @@ namespace SAE_4._01.Controllers.Tests
         public void GetProfessionnelTest_RecuperationOK()
         {
             // Arrange
-            Prive? pri = context.Prives.Find(41);
+            Professionnel? pro = context.Professionnels.Find(17);
             // Act
-            var res = controller.GetProfessionnel(41).Result;
+            var res = controller.GetProfessionnel(17).Result;
             // Assert
             Assert.IsNotNull(res.Value);
-            Assert.AreEqual(pri, res.Value, "Le prive n'est pas le même");
+            Assert.AreEqual(pro, res.Value, "Le prive n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void GetParametreTest_RecuperationFailed()
+        {
+            // Arrange
+            Prive? pri = context.Prives.Find(17);
+            // Act
+            var res = controller.GetProfessionnel(18).Result;
+            // Assert
+            Assert.IsNotNull(res.Value);
+            Assert.AreNotEqual(pri, res.Value, "Le professionnel est le même");
+        }
+
+        [TestMethod()]
+        public void GetParametreTest_EquipementNExistePas()
+        {
+            var res = controller.GetProfessionnel(777777777).Result;
+            // Assert
+            Assert.IsNull(res.Result, "Le professionnel existe");
+            Assert.IsNull(res.Value, "Le professionnel existe");
         }
 
         [TestMethod()]
