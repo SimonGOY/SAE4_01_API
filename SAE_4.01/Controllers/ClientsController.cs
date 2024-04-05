@@ -61,7 +61,7 @@ namespace SAE_4._01.Controllers
                 Civilite = clientRequest.Civilite,
                 NomClient = clientRequest.NomClient,
                 PrenomClient = clientRequest.PrenomClient,
-                DateNaissanceClient = new DateTime(2004, 01, 01),
+                DateNaissanceClient = clientRequest.DateNaissanceClient,
                 EmailClient = clientRequest.EmailClient
             };
 
@@ -161,6 +161,8 @@ namespace SAE_4._01.Controllers
         public string PrenomClient { get; set; } = null!;
 
         public string EmailClient { get; set; } = null!;
+
+        public DateTime DateNaissanceClient { get; set; }
 
         //public int IdClient { get; set; }
 

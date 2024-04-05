@@ -5,6 +5,7 @@ using SAE_4._01.Models.Repository;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text.Json.Serialization;
 
 namespace SAE_4._01
 {
@@ -106,7 +107,7 @@ namespace SAE_4._01
                 config.AddPolicy(Policies.Type2, Policies.Type2Policy());
             });
 
-
+            builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options => options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 
 
