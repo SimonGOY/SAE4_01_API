@@ -30,8 +30,9 @@ namespace SAE_4._01.Controllers.Tests
 
             seCompose = new SeCompose
             {
-                IdOption = 1,
                 IdPack = 1,
+                IdOption = 1,
+                
             };
         }
 
@@ -47,17 +48,17 @@ namespace SAE_4._01.Controllers.Tests
             CollectionAssert.AreEqual(lesComs, res.Value.ToList(), "Les listes de secompose ne sont pas identiques");
         }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void GetByIdPackTest_RecuperationOK()
         {
             // Arrange
-            var com = context.Preferes.Find(1, 3);
+            var com = context.SeComposes.Find(1, 3);
             // Act
             var res = controller.GetByIds(1, 3).Result;
             // Assert
             Assert.IsNotNull(res.Value);
             Assert.AreEqual(com, res.Value, "Le secompose n'est pas le même");
-        }*/
+        }
 
         [TestMethod()]
         public void GetByIdsTest_RecuperationFailed()
@@ -81,21 +82,32 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void PutSeComposeTest()
+        public void PostDeleteTest()
         {
-
+            PostSeComposeTest_CreationOK();
+            DeleteSeComposeTest_SuppressionOK();
         }
 
-        [TestMethod()]
-        public void PostSeComposeTest()
+        public void PostSeComposeTest_CreationOK()
         {
-
+            // Act
+            var result = controller.PostSeCompose(seCompose).Result;
+            // Assert
+            var comRecup = controller.GetByIds(seCompose.IdPack, seCompose.IdOption).Result;
+            seCompose.IdPack = comRecup.Value.IdPack;
+            seCompose.IdOption = comRecup.Value.IdOption;
+            Assert.AreEqual(seCompose, comRecup.Value, "SECOMPOSE pas identiques");
         }
 
-        [TestMethod()]
-        public void DeleteSeComposeTest()
+        public void DeleteSeComposeTest_SuppressionOK()
         {
+            // Act
+            var preSuppr = controller.GetByIds(seCompose.IdPack, seCompose.IdOption).Result;
+            _ = controller.DeleteSeCompose(seCompose.IdPack, seCompose.IdOption).Result;
 
+            // Assert
+            var res = controller.GetByIds(seCompose.IdPack, seCompose.IdOption).Result;
+            Assert.IsNull(res.Value, "prefere non supprimé");
         }
     }
 }
