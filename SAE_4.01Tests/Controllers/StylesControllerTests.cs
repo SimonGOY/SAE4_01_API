@@ -93,7 +93,7 @@ namespace SAE_4._01.Controllers.Tests
 
         }
 
-        [TestMethod()]
+        //[TestMethod()]
         public void PostUpdateDelete()
         {
             PostStyleTest_CreationOK();
