@@ -25,7 +25,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/Stocks
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Stock>>> GetClients()
+        public async Task<ActionResult<IEnumerable<Stock>>> GetStocks()
         {
             return await dataRepository.GetAllAsync();
         }
