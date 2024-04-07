@@ -41,7 +41,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetStylesTest()
+        public void GetStylesTest_RecuperationsOK()
         {
             //Arrange
             List<Style> lesStys = context.Styles.ToList();
@@ -54,7 +54,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetStyleTest()
+        public void GetStyleTest_RecuperationOK()
         {
             
             // Arrange
@@ -93,7 +93,7 @@ namespace SAE_4._01.Controllers.Tests
 
         }
 
-        //[TestMethod()]
+        [TestMethod()]
         public void PostUpdateDelete()
         {
             PostStyleTest_CreationOK();
@@ -101,21 +101,23 @@ namespace SAE_4._01.Controllers.Tests
             DeleteStyleTest_SuppressionOK();
         }
 
+        
         public void PostStyleTest_CreationOK()
         {
             // Act
             var result = controller.PostStyle(style).Result;
             // Assert
-            var proRecup = controller.GetStyle(style.IdStyle).Result;
-            style.IdStyle = proRecup.Value.IdStyle;
-            Assert.AreEqual(style, proRecup.Value, "professionnel pas identiques");
+            var styRecup = controller.GetStyle(style.IdStyle).Result;
+            style.IdStyle = styRecup.Value.IdStyle;
+            Assert.AreEqual(style, styRecup.Value, "style pas identiques");
         }
 
+        
         public void PutStyleTest_ModificationOK()
         {
             // Arrange
             var styIni = controller.GetStyle(style.IdStyle).Result;
-            styIni.Value.NomStyle = "nom";
+            styIni.Value.PhotoMoto = "nom";
 
             // Act
             var res = controller.PutStyle(style.IdStyle, styIni.Value).Result;
