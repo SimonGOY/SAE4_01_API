@@ -69,9 +69,29 @@ namespace SAE_4._01.Controllers
             }
         }
 
-        // POST: api/Telephones
+        // POST: api/Clients
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        public async Task<ActionResult<Telephone>> PostTelephone([FromBody] PhonePostRequest phoneRequest)
+        {
+            Telephone telephone = new Telephone
+            {
+                Id = GetMaxId().Result.Value + 1,
+                IdClient = phoneRequest.ClientID,
+                NumTelephone = phoneRequest.PhoneNumber,
+                Type = "Mobile",
+                Fonction = "Privé",
+                ClientTelephone = null
+            };
+
+            await dataRepository.AddAsync(telephone);
+
+            return CreatedAtAction("GetTelephone", new { id = telephone.Id }, telephone);
+        }
+
+        // POST: api/Telephones
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /*[HttpPost]
         public async Task<ActionResult<Telephone>> PostTelephone(Telephone telephone)
         {
             if (telephone == null)
@@ -81,7 +101,7 @@ namespace SAE_4._01.Controllers
             await dataRepository.AddAsync(telephone);
 
             return CreatedAtAction("GetTelephone", new { id = telephone.Id }, telephone);
-        }
+        }*/
 
         // DELETE: api/Telephones/5
         [HttpDelete("{id}")]
@@ -103,5 +123,32 @@ namespace SAE_4._01.Controllers
         {
             return (_context.Telephones?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        private async Task<ActionResult<int>> GetMaxId()
+        {
+            ActionResult<IEnumerable<Telephone>> actionResult = await dataRepository.GetAllAsync();
+
+            IEnumerable<Telephone> telephones = actionResult.Value;
+
+            int max = 0;
+
+            foreach (Telephone telephone in telephones)
+            {
+                if (telephone.Id > max)
+                {
+                    max = telephone.Id;
+                }
+            }
+
+            return max;
+        }
     }
+
+    public class PhonePostRequest
+    {
+        public int ClientID { get; set; }
+
+        public string PhoneNumber { get; set; } = null!;
+    }
+
 }

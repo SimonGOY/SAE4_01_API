@@ -48,7 +48,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetAccessoires_RecuperationOK()
+        public void GetAccessoiresTest_RecuperationsOK()
         {
             //Arrange
             List<Accessoire> lesAccessoires = context.Accessoires.ToList();
@@ -56,7 +56,86 @@ namespace SAE_4._01.Controllers.Tests
             var res = controller.GetAccessoires().Result;
             // Assert
             Assert.IsNotNull(res);
-            CollectionAssert.AreEqual(lesAccessoires, res.Value.ToList(), "Les listes de clients ne sont pas identiques");
+            CollectionAssert.AreEqual(lesAccessoires, res.Value.ToList(), "Les listes d'accessoires ne sont pas identiques");
+        }
+
+        [TestMethod()]
+        public void GetAccessoireTest_RecuperationOK()
+        {
+            // Arrange
+            Accessoire? acc = context.Accessoires.Find(1);
+            // Act
+            var res = controller.GetAccessoire(1).Result;
+            // Assert
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(acc, res.Value, "L'accessoire n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void GetAccessoireTest_RecuperationFailed()
+        {
+            // Arrange
+            Accessoire? acc = context.Accessoires.Find(1);
+            // Act
+            var res = controller.GetAccessoire(2).Result;
+            // Assert
+            Assert.IsNotNull(res.Value);
+            Assert.AreNotEqual(acc, res.Value, "L'accessoire est le même");
+        }
+
+        [TestMethod()]
+        public void GetAccessoireTest_ClientNExistePas()
+        {
+            var res = controller.GetAccessoire(777777777).Result;
+            // Assert
+            Assert.IsNull(res.Result, "L'accessoire existe");
+            Assert.IsNull(res.Value, "L'accessoire existe");
+        }
+
+        [TestMethod()]
+        public void PostPutDeleteTest()
+        {
+            PostAccessoireTest_CreationOK();
+            PutAccessoireTest_ModificationOK();
+            DeleteAccessoireTest_SuppressionOK();
+        }
+
+        public void PostAccessoireTest_CreationOK()
+        {
+
+            //Act
+            var result = controller.PostAccessoire(accessoire).Result;
+            // Assert
+            var accRecup = controller.GetAccessoire(accessoire.IdAccessoire).Result;
+            accessoire.IdAccessoire = accRecup.Value.IdAccessoire;
+            Assert.AreEqual(accessoire, accRecup.Value, "Accessoires pas identiques");
+        }
+
+        public void PutAccessoireTest_ModificationOK()
+        {
+            // Arrange
+            var accIni = controller.GetAccessoire(accessoire.IdAccessoire).Result;
+            accIni.Value.DetailAccessoire = "Détails";
+
+            // Act
+            var res = controller.PutAccessoire(accessoire.IdAccessoire, accIni.Value).Result;
+
+            // Assert
+            var accMaj = controller.GetAccessoire(accessoire.IdAccessoire).Result;
+            Assert.IsNotNull(accMaj.Value);
+            Assert.AreEqual(accIni.Value, accMaj.Value, "Accessoire pas identiques");
+        }
+
+        public void DeleteAccessoireTest_SuppressionOK()
+        {
+
+            // Act
+            var accSuppr = controller.GetAccessoire(accessoire.IdAccessoire).Result;
+            _ = controller.DeleteAccessoire(accSuppr.Value.IdAccessoire).Result;
+
+            // Assert
+            var res = controller.GetAccessoire(accessoire.IdAccessoire).Result;
+            Assert.IsNull(res.Value, "accessoire non supprimé");
         }
 
         // ---------------------------------------- Tests Moq ----------------------------------------
