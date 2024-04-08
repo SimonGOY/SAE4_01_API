@@ -93,7 +93,7 @@ namespace SAE_4._01.Controllers
                 NomClient = userRequest.LastName,
                 PrenomClient = userRequest.FirstName,
                 EmailClient = userRequest.Email,
-                DateNaissanceClient = userRequest.BirthdayDateClient
+                DateNaissanceClient = userRequest.BirthDateClient
             });
 
             var client = ((CreatedAtActionResult)clientResponse.Result).Value as Client;
@@ -201,7 +201,7 @@ namespace SAE_4._01.Controllers
 
         public string Gender { get; set; } = null!;
 
-        public DateTime BirthdayDateClient { get; set; }
+        public DateTime BirthDateClient { get; set; }
 
         public string PhoneNumber { get; set; } = null!;
 
