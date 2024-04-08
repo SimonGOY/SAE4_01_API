@@ -13,7 +13,7 @@ namespace SAE_4._01.Models.EntityFramework
 
         [Key]
         [Column("clt_id")]
-        public int IdClient { get; set; }
+        public int? IdClient { get; set; }
 
         [Column("adr_numeroadresse")]
         public int NumAdresse { get; set; }

@@ -87,7 +87,7 @@ namespace SAE_4._01.Controllers
         public async Task<ActionResult<User>> PostUser([FromBody]UserPostRequest userRequest)
         {
             //créer un client pour l'utiliser dans le user qui est créé après
-            var clientResponse = await new ClientsController(dataRepositoryClient).PostClient(new ClientPostRequest
+            var clientResponse = await new ClientsController(dataRepositoryClient).PostClient(new Client
             {
                 Civilite = userRequest.Gender,
                 NomClient = userRequest.LastName,
@@ -101,7 +101,7 @@ namespace SAE_4._01.Controllers
             //créer un tel pour le client
             var clientResponseTel = await new TelephonesController(dataRepositoryTelephone).PostTelephone(new Telephone
             {
-                IdClient = client.IdClient,
+                IdClient = (int)client.IdClient,
                 NumTelephone = userRequest.PhoneNumber
             });
 
@@ -115,7 +115,7 @@ namespace SAE_4._01.Controllers
                 UpdatedAt = DateTime.Now,
                 Civilite = userRequest.Gender,
                 LastName = userRequest.LastName,
-                IdClient = client.IdClient,
+                IdClient = (int)client.IdClient,
                 IsComplete = true,
                 TypeCompte = 2,
                 DoubleAuth = false,

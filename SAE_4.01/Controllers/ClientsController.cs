@@ -52,11 +52,20 @@ namespace SAE_4._01.Controllers
         // POST: api/Clients
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Client>> PostClient([FromBody] ClientPostRequest clientRequest)
+        public async Task<ActionResult<Client>> PostClient([FromBody] Client clientRequest)
         {
+            int? nextId = null;
+
+            if (clientRequest.IdClient == null)
+            {
+                nextId = GetMaxId().Result.Value + 1;
+            }
+            else
+                nextId = (int)clientRequest.IdClient;
+
             Client client = new Client
             {
-                IdClient = GetMaxId().Result.Value + 1,
+                IdClient = nextId,
                 NumAdresse = 1,
                 Civilite = clientRequest.Civilite,
                 NomClient = clientRequest.NomClient,
@@ -144,7 +153,7 @@ namespace SAE_4._01.Controllers
             {
                 if (client.IdClient > max)
                 {
-                    max = client.IdClient;
+                    max = (int)client.IdClient;
                 }
             }
 
