@@ -150,12 +150,38 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetCategorieAccessoireTest_RecuperationNonOK()
+        public void Moq_GetCategorieAccessoireTest_RecuperationFailed()
         {
             // Act
             var res = controller_mock.GetCategorieAccessoire(0).Result;
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostCategorieAccessoireTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostCategorieAccessoire(categorieAccessoire).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<CategorieAccessoire>), "Pas un ActionResult<CategorieAccessoire>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(CategorieAccessoire), "Pas une CategorieAccessoire");
+            categorieAccessoire.IdCatAcc = ((CategorieAccessoire)result.Value).IdCatAcc;
+            Assert.AreEqual(categorieAccessoire, (CategorieAccessoire)result.Value, "CategorieAccessoire pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteCategorieAccessoireTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(categorieAccessoire);
+
+            // Act
+            var actionResult = controller_mock.DeleteCategorieAccessoire(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }

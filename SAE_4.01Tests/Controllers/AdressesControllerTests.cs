@@ -153,15 +153,6 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetAdresseTest_RecuperationNonOK()
-        {
-            // Act
-            var res = controller_mock.GetAdresse(0).Result;
-            // Assert
-            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
-        }
-
-        [TestMethod()]
         public void Moq_GetAdresseTest_RecuperationOK()
         {
             // Arrange
@@ -172,6 +163,41 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
             Assert.AreEqual(adresse, res.Value as Adresse, "Le concessionnaire n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetAdresseTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetAdresse(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostAdresseTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostAdresse(adresse).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Adresse>), "Pas un ActionResult<Adresse>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Adresse), "Pas une Adresse");
+            adresse.NumAdresse = ((Adresse)result.Value).NumAdresse;
+            Assert.AreEqual(adresse, (Adresse)result.Value, "Adresse pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteAccessoireTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(adresse);
+
+            // Act
+            var actionResult = controller_mock.DeleteAdresse(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }

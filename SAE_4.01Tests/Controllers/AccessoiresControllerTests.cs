@@ -172,7 +172,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetAccessoireTest_RecuperationNonOK()
+        public void Moq_GetAccessoireTest_RecuperationFailed()
         {
             // Act
             var res = controller_mock.GetAccessoire(0).Result;
@@ -198,6 +198,33 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
             Assert.AreEqual(accessoires, res.Value as IEnumerable<Accessoire>, "La liste n'est pas le même");
+        }
+
+
+        [TestMethod()]
+        public void Moq_PostAccessoireTest()
+        {
+        // Act
+        var actionResult = controller_mock.PostAccessoire(accessoire).Result;
+        // Assert
+        Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Accessoire>), "Pas un ActionResult<Accessoire>");
+        Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+        var result = actionResult.Result as CreatedAtActionResult;
+        Assert.IsInstanceOfType(result.Value, typeof(Accessoire), "Pas un Accessoire");
+        accessoire.IdAccessoire = ((Accessoire) result.Value).IdAccessoire;
+        Assert.AreEqual(accessoire, (Accessoire) result.Value, "Accessoires pas identiques");
+        }
+
+    [TestMethod]
+        public void Moq_DeleteAccessoireTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(accessoire);
+
+            // Act
+            var actionResult = controller_mock.DeleteAccessoire(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }

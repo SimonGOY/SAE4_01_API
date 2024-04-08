@@ -163,7 +163,7 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
-            Assert.AreEqual(commande, res.Value as Commande, "Le coloris n'est pas le même");
+            Assert.AreEqual(commande, res.Value as Commande, "Le commande n'est pas le même");
         }
 
         [TestMethod()]
@@ -173,6 +173,32 @@ namespace SAE_4._01.Controllers.Tests
             var res = controller_mock.GetCommande(0).Result;
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostCommandeTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostCommande(commande).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Commande>), "Pas un ActionResult<Commande>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Commande), "Pas une Commande");
+            commande.IdCommande = ((Commande)result.Value).IdCommande;
+            Assert.AreEqual(commande, (Commande)result.Value, "Commande pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteCommandeTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(commande);
+
+            // Act
+            var actionResult = controller_mock.DeleteCommande(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }

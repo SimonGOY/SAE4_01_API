@@ -165,12 +165,38 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetCollectionTest_RecuperationNonOK()
+        public void Moq_GetCollectionTest_RecuperationFailed()
         {
             // Act
             var res = controller_mock.GetCollection(0).Result;
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostCollectionTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostCollection(collection).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Collection>), "Pas un ActionResult<Collection>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Collection), "Pas une Collection");
+            collection.IdCollection = ((Collection)result.Value).IdCollection;
+            Assert.AreEqual(collection, (Collection)result.Value, "Collection pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteCollectionTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(collection);
+
+            // Act
+            var actionResult = controller_mock.DeleteCollection(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }
