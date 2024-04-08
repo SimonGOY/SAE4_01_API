@@ -99,7 +99,6 @@ namespace SAE_4._01.Controllers.Tests
             DeleteCouleurTest_SuppressionOK();
         }
 
-        [TestMethod()]
         public void PostCouleurTest_CreationOK()
         {
             // Act
@@ -111,7 +110,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(couleur, couRecup.Value, "Couleur pas identiques");
         }
 
-        [TestMethod()]
         public void PutCouleurTest_ModificationOK()
         {
             // Arrange
@@ -127,7 +125,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(couIni.Value, couMaj.Value, "couleurs pas identiques");
         }
 
-        [TestMethod()]
         public void DeleteCouleurTest_SuppressionOK()
         {
             // Act
