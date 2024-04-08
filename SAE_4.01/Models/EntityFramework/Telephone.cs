@@ -8,7 +8,7 @@ namespace SAE_4._01.Models.EntityFramework
     {
         [Key]
         [Column("tel_id")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [Column("clt_id")]
         public int IdClient { get; set; }
