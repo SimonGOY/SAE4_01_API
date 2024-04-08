@@ -14,7 +14,7 @@ namespace SAE_4._01.Models.EntityFramework
         public int IdClient { get; set; }
 
         [Column("tel_num")]
-        [StringLength(20)]
+        [StringLength(10)]
         public string? NumTelephone { get; set; }
 
         [Column("tel_type")]
