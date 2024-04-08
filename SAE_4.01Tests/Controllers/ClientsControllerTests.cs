@@ -57,15 +57,15 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetClientsTest_RecuperationOK()
+        public void GetClientsTest_RecuperationsOK()
         {
             //Arrange
-            List<Client> lesCLients = context.Clients.ToList();
+            List<Client> lesClients = context.Clients.ToList();
             // Act
             var res = controller.GetClients().Result;
             // Assert
             Assert.IsNotNull(res);
-            CollectionAssert.AreEqual(lesCLients, res.Value.ToList(), "Les listes de clients ne sont pas identiques");
+            CollectionAssert.AreEqual(lesClients, res.Value.ToList(), "Les listes de clients ne sont pas identiques");
         }
 
         [TestMethod()]

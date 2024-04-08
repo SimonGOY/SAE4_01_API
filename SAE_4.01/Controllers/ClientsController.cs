@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
+using SAE_4._01.Models.DataManager;
 
 namespace SAE_4._01.Controllers
 {
@@ -74,7 +75,21 @@ namespace SAE_4._01.Controllers
                 EmailClient = clientRequest.EmailClient
             };
 
-            await dataRepository.AddAsync(client);
+
+            //...J'ai mal aux yeux
+            ActionResult<IEnumerable<Client>> actionResult;
+            if (dataRepository == null)
+            {
+                var builder = new DbContextOptionsBuilder<BMWDBContext>().UseNpgsql("Server=51.83.36.122; port=5432; Database=sa11; uid=sa11; password=BMW-S4; SearchPath=bmw;");
+                BMWDBContext context = new BMWDBContext(builder.Options);
+                IDataRepository<Client> dataRepository = new ClientManager(context);
+
+                await dataRepository.AddAsync(client);
+            }
+            else
+            {
+                await dataRepository.AddAsync(client);
+            }
 
             return CreatedAtAction("GetClient", new { id = client.IdClient }, client);
         }
@@ -143,7 +158,22 @@ namespace SAE_4._01.Controllers
 
         private async Task<ActionResult<int>> GetMaxId()
         {
-            ActionResult<IEnumerable<Client>> actionResult = await dataRepository.GetAllAsync();
+            //...J'ai mal aux yeux
+            ActionResult<IEnumerable<Client>> actionResult;
+            if (dataRepository == null)
+            {
+                var builder = new DbContextOptionsBuilder<BMWDBContext>().UseNpgsql("Server=51.83.36.122; port=5432; Database=sa11; uid=sa11; password=BMW-S4; SearchPath=bmw;");
+                BMWDBContext context = new BMWDBContext(builder.Options);
+                IDataRepository<Client> dataRepository = new ClientManager(context);
+                ClientsController controller = new ClientsController(dataRepository);
+                actionResult = controller.GetClients().Result;
+            }
+            else
+            {
+                ClientsController controller = new ClientsController(dataRepository);
+                actionResult = controller.GetClients().Result;
+            }
+            
 
             IEnumerable<Client> clients = actionResult.Value;
 

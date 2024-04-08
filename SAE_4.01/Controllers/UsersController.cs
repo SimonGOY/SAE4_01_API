@@ -97,9 +97,21 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser([FromBody]UserPostRequest userRequest)
         {
+            int? nextId;
+
+            if (userRequest.Id == null)
+            {
+                nextId = GetMaxId().Result.Value + 1;
+            }
+            else
+                nextId = (int)userRequest.Id;
+
+
+
             //créer un client pour l'utiliser dans le user qui est créé après
             var clientResponse = await new ClientsController(dataRepositoryClient).PostClient(new Client
             {
+                IdClient = null,
                 Civilite = userRequest.Gender,
                 NomClient = userRequest.LastName,
                 PrenomClient = userRequest.FirstName,
@@ -118,7 +130,7 @@ namespace SAE_4._01.Controllers
 
             User user = new User
             {
-                Id = GetMaxId().Result.Value + 1,
+                Id = (int)nextId,
                 FirstName = userRequest.FirstName,
                 Email = userRequest.Email,
                 Password = userRequest.Password,
@@ -200,7 +212,7 @@ namespace SAE_4._01.Controllers
 
     public class UserPostRequest
     {
-        //public int Id { get; set; }
+        public int? Id { get; set; }
 
         public string FirstName { get; set; } = null!;
 
@@ -216,16 +228,16 @@ namespace SAE_4._01.Controllers
 
         public string PhoneNumber { get; set; } = null!;
 
-        //public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
-        //public DateTime UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
-        //public bool IsComplete { get; set; }
+        public bool IsComplete { get; set; }
 
-        //public int TypeCompte { get; set; }
+        public int TypeCompte { get; set; }
 
-        //public bool DoubleAuth { get; set; }
+        public bool DoubleAuth { get; set; }
 
-        //public DateTime LastConnected { get; set; }
+        public DateTime LastConnected { get; set; }
     }
 }
