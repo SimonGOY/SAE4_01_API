@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -19,6 +20,9 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<SeCompose> dataRepository;
         private SeCompose seCompose;
+        private Mock<IDataRepository<SeCompose>> mockRepository;
+        private SeComposeController controller_mock;
+
 
         [TestInitialize]
         public void SeComposeControllerTest()
@@ -27,6 +31,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new SeComposeManager(context);
             controller = new SeComposeController(dataRepository);
+            mockRepository = new Mock<IDataRepository<SeCompose>>();
+            controller_mock = new SeComposeController(mockRepository.Object);
 
             seCompose = new SeCompose
             {

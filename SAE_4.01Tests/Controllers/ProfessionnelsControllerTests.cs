@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -20,6 +21,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<Professionnel> dataRepository;
         private Professionnel professionnel;
+        private Mock<IDataRepository<Professionnel>> mockRepository;
+        private ProfessionnelsController controller_mock;
 
         [TestInitialize]
         public void InitTest()
@@ -28,6 +31,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new ProfessionnelManager(context);
             controller = new ProfessionnelsController(dataRepository);
+            mockRepository = new Mock<IDataRepository<Professionnel>>();
+            controller_mock = new ProfessionnelsController(mockRepository.Object);
 
             professionnel = new Professionnel()
             {
