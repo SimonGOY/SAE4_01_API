@@ -75,6 +75,8 @@ namespace SAE_4._01.Controllers
         public async Task<ActionResult<Telephone>> PostTelephone([FromBody] PhonePostRequest phoneRequest)
         {
             int nextId;
+            string type;
+            string fonction;
 
             if (phoneRequest.Id == null)
             {
@@ -83,12 +85,26 @@ namespace SAE_4._01.Controllers
             else
                 nextId = (int)phoneRequest.Id;
 
+            if (phoneRequest.Type == null)
+            {
+                type = "Mobile";
+            }
+            else
+                type = phoneRequest.Type;
+
+            if (phoneRequest.Fonction == null)
+            {
+                fonction = "Privé";
+            }
+            else
+                fonction = phoneRequest.Fonction;
+
             Telephone telephone = new Telephone
             {
                 
                 Id = nextId,
-                IdClient = phoneRequest.ClientID,
-                NumTelephone = phoneRequest.PhoneNumber,
+                IdClient = phoneRequest.IdClient,
+                NumTelephone = phoneRequest.NumTelephone,
                 Type = "Mobile",
                 Fonction = "Privé",
                 ClientTelephone = null
@@ -161,9 +177,13 @@ namespace SAE_4._01.Controllers
     {
         public int? Id { get; set; }
 
-        public int ClientID { get; set; }
+        public int IdClient { get; set; }
 
-        public string PhoneNumber { get; set; } = null!;
+        public string NumTelephone { get; set; } = null!;
+
+        public string Type { get; set; } = null!;
+
+        public string Fonction { get; set; } = null!;
     }
 
 }

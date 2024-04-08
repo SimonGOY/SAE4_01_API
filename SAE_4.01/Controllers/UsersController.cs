@@ -101,8 +101,8 @@ namespace SAE_4._01.Controllers
             //créer un tel pour le client
             var clientResponseTel = await new TelephonesController(dataRepositoryTelephone).PostTelephone(new PhonePostRequest
             {
-                ClientID = client.IdClient,
-                PhoneNumber = userRequest.PhoneNumber
+                IdClient = client.IdClient,
+                NumTelephone = userRequest.PhoneNumber
             });
 
             User user = new User
