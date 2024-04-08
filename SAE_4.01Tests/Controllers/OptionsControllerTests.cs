@@ -134,5 +134,76 @@ namespace SAE_4._01.Controllers.Tests
             var res = controller.GetOption(option.IdOption).Result;
             Assert.IsNull(res.Value, "moto non supprimé");
         }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetOptionsTest_RecuperationOK()
+        {
+            // Arrange
+            var options = new List<Option>
+                {
+                    option
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(options);
+            // Act
+            var res = controller_mock.GetOptions().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(options, res.Value as IEnumerable<Option>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetOptionTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(option);
+
+            // Act
+            var res = controller_mock.GetOption(1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+
+            Assert.AreEqual(option, res.Value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetOptionTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetOption(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostOptionTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostOption(option).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Option>), "Pas un ActionResult<Option>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Option), "Pas une Option");
+            option.IdOption = ((Option)result.Value).IdOption;
+            Assert.AreEqual(option, (Option)result.Value, "Option pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteOptionTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(option);
+
+            // Act
+            var actionResult = controller_mock.DeleteOption(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
+        }
     }
 }

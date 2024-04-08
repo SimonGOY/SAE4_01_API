@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis.Options;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -93,7 +94,7 @@ namespace SAE_4._01.Controllers.Tests
         [TestMethod()]
         public void GetCouleurByIdMotoTest()
         {
-
+            Assert.Fail();
         }
 
         [TestMethod()]
@@ -139,6 +140,84 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetPack(pack.IdPack).Result;
             Assert.IsNull(res.Value, "pack non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetPacksTest_RecuperationOK()
+        {
+            // Arrange
+            var packs = new List<Pack>
+                {
+                    pack
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(packs);
+            // Act
+            var res = controller_mock.GetPacks().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(packs, res.Value as IEnumerable<Pack>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetPackTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(pack);
+
+            // Act
+            var res = controller_mock.GetPack(1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+
+            Assert.AreEqual(pack, res.Value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetPackTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetPack(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_GetByIdCouleurTest_RecuperationFailed()
+        {
+            Assert.Fail(); // Faire get by id couleur
+        }
+
+
+        [TestMethod()]
+        public void Moq_PostPackTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostPack(pack).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Pack>), "Pas un ActionResult<Pack>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Pack), "Pas une Pack");
+            pack.IdPack = ((Pack)result.Value).IdPack;
+            Assert.AreEqual(pack, (Pack)result.Value, "Pack pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeletePackTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(pack);
+
+            // Act
+            var actionResult = controller_mock.DeletePack(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
         }
     }
 }

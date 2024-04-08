@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SAE_4._01.Controllers;
@@ -114,6 +115,79 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetByIds(prefere.IdClient, prefere.IdConcessionnaire).Result;
             Assert.IsNull(res.Value, "prefere non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetPreferesTest_RecuperationOK()
+        {
+            // Arrange
+            var preferes = new List<Prefere>
+                {
+                    prefere
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(preferes);
+            // Act
+            var res = controller_mock.GetPreferes().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(preferes, res.Value as IEnumerable<Prefere>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetByIdsTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetBy2CompositeKeysAsync(1,1)).ReturnsAsync(prefere);
+
+            // Act
+            var res = controller_mock.GetByIds(1,1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+
+            Assert.AreEqual(prefere, res.Value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetByIdsTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetByIds(0,0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+
+        [TestMethod()]
+        public void Moq_PostPrefereTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostPrefere(prefere).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Prefere>), "Pas un ActionResult<Prefere>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Prefere), "Pas une Prefere");
+            prefere.IdConcessionnaire = ((Prefere)result.Value).IdConcessionnaire;
+            prefere.IdClient = ((Prefere)result.Value).IdClient;
+            Assert.AreEqual(prefere, (Prefere)result.Value, "Prefere pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeletePrefereTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetBy2CompositeKeysAsync(1,1).Result).Returns(prefere);
+
+            // Act
+            var actionResult = controller_mock.DeletePrefere(1,1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
         }
     }
 }
