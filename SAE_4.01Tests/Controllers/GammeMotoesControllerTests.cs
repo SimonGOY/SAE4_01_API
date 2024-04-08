@@ -20,6 +20,9 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<GammeMoto> dataRepository;
         private GammeMoto gammeMoto;
+        private Mock<IDataRepository<GammeMoto>> mockRepository;
+        private GammeMotoesController controller_mock;
+
 
 
         [TestInitialize]
@@ -29,6 +32,9 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new GammeMotoManager(context);
             controller = new GammeMotoesController(dataRepository);
+            mockRepository = new Mock<IDataRepository<GammeMoto>>();
+            controller_mock = new GammeMotoesController(mockRepository.Object);
+
 
             gammeMoto = new GammeMoto
             {
@@ -117,17 +123,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetGammeMotosTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<GammeMoto>>();
             var gammes = new List<GammeMoto>
                 {
                     gammeMoto
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(gammes);
-
-            var controller = new GammeMotoesController(mockRepository.Object);
-
             // Act
-            var res = controller.GetGammeMotos().Result;
+            var res = controller_mock.GetGammeMotos().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -138,12 +140,9 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetEquipementTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<GammeMoto>>();
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(gammeMoto);
-
-            var controller = new GammeMotoesController(mockRepository.Object);
             // Act
-            var res = controller.GetGammeMoto(1).Result;
+            var res = controller_mock.GetGammeMoto(1).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);

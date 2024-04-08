@@ -20,6 +20,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<MediaEquipement> dataRepository;
         private MediaEquipement mediaEquipement;
+        private Mock<IDataRepository<MediaEquipement>> mockRepository;
+        private MediaEquipementController controller_mock;
 
         [TestInitialize]
         public void InitTest()
@@ -28,6 +30,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new MediaEquipementManager(context);
             controller = new MediaEquipementController(dataRepository);
+            mockRepository = new Mock<IDataRepository<MediaEquipement>>();
+            controller_mock = new MediaEquipementController(mockRepository.Object);
 
             mediaEquipement = new MediaEquipement
             {
@@ -146,17 +150,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetMediaEquipementsTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<MediaEquipement>>();
             var medias = new List<MediaEquipement>
                 {
                     mediaEquipement
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(medias);
-
-            var controller = new MediaEquipementController(mockRepository.Object);
-
             // Act
-            var res = controller.GetMediaEquipements().Result;
+            var res = controller_mock.GetMediaEquipements().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -167,17 +167,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetByIdEquipementTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<MediaEquipement>>();
             var medias = new List<MediaEquipement>
                 {
                     mediaEquipement
                 };
             mockRepository.Setup(x => x.GetByIdEquipementAsync(1)).ReturnsAsync(medias);
-
-            var controller = new MediaEquipementController(mockRepository.Object);
-
             // Act
-            var res = controller.GetByIdEquipement(1).Result;
+            var res = controller_mock.GetByIdEquipement(1).Result;
             var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.MediaEquipement>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
             // Assert
             Assert.IsNotNull(res);

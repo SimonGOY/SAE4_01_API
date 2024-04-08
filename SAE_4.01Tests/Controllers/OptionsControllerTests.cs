@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -20,6 +21,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<Option> dataRepository;
         private Option option;
+        private Mock<IDataRepository<Option>> mockRepository;
+        private OptionsController controller_mock;
 
         [TestInitialize]
         public void InitTest()
@@ -28,6 +31,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new OptionManager(context);
             controller = new OptionsController(dataRepository);
+            mockRepository = new Mock<IDataRepository<Option>>();
+            controller_mock = new OptionsController(mockRepository.Object);
 
             option = new Option
             {
