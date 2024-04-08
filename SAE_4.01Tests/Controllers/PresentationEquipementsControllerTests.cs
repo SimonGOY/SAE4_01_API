@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SAE_4._01.Controllers;
@@ -114,6 +115,78 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetPresentationEquipement(presentation.IdPresentation).Result;
             Assert.IsNull(res.Value, "presentation non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetPresentationEquipementsTest_RecuperationOK()
+        {
+            // Arrange
+            var preferes = new List<PresentationEquipement>
+                {
+                    presentation
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(preferes);
+            // Act
+            var res = controller_mock.GetPresentationEquipements().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(preferes, res.Value as IEnumerable<PresentationEquipement>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetPresentationEquipementTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(presentation);
+
+            // Act
+            var res = controller_mock.GetPresentationEquipement(1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+
+            Assert.AreEqual(presentation, res.Value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetPresentationEquipementTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetPresentationEquipement(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+
+        [TestMethod()]
+        public void Moq_PostPresentationEquipementTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostPresentationEquipement(presentation).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<PresentationEquipement>), "Pas un ActionResult<PresentationEquipement>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(PresentationEquipement), "Pas une PresentationEquipement");
+            presentation.IdPresentation = ((PresentationEquipement)result.Value).IdPresentation;
+            Assert.AreEqual(presentation, (PresentationEquipement)result.Value, "PresentationEquipement pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeletePresentationEquipementTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(presentation);
+
+            // Act
+            var actionResult = controller_mock.DeletePresentationEquipement(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
         }
     }
 }

@@ -1,15 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SAE_4._01.Controllers.Tests
 {
@@ -128,6 +123,77 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetMotoDisponible(motoDispo.IdMotoDisponible).Result;
             Assert.IsNull(res.Value, "moto non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetMotoDisponibles_RecuperationOK()
+        {
+            // Arrange
+            var motos = new List<MotoDisponible>
+                {
+                    motoDispo
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(motos);
+            // Act
+            var res = controller_mock.GetMotoDisponibles().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(motos, res.Value as IEnumerable<MotoDisponible>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetMotoDisponible_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(motoDispo);
+
+            // Act
+            var res = controller_mock.GetMotoDisponible(1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+
+            Assert.AreEqual(motoDispo, res.Value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetMotoDisponible_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetMotoDisponible(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostMotoDisponibleTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostMotoDisponible(motoDispo).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<MotoDisponible>), "Pas un ActionResult<MotoDisponible>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(MotoDisponible), "Pas une MotoDisponible");
+            motoDispo.IdMotoDisponible = ((MotoDisponible)result.Value).IdMotoDisponible;
+            Assert.AreEqual(motoDispo, (MotoDisponible)result.Value, "MotoDisponible pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteMotoDisponibleTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(motoDispo);
+
+            // Act
+            var actionResult = controller_mock.DeleteMotoDisponible(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }

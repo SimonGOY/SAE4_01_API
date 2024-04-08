@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SAE_4._01.Controllers;
@@ -50,7 +51,7 @@ namespace SAE_4._01.Controllers.Tests
             var res = controller.GetParametres().Result;
             // Assert
             Assert.IsNotNull(res);
-            CollectionAssert.AreEqual(lesPars, res.Value.ToList(), "Les listes de pack ne sont pas identiques");
+            CollectionAssert.AreEqual(lesPars, res.Value.ToList(), "Les listes de parametre ne sont pas identiques");
         }
 
         [TestMethod()]
@@ -130,6 +131,78 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetParametre(parametre.NomParametre).Result;
             Assert.IsNull(res.Value, "parametre non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetParametresTest_RecuperationOK()
+        {
+            // Arrange
+            var parametres = new List<Parametre>
+                {
+                    parametre
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(parametres);
+            // Act
+            var res = controller_mock.GetParametres().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(parametres, res.Value as IEnumerable<Parametre>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetParametreTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByNomAsync("oui")).ReturnsAsync(parametre);
+
+            // Act
+            var res = controller_mock.GetParametre("oui").Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+
+            Assert.AreEqual(parametre, res.Value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetParametreTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetParametre("non").Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+
+        [TestMethod()]
+        public void Moq_PostParametreTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostParametre(parametre).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Parametre>), "Pas un ActionResult<Parametre>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Parametre), "Pas une Parametre");
+            parametre.NomParametre = ((Parametre)result.Value).NomParametre;
+            Assert.AreEqual(parametre, (Parametre)result.Value, "Parametre pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteParametreTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByNomAsync("oui").Result).Returns(parametre);
+
+            // Act
+            var actionResult = controller_mock.DeleteParametre("oui").Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
         }
     }
 }

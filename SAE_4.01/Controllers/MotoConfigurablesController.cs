@@ -42,7 +42,7 @@ namespace SAE_4._01.Controllers
                 return NotFound();
             }
 
-            return motoConfigurable;
+            return Ok(motoConfigurable);
         }
 
         // PUT: api/MotoConfigurables/5
