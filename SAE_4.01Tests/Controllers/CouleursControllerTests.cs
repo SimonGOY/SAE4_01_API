@@ -163,5 +163,14 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNotNull(res.Value);
             Assert.AreEqual(couleur, res.Value as Couleur, "Le contactInfo n'est pas le même");
         }
+
+        [TestMethod()]
+        public void Moq_GetCouleurTest_RecuperationNonOK()
+        {
+            // Act
+            var res = controller_mock.GetCouleur(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
     }
 }

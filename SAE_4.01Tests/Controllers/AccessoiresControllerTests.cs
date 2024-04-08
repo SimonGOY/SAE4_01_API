@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SAE_4._01.Controllers;
@@ -169,6 +170,17 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNotNull(res.Value);
             Assert.AreEqual(accessoire, res.Value as Accessoire, "Le concessionnaire n'est pas le même");
         }
+
+        [TestMethod()]
+        public void Moq_GetAccessoireTest_RecuperationNonOK()
+        {
+            // Act
+            var res = controller_mock.GetAccessoire(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        
 
 
         [TestMethod()]

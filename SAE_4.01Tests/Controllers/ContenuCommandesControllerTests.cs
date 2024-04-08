@@ -167,9 +167,18 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Result);
-            /*Assert.AreEqual(commande, res.Result as IEnumerable<ContenuCommande>, "Pas égal");*/
             var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.ContenuCommande>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
             Assert.AreEqual(commande, res_cast as IEnumerable<ContenuCommande>, "La commande n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetByIdCommandeTest_RecuperationNonOK()
+        {
+            // Act
+            var res = controller_mock.GetByIdCommande(0).Result;
+
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SAE_4._01.Controllers;
@@ -179,6 +180,15 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Result);
             Assert.AreEqual(medias, res_cast as IEnumerable<MediaEquipement>, "Le media n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetByIdEquipementTest_RecuperationNonOK()
+        {
+            // Act
+            var res = controller_mock.GetByIdEquipement(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
         }
     }
 }

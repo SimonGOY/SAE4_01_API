@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SAE_4._01.Controllers;
@@ -147,6 +148,15 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
             Assert.AreEqual(gammeMoto, res.Value as GammeMoto, "La gammeMoto n'est pas la même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetEquipementTest_RecuperationNonOK()
+        {
+            // Act
+            var res = controller_mock.GetGammeMoto(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
         }
     }
 }

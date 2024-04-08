@@ -148,5 +148,14 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNotNull(res.Value);
             Assert.AreEqual(categorieAccessoire, res.Value as CategorieAccessoire, "La CategorieAccessoire n'est pas le même");
         }
+
+        [TestMethod()]
+        public void Moq_GetCategorieAccessoireTest_RecuperationNonOK()
+        {
+            // Act
+            var res = controller_mock.GetCategorieAccessoire(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
     }
 }

@@ -165,5 +165,14 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNotNull(res.Value);
             Assert.AreEqual(commande, res.Value as Commande, "Le coloris n'est pas le même");
         }
+
+        [TestMethod()]
+        public void Moq_GetCommandeTest_RecuperationNonOK()
+        {
+            // Act
+            var res = controller_mock.GetCommande(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
     }
 }

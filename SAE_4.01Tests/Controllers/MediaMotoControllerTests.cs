@@ -192,5 +192,13 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(medias, res_cast as IEnumerable<MediaMoto>, "Le media n'est pas le même");
         }
 
+        [TestMethod()]
+        public void Moq_GetByIdEquipementTest_RecuperationNonOK()
+        {
+            // Act
+            var res = controller_mock.GetByIdMoto(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
     }
 }
