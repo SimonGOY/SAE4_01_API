@@ -20,6 +20,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<EstInclus> dataRepository;
         private EstInclus estInclus;
+        private Mock<IDataRepository<EstInclus>> mockRepository;
+        private EstInclusController controller_mock;
 
         [TestInitialize]
         public void InitTest()
@@ -28,6 +30,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new EstInclusManager(context);
             controller = new EstInclusController(dataRepository);
+            mockRepository = new Mock<IDataRepository<EstInclus>>();
+            controller_mock = new EstInclusController(mockRepository.Object);
 
             estInclus = new EstInclus
             {
@@ -116,17 +120,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetSontInclusTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<EstInclus>>();
             var sontInclus = new List<EstInclus>
                 {
                     estInclus
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(sontInclus);
-
-            var controller = new EstInclusController(mockRepository.Object);
-
             // Act
-            var res = controller.GetSontInclus().Result;
+            var res = controller_mock.GetSontInclus().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -137,17 +137,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetByIdOptionTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<EstInclus>>();
             var liste = new List<EstInclus>
                 {
                     estInclus
                 };
             mockRepository.Setup(x => x.GetByIdOptionAsync(1)).ReturnsAsync(liste);
-
-            var controller = new EstInclusController(mockRepository.Object);
-            
             // Act
-            var res = controller.GetByIdOption(1).Result;
+            var res = controller_mock.GetByIdOption(1).Result;
             var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.EstInclus>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
             // Assert
             Assert.IsNotNull(res);
@@ -159,17 +155,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetByIdStyleAsyncTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<EstInclus>>();
             var liste = new List<EstInclus>
                 {
                     estInclus
                 };
             mockRepository.Setup(x => x.GetByIdStyleAsync(1)).ReturnsAsync(liste);
-
-            var controller = new EstInclusController(mockRepository.Object);
-
             // Act
-            var res = controller.GetByIdStyle(1).Result;
+            var res = controller_mock.GetByIdStyle(1).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);

@@ -20,6 +20,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<Equipement> dataRepository;
         private Equipement equipement;
+        private Mock<IDataRepository<Equipement>> mockRepository;
+        private EquipementsController controller_mock;
 
         [TestInitialize]
         public void InitTest()
@@ -28,6 +30,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new EquipementManager(context);
             controller = new EquipementsController(dataRepository);
+            mockRepository = new Mock<IDataRepository<Equipement>>();
+            controller_mock = new EquipementsController(mockRepository.Object);
 
             equipement = new Equipement
             {
@@ -136,17 +140,14 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetEquipementsTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Equipement>>();
             var equipements = new List<Equipement>
                 {
                     equipement
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(equipements);
 
-            var controller = new EquipementsController(mockRepository.Object);
-
             // Act
-            var res = controller.GetEquipements().Result;
+            var res = controller_mock.GetEquipements().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -157,12 +158,9 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetEquipementTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Equipement>>();
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(equipement);
-
-            var controller = new EquipementsController(mockRepository.Object);
             // Act
-            var res = controller.GetEquipement(1).Result;
+            var res = controller_mock.GetEquipement(1).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);

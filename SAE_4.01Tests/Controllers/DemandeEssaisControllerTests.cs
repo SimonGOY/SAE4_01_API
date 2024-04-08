@@ -20,6 +20,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<DemandeEssai> dataRepository;
         private DemandeEssai demande;
+        private Mock<IDataRepository<DemandeEssai>> mockRepository;
+        private DemandeEssaisController controller_mock;
 
         [TestInitialize]
         public void InitTest()
@@ -28,6 +30,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new DemandeEssaiManager(context);
             controller = new DemandeEssaisController(dataRepository);
+            mockRepository = new Mock<IDataRepository<DemandeEssai>>();
+            controller_mock = new DemandeEssaisController(mockRepository.Object);
 
             demande = new DemandeEssai
             {
@@ -129,17 +133,14 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetDemandeEssaisTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<DemandeEssai>>();
             var demandes = new List<DemandeEssai>
                 {
                     demande
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(demandes);
 
-            var controller = new DemandeEssaisController(mockRepository.Object);
-
             // Act
-            var res = controller.GetDemandeEssais().Result;
+            var res = controller_mock.GetDemandeEssais().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -150,12 +151,9 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetDemandeEssaiTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<DemandeEssai>>();
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(demande);
-
-            var controller = new DemandeEssaisController(mockRepository.Object);
             // Act
-            var res = controller.GetDemandeEssai(1).Result;
+            var res = controller_mock.GetDemandeEssai(1).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);

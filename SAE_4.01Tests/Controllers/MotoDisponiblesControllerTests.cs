@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -19,6 +20,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<MotoDisponible> dataRepository;
         private MotoDisponible motoDispo;
+        private Mock<IDataRepository<MotoDisponible>> mockRepository;
+        private MotoDisponiblesController controller_mock;
 
         [TestInitialize]
         public void InitTest()
@@ -27,6 +30,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new MotoDisponibleManager(context);
             controller = new MotoDisponiblesController(dataRepository);
+            mockRepository = new Mock<IDataRepository<MotoDisponible>>();
+            controller_mock = new MotoDisponiblesController(mockRepository.Object);
 
             motoDispo = new MotoDisponible
             {

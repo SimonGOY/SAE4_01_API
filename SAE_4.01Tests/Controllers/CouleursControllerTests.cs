@@ -21,6 +21,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<Couleur> dataRepository;
         private Couleur couleur;
+        private Mock<IDataRepository<Couleur>> mockRepository;
+        private CouleursController controller_mock;
 
         [TestInitialize]
         public void InitTest()
@@ -29,6 +31,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new CouleurManager(context);
             controller = new CouleursController(dataRepository);
+            mockRepository = new Mock<IDataRepository<Couleur>>();
+            controller_mock = new CouleursController(mockRepository.Object);
 
             couleur = new Couleur
             {
@@ -133,17 +137,14 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetCouleursTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Couleur>>();
             var couleurs = new List<Couleur>
                 {
                     couleur
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(couleurs);
 
-            var controller = new CouleursController(mockRepository.Object);
-
             // Act
-            var res = controller.GetCouleurs().Result;
+            var res = controller_mock.GetCouleurs().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -154,12 +155,9 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetCouleurTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Couleur>>();
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(couleur);
-
-            var controller = new CouleursController(mockRepository.Object);
             // Act
-            var res = controller.GetCouleur(1).Result;
+            var res = controller_mock.GetCouleur(1).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);

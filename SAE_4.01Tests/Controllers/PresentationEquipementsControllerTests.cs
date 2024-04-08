@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -20,6 +21,9 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<PresentationEquipement> dataRepository;
         private PresentationEquipement presentation;
+        private Mock<IDataRepository<PresentationEquipement>> mockRepository;
+        private PresentationEquipementsController controller_mock;
+
 
         [TestInitialize]
         public void InitTest()
@@ -28,6 +32,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new PresentationEquipementManager(context);
             controller = new PresentationEquipementsController(dataRepository);
+            mockRepository = new Mock<IDataRepository<PresentationEquipement>>();
+            controller_mock = new PresentationEquipementsController(mockRepository.Object);
 
             presentation = new PresentationEquipement()
             {

@@ -22,6 +22,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<ContenuCommande> dataRepository;
         private ContenuCommande contenuCommande;
+        private Mock<IDataRepository<ContenuCommande>> mockRepository;
+        private ContenuCommandesController controller_mock;
 
         [TestInitialize]
         public void ContenuCommandesControllerTest()
@@ -30,6 +32,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new ContenuCommandeManager(context);
             controller = new ContenuCommandesController(dataRepository);
+            mockRepository = new Mock<IDataRepository<ContenuCommande>>();
+            controller_mock = new ContenuCommandesController(mockRepository.Object);
 
             contenuCommande = new ContenuCommande
             {
@@ -134,17 +138,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetContenuCommandesTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<ContenuCommande>>();
             var commande = new List<ContenuCommande>
                 {
                     contenuCommande
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(commande);
-
-            var controller = new ContenuCommandesController(mockRepository.Object);
-
             // Act
-            var res = controller.GetContenuCommandes().Result;
+            var res = controller_mock.GetContenuCommandes().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -155,17 +155,14 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetByIdCommandeTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<ContenuCommande>>();
             List<ContenuCommande> commande = new List<ContenuCommande>
                 {
                     contenuCommande
                 };
             mockRepository.Setup(x => x.GetByIdCommandeAsync(1)).ReturnsAsync(commande);
 
-            var controller = new ContenuCommandesController(mockRepository.Object);
-
             // Act
-            var res = controller.GetByIdCommande(1).Result;
+            var res = controller_mock.GetByIdCommande(1).Result;
 
             // Assert
             Assert.IsNotNull(res);
