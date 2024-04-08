@@ -149,7 +149,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetCategorieCaracteristiqueTest_RecuperationNonOK()
+        public void Moq_GetCategorieCaracteristiqueTest_RecuperationFailed()
         {
             // Act
             var res = controller_mock.GetCategorieCaracteristique(0).Result;
@@ -157,5 +157,30 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
         }
 
+        [TestMethod()]
+        public void Moq_PostCategorieCaracteristiqueTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostCategorieCaracteristique(categorieCaracteristique).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<CategorieCaracteristique>), "Pas un ActionResult<CategorieCaracteristique>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(CategorieCaracteristique), "Pas une CategorieCaracteristique");
+            categorieCaracteristique.IdCatCaracteristique = ((CategorieCaracteristique)result.Value).IdCatCaracteristique;
+            Assert.AreEqual(categorieCaracteristique, (CategorieCaracteristique)result.Value, "CategorieCaracteristique pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteCategorieCaracteristiqueTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(categorieCaracteristique);
+
+            // Act
+            var actionResult = controller_mock.DeleteCategorieCaracteristique(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
+        }
     }
 }

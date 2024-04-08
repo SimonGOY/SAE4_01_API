@@ -79,7 +79,7 @@ namespace SAE_4._01.Controllers.Tests
             var res = controller.GetCaracteristique(2).Result;
             // Assert
             Assert.IsNotNull(res.Value);
-            Assert.AreNotEqual(car, res.Value, "L'adresse est la même");
+            Assert.AreNotEqual(car, res.Value, "L'caracteristique est la même");
         }
 
         [TestMethod()]
@@ -87,8 +87,8 @@ namespace SAE_4._01.Controllers.Tests
         {
             var res = controller.GetCaracteristique(777777777).Result;
             // Assert
-            Assert.IsNull(res.Result, "L'adresse existe");
-            Assert.IsNull(res.Value, "L'adresse existe");
+            Assert.IsNull(res.Result, "L'caracteristique existe");
+            Assert.IsNull(res.Value, "L'caracteristique existe");
         }
 
         [TestMethod()]
@@ -168,12 +168,38 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetCaracteristiqueTest_RecuperationNonOK()
+        public void Moq_GetCaracteristiqueTest_RecuperationFailed()
         {
             // Act
             var res = controller_mock.GetCaracteristique(0).Result;
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostAdresseTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostCaracteristique(caracteristique).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Caracteristique>), "Pas un ActionResult<Caracteristique>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Caracteristique), "Pas une Caracteristique");
+            caracteristique.IdCaracteristique = ((Caracteristique)result.Value).IdCaracteristique;
+            Assert.AreEqual(caracteristique, (Caracteristique)result.Value, "Caracteristique pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteCaracteristiqueTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(caracteristique);
+
+            // Act
+            var actionResult = controller_mock.DeleteCaracteristique(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }

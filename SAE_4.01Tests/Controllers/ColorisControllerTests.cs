@@ -148,12 +148,38 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetColorisTest_RecuperationNonOK()
+        public void Moq_GetColorisTest_RecuperationFailed()
         {
             // Act
             var res = controller_mock.GetColoris(0).Result;
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostColorisTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostColoris(coloris).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Coloris>), "Pas un ActionResult<Coloris>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Coloris), "Pas une Coloris");
+            coloris.IdColoris = ((Coloris)result.Value).IdColoris;
+            Assert.AreEqual(coloris, (Coloris)result.Value, "Coloris pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteColorisTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(coloris);
+
+            // Act
+            var actionResult = controller_mock.DeleteColoris(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }

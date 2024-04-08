@@ -185,12 +185,49 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetClientTest_RecuperationNonOK()
+        public void Moq_GetClientTest_RecuperationFailed()
         {
             // Act
             var res = controller_mock.GetClient(0).Result;
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostClientTest()
+        {
+            // Act
+
+            var liste = new List<Client>
+                {
+                    client
+                };
+            mockRepository.Setup(x => x.GetAllAsync().Result).Returns(liste);
+            var actionResult = controller_mock.PostClient(client_post).Result;
+            
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Client>), "Pas un ActionResult<Client>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Client), "Pas une Client");
+            client.IdClient = ((Client)result.Value).IdClient;
+            Assert.AreEqual(client_post.EmailClient, ((Client)result.Value).EmailClient, "Email pas identiques");
+            Assert.AreEqual(client_post.NomClient, ((Client)result.Value).NomClient, "Nom pas identiques");
+            Assert.AreEqual(client_post.PrenomClient, ((Client)result.Value).PrenomClient, "PrenomClient pas identiques");
+            Assert.AreEqual(client_post.Civilite, ((Client)result.Value).Civilite, "Civilite pas identiques");
+            Assert.AreEqual(client_post.DateNaissanceClient, ((Client)result.Value).DateNaissanceClient, "DateNaissanceClient pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteClientTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(client);
+
+            // Act
+            var actionResult = controller_mock.DeleteClient(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }
