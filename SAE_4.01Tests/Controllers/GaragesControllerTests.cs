@@ -180,12 +180,39 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetByIdMotoConfigurableTest_RecuperationNonOK()
+        public void Moq_GetByIdMotoConfigurableTest_RecuperationFailed()
         {
             // Act
             var res = controller_mock.GetByIdMotoConfigurable(0).Result;
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostGarageTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostGarage(garage).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Garage>), "Pas un ActionResult<Garage>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Garage), "Pas une Garage");
+            garage.IdClient = ((Garage)result.Value).IdClient;
+            garage.IdMotoConfigurable = ((Garage)result.Value).IdMotoConfigurable;
+            Assert.AreEqual(garage, (Garage)result.Value, "Garage pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteGarageTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetBy2CompositeKeysAsync(1,1).Result).Returns(garage);
+
+            // Act
+            var actionResult = controller_mock.DeleteGarage(1,1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }

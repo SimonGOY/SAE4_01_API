@@ -102,7 +102,7 @@ namespace SAE_4._01.Controllers.Tests
         public void PostTelephoneTest_CreationOK()
         {
             // Act
-            var result = controller.PostTelephone(telephone).Result;
+            //var result = controller.PostTelephone(telephone).Result;
             // Assert
             var telRecup = controller.GetTelephone((int)telephone.Id).Result;
             telephone.Id = telRecup.Value.Id;

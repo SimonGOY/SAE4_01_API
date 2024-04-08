@@ -173,5 +173,31 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
         }
+
+        [TestMethod()]
+        public void Moq_PostInfoCBTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostInfoCB(infoCB).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<InfoCB>), "Pas un ActionResult<InfoCB>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(InfoCB), "Pas une InfoCB");
+            infoCB.NumCarte = ((InfoCB)result.Value).NumCarte;
+            Assert.AreEqual(infoCB, (InfoCB)result.Value, "InfoCB pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteInfoCBTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(infoCB);
+
+            // Act
+            var actionResult = controller_mock.DeleteInfoCB(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
+        }
     }
 }

@@ -200,5 +200,31 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
         }
+
+        [TestMethod()]
+        public void Moq_PostMediaTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostMedia(mediaMoto).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<MediaMoto>), "Pas un ActionResult<MediaMoto>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(MediaMoto), "Pas une MediaMoto");
+            mediaMoto.IdMediaMoto = ((MediaMoto)result.Value).IdMediaMoto;
+            Assert.AreEqual(mediaMoto, (MediaMoto)result.Value, "MediaMoto pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteMediaTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(mediaMoto);
+
+            // Act
+            var actionResult = controller_mock.DeleteMedia(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
+        }
     }
 }
