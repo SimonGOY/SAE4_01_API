@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
+using BCrypt.Net;
 
 namespace SAE_4._01.Controllers
 {
@@ -53,7 +54,14 @@ namespace SAE_4._01.Controllers
 
             var users = usersResult.Value as IEnumerable<User>;
 
-            return users.SingleOrDefault(x => x.Email.ToUpper() == user.Email.ToUpper() && x.Password == user.Password);
+            var targetedUser = users.SingleOrDefault(x => x.Email.ToUpper() == user.Email.ToUpper());
+
+            if (BCrypt.Net.BCrypt.Verify(user.Password, targetedUser.Password))
+            {
+                return targetedUser;
+            }
+
+            return null;
         }
 
         private string GenerateJwtToken(User userInfo)
