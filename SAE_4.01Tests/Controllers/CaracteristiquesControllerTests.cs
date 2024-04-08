@@ -46,7 +46,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetCaracteristiquesTest_RecuperationOK()
+        public void GetCaracteristiquesTest_RecuperationsOK()
         {
             //Arrange
             List<Caracteristique> lesCars = context.Caracteristiques.ToList();
@@ -69,8 +69,37 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(car, res.Value, "La caractéristique n'est pas le même");
         }
 
+
         [TestMethod()]
-        public void __PostCaracteristiqueTest_CreationOK()
+        public void GetCracteristiqueTest_RecuperationFailed()
+        {
+            // Arrange
+            Caracteristique? car = context.Caracteristiques.Find(1);
+            // Act
+            var res = controller.GetCaracteristique(2).Result;
+            // Assert
+            Assert.IsNotNull(res.Value);
+            Assert.AreNotEqual(car, res.Value, "L'adresse est la même");
+        }
+
+        [TestMethod()]
+        public void GetAdresseTest_CaracteristiqueNExistePas()
+        {
+            var res = controller.GetCaracteristique(777777777).Result;
+            // Assert
+            Assert.IsNull(res.Result, "L'adresse existe");
+            Assert.IsNull(res.Value, "L'adresse existe");
+        }
+
+        [TestMethod()]
+        public void PostPutDeleteTest()
+        {
+            PostCaracteristiqueTest_CreationOK();
+            PutCaracteristiqueTest_ModificationOK();
+            DeleteCaracteristiqueTest_SuppressionOK();
+        }
+
+        public void PostCaracteristiqueTest_CreationOK()
         {
             // Act
             var result = controller.PostCaracteristique(caracteristique).Result;
@@ -80,8 +109,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(caracteristique, carRecup.Value, "Caractéristiques pas identiques"); ;
         }
 
-        [TestMethod()]
-        public void __PutCaracteristiqueTest_ModificationOK()
+        public void PutCaracteristiqueTest_ModificationOK()
         {
             // Arrange
             var carIni = controller.GetCaracteristique(caracteristique.IdCaracteristique).Result;
@@ -96,7 +124,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(carIni.Value, carMaj.Value, "Caractéristiques pas identiques");
         }
 
-        [TestMethod()]
         public void DeleteCaracteristiqueTest_SuppressionOK()
         {
             // Act

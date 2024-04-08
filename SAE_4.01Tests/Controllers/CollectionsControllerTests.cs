@@ -88,7 +88,14 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void __PostCollectionTest_CreationOK()
+        public void PostPutDeleteTest()
+        {
+            PostCollectionTest_CreationOK();
+            PutCollectionTest_ModificationOK();
+            DeleteCollectionTest_SuppressionOK();
+        }
+
+        public void PostCollectionTest_CreationOK()
         {
             // Act
             var result = controller.PostCollection(collection).Result;
@@ -98,8 +105,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(collection, colRecup.Value, "Clients pas identiques");
         }
 
-        [TestMethod()]
-        public void __PutCollectionTest_ModificationOK()
+        public void PutCollectionTest_ModificationOK()
         {
             // Arrange
             var colIni = controller.GetCollection(collection.IdCollection).Result;
@@ -114,7 +120,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(colIni.Value, cltMaj.Value, "Collec pas identiques");
         }
 
-        [TestMethod()]
         public void DeleteCollectionTest_SuppressionOK()
         {
             // Act

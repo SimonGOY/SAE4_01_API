@@ -78,7 +78,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetAdresseTest_ClientNExistePas()
+        public void GetAdresseTest_AdresseNExistePas()
         {
             var res = controller.GetAdresse(777777777).Result;
             // Assert

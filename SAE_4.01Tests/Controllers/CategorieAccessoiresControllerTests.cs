@@ -42,16 +42,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void PostDel()
-        {
-            PostCategorieAccessoireTest_CreationOK();
-            //Ne peut pas etre modifier du fait de sa configuration
-            //PutCategorieAccessoireTest_ModificationOK();
-            DeleteCategorieAccessoireTest_SuppressionOK();
-        }
-
-        [TestMethod()]
-        public void GetCategorieAccessoiresTest_RecuperationOK()
+        public void GetCategorieAccessoiresTest_RecuperationsOK()
         {
             //Arrange
             List<CategorieAccessoire> lesCatAcc = context.CategorieAccessoires.ToList();
@@ -72,6 +63,36 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsNotNull(res.Value);
             Assert.AreEqual(cta, res.Value, "La catégorie accessoire n'est pas la même");
+        }
+
+        [TestMethod()]
+        public void GetCategorieAccessoireTest_RecuperationFailed()
+        {
+            // Arrange
+            CategorieAccessoire? cat = context.CategorieAccessoires.Find(1);
+            // Act
+            var res = controller.GetCategorieAccessoire(2).Result;
+            // Assert
+            Assert.IsNotNull(res.Value);
+            Assert.AreNotEqual(cat, res.Value, "La categorie est la même");
+        }
+
+        [TestMethod()]
+        public void GetCategorieAccessoireTest_CategorieAccessoireNExistePas()
+        {
+            var res = controller.GetCategorieAccessoire(777777777).Result;
+            // Assert
+            Assert.IsNull(res.Result, "La categorie existe");
+            Assert.IsNull(res.Value, "La categore existe");
+        }
+
+        [TestMethod()]
+        public void PostDel()
+        {
+            PostCategorieAccessoireTest_CreationOK();
+            //Ne peut pas etre modifier du fait de sa configuration
+            //PutCategorieAccessoireTest_ModificationOK();
+            DeleteCategorieAccessoireTest_SuppressionOK();
         }
 
         public void PostCategorieAccessoireTest_CreationOK()

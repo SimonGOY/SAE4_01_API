@@ -95,7 +95,14 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void __PostEquipementTest_CreationOK()
+        public void PostPutDeleteTest()
+        {
+            PostEquipementTest_CreationOK();
+            PutEquipementTest_ModificationOK();
+            DeleteEquipementTest_SuppressionOK();
+        }
+
+        public void PostEquipementTest_CreationOK()
         {
             // Act
             var result = controller.PostEquipement(equipement).Result;
@@ -105,8 +112,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(equipement, demRecup.Value, "Equipements pas identiques");
         }
 
-        [TestMethod()]
-        public void _PutEquipementTest_ModificationOK()
+        public void PutEquipementTest_ModificationOK()
         {
             // Arrange
             var equIni = controller.GetEquipement(equipement.IdEquipement).Result;
@@ -121,8 +127,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(equIni.Value, equMaj.Value, "equipements pas identiques");
         }
 
-        
-        [TestMethod()]
         public void DeleteEquipementTest_SuppressionOK()
         {
             // Act

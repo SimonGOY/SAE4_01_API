@@ -91,7 +91,14 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void __PostContactInfoTest_CreationOK()
+        public void PostPutDeleteTest()
+        {
+            PostContactInfoTest_CreationOK();
+            PutContactInfoTest_ModificationOK();
+            DeleteContactInfoTest_SuppressionOK();
+        }
+
+        public void PostContactInfoTest_CreationOK()
         {
             // Act
             var result = controller.PostContactInfo(contactInfo).Result;
@@ -101,8 +108,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(contactInfo, conRecup.Value, "Contacts pas identiques");
         }
 
-        [TestMethod()]
-        public void _PutContactInfoTest_ModificationOK()
+        public void PutContactInfoTest_ModificationOK()
         {
             // Arrange
             var conIni = controller.GetContactInfo(contactInfo.IdContact).Result;
@@ -117,7 +123,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(conIni.Value, conMaj.Value, "contacts pas identiques");
         }
 
-        [TestMethod()]
         public void DeleteContactInfoTest_SuppressionOK()
         {
             // Act

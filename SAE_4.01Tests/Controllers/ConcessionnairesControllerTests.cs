@@ -94,7 +94,14 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void __PostConcessionnaireTest_CreationOK()
+        public void PostPutDeleteTest()
+        {
+            PostConcessionnaireTest_CreationOK();
+            PutConcessionnaireTest_ModificationOK();
+            DeleteConcessionnaireTest_SuppressionOK();
+        }
+
+        public void PostConcessionnaireTest_CreationOK()
         {
             // Act
             var result = controller.PostConcessionnaire(concessionnaire).Result;
@@ -104,8 +111,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(concessionnaire, conRecup.Value, "Concessionnaires pas identiques");
         }
 
-        [TestMethod()]
-        public void _PutConcessionnaireTest()
+        public void PutConcessionnaireTest_ModificationOK()
         {
             // Arrange
             var conIni = controller.GetConcessionnaire(concessionnaire.IdConcessionnaire).Result;
@@ -120,7 +126,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(conIni.Value, conMaj.Value, "concessionnaire pas identiques");
         }
 
-        [TestMethod()]
         public void DeleteConcessionnaireTest_SuppressionOK()
         {
             // Act

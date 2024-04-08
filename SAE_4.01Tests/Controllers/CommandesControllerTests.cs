@@ -90,7 +90,14 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void __PostCommandeTest_CreationOK()
+        public void PostPutDeleteTest()
+        {
+            PostCommandeTest_CreationOK();
+            PutCommandeTest_ModificationOK();
+            DeleteCommandeTest_SuppressionOK();
+        }
+
+        public void PostCommandeTest_CreationOK()
         {
             // Act
             var result = controller.PostCommande(commande).Result;
@@ -100,8 +107,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(commande, cmdRecup.Value, "Commande pas identiques");
         }
 
-        [TestMethod()]
-        public void __PutCommandeTest_ModificationOK()
+        public void PutCommandeTest_ModificationOK()
         {
             // Arrange
             var cmdIni = controller.GetCommande(commande.IdCommande).Result;
@@ -116,7 +122,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(cmdIni.Value, cmdMaj.Value, "color pas identiques");
         }
 
-        [TestMethod()]
         public void DeleteCommandeTest_SuppressionOK()
         {
             // Act

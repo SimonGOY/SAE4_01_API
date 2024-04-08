@@ -41,9 +41,78 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetCategorieCaracteristiqueTest()
+        public void GetCategorieCaracteristiquesTest_RecuperationsOK()
         {
-            Assert.Fail();
+            //Arrange
+            List<CategorieCaracteristique> lesCatCar = context.CategorieCaracteristiques.ToList();
+            // Act
+            var res = controller.GetCategorieCaracteristiques().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            CollectionAssert.AreEqual(lesCatCar, res.Value.ToList(), "Les listes de catégories caractéristiques ne sont pas identiques");
+        }
+
+        [TestMethod()]
+        public void GetCategorieCaracteristiqueTest_RecuperationOK()
+        {
+            // Arrange
+            CategorieCaracteristique? cat = context.CategorieCaracteristiques.Find(1);
+            // Act
+            var res = controller.GetCategorieCaracteristique(1).Result;
+            // Assert
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(cat, res.Value, "La catégorie accessoire n'est pas la même");
+        }
+
+        [TestMethod()]
+        public void GetCategorieCaracteristiqueAccessoireTest_RecuperationFailed()
+        {
+            // Arrange
+            CategorieCaracteristique? cat = context.CategorieCaracteristiques.Find(1);
+            // Act
+            var res = controller.GetCategorieCaracteristique(2).Result;
+            // Assert
+            Assert.IsNotNull(res.Value);
+            Assert.AreNotEqual(cat, res.Value, "La categorie est la même");
+        }
+
+        [TestMethod()]
+        public void GetCategorieCaracteristiqueTest_CategorieCaracteristiqueNExistePas()
+        {
+            var res = controller.GetCategorieCaracteristique(777777777).Result;
+            // Assert
+            Assert.IsNull(res.Result, "La categorie existe");
+            Assert.IsNull(res.Value, "La categore existe");
+        }
+
+        [TestMethod()]
+        public void PostDel()
+        {
+            PostCategorieCaracteristiqueTest_CreationOK();
+            //Ne peut pas etre modifie du fait de sa configuration
+            //PutCategorieAccessoireTest_ModificationOK();
+            DeleteCategorieCaracteristiqueTest_SuppressionOK();
+        }
+
+        public void PostCategorieCaracteristiqueTest_CreationOK()
+        {
+            // Act
+            var result = controller.PostCategorieCaracteristique(categorieCaracteristique).Result;
+            // Assert
+            var catRecup = controller.GetCategorieCaracteristique(categorieCaracteristique.IdCatCaracteristique).Result;
+            categorieCaracteristique.IdCatCaracteristique = catRecup.Value.IdCatCaracteristique;
+            Assert.AreEqual(categorieCaracteristique, catRecup.Value, "Catégories accessoires pas identiques"); ;
+        }
+
+        public void DeleteCategorieCaracteristiqueTest_SuppressionOK()
+        {
+            // Act
+            var catSuppr = controller.GetCategorieCaracteristique(categorieCaracteristique.IdCatCaracteristique).Result;
+            _ = controller.DeleteCategorieCaracteristique(catSuppr.Value.IdCatCaracteristique).Result;
+
+            // Assert
+            var res = controller.GetCategorieCaracteristique(categorieCaracteristique.IdCatCaracteristique).Result;
+            Assert.IsNull(res.Value, "categorie accessoire non supprimé");
         }
         // ---------------------------------------- Tests Moq ----------------------------------------
 
