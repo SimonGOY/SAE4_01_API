@@ -164,5 +164,14 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNotNull(res.Value);
             Assert.AreEqual(concessionnaire, res.Value as Concessionnaire, "Le concessionnaire n'est pas le même");
         }
+
+        [TestMethod()]
+        public void Moq_GetConcessionnaireTest_RecuperationNonOK()
+        {
+            // Act
+            var res = controller_mock.GetConcessionnaire(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
     }
 }

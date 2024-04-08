@@ -48,7 +48,14 @@ namespace SAE_4._01.Controllers
         [HttpGet("style/{id}")]
         public async Task<ActionResult<IEnumerable<EstInclus>>> GetByIdStyle(int id)
         {
-            return await dataRepository.GetByIdStyleAsync(id);
+            var sontinclus = await dataRepository.GetByIdStyleAsync(id);
+
+            if (sontinclus == null || !sontinclus.Value.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(sontinclus);
         }
 
         [HttpGet("{id1}/{id2}")]
