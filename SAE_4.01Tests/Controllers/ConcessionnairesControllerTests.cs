@@ -171,12 +171,38 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetConcessionnaireTest_RecuperationNonOK()
+        public void Moq_GetConcessionnaireTest_RecuperationFailed()
         {
             // Act
             var res = controller_mock.GetConcessionnaire(0).Result;
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostConcessionnaireTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostConcessionnaire(concessionnaire).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Concessionnaire>), "Pas un ActionResult<Concessionnaire>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Concessionnaire), "Pas une Concessionnaire");
+            concessionnaire.IdConcessionnaire = ((Concessionnaire)result.Value).IdConcessionnaire;
+            Assert.AreEqual(concessionnaire, (Concessionnaire)result.Value, "Concessionnaire pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteConcessionnaireTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(concessionnaire);
+
+            // Act
+            var actionResult = controller_mock.DeleteConcessionnaire(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }

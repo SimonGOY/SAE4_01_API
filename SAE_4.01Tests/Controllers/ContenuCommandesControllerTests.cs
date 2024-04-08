@@ -177,13 +177,39 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetByIdCommandeTest_RecuperationNonOK()
+        public void Moq_GetByIdCommandeTest_RecuperationFailed()
         {
             // Act
             var res = controller_mock.GetByIdCommande(0).Result;
 
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostPostContactInfoTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostContenuCommande(contenuCommande).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<ContenuCommande>), "Pas un ActionResult<ContenuCommande>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(ContenuCommande), "Pas une ContenuCommande");
+            contenuCommande.IdCommande = ((ContenuCommande)result.Value).IdCommande;
+            Assert.AreEqual(contenuCommande, (ContenuCommande)result.Value, "ContenuCommande pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteContactInfoTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetBy4CompositeKeysAsync(1,1,1,1).Result).Returns(contenuCommande);
+
+            // Act
+            var actionResult = controller_mock.DeleteContenuCommande(1,1,1,1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }

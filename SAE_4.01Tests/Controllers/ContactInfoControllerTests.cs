@@ -167,12 +167,38 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetContactInfoTest_RecuperationNonOK()
+        public void Moq_GetContactInfoTest_RecuperationFailed()
         {
             // Act
             var res = controller_mock.GetContactInfo(0).Result;
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostPostContactInfoTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostContactInfo(contactInfo).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<ContactInfo>), "Pas un ActionResult<ContactInfo>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(ContactInfo), "Pas une ContactInfo");
+            contactInfo.IdContact = ((ContactInfo)result.Value).IdContact;
+            Assert.AreEqual(contactInfo, (ContactInfo)result.Value, "ContactInfo pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteContactInfoTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(contactInfo);
+
+            // Act
+            var actionResult = controller_mock.DeleteContactInfo(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }
