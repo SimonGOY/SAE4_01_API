@@ -10,6 +10,7 @@ using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
 using SAE_4._01.Models.DataManager;
 using Moq;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SAE_4._01.Controllers.Tests
 {
@@ -164,6 +165,15 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
             Assert.AreEqual(client, res.Value as Client, "Le client n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetClientTest_RecuperationNonOK()
+        {
+            // Act
+            var res = controller_mock.GetClient(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
         }
     }
 }

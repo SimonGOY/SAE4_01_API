@@ -139,5 +139,14 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNotNull(res.Value);
             Assert.AreEqual(caracteristique, res.Value as Caracteristique, "La caracteristique n'est pas le même");
         }
+
+        [TestMethod()]
+        public void Moq_GetCaracteristiqueTest_RecuperationNonOK()
+        {
+            // Act
+            var res = controller_mock.GetCaracteristique(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
     }
 }

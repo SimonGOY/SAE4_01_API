@@ -158,5 +158,14 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNotNull(res.Value);
             Assert.AreEqual(collection, res.Value as Collection, "La collection n'est pas le même");
         }
+
+        [TestMethod()]
+        public void Moq_GetCollectionTest_RecuperationNonOK()
+        {
+            // Act
+            var res = controller_mock.GetCollection(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
     }
 }

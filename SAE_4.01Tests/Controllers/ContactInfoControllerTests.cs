@@ -160,5 +160,14 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNotNull(res.Value);
             Assert.AreEqual(contactInfo, res.Value as ContactInfo, "Le contactInfo n'est pas le même");
         }
+
+        [TestMethod()]
+        public void Moq_GetContactInfoTest_RecuperationNonOK()
+        {
+            // Act
+            var res = controller_mock.GetContactInfo(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
     }
 }

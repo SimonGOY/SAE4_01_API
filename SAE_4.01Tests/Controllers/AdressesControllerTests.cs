@@ -61,6 +61,15 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
+        public void Moq_GetAdresseTest_RecuperationNonOK()
+        {
+            // Act
+            var res = controller_mock.GetAdresse(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
         public void Moq_GetAdresseTest_RecuperationOK()
         {
             // Arrange
