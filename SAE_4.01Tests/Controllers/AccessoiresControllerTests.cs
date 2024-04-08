@@ -21,7 +21,8 @@ namespace SAE_4._01.Controllers.Tests
         private IDataRepository<Accessoire> dataRepository;
         private Accessoire accessoire;
         private Accessoire accessoire_bis;
-        private Mock mockRepository;
+        private Mock<IDataRepository<Accessoire>> mockRepository;
+        private AccessoiresController controller_mock;
 
         [TestInitialize]
         public void InitTest()
@@ -31,6 +32,7 @@ namespace SAE_4._01.Controllers.Tests
             dataRepository = new AccessoireManager(context);
             controller = new AccessoiresController(dataRepository);
             mockRepository = new Mock<IDataRepository<Accessoire>>();
+            controller_mock= new AccessoiresController(mockRepository.Object);
 
             accessoire = new Accessoire
             {
@@ -62,17 +64,14 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetByIdClientTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Accessoire>>();
             var accessoires = new List<Accessoire>
                 {
                     accessoire
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(accessoires);
 
-            var controller = new AccessoiresController(mockRepository.Object);
-
             // Act
-            var res = controller.GetAccessoires().Result;
+            var res = controller_mock.GetAccessoires().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -83,12 +82,9 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetAccessoireTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Accessoire>>();
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(accessoire);
-
-            var controller = new AccessoiresController(mockRepository.Object);
             // Act
-            var res = controller.GetAccessoire(1).Result;
+            var res = controller_mock.GetAccessoire(1).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -100,17 +96,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetByIdMotoTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Accessoire>>();
             var accessoires = new List<Accessoire>
                 {
                     accessoire
                 };
             mockRepository.Setup(x => x.GetByIdMotoAsync(1)).ReturnsAsync(accessoires);
-
-            var controller = new AccessoiresController(mockRepository.Object);
-
             // Act
-            var res = controller.GetByIdMoto(1).Result;
+            var res = controller_mock.GetByIdMoto(1).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);

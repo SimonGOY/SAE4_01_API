@@ -21,6 +21,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<Caracteristique> dataRepository;
         private Caracteristique caracteristique;
+        private Mock<IDataRepository<Caracteristique>> mockRepository;
+        private CaracteristiquesController controller_mock;
 
 
         [TestInitialize]
@@ -30,6 +32,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new CaracteristiqueManager(context);
             controller = new CaracteristiquesController(dataRepository);
+            mockRepository = new Mock<IDataRepository<Caracteristique>>();
+            controller_mock = new CaracteristiquesController(mockRepository.Object);
 
             caracteristique = new Caracteristique
             {
@@ -110,17 +114,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetCaracteristiquesTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Caracteristique>>();
             var caracteristiques = new List<Caracteristique>
                 {
                     caracteristique
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(caracteristiques);
-
-            var controller = new CaracteristiquesController(mockRepository.Object);
-
             // Act
-            var res = controller.GetCaracteristiques().Result;
+            var res = controller_mock.GetCaracteristiques().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -131,12 +131,9 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetCaracteristiqueTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Caracteristique>>();
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(caracteristique);
-
-            var controller = new CaracteristiquesController(mockRepository.Object);
             // Act
-            var res = controller.GetCaracteristique(1).Result;
+            var res = controller_mock.GetCaracteristique(1).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
