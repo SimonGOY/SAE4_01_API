@@ -99,7 +99,7 @@ namespace SAE_4._01.Controllers
             var client = ((CreatedAtActionResult)clientResponse.Result).Value as Client;
 
             //créer un tel pour le client
-            var clientResponseTel = await new TelephonesController(dataRepositoryTelephone).PostTelephone(new PhonePostRequest
+            var clientResponseTel = await new TelephonesController(dataRepositoryTelephone).PostTelephone(new Telephone
             {
                 IdClient = client.IdClient,
                 NumTelephone = userRequest.PhoneNumber
