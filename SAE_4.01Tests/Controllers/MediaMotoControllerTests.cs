@@ -21,6 +21,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<MediaMoto> dataRepository;
         private MediaMoto mediaMoto;
+        private Mock<IDataRepository<MediaMoto>> mockRepository;
+        private MediaMotoController controller_mock;
 
         [TestInitialize]
         public void InitTest()
@@ -29,6 +31,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new MediaMotoManager(context);
             controller = new MediaMotoController(dataRepository);
+            mockRepository = new Mock<IDataRepository<MediaMoto>>();
+            controller_mock = new MediaMotoController(mockRepository.Object);
 
             mediaMoto = new MediaMoto
             {
@@ -157,17 +161,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetMediaEquipementsTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<MediaMoto>>();
             var medias = new List<MediaMoto>
                 {
                     mediaMoto
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(medias);
-
-            var controller = new MediaMotoController(mockRepository.Object);
-
             // Act
-            var res = controller.GetMediaMotos().Result;
+            var res = controller_mock.GetMediaMotos().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -178,17 +178,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetByIdEquipementTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<MediaMoto>>();
             var medias = new List<MediaMoto>
                 {
                     mediaMoto
                 };
             mockRepository.Setup(x => x.GetByIdMotoAsync(1)).ReturnsAsync(medias);
-
-            var controller = new MediaMotoController(mockRepository.Object);
-
             // Act
-            var res = controller.GetByIdMoto(1).Result;
+            var res = controller_mock.GetByIdMoto(1).Result;
             var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.MediaMoto>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
             // Assert
             Assert.IsNotNull(res);

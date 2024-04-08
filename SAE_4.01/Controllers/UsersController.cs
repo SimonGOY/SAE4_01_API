@@ -87,7 +87,7 @@ namespace SAE_4._01.Controllers
         public async Task<ActionResult<User>> PostUser([FromBody]UserPostRequest userRequest)
         {
             //créer un client pour l'utiliser dans le user qui est créé après
-            var clientResponse = await new ClientsController(dataRepositoryClient).PostClient(new ClientPostRequest
+            var clientResponse = await new ClientsController(dataRepositoryClient).PostClient(new Client
             {
                 Civilite = userRequest.Gender,
                 NomClient = userRequest.LastName,

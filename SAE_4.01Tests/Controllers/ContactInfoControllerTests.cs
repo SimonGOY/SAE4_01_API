@@ -21,6 +21,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<ContactInfo> dataRepository;
         private ContactInfo contactInfo;
+        private Mock<IDataRepository<ContactInfo>> mockRepository;
+        private ContactInfoController controller_mock;
 
         [TestInitialize]
         public void InitTest()
@@ -29,6 +31,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new ContactInfoManager(context);
             controller = new ContactInfoController(dataRepository);
+            mockRepository = new Mock<IDataRepository<ContactInfo>>();
+            controller_mock = new ContactInfoController(mockRepository.Object);
 
             contactInfo = new ContactInfo
             {
@@ -131,17 +135,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetConcessionnairesTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<ContactInfo>>();
             var contacts = new List<ContactInfo>
                 {
                     contactInfo
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(contacts);
-
-            var controller = new ContactInfoController(mockRepository.Object);
-
             // Act
-            var res = controller.GetContactInfos().Result;
+            var res = controller_mock.GetContactInfos().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -152,12 +152,9 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetContactInfoTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<ContactInfo>>();
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(contactInfo);
-
-            var controller = new ContactInfoController(mockRepository.Object);
             // Act
-            var res = controller.GetContactInfo(1).Result;
+            var res = controller_mock.GetContactInfo(1).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);

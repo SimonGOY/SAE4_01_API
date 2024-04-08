@@ -20,6 +20,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<CategorieCaracteristique> dataRepository;
         private CategorieCaracteristique categorieCaracteristique;
+        private Mock<IDataRepository<CategorieCaracteristique>> mockRepository;
+        private CategorieCaracteristiquesController controller_mock;
 
         [TestInitialize()]
         public void InitTest()
@@ -28,6 +30,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new CategorieCaracteristiqueManager(context);
             controller = new CategorieCaracteristiquesController(dataRepository);
+            mockRepository = new Mock<IDataRepository<CategorieCaracteristique>>();
+            controller_mock = new CategorieCaracteristiquesController(mockRepository.Object);
 
             categorieCaracteristique = new CategorieCaracteristique
             {
@@ -47,17 +51,14 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetCategorieCaracteristiquesTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<CategorieCaracteristique>>();
             var categorieCaracteristiques = new List<CategorieCaracteristique>
                 {
                     categorieCaracteristique
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(categorieCaracteristiques);
 
-            var controller = new CategorieCaracteristiquesController(mockRepository.Object);
-
             // Act
-            var res = controller.GetCategorieCaracteristiques().Result;
+            var res = controller_mock.GetCategorieCaracteristiques().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -68,12 +69,9 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetCategorieCaracteristiqueTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<CategorieCaracteristique>>();
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(categorieCaracteristique);
-
-            var controller = new CategorieCaracteristiquesController(mockRepository.Object);
             // Act
-            var res = controller.GetCategorieCaracteristique(1).Result;
+            var res = controller_mock.GetCategorieCaracteristique(1).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);

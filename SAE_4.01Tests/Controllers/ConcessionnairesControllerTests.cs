@@ -22,6 +22,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<Concessionnaire> dataRepository;
         private Concessionnaire concessionnaire;
+        private Mock<IDataRepository<Concessionnaire>> mockRepository;
+        private ConcessionnairesController controller_mock;
 
         [TestInitialize]
         public void InitTest()
@@ -30,6 +32,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new ConcessionnaireManager(context);
             controller = new ConcessionnairesController(dataRepository);
+            mockRepository = new Mock<IDataRepository<Concessionnaire>>();
+            controller_mock = new ConcessionnairesController(mockRepository.Object);
 
             concessionnaire = new Concessionnaire
             {
@@ -134,17 +138,14 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetConcessionnairesTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Concessionnaire>>();
             var concessionnaires = new List<Concessionnaire>
                 {
                     concessionnaire
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(concessionnaires);
 
-            var controller = new ConcessionnairesController(mockRepository.Object);
-
             // Act
-            var res = controller.GetConcessionnaires().Result;
+            var res = controller_mock.GetConcessionnaires().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -155,12 +156,9 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetConcessionnaireTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Concessionnaire>>();
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(concessionnaire);
-
-            var controller = new ConcessionnairesController(mockRepository.Object);
             // Act
-            var res = controller.GetConcessionnaire(1).Result;
+            var res = controller_mock.GetConcessionnaire(1).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);

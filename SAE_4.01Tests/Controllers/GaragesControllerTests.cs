@@ -20,6 +20,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<Garage> dataRepository;
         private Garage garage;
+        private Mock<IDataRepository<Garage>> mockRepository;
+        private GaragesController controller_mock;
 
         [TestInitialize]
         public void InitTest()
@@ -28,6 +30,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new GarageManager(context);
             controller = new GaragesController(dataRepository);
+            mockRepository = new Mock<IDataRepository<Garage>>();
+            controller_mock = new GaragesController(mockRepository.Object);
 
             garage = new Garage
             {
@@ -116,17 +120,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetGaragesTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Garage>>();
             var garages = new List<Garage>
                 {
                     garage
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(garages);
-
-            var controller = new GaragesController(mockRepository.Object);
-
             // Act
-            var res = controller.GetGarages().Result;
+            var res = controller_mock.GetGarages().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -137,17 +137,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetByIdClientTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Garage>>();
             var garages = new List<Garage>
                 {
                     garage
                 };
             mockRepository.Setup(x => x.GetByIdClientAsync(1)).ReturnsAsync(garages);
-
-            var controller = new GaragesController(mockRepository.Object);
-
             // Act
-            var res = controller.GetByIdClient(1).Result;
+            var res = controller_mock.GetByIdClient(1).Result;
             var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.Garage>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
             // Assert
             Assert.IsNotNull(res);
@@ -159,17 +155,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetByIdMotoConfigurableTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Garage>>();
             var garages = new List<Garage>
                 {
                     garage
                 };
             mockRepository.Setup(x => x.GetByIdMotoConfigurableAsync(1)).ReturnsAsync(garages);
-
-            var controller = new GaragesController(mockRepository.Object);
-
             // Act
-            var res = controller.GetByIdMotoConfigurable(1).Result;
+            var res = controller_mock.GetByIdMotoConfigurable(1).Result;
             var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.Garage>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
             // Assert
             Assert.IsNotNull(res);

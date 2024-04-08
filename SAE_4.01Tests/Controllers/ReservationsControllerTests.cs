@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -20,6 +21,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<Reservation> dataRepository;
         private Reservation reservation;
+        private Mock<IDataRepository<Reservation>> mockRepository;
+        private ReservationsController controller_mock;
 
         private MotoDisponiblesController controllerMoto;
         private MotoDisponible motoDispo;
@@ -32,6 +35,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new ReservationManager(context);
             controller = new ReservationsController(dataRepository);
+            mockRepository = new Mock<IDataRepository<Reservation>>();
+            controller_mock = new ReservationsController(mockRepository.Object);
 
             motoDispo = new MotoDisponible
             {

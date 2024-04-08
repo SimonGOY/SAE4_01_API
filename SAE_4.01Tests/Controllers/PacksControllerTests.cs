@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using SAE_4._01.Controllers;
 using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
@@ -20,6 +21,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<Pack> dataRepository;
         private Pack pack;
+        private Mock<IDataRepository<Pack>> mockRepository;
+        private PacksController controller_mock;
 
         [TestInitialize]
         public void InitTest()
@@ -28,6 +31,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new PackManager(context);
             controller = new PacksController(dataRepository);
+            mockRepository = new Mock<IDataRepository<Pack>>();
+            controller_mock = new PacksController(mockRepository.Object);
 
             pack = new Pack
             {

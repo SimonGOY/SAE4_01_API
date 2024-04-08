@@ -21,6 +21,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<CategorieAccessoire> dataRepository;
         private CategorieAccessoire categorieAccessoire;
+        private Mock<IDataRepository<CategorieAccessoire>> mockRepository;
+        private CategorieAccessoiresController controller_mock;
 
         [TestInitialize()]
         public void InitTest()
@@ -29,6 +31,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new CategorieAccessoireManager(context);
             controller = new CategorieAccessoiresController(dataRepository);
+            mockRepository = new Mock<IDataRepository<CategorieAccessoire>>();
+            controller_mock = new CategorieAccessoiresController(mockRepository.Object);
 
             categorieAccessoire = new CategorieAccessoire
             {
@@ -97,17 +101,14 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetCategorieAccessoiresTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<CategorieAccessoire>>();
             var categoriesAccessoire = new List<CategorieAccessoire>
                 {
                     categorieAccessoire
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(categoriesAccessoire);
 
-            var controller = new CategorieAccessoiresController(mockRepository.Object);
-
             // Act
-            var res = controller.GetCategorieAccessoires().Result;
+            var res = controller_mock.GetCategorieAccessoires().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -118,12 +119,9 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetCategorieAccessoireTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<CategorieAccessoire>>();
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(categorieAccessoire);
-
-            var controller = new CategorieAccessoiresController(mockRepository.Object);
             // Act
-            var res = controller.GetCategorieAccessoire(1).Result;
+            var res = controller_mock.GetCategorieAccessoire(1).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);

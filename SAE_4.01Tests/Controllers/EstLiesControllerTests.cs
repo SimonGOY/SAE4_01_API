@@ -20,6 +20,9 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<EstLie> dataRepository;
         private EstLie estLie;
+        private Mock<IDataRepository<EstLie>> mockRepository;
+        private EstLiesController controller_mock;
+
 
         [TestInitialize]
         public void InitTest()
@@ -28,6 +31,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new EstLieManager(context);
             controller = new EstLiesController(dataRepository);
+            mockRepository = new Mock<IDataRepository<EstLie>>();
+            controller_mock = new EstLiesController(mockRepository.Object);
 
             estLie = new EstLie
             {
@@ -116,17 +121,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetSontLiesTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<EstLie>>();
             var sontLies = new List<EstLie>
                 {
                     estLie
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(sontLies);
-
-            var controller = new EstLiesController(mockRepository.Object);
-
             // Act
-            var res = controller.GetSontLies().Result;
+            var res = controller_mock.GetSontLies().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -137,17 +138,14 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetByEquIdEquipementTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<EstLie>>();
             var liste = new List<EstLie>
                 {
                     estLie
                 };
             mockRepository.Setup(x => x.GetByEquIdEquipementAsync(1)).ReturnsAsync(liste);
 
-            var controller = new EstLiesController(mockRepository.Object);
-
             // Act
-            var res = controller.GetByEquIdEquipement(1).Result;
+            var res = controller_mock.GetByEquIdEquipement(1).Result;
             var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.EstLie>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
             // Assert
             Assert.IsNotNull(res);
@@ -159,17 +157,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetByIdEquipementTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<EstLie>>();
             var liste = new List<EstLie>
                 {
                     estLie
                 };
             mockRepository.Setup(x => x.GetByIdEquipementAsync(1)).ReturnsAsync(liste);
-
-            var controller = new EstLiesController(mockRepository.Object);
-
             // Act
-            var res = controller.GetByIdEquipement(1).Result;
+            var res = controller_mock.GetByIdEquipement(1).Result;
             var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.EstLie>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
             // Assert
             Assert.IsNotNull(res);
