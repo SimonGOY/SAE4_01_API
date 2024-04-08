@@ -74,15 +74,28 @@ namespace SAE_4._01.Controllers
         [HttpPost]
         public async Task<ActionResult<Telephone>> PostTelephone([FromBody] PhonePostRequest phoneRequest)
         {
+            int nextId;
+
+            if (phoneRequest.Id == null)
+            {
+                nextId = GetMaxId().Result.Value + 1;
+            }
+            else
+                nextId = (int)phoneRequest.Id;
+
             Telephone telephone = new Telephone
             {
-                Id = GetMaxId().Result.Value + 1,
+                
+                Id = nextId,
                 IdClient = phoneRequest.ClientID,
                 NumTelephone = phoneRequest.PhoneNumber,
                 Type = "Mobile",
                 Fonction = "Privé",
                 ClientTelephone = null
             };
+
+
+            
 
             await dataRepository.AddAsync(telephone);
 
@@ -146,6 +159,8 @@ namespace SAE_4._01.Controllers
 
     public class PhonePostRequest
     {
+        public int? Id { get; set; }
+
         public int ClientID { get; set; }
 
         public string PhoneNumber { get; set; } = null!;
