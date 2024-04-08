@@ -36,6 +36,7 @@ namespace SAE_4._01.Controllers.Tests
 
             telephone = new PhonePostRequest
             {
+                Id = 666666666,
                 ClientID = 1,
                 PhoneNumber = "0666666666"
             };
@@ -100,9 +101,9 @@ namespace SAE_4._01.Controllers.Tests
         {
             // Act
             var result = controller.PostTelephone(telephone).Result;
-            var resCast = result.Value.Id;
+            var resCast = result.Result;
             // Assert
-            var telRecup = controller.GetTelephone(1).Result;
+            var telRecup = controller.GetTelephone(0).Result;
             //telephone.Id = telRecup.Value.Id;
             Assert.AreEqual(telephone, telRecup.Value, "telephone pas identiques");
         }
