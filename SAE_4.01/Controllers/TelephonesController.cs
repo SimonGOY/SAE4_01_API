@@ -165,7 +165,7 @@ namespace SAE_4._01.Controllers
             {
                 if (telephone.Id > max)
                 {
-                    max = telephone.Id;
+                    max = (int)telephone.Id;
                 }
             }
 
