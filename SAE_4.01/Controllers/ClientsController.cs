@@ -51,7 +51,7 @@ namespace SAE_4._01.Controllers
 
         // POST: api/Clients
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        /*[HttpPost]
         public async Task<ActionResult<Client>> PostClient([FromBody] ClientPostRequest clientRequest)
         {
             Client client = new Client
@@ -68,11 +68,11 @@ namespace SAE_4._01.Controllers
             await dataRepository.AddAsync(client);
 
             return CreatedAtAction("GetClient", new { id = client.IdClient }, client);
-        }
+        }*/
 
         // POST: api/Clients
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPost]
+        [HttpPost]
         public async Task<ActionResult<Client>> PostClient(Client client)
         {
 
@@ -85,7 +85,7 @@ namespace SAE_4._01.Controllers
             return CreatedAtAction("GetClient", new { id = client.IdClient }, client);
 
 
-        }*/
+        }
 
         // PUT: api/Clients/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

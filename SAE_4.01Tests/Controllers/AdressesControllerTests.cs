@@ -36,9 +36,101 @@ namespace SAE_4._01.Controllers.Tests
             adresse = new Adresse
             {
                 NumAdresse = 666666666,
-                NomPays = "Testanie",
+                NomPays = "France",
                 AdresseAdresse = "42 rue du Test",
             };
+        }
+
+        [TestMethod()]
+        public void GetAdressesTest_RecuperationsOK()
+        {
+            //Arrange
+            List<Adresse> lesAdrs = context.Adresses.ToList();
+            // Act
+            var res = controller.GetAdresses().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            CollectionAssert.AreEqual(lesAdrs, res.Value.ToList(), "Les listes d'adresses ne sont pas identiques");
+        }
+
+        [TestMethod()]
+        public void GetAdresseTest_RecuperationOK()
+        {
+            // Arrange
+            Adresse? acc = context.Adresses.Find(1);
+            // Act
+            var res = controller.GetAdresse(1).Result;
+            // Assert
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(acc, res.Value, "L'adresse n'est pas la même");
+        }
+
+        [TestMethod()]
+        public void GetAdresseTest_RecuperationFailed()
+        {
+            // Arrange
+            Adresse? acc = context.Adresses.Find(1);
+            // Act
+            var res = controller.GetAdresse(2).Result;
+            // Assert
+            Assert.IsNotNull(res.Value);
+            Assert.AreNotEqual(acc, res.Value, "L'adresse est la même");
+        }
+
+        [TestMethod()]
+        public void GetAdresseTest_ClientNExistePas()
+        {
+            var res = controller.GetAdresse(777777777).Result;
+            // Assert
+            Assert.IsNull(res.Result, "L'adresse existe");
+            Assert.IsNull(res.Value, "L'adresse existe");
+        }
+
+        [TestMethod()]
+        public void PostPutDeleteTest()
+        {
+            PostAdresseTest_CreationOK();
+            PutAdresseTest_ModificationOK();
+            DeleteAdresseTest_SuppressionOK();
+        }
+
+        
+        public void PostAdresseTest_CreationOK()
+        {
+
+            //Act
+            var result = controller.PostAdresse(adresse).Result;
+            // Assert
+            var adrRecup = controller.GetAdresse(adresse.NumAdresse).Result;
+            adresse.NumAdresse = adrRecup.Value.NumAdresse;
+            Assert.AreEqual(adresse, adrRecup.Value, "Accessoires pas identiques");
+        }
+
+        public void PutAdresseTest_ModificationOK()
+        {
+            // Arrange
+            var adrIni = controller.GetAdresse(adresse.NumAdresse).Result;
+            adrIni.Value.AdresseAdresse = "Adresse";
+
+            // Act
+            var res = controller.PutAdresse(adresse.NumAdresse, adrIni.Value).Result;
+
+            // Assert
+            var adrMaj = controller.GetAdresse(adresse.NumAdresse).Result;
+            Assert.IsNotNull(adrMaj.Value);
+            Assert.AreEqual(adrIni.Value, adrMaj.Value, "Accessoire pas identiques");
+        }
+
+        public void DeleteAdresseTest_SuppressionOK()
+        {
+
+            // Act
+            var adrSuppr = controller.GetAdresse(adresse.NumAdresse).Result;
+            _ = controller.DeleteAdresse(adrSuppr.Value.NumAdresse).Result;
+
+            // Assert
+            var res = controller.GetAdresse(adresse.NumAdresse).Result;
+            Assert.IsNull(res.Value, "adresse non supprimé");
         }
 
         // ---------------------------------------- Tests Moq ----------------------------------------
