@@ -25,10 +25,13 @@ namespace SAE_4._01.Controllers
 
         private readonly IDataRepository<Client> dataRepositoryClient;
 
-        public UsersController(IDataRepository<User> dataRepo, IDataRepository<Client> dataRepoClient)
+        private readonly IDataRepository<Telephone> dataRepositoryTelephone;
+
+        public UsersController(IDataRepository<User> dataRepo, IDataRepository<Client> dataRepoClient, IDataRepository<Telephone> dataRepoTelephone)
         {
             dataRepository = dataRepo;
             dataRepositoryClient = dataRepoClient;
+            dataRepositoryTelephone = dataRepoTelephone;
         }
 
         // GET: api/Users
@@ -86,14 +89,21 @@ namespace SAE_4._01.Controllers
             //créer un client pour l'utiliser dans le user qui est créé après
             var clientResponse = await new ClientsController(dataRepositoryClient).PostClient(new ClientPostRequest
             {
-                Civilite = userRequest.Civilite,
+                Civilite = userRequest.Gender,
                 NomClient = userRequest.LastName,
                 PrenomClient = userRequest.FirstName,
                 EmailClient = userRequest.Email,
-                DateNaissanceClient = userRequest.DateNaissanceClient
+                DateNaissanceClient = userRequest.BirthdayDateClient
             });
 
             var client = ((CreatedAtActionResult)clientResponse.Result).Value as Client;
+
+            //créer un tel pour le client
+            var clientResponseTel = await new TelephonesController(dataRepositoryTelephone).PostTelephone(new PhonePostRequest
+            {
+                ClientID = client.IdClient,
+                PhoneNumber = userRequest.PhoneNumber
+            });
 
             User user = new User
             {
@@ -103,7 +113,7 @@ namespace SAE_4._01.Controllers
                 Password = userRequest.Password,
                 CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now,
-                Civilite = userRequest.Civilite,
+                Civilite = userRequest.Gender,
                 LastName = userRequest.LastName,
                 IdClient = client.IdClient,
                 IsComplete = true,
@@ -114,6 +124,8 @@ namespace SAE_4._01.Controllers
             };
 
             await dataRepository.AddAsync(user);
+
+
 
             user.ClientUsers = null; // pour pouvoir renvoyer un json plus petit sinon on reçoit une erreur au lieu du user convertit en json
 
@@ -187,9 +199,11 @@ namespace SAE_4._01.Controllers
 
         public string Password { get; set; } = null!;
 
-        public string Civilite { get; set; } = null!;
+        public string Gender { get; set; } = null!;
 
-        public DateTime DateNaissanceClient { get; set; }
+        public DateTime BirthdayDateClient { get; set; }
+
+        public string PhoneNumber { get; set; } = null!;
 
         //public DateTime CreatedAt { get; set; }
 
