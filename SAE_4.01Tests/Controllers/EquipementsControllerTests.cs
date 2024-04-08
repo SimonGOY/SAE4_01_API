@@ -173,12 +173,38 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetEquipementTest_RecuperationNonOK()
+        public void Moq_GetEquipementTest_RecuperationFailed()
         {
             // Act
             var res = controller_mock.GetEquipement(0).Result;
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostDemandeEssaiTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostEquipement(equipement).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Equipement>), "Pas un ActionResult<Equipement>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Equipement), "Pas une Equipement");
+            equipement.IdEquipement = ((Equipement)result.Value).IdEquipement;
+            Assert.AreEqual(equipement, (Equipement)result.Value, "Equipement pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteContenuCommandeTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(equipement);
+
+            // Act
+            var actionResult = controller_mock.DeleteEquipement(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }

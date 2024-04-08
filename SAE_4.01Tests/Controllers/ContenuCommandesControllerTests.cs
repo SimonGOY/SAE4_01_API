@@ -187,7 +187,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_PostPostContactInfoTest()
+        public void Moq_PostContenuCommandeTest()
         {
             // Act
             var actionResult = controller_mock.PostContenuCommande(contenuCommande).Result;
@@ -201,7 +201,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod]
-        public void Moq_DeleteContactInfoTest()
+        public void Moq_DeleteContenuCommandeTest()
         {
             // Arrange
             mockRepository.Setup(x => x.GetBy4CompositeKeysAsync(1,1,1,1).Result).Returns(contenuCommande);

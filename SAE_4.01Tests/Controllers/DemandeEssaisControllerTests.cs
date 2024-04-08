@@ -162,12 +162,38 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetDemandeEssaiTest_RecuperationNonOK()
+        public void Moq_GetDemandeEssaiTest_RecuperationFailed()
         {
             // Act
             var res = controller_mock.GetDemandeEssai(0).Result;
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostDemandeEssaiTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostDemandeEssai(demande).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<DemandeEssai>), "Pas un ActionResult<DemandeEssai>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(DemandeEssai), "Pas une DemandeEssai");
+            demande.IdDemandeEssai = ((DemandeEssai)result.Value).IdDemandeEssai;
+            Assert.AreEqual(demande, (DemandeEssai)result.Value, "DemandeEssai pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteContenuCommandeTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(demande);
+
+            // Act
+            var actionResult = controller_mock.DeleteDemandeEssai(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }

@@ -9,6 +9,7 @@ using SAE_4._01.Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.Pkcs;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -74,7 +75,7 @@ namespace SAE_4._01.Controllers.Tests
         public void GetCouleurTest_RecuperationFailed()
         {
             // Arrange
-            ContactInfo? cou = context.ContactInfos.Find(1);
+            Couleur? cou = context.Couleurs.Find(1);
             // Act
             var res = controller.GetCouleur(2).Result;
             // Assert
@@ -166,7 +167,7 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
-            Assert.AreEqual(couleur, res.Value as Couleur, "Le contactInfo n'est pas le même");
+            Assert.AreEqual(couleur, res.Value as Couleur, "Le couleur n'est pas le même");
         }
 
         [TestMethod()]
@@ -176,6 +177,32 @@ namespace SAE_4._01.Controllers.Tests
             var res = controller_mock.GetCouleur(0).Result;
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostCouleurTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostCouleur(couleur).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Couleur>), "Pas un ActionResult<Couleur>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Couleur), "Pas une Couleur");
+            couleur.IdCouleur = ((Couleur)result.Value).IdCouleur;
+            Assert.AreEqual(couleur, (Couleur)result.Value, "Couleur pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteCouleurTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(couleur);
+
+            // Act
+            var actionResult = controller_mock.DeleteCouleur(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }
