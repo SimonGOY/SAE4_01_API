@@ -91,7 +91,15 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void __PostContenuCommandeTest_CreationOK()
+        public void PostPutDeleteTest()
+        {
+            PostContenuCommandeTest_CreationOK();
+            PutContenuCommandeTest_ModificationOK();
+            DeleteContenuCommandeTest_SuppressionOK();
+        }
+
+        [TestMethod()]
+        public void PostContenuCommandeTest_CreationOK()
         {
             // Act
             var result = controller.PostContenuCommande(contenuCommande).Result;
@@ -105,7 +113,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void ___PutContenuCommandeTest_ModificationOK()
+        public void PutContenuCommandeTest_ModificationOK()
         {
             // Arrange
             var conIni = controller.GetByIds(contenuCommande.IdCommande, contenuCommande.IdEquipement, contenuCommande.IdTaille, contenuCommande.IdColoris).Result;

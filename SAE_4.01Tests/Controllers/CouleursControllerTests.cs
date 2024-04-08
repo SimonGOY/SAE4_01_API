@@ -92,7 +92,15 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void __PostCouleurTest_CreationOK()
+        public void PostPutDeleteTest()
+        {
+            PostCouleurTest_CreationOK();
+            PutCouleurTest_ModificationOK();
+            DeleteCouleurTest_SuppressionOK();
+        }
+
+        [TestMethod()]
+        public void PostCouleurTest_CreationOK()
         {
             // Act
             var result = controller.PostCouleur(couleur).Result;
@@ -104,7 +112,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void _PutCouleurTest_ModificationOK()
+        public void PutCouleurTest_ModificationOK()
         {
             // Arrange
             var couIni = controller.GetCouleur(couleur.IdCouleur).Result;
@@ -120,7 +128,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void ZDeleteCouleurTest()
+        public void DeleteCouleurTest_SuppressionOK()
         {
             // Act
             var couSuppr = controller.GetCouleur(couleur.IdCouleur).Result;
