@@ -98,7 +98,6 @@ namespace SAE_4._01.Controllers.Tests
             DeleteContenuCommandeTest_SuppressionOK();
         }
 
-        [TestMethod()]
         public void PostContenuCommandeTest_CreationOK()
         {
             // Act
@@ -112,7 +111,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(contenuCommande, conRecup.Value, "Contenucommandes pas identiques");
         }
 
-        [TestMethod()]
         public void PutContenuCommandeTest_ModificationOK()
         {
             // Arrange
@@ -128,7 +126,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(conIni.Value, conMaj.Value, "Contenucommandes pas identiques");
         }
 
-        [TestMethod()]
         public void DeleteContenuCommandeTest_SuppressionOK()
         {
             // Act
