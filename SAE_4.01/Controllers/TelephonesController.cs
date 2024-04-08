@@ -72,7 +72,7 @@ namespace SAE_4._01.Controllers
         // POST: api/Clients
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Telephone>> PostTelephone([FromBody] PhonePostRequest phoneRequest)
+        public async Task<ActionResult<Telephone>> PostTelephone([FromBody] Telephone phoneRequest)
         {
             int nextId;
             string type;
