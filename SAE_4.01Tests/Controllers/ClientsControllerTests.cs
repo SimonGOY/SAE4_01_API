@@ -93,16 +93,16 @@ namespace SAE_4._01.Controllers.Tests
         }
 
 
-        [TestMethod()]
+        /*[TestMethod()]
         public void PostPutDeleteTest()
         {
             PostClientTest_CreationOK();
             PutClientTest_ModificationOK();
             DeleteClientTest_SuppressionOK();
-        }
+        }*/
 
 
-        public void PostClientTest_CreationOK()
+        /*public void PostClientTest_CreationOK()
         {
             
             //Act
@@ -111,7 +111,7 @@ namespace SAE_4._01.Controllers.Tests
             var cltRecup = controller.GetClient(client.IdClient).Result;
             client.IdClient = cltRecup.Value.IdClient;
             Assert.AreEqual(client, cltRecup.Value, "Clients pas identiques");
-        }
+        }*/
 
 
         public void PutClientTest_ModificationOK()

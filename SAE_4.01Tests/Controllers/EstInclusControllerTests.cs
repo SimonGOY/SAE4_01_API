@@ -172,10 +172,12 @@ namespace SAE_4._01.Controllers.Tests
             mockRepository.Setup(x => x.GetByIdStyleAsync(1)).ReturnsAsync(liste);
             // Act
             var res = controller_mock.GetByIdStyle(1).Result;
+            var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.EstInclus>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
+
             // Assert
             Assert.IsNotNull(res);
-            Assert.IsNotNull(res.Value);
-            Assert.AreEqual(liste, res.Value as IEnumerable<EstInclus>, "La liste n'est pas le même");
+            Assert.IsNotNull(res_cast);
+            Assert.AreEqual(liste, res_cast as IEnumerable<EstInclus>, "La liste n'est pas le même");
         }
 
         [TestMethod()]

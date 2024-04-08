@@ -31,9 +31,9 @@ namespace SAE_4._01.Controllers.Tests
             var builder = new DbContextOptionsBuilder<BMWDBContext>().UseNpgsql("Server=51.83.36.122; port=5432; Database=sa11; uid=sa11; password=BMW-S4; SearchPath=bmw;");
             context = new BMWDBContext(builder.Options);
             dataRepository = new UserManager(context);
-            controller = new UsersController(dataRepository, null);
+            controller = new UsersController(dataRepository, null, null);
             mockRepository = new Mock<IDataRepository<User>>();
-            controller_mock = new UsersController(mockRepository.Object, null);
+            controller_mock = new UsersController(mockRepository.Object, null, null);
 
             user = new User
             {

@@ -19,7 +19,7 @@ namespace SAE_4._01.Controllers.Tests
         private TelephonesController controller;
         private BMWDBContext context;
         private IDataRepository<Telephone> dataRepository;
-        private Telephone telephone;
+        private PhonePostRequest telephone;
         private Mock<IDataRepository<Telephone>> mockRepository;
         private TelephonesController controller_mock;
 
@@ -34,13 +34,10 @@ namespace SAE_4._01.Controllers.Tests
             mockRepository = new Mock<IDataRepository<Telephone>>();
             controller_mock = new TelephonesController(mockRepository.Object);
 
-            telephone = new Telephone
+            telephone = new PhonePostRequest
             {
-                Id = 666666666,
-                IdClient = 1,
-                NumTelephone = "0666666666",
-                Type = "Mobile",
-                Fonction = "Professionnel"
+                ClientID = 1,
+                PhoneNumber = "0666666666"
             };
 
         }
@@ -103,22 +100,22 @@ namespace SAE_4._01.Controllers.Tests
             // Act
             var result = controller.PostTelephone(telephone).Result;
             // Assert
-            var telRecup = controller.GetTelephone(telephone.Id).Result;
-            telephone.Id = telRecup.Value.Id;
+            var telRecup = controller.GetTelephone(telephone.ClientID).Result;
+            telephone.ClientID = telRecup.Value.Id;
             Assert.AreEqual(telephone, telRecup.Value, "telephone pas identiques");
         }
 
         public void PutTelephoneTest_ModificationOK()
         {
             // Arrange
-            var telIni = controller.GetTelephone(telephone.Id).Result;
+            var telIni = controller.GetTelephone(telephone.ClientID).Result;
             telIni.Value.Type = "Fixe";
 
             // Act
-            var res = controller.PutTelephone(telephone.Id, telIni.Value).Result;
+            var res = controller.PutTelephone(telephone.ClientID, telIni.Value).Result;
 
             // Assert
-            var telMaj = controller.GetTelephone(telephone.Id).Result;
+            var telMaj = controller.GetTelephone(telephone.ClientID).Result;
             Assert.IsNotNull(telMaj.Value);
             Assert.AreEqual(telIni.Value, telMaj.Value, "telephone pas identiques");
         }
@@ -126,11 +123,11 @@ namespace SAE_4._01.Controllers.Tests
         public void DeleteTelephoneTest_SuppressionOK()
         {
             // Act
-            var telSuppr = controller.GetTelephone(telephone.Id).Result;
-            _ = controller.DeleteTelephone(telephone.Id).Result;
+            var telSuppr = controller.GetTelephone(telephone.ClientID).Result;
+            _ = controller.DeleteTelephone(telephone.ClientID).Result;
 
             // Assert
-            var res = controller.GetTelephone(telephone.Id).Result;
+            var res = controller.GetTelephone(telephone.ClientID).Result;
             Assert.IsNull(res.Value, "telephone non supprimé");
         }
     }
