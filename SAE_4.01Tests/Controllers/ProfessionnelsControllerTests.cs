@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SAE_4._01.Controllers;
@@ -63,14 +64,14 @@ namespace SAE_4._01.Controllers.Tests
             var res = controller.GetProfessionnel(17).Result;
             // Assert
             Assert.IsNotNull(res.Value);
-            Assert.AreEqual(pro, res.Value, "Le prive n'est pas le même");
+            Assert.AreEqual(pro, res.Value, "Le professionnel n'est pas le même");
         }
 
         [TestMethod()]
         public void GetParametreTest_RecuperationFailed()
         {
             // Arrange
-            Prive? pri = context.Prives.Find(17);
+            Professionnel? pri = context.Professionnels.Find(17);
             // Act
             var res = controller.GetProfessionnel(18).Result;
             // Assert
@@ -129,6 +130,78 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetProfessionnel(professionnel.IdPro).Result;
             Assert.IsNull(res.Value, "professionnel non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetProfessionnelsTest_RecuperationOK()
+        {
+            // Arrange
+            var professionnels = new List<Professionnel>
+                {
+                    professionnel
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(professionnels);
+            // Act
+            var res = controller_mock.GetProfessionnels().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(professionnels, res.Value as IEnumerable<Professionnel>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetProfessionnelTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(professionnel);
+
+            // Act
+            var res = controller_mock.GetProfessionnel(1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+
+            Assert.AreEqual(professionnel, res.Value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetProfessionnelTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetProfessionnel(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+
+        [TestMethod()]
+        public void Moq_PostProfessionnelTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostProfessionnel(professionnel).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Professionnel>), "Pas un ActionResult<Professionnel>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Professionnel), "Pas une Professionnel");
+            professionnel.IdPro = ((Professionnel)result.Value).IdPro;
+            Assert.AreEqual(professionnel, (Professionnel)result.Value, "Professionnel pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteProfessionnelTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(professionnel);
+
+            // Act
+            var actionResult = controller_mock.DeleteProfessionnel(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
         }
     }
 }

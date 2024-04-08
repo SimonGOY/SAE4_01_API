@@ -57,6 +57,17 @@ namespace SAE_4._01.Controllers
             return users;
         }
 
+        // GET: api/Users/email/xx@gmail.com
+        [HttpGet]
+        [Route("email/{email}")]
+        public async Task<ActionResult<bool>> GetIfUserExistsByEmail(string email)
+        {
+            var usersActionResult = await dataRepository.GetAllAsync();
+            var users = usersActionResult.Value;
+
+            return users.Any(e => e.Email == email);
+        }
+
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

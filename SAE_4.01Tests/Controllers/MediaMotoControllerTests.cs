@@ -66,7 +66,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(med, res.Value, "Le mediaMot n'est pas le même");
         }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void GetByIdMotoTest_RecuperationOK()
         {
             //Arrange
@@ -76,7 +76,7 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsNotNull(res);
             CollectionAssert.AreEqual(lesMeds, res.Value.ToList(), "Les listes de mediaMot ne sont pas identiques");
-        }*/
+        }
 
         [TestMethod()]
         public void GetReferenceTest_RecuperationOK()

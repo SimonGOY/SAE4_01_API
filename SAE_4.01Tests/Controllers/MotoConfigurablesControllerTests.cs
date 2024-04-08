@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SAE_4._01.Controllers;
@@ -68,7 +69,7 @@ namespace SAE_4._01.Controllers.Tests
         public void GetMotoConfigurableTest_RecuperationFailed()
         {
             // Arrange
-            MediaMoto? med = context.MediasMoto.Find(1);
+            MotoConfigurable? med = context.MotoConfigurables.Find(1);
             // Act
             var res = controller.GetMotoConfigurable(2).Result;
             // Assert
@@ -111,6 +112,80 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetMotoConfigurable(motoConf.IdMotoConfigurable).Result;
             Assert.IsNull(res.Value, "moto non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetMotoConfigurablesTest_RecuperationOK()
+        {
+            // Arrange
+            var motos = new List<MotoConfigurable>
+                {
+                    motoConf
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(motos);
+            // Act
+            var res = controller_mock.GetMotoConfigurables().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(motos, res.Value as IEnumerable<MotoConfigurable>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetMotoConfigurableTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(motoConf);
+
+            // Act
+            var result = controller_mock.GetMotoConfigurable(1).Result;
+            var objectResult = result.Result as ObjectResult;
+            var value = objectResult.Value.GetType().GetProperty("Value").GetValue(objectResult.Value, null) as MotoConfigurable;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(objectResult);
+            Assert.IsNotNull(value);
+
+            Assert.AreEqual(motoConf, value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetMotoConfigurableTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetMotoConfigurable(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostMediaTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostMotoConfigurable(motoConf).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<MotoConfigurable>), "Pas un ActionResult<MotoConfigurable>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(MotoConfigurable), "Pas une MotoConfigurable");
+            motoConf.IdMotoConfigurable = ((MotoConfigurable)result.Value).IdMotoConfigurable;
+            Assert.AreEqual(motoConf, (MotoConfigurable)result.Value, "MotoConfigurable pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteMediaTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(motoConf);
+
+            // Act
+            var actionResult = controller_mock.DeleteMotoConfigurable(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }

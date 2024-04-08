@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SAE_4._01.Controllers;
@@ -73,7 +74,7 @@ namespace SAE_4._01.Controllers.Tests
             var res = controller.GetPrive(41).Result;
             // Assert
             Assert.IsNotNull(res.Value);
-            Assert.AreNotEqual(pri, res.Value, "La presentation est la même");
+            Assert.AreNotEqual(pri, res.Value, "La prive est la même");
         }
 
         [TestMethod()]
@@ -99,7 +100,7 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var priRecup = controller.GetPrive(prive.IdPrive).Result;
             prive.IdPrive = priRecup.Value.IdPrive;
-            Assert.AreEqual(prive, priRecup.Value, "presentation pas identiques");
+            Assert.AreEqual(prive, priRecup.Value, "prive pas identiques");
         }
 
         public void DeletePriveTest_SuppressionOK()
@@ -111,6 +112,78 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetPrive(prive.IdPrive).Result;
             Assert.IsNull(res.Value, "prive non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetPrivesTest_RecuperationOK()
+        {
+            // Arrange
+            var prives = new List<Prive>
+                {
+                    prive
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(prives);
+            // Act
+            var res = controller_mock.GetPrives().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(prives, res.Value as IEnumerable<Prive>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetPriveTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(prive);
+
+            // Act
+            var res = controller_mock.GetPrive(1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+
+            Assert.AreEqual(prive, res.Value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetPriveTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetPrive(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+
+        [TestMethod()]
+        public void Moq_PostPriveTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostPrive(prive).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Prive>), "Pas un ActionResult<Prive>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Prive), "Pas une Prive");
+            prive.IdPrive = ((Prive)result.Value).IdPrive;
+            Assert.AreEqual(prive, (Prive)result.Value, "Prive pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeletePriveTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(prive);
+
+            // Act
+            var actionResult = controller_mock.DeletePrive(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
         }
     }
 }
