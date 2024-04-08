@@ -21,6 +21,7 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<Client> dataRepository;
         private Client client;
+        private ClientPostRequest client_post;
         private Mock<IDataRepository<Client>> mockRepository;
         private ClientsController controller_mock;
 
@@ -38,6 +39,15 @@ namespace SAE_4._01.Controllers.Tests
             {
                 IdClient = 666666666,
                 NumAdresse = 1,
+                Civilite = "M.",
+                NomClient = "BASTARD",
+                PrenomClient = "Quentin",
+                DateNaissanceClient = new DateTime(2004, 2, 18),
+                EmailClient = "qbastard99@gmail.com"
+            };
+
+            client_post = new ClientPostRequest
+            {
                 Civilite = "M.",
                 NomClient = "BASTARD",
                 PrenomClient = "Quentin",
@@ -93,25 +103,25 @@ namespace SAE_4._01.Controllers.Tests
         }
 
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void PostPutDeleteTest()
         {
             PostClientTest_CreationOK();
             PutClientTest_ModificationOK();
             DeleteClientTest_SuppressionOK();
-        }*/
+        }
 
 
-        /*public void PostClientTest_CreationOK()
+        public void PostClientTest_CreationOK()
         {
             
             //Act
-            var result = controller.PostClient(client).Result;
+            var result = controller.PostClient(client_post).Result;
             // Assert
             var cltRecup = controller.GetClient(client.IdClient).Result;
             client.IdClient = cltRecup.Value.IdClient;
-            Assert.AreEqual(client, cltRecup.Value, "Clients pas identiques");
-        }*/
+            Assert.AreEqual(client_post, cltRecup.Value, "Clients pas identiques");
+        }
 
 
         public void PutClientTest_ModificationOK()
