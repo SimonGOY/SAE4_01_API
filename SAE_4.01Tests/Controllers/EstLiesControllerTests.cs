@@ -189,5 +189,32 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
         }
+
+        [TestMethod()]
+        public void Moq_PostDemandeEssaiTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostEstLie(estLie).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<EstLie>), "Pas un ActionResult<EstLie>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(EstLie), "Pas une EstLie");
+            estLie.EquipementEstLie1 = ((EstLie)result.Value).EquipementEstLie1;
+            estLie.EquipementEstLie2 = ((EstLie)result.Value).EquipementEstLie2;
+            Assert.AreEqual(estLie, (EstLie)result.Value, "EstLie pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteContenuCommandeTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetBy2CompositeKeysAsync(1, 1).Result).Returns(estLie);
+
+            // Act
+            var actionResult = controller_mock.DeleteEstLie(1, 1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
+        }
     }
 }

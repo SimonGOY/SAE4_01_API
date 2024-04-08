@@ -151,12 +151,38 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetEquipementTest_RecuperationNonOK()
+        public void Moq_GetEquipementTest_RecuperationFailed()
         {
             // Act
             var res = controller_mock.GetGammeMoto(0).Result;
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+        [TestMethod()]
+        public void Moq_PostGammeMotoTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostGammeMoto(gammeMoto).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<GammeMoto>), "Pas un ActionResult<GammeMoto>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(GammeMoto), "Pas une GammeMoto");
+            gammeMoto.IdGamme = ((GammeMoto)result.Value).IdGamme;
+            Assert.AreEqual(gammeMoto, (GammeMoto)result.Value, "GammeMoto pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteGammeMotoTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(gammeMoto);
+
+            // Act
+            var actionResult = controller_mock.DeleteGammeMoto(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
     }
 }

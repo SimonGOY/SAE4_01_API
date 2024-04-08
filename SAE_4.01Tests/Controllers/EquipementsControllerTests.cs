@@ -182,7 +182,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_PostDemandeEssaiTest()
+        public void Moq_PostEquipementTest()
         {
             // Act
             var actionResult = controller_mock.PostEquipement(equipement).Result;
@@ -196,7 +196,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod]
-        public void Moq_DeleteContenuCommandeTest()
+        public void Moq_DeleteEquipementTest()
         {
             // Arrange
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(equipement);

@@ -190,7 +190,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_PostDemandeEssaiTest()
+        public void Moq_PostEstInclusTest()
         {
             // Act
             var actionResult = controller_mock.PostEstInclus(estInclus).Result;
@@ -205,7 +205,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod]
-        public void Moq_DeleteContenuCommandeTest()
+        public void Moq_DeleteEstInclusest()
         {
             // Arrange
             mockRepository.Setup(x => x.GetBy2CompositeKeysAsync(1,1).Result).Returns(estInclus);
