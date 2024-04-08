@@ -20,6 +20,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<Coloris> dataRepository;
         private Coloris coloris;
+        private Mock<IDataRepository<Coloris>> mockRepository;
+        private ColorisController controller_mock;
 
         [TestInitialize]
         public void InitTest()
@@ -28,6 +30,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new ColorisManager(context);
             controller = new ColorisController(dataRepository);
+            mockRepository = new Mock<IDataRepository<Coloris>>();
+            controller_mock = new ColorisController(mockRepository.Object);
 
             coloris = new Coloris
             {
@@ -115,17 +119,14 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetCollectionsTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Coloris>>();
             var lescoloris = new List<Coloris>
                 {
                     coloris
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(lescoloris);
 
-            var controller = new ColorisController(mockRepository.Object);
-
             // Act
-            var res = controller.GetLesColoris().Result;
+            var res = controller_mock.GetLesColoris().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -136,12 +137,9 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetColorisTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Coloris>>();
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(coloris);
-
-            var controller = new ColorisController(mockRepository.Object);
             // Act
-            var res = controller.GetColoris(1).Result;
+            var res = controller_mock.GetColoris(1).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);

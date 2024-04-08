@@ -21,6 +21,8 @@ namespace SAE_4._01.Controllers.Tests
         private BMWDBContext context;
         private IDataRepository<Collection> dataRepository;
         private Collection collection;
+        private Mock<IDataRepository<Collection>> mockRepository;
+        private CollectionsController controller_mock;
 
         [TestInitialize]
         public void InitTest()
@@ -29,6 +31,8 @@ namespace SAE_4._01.Controllers.Tests
             context = new BMWDBContext(builder.Options);
             dataRepository = new CollectionManager(context);
             controller = new CollectionsController(dataRepository);
+            mockRepository = new Mock<IDataRepository<Collection>>();
+            controller_mock = new CollectionsController(mockRepository.Object);
 
             collection = new Collection
             {
@@ -128,17 +132,14 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetCollectionsTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Collection>>();
             var collections = new List<Collection>
                 {
                     collection
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(collections);
 
-            var controller = new CollectionsController(mockRepository.Object);
-
             // Act
-            var res = controller.GetCollections().Result;
+            var res = controller_mock.GetCollections().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -149,12 +150,9 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetCollectionTest_RecuperationOK()
         {
             // Arrange
-            var mockRepository = new Mock<IDataRepository<Collection>>();
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(collection);
-
-            var controller = new CollectionsController(mockRepository.Object);
             // Act
-            var res = controller.GetCollection(1).Result;
+            var res = controller_mock.GetCollection(1).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);

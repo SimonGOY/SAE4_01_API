@@ -53,7 +53,7 @@ namespace SAE_4._01.Controllers.Tests
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(adresses);
             // Act
-            var res = controller.GetAdresses().Result;
+            var res = controller_mock.GetAdresses().Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
@@ -66,7 +66,7 @@ namespace SAE_4._01.Controllers.Tests
             // Arrange
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(adresse);
             // Act
-            var res = controller.GetAdresse(1).Result;
+            var res = controller_mock.GetAdresse(1).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
