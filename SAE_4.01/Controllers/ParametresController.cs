@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -48,6 +49,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/Parametres/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{nom}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> PutParametre(string nom, Parametre parametre)
         {
             if (nom != parametre.NomParametre)
@@ -71,6 +73,7 @@ namespace SAE_4._01.Controllers
         // POST: api/Parametres
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<Parametre>> PostParametre(Parametre parametre)
         {
             if (parametre == null)
@@ -84,6 +87,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Parametres/5
         [HttpDelete("{nom}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteParametre(string nom)
         {
             var parametre = await dataRepository.GetByNomAsync(nom);

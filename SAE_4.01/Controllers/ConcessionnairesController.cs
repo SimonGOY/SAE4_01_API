@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -48,6 +49,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/Concessionnaires/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> PutConcessionnaire(int id, Concessionnaire concessionnaire)
         {
             if (id != concessionnaire.IdConcessionnaire)
@@ -71,6 +73,7 @@ namespace SAE_4._01.Controllers
         // POST: api/Concessionnaires
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<Concessionnaire>> PostConcessionnaire(Concessionnaire concessionnaire)
         {
             if (concessionnaire == null)
@@ -84,6 +87,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Concessionnaires/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteConcessionnaire(int id)
         {
             var concessionnaire = await dataRepository.GetByIdAsync(id);

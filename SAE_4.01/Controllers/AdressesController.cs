@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SAE_4._01.Controllers
 {
@@ -27,6 +28,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/Adresses
         [HttpGet]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<IEnumerable<Adresse>>> GetAdresses()
         {
             return await dataRepository.GetAllAsync();
@@ -34,6 +36,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/Adresses/5
         [HttpGet("{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<Adresse>> GetAdresse(int id)
         {
 
@@ -50,6 +53,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/Adresses/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<IActionResult> PutAdresse(int id, Adresse adresse)
         {
             if (id != adresse.NumAdresse)
@@ -73,6 +77,7 @@ namespace SAE_4._01.Controllers
         // POST: api/Adresses
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<Adresse>> PostAdresse(AdressePostRequest adressePostRequest)
         {
             if (adressePostRequest.NumAdresse == null)
@@ -100,6 +105,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Adresses/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<IActionResult> DeleteAdresse(int id)
         {
             var adresse = await dataRepository.GetByIdAsync(id);

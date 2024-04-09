@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Options;
@@ -63,6 +64,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/Packs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> PutPack(int id, Pack pack)
         {
             if (id != pack.IdPack)
@@ -86,6 +88,7 @@ namespace SAE_4._01.Controllers
         // POST: api/Packs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<Pack>> PostPack(Pack pack)
         {
             if (pack == null)
@@ -99,6 +102,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Packs/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeletePack(int id)
         {
             var pack = await dataRepository.GetByIdAsync(id);

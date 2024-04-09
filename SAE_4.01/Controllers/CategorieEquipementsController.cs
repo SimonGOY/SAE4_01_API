@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -45,32 +46,11 @@ namespace SAE_4._01.Controllers
             return categorieEquipement;
         }
 
-        // PUT: api/CategorieEquipements/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategorieEquipement(int id, CategorieEquipement categorieEquipement)
-        {
-            if (id != categorieEquipement.IdCatEquipement)
-            {
-                return BadRequest();
-            }
-
-            var cteToUpdate = await dataRepository.GetByIdAsync(id);
-
-            if (cteToUpdate == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                await dataRepository.UpdateAsync(cteToUpdate.Value, categorieEquipement);
-                return NoContent();
-            }
-        }
 
         // POST: api/CategorieEquipements
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<CategorieEquipement>> PostCategorieEquipement(CategorieEquipement categorieEquipement)
         {
             if (categorieEquipement == null)
@@ -84,6 +64,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/CategorieEquipements/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteCategorieEquipement(int id)
         {
             var categorieEquipement = await dataRepository.GetByIdAsync(id);

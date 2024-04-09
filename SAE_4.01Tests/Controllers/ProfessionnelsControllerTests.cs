@@ -89,7 +89,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void PostDelete()
+        public void PostPutDelete()
         {
             PostProfessionnelTest_CreationOK();
             PutProfessionnelTest_ModificationOK();

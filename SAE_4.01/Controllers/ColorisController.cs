@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -45,32 +46,10 @@ namespace SAE_4._01.Controllers
             return coloris;
         }
 
-        // PUT: api/Coloris/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutColoris(int id, Coloris coloris)
-        {
-            if (id != coloris.IdColoris)
-            {
-                return BadRequest();
-            }
-
-            var clsToUpdate = await dataRepository.GetByIdAsync(id);
-
-            if (clsToUpdate == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                await dataRepository.UpdateAsync(clsToUpdate.Value, coloris);
-                return NoContent();
-            }
-        }
-
         // POST: api/Coloris
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<Coloris>> PostColoris(Coloris coloris)
         {
             if (coloris == null)
@@ -84,6 +63,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Coloris/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteColoris(int id)
         {
             var coloris = await dataRepository.GetByIdAsync(id);

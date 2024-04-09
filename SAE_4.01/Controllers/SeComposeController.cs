@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -72,26 +73,10 @@ namespace SAE_4._01.Controllers
             return secompose;
         }
 
-        // PUT: api/SeCompose/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id1}/{id2}")]
-        public async Task<IActionResult> PutSeCompose(int id1, int id2, SeCompose seCompose)
-        {
-            var scpToUpdate = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
-
-            if (scpToUpdate == null)
-            {
-                return NotFound();
-            }
-
-            // Mettre à jour l'entité existante avec les données de l'entité passée en paramètre
-            await dataRepository.UpdateAsync(scpToUpdate.Value, seCompose);
-            return NoContent();
-        }
-
         // POST: api/SeCompose
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<SeCompose>> PostSeCompose(SeCompose seCompose)
         {
             try
@@ -107,6 +92,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/SeCompose/5
         [HttpDelete("{id1}/{id2}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteSeCompose(int id1, int id2)
         {
             var seCompose = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);

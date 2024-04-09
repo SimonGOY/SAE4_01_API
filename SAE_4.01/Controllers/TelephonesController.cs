@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/Telephones
         [HttpGet]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<IEnumerable<Telephone>>> GetTelephones()
         {
             return await dataRepository.GetAllAsync();
@@ -33,6 +35,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/Telephones/5
         [HttpGet("{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<Telephone>> GetTelephone(int id)
         {
 
@@ -49,6 +52,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/Telephones/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<IActionResult> PutTelephone(int id, Telephone telephone)
         {
             if (id != telephone.Id)
@@ -69,58 +73,11 @@ namespace SAE_4._01.Controllers
             }
         }
 
-        // POST: api/Clients
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPost]
-        public async Task<ActionResult<Telephone>> PostTelephone([FromBody] Telephone phoneRequest)
-        {
-            int nextId;
-            string type;
-            string fonction;
-
-            if (phoneRequest.Id == null)
-            {
-                nextId = GetMaxId().Result.Value + 1;
-            }
-            else
-                nextId = (int)phoneRequest.Id;
-
-            if (phoneRequest.Type == null)
-            {
-                type = "Mobile";
-            }
-            else
-                type = phoneRequest.Type;
-
-            if (phoneRequest.Fonction == null)
-            {
-                fonction = "Privé";
-            }
-            else
-                fonction = phoneRequest.Fonction;
-
-            Telephone telephone = new Telephone
-            {
-                
-                Id = nextId,
-                IdClient = phoneRequest.IdClient,
-                NumTelephone = phoneRequest.NumTelephone,
-                Type = "Mobile",
-                Fonction = "Privé",
-                ClientTelephone = null
-            };
-
-
-            
-
-            await dataRepository.AddAsync(telephone);
-
-            return CreatedAtAction("GetTelephone", new { id = telephone.Id }, telephone);
-        }*/
 
         // POST: api/Telephones
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<Telephone>> PostTelephone(TelephonePostRequest telephonePostRequest)
         {
             if (telephonePostRequest.Id == null)
@@ -150,6 +107,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Telephones/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<IActionResult> DeleteTelephone(int id)
         {
             var telephone = await dataRepository.GetByIdAsync(id);

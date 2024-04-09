@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/Preferes
         [HttpGet]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<IEnumerable<Prefere>>> GetPreferes()
         {
             return await dataRepository.GetAllAsync();
@@ -32,6 +34,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/SeCompose/client/5
         [HttpGet("client/{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<IEnumerable<Prefere>>> GetByIdClient(int id)
         {
             var preferes = await dataRepository.GetByIdClientAsync(id);
@@ -46,6 +49,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/SeCompose/concessionnaire/5
         [HttpGet("concessionnaire/{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<IEnumerable<Prefere>>> GetByIdConcessionnaire(int id)
         {
             var preferes = await dataRepository.GetByIdConcessionnaireAsync(id);
@@ -59,6 +63,7 @@ namespace SAE_4._01.Controllers
         }
 
         [HttpGet("{id1}/{id2}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<Prefere>> GetByIds(int id1, int id2)
         {
             var prefere = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
@@ -71,26 +76,10 @@ namespace SAE_4._01.Controllers
             return prefere;
         }
 
-        // PUT: api/Preferes/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id1}/{id2}")]
-        public async Task<IActionResult> PutPrefere(int id1, int id2, Prefere prefere)
-        {
-            var prfToUpdate = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
-
-            if (prfToUpdate == null)
-            {
-                return NotFound();
-            }
-
-            // Mettre à jour l'entité existante avec les données de l'entité passée en paramètre
-            await dataRepository.UpdateAsync(prfToUpdate.Value, prefere);
-            return NoContent();
-        }
-
         // POST: api/Preferes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<Prefere>> PostPrefere(Prefere prefere)
         {
             try
@@ -106,6 +95,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Preferes/5
         [HttpDelete("{id1}/{id2}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeletePrefere(int id1, int id2)
         {
             var prefere = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.Pkcs;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/ContenuCommandes
         [HttpGet]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetContenuCommandes()
         {
             return await dataRepository.GetAllAsync();
@@ -33,6 +35,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/contenucommande/commande/5
         [HttpGet("commande/{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdCommande(int id)
         {
             var contenuCommande = await dataRepository.GetByIdCommandeAsync(id);
@@ -47,6 +50,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/contenucommande/equipement/5
         [HttpGet("equipement/{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdEquipement(int id)
         {
             var contenucommandes = await dataRepository.GetByIdEquipementAsync(id);
@@ -61,6 +65,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/contenucommande/taille/5
         [HttpGet("taille/{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdTaille(int id)
         {
             var contenucommandes = await dataRepository.GetByIdTailleAsync(id);
@@ -75,6 +80,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/contenucommande/coloris/5
         [HttpGet("coloris/{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<IEnumerable<ContenuCommande>>> GetByIdColoris(int id)
         {
             var sontinclus = await dataRepository.GetByIdColorisAsync(id);
@@ -88,6 +94,7 @@ namespace SAE_4._01.Controllers
         }
 
         [HttpGet("{id1}/{id2}/{id3}/{id4}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<ContenuCommande>> GetByIds(int id1, int id2, int id3, int id4)
         {
             var contenuCommande = await dataRepository.GetBy4CompositeKeysAsync(id1, id2, id3, id4);
@@ -103,6 +110,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/ContenuCommandes/commande/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id1}/{id2}/{id3}/{id4}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<IActionResult> PutContenuCommande(int id1, int id2, int id3, int id4, ContenuCommande contenuCommande)
         {
 
@@ -122,6 +130,7 @@ namespace SAE_4._01.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 
         [HttpPost]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<ContenuCommande>> PostContenuCommande(ContenuCommande contenuCommande)
         {
             try
@@ -137,6 +146,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/ContenuCommandes/5
         [HttpDelete("{id1}/{id2}/{id3}/{id4}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<IActionResult> DeleteContenuCommande(int id1, int id2, int id3, int id4)
         {
             var contenuCommande = await dataRepository.GetBy4CompositeKeysAsync( id1, id2, id3, id4);

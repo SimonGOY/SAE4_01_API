@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
 using SAE_4._01.Models.DataManager;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SAE_4._01.Controllers
 {
@@ -30,6 +31,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/Clients
         [HttpGet]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<IEnumerable<Client>>> GetClients()
         {
             return await dataRepository.GetAllAsync();
@@ -37,6 +39,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/Clients/5
         [HttpGet("{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<Client>> GetClient(int id)
         {
 
@@ -49,50 +52,6 @@ namespace SAE_4._01.Controllers
 
             return client;
         }
-
-        // POST: api/Clients
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPost]
-        public async Task<ActionResult<Client>> PostClient([FromBody] Client clientRequest)
-        {
-            int? nextId = null;
-
-            if (clientRequest.IdClient == null)
-            {
-                nextId = GetMaxId().Result.Value + 1;
-            }
-            else
-                nextId = (int)clientRequest.IdClient;
-
-            Client client = new Client
-            {
-                IdClient = nextId,
-                NumAdresse = 1,
-                Civilite = clientRequest.Civilite,
-                NomClient = clientRequest.NomClient,
-                PrenomClient = clientRequest.PrenomClient,
-                DateNaissanceClient = clientRequest.DateNaissanceClient,
-                EmailClient = clientRequest.EmailClient
-            };
-
-
-            //...J'ai mal aux yeux
-            ActionResult<IEnumerable<Client>> actionResult;
-            if (dataRepository == null)
-            {
-                var builder = new DbContextOptionsBuilder<BMWDBContext>().UseNpgsql("Server=51.83.36.122; port=5432; Database=sa11; uid=sa11; password=BMW-S4; SearchPath=bmw;");
-                BMWDBContext context = new BMWDBContext(builder.Options);
-                IDataRepository<Client> dataRepository = new ClientManager(context);
-
-                await dataRepository.AddAsync(client);
-            }
-            else
-            {
-                await dataRepository.AddAsync(client);
-            }
-
-            return CreatedAtAction("GetClient", new { id = client.IdClient }, client);
-        }*/
 
         // POST: api/Clients
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -131,6 +90,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/Clients/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<IActionResult> PutClient(int id, Client client)
         {
 
@@ -154,6 +114,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Clients/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<IActionResult> DeleteClient(int id)
         {
             var client = await dataRepository.GetByIdAsync(id);

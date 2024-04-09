@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -48,6 +49,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/MotoDisponibles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> PutMotoDisponible(int id, MotoDisponible motoDisponible)
         {
             if (id != motoDisponible.IdMoto)
@@ -71,6 +73,7 @@ namespace SAE_4._01.Controllers
         // POST: api/MotoDisponibles
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<MotoDisponible>> PostMotoDisponible(MotoDisponible motoDisponible)
         {
             if (motoDisponible == null)
@@ -84,6 +87,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/MotoDisponibles/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteMotoDisponible(int id)
         {
             var motoDisponible = await dataRepository.GetByIdAsync(id);

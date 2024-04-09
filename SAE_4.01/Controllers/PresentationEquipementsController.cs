@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Options;
@@ -46,32 +47,11 @@ namespace SAE_4._01.Controllers
             return presentationEquipement;
         }
 
-        // PUT: api/PresentationEquipements/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPresentationEquipement(int id, PresentationEquipement presentationEquipement)
-        {
-            if (id != presentationEquipement.IdPresentation)
-            {
-                return BadRequest();
-            }
-
-            var preToUpdate = await dataRepository.GetByIdAsync(id);
-
-            if (preToUpdate == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                await dataRepository.UpdateAsync(preToUpdate.Value, presentationEquipement);
-                return NoContent();
-            }
-        }
 
         // POST: api/PresentationEquipements
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<PresentationEquipement>> PostPresentationEquipement(PresentationEquipement presentationEquipement)
         {
             if (presentationEquipement == null)
@@ -85,6 +65,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/PresentationEquipements/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeletePresentationEquipement(int id)
         {
             var presentationEquipement = await dataRepository.GetByIdAsync(id);

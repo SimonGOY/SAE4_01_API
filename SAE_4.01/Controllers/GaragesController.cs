@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -71,26 +72,10 @@ namespace SAE_4._01.Controllers
             return garage;
         }
 
-        // PUT: api/Garages/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id1}/{id2}")]
-        public async Task<IActionResult> PutGarage(int id1, int id2 , Garage garage)
-        {
-            var grgToUpdate = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
-
-            if (grgToUpdate == null)
-            {
-                return NotFound();
-            }
-
-            // Mettre à jour l'entité existante avec les données de l'entité passée en paramètre
-            await dataRepository.UpdateAsync(grgToUpdate.Value, garage);
-            return NoContent();
-        }
-
         // POST: api/Garages
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<Garage>> PostGarage(Garage garage)
         {
             try
@@ -106,6 +91,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Garages/5
         [HttpDelete("{id1}/{id2}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteGarage(int id1, int id2)
         {
             var garage = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);

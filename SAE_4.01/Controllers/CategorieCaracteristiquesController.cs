@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -45,32 +46,10 @@ namespace SAE_4._01.Controllers
             return categorieCaracteristique;
         }
 
-        // PUT: api/CategorieCaracteristiques/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategorieCaracteristique(int id, CategorieCaracteristique categorieCaracteristique)
-        {
-            if (id != categorieCaracteristique.IdCatCaracteristique)
-            {
-                return BadRequest();
-            }
-
-            var ctcToUpdate = await dataRepository.GetByIdAsync(id);
-
-            if (ctcToUpdate == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                await dataRepository.UpdateAsync(ctcToUpdate.Value, categorieCaracteristique);
-                return NoContent();
-            }
-        }
-
         // POST: api/CategorieCaracteristiques
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<CategorieCaracteristique>> PostCategorieCaracteristique(CategorieCaracteristique categorieCaracteristique)
         {
             if (categorieCaracteristique == null)
@@ -84,6 +63,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/CategorieCaracteristiques/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteCategorieCaracteristique(int id)
         {
             var categorieCaracteristique = await dataRepository.GetByIdAsync(id);

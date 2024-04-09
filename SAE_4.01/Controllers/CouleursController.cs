@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.Pkcs;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -63,6 +64,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/Couleurs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> PutCouleur(int id, Couleur couleur)
         {
             if (id != couleur.IdCouleur)
@@ -86,6 +88,7 @@ namespace SAE_4._01.Controllers
         // POST: api/Couleurs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<Couleur>> PostCouleur(Couleur couleur)
         {
             if (couleur == null)
@@ -99,6 +102,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Couleurs/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteCouleur(int id)
         {
             var couleur = await dataRepository.GetByIdAsync(id);

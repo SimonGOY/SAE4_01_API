@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Differencing;
@@ -49,6 +50,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/ModeleMotos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> PutModeleMoto(int id, ModeleMoto modeleMoto)
         {
             if (id != modeleMoto.IdMoto)
@@ -72,6 +74,7 @@ namespace SAE_4._01.Controllers
         // POST: api/ModeleMotos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<ModeleMoto>> PostModeleMoto(ModeleMoto modeleMoto)
         {
             if (modeleMoto == null)
@@ -85,6 +88,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/ModeleMotos/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteModeleMoto(int id)
         {
             var modeleMoto = await dataRepository.GetByIdAsync(id);

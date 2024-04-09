@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/InfoCBs
         [HttpGet]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<IEnumerable<InfoCB>>> GetInfoCBs()
         {
             return await dataRepository.GetAllAsync();
@@ -32,6 +34,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/InfoCBs/5
         [HttpGet("{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<InfoCB>> GetInfoCB(int id)
         {
 
@@ -48,6 +51,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/InfoCBs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<IActionResult> PutInfoCB(int id, InfoCB infoCB)
         {
             if (id != infoCB.IdCarte)
@@ -71,6 +75,7 @@ namespace SAE_4._01.Controllers
         // POST: api/InfoCBs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<InfoCB>> PostInfoCB(InfoCB infoCB)
         {
             if (infoCB == null)
@@ -84,6 +89,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/InfoCBs/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<IActionResult> DeleteInfoCB(int id)
         {
             var infoCB = await dataRepository.GetByIdAsync(id);

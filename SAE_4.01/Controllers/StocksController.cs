@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -91,6 +92,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/Stocks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id1}/{id2}/{id3}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> PutStock(int id1, int id2, int id3, Stock stock)
         {
             var stkToUpdate = await dataRepository.GetBy3CompositeKeysAsync(id1, id2, id3);
@@ -108,6 +110,7 @@ namespace SAE_4._01.Controllers
         // POST: api/Stocks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<Stock>> PostStock(Stock stock)
         {
             try
@@ -123,6 +126,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Stocks/5
         [HttpDelete("{id1}/{id2}/{id3}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteStock(int id1, int id2, int id3)
         {
             var stock = await dataRepository.GetBy3CompositeKeysAsync(id1, id2, id3);

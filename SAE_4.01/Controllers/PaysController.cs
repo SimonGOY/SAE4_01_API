@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -49,6 +50,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/Pays/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{nom}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> PutPays(string nom, Pays pays)
         {
             if (nom != pays.NomPays)
@@ -72,6 +74,7 @@ namespace SAE_4._01.Controllers
         // POST: api/Pays
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<Pays>> PostPays(Pays pays)
         {
             if (pays == null)
@@ -86,6 +89,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Pays/5
         [HttpDelete("{nom}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeletePays(string nom)
         {
             var pays = await dataRepository.GetByNomAsync(nom);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -49,6 +50,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/Accessoires/idmoto/5
         [HttpGet("idmoto/{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<IEnumerable<Accessoire>>> GetByIdMoto(int id)
         {
 
@@ -65,6 +67,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/Accessoires/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> PutAccessoire(int id, Accessoire accessoire)
         {
 
@@ -89,6 +92,7 @@ namespace SAE_4._01.Controllers
         // POST: api/Accessoires
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<Accessoire>> PostAccessoire(Accessoire accessoire)
         {
 
@@ -103,6 +107,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Accessoires/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteAccessoire(int id)
         {
 

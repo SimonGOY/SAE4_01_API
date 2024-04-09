@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -71,27 +72,10 @@ namespace SAE_4._01.Controllers
             return estInclus;
         }
 
-        // PUT: api/EstInclus/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id1}/{id2}")]
-        public async Task<IActionResult> PutEstInclus(int id1, int id2, EstInclus estInclus)
-        {
-
-            var eclToUpdate = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);
-
-            if (eclToUpdate == null)
-            {
-                return NotFound();
-            }
-
-            // Mettre à jour l'entité existante avec les données de l'entité passée en paramètre
-            await dataRepository.UpdateAsync(eclToUpdate.Value, estInclus);
-            return NoContent();
-        }
-
         // POST: api/EstInclus
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<EstInclus>> PostEstInclus(EstInclus estInclus)
         {
             try
@@ -107,6 +91,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/EstInclus/5
         [HttpDelete("{id1}/{id2}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteEstInclus(int id1, int id2)
         {
             var estInclus = await dataRepository.GetBy2CompositeKeysAsync(id1, id2);

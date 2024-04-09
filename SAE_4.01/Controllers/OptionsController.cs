@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -48,6 +49,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/Options/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> PutOption(int id, Option option)
         {
             if (id != option.IdOption)
@@ -71,6 +73,7 @@ namespace SAE_4._01.Controllers
         // POST: api/Options
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<Option>> PostOption(Option option)
         {
             if (option == null)
@@ -84,6 +87,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Options/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteOption(int id)
         {
             var option = await dataRepository.GetByIdAsync(id);

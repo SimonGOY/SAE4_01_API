@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -77,6 +78,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/MediaMoto/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> PutMedia(int id, MediaMoto media)
         {
             if (id != media.IdMediaMoto)
@@ -100,6 +102,7 @@ namespace SAE_4._01.Controllers
         // POST: api/MediaMoto
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<MediaMoto>> PostMedia(MediaMoto media)
         {
             if (media == null)
@@ -113,6 +116,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/MediaMoto/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteMedia(int id)
         {
             var media = await dataRepository.GetByIdAsync(id);

@@ -30,7 +30,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/Users
         [HttpGet]
-        //[Authorize(Policy = Policies.Type0)] pour limiter l'accès aux utilisateurs avec l'attribut type compte à 0 (en passant par le login controller qui donne le token jwt)
+        [Authorize(Policy = Policies.Type2)] //pour limiter l'accès aux utilisateurs avec l'attribut type compte à 2 (en passant par le login controller qui donne le token jwt)
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             return await dataRepository.GetAllAsync();
@@ -38,6 +38,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/Users/5
         [HttpGet("{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<User>> GetUserById(int id)
         {
 
@@ -54,6 +55,7 @@ namespace SAE_4._01.Controllers
         // GET: api/Users/email/xx@gmail.com
         [HttpGet]
         [Route("email/{email}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<bool>> GetIfUserExistsByEmail(string email)
         {
             var usersActionResult = await dataRepository.GetAllAsync();
@@ -65,6 +67,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<IActionResult> PutUser(int id, User user)
         {
 
@@ -86,28 +89,11 @@ namespace SAE_4._01.Controllers
             }
         }
 
-        // POST: api/Users
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPost]
-        public async Task<ActionResult<User>> PostUser([FromBody]UserPostRequest userRequest)
-        {
-            int? nextId;
-
-            if (userRequest.Id == null)
-            {
-                nextId = GetMaxId().Result.Value + 1;
-            }
-            else
-                nextId = (int)userRequest.Id;
-
-
-
-
-        }*/
 
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<User>> PostUser([FromBody]UserPostRequest userPostRequest)
         {
             if (userPostRequest.Id == null)
@@ -145,6 +131,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await dataRepository.GetByIdAsync(id);

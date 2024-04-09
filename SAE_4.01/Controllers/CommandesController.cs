@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/Commandes
         [HttpGet]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<IEnumerable<Commande>>> GetCommandes()
         {
             return await dataRepository.GetAllAsync();
@@ -33,6 +35,7 @@ namespace SAE_4._01.Controllers
 
         // GET: api/Commandes/5
         [HttpGet("{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<ActionResult<Commande>> GetCommande(int id)
         {
 
@@ -49,6 +52,7 @@ namespace SAE_4._01.Controllers
         // PUT: api/Commandes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<IActionResult> PutCommande(int id, Commande commande)
         {
             if (id != commande.IdCommande)
@@ -72,6 +76,7 @@ namespace SAE_4._01.Controllers
         // POST: api/Commandes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<ActionResult<Commande>> PostCommande(Commande commande)
         {
             if (commande == null)
@@ -85,6 +90,7 @@ namespace SAE_4._01.Controllers
 
         // DELETE: api/Commandes/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = Policies.Type2)]
         public async Task<IActionResult> DeleteCommande(int id)
         {
             var commande = await dataRepository.GetByIdAsync(id);
