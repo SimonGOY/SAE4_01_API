@@ -21,6 +21,7 @@ namespace SAE_4._01.Controllers.Tests
         private UsersController controller;
         private BMWDBContext context;
         private IDataRepository<User> dataRepository;
+        private UserPostRequest userPost;
         private User user;
         private ClientPostRequest clientPostRequest;
         private Mock<IDataRepository<User>> mockRepository;
@@ -46,6 +47,24 @@ namespace SAE_4._01.Controllers.Tests
                 UpdatedAt = DateTime.Now,
                 Civilite = "M.",
                 LastName = "GOY",               
+                IdClient = 888888888,
+                IsComplete = true,
+                TypeCompte = 0,
+                DoubleAuth = false,
+                LastConnected = DateTime.Now,
+                //ClientUsers = new Client()
+            };
+
+            userPost = new UserPostRequest
+            {
+                Id = 666666666,
+                FirstName = "Simon",
+                Email = "testuser@test.com",
+                Password = "test",
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
+                Civilite = "M.",
+                LastName = "GOY",
                 IdClient = 888888888,
                 IsComplete = true,
                 TypeCompte = 0,
@@ -128,7 +147,7 @@ namespace SAE_4._01.Controllers.Tests
             var resultClt = clientController.PostClient(clientPostRequest).Result;
 
             //Act
-            var result = controller.PostUser(user).Result;
+            var result = controller.PostUser(userPost).Result;
             // Assert
             var usrRecup = controller.GetUserById((int)user.Id).Result;
             usrRecup.Value.Id = (int)user.Id;
@@ -249,7 +268,7 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_PostUserTest()
         {
             // Act
-            var actionResult = controller_mock.PostUser(user).Result;
+            var actionResult = controller_mock.PostUser(userPost).Result;
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(ActionResult<User>), "Pas un ActionResult<User>");
             Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");

@@ -72,7 +72,7 @@ namespace SAE_4._01.Controllers
             var client = ((CreatedAtActionResult)clientResponse.Result).Value as Client;
 
             //créer user
-            var userResponse = await new UsersController(dataRepositoryUser).PostUser(new User
+            var userResponse = await new UsersController(dataRepositoryUser).PostUser(new UserPostRequest
             {
                 FirstName = registerRequest.FirstName,
                 LastName = registerRequest.LastName,
