@@ -122,7 +122,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNotNull(demMaj.Value);
             Assert.AreEqual(demIni.Value, demMaj.Value, "demandes pas identiques");
         }
-        
+
         public void DeleteDemandeEssaiTest_SuppressionOK()
         {
             // Act
