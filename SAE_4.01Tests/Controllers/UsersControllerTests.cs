@@ -116,11 +116,10 @@ namespace SAE_4._01.Controllers.Tests
         public void PostPutDeleteTest()
         {
             PostUserTest_CreationOK();
-            PutClientTest_ModificationOK();
-            /*DeleteClientTest_SuppressionOK();*/
+            PutUserTest_ModificationOK();
+            DeleteUserTest_SuppressionOK();
         }
 
-        [TestMethod()]
         public void PostUserTest_CreationOK()
         {
             IDataRepository<Client> clientDataRepository = new ClientManager(context);
@@ -152,8 +151,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(userPostRequest.LastName, usrRecup.Value.LastName, "telephone pas identiques");
         }
 
-        [TestMethod()]
-        public void PutClientTest_ModificationOK()
+        public void PutUserTest_ModificationOK()
         {
             // Arrange
             var usrIni = controller.GetUserById((int)userPostRequest.Id).Result;
@@ -180,7 +178,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(usrIni.Value.LastName, usrMaj.Value.LastName, "telephone pas identiques");
         }
 
-        [TestMethod()]
         public void DeleteUserTest_SuppressionOK()
         {
             
