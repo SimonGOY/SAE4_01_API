@@ -249,7 +249,7 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_PostUserTest()
         {
             // Act
-            var actionResult = controller_mock.PostUser(userPostRequest).Result;
+            var actionResult = controller_mock.PostUser(user).Result;
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(ActionResult<User>), "Pas un ActionResult<User>");
             Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");

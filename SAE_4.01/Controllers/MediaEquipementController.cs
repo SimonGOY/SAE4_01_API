@@ -50,14 +50,14 @@ namespace SAE_4._01.Controllers
         [HttpGet("idequipement/{id}")]
         public async Task<ActionResult<IEnumerable<MediaEquipement>>> GetByIdEquipement(int id)
         {
-            var contenuCommande = await dataRepository.GetByIdEquipementAsync(id);
+            var mediaEquipement = await dataRepository.GetByIdEquipementAsync(id);
 
-            if (contenuCommande == null || !contenuCommande.Value.Any())
+            if (mediaEquipement == null || !mediaEquipement.Value.Any())
             {
                 return NotFound();
             }
 
-            return Ok(contenuCommande);
+            return Ok(mediaEquipement);
         }
 
 

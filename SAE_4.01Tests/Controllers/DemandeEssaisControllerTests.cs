@@ -90,7 +90,15 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void __PostDemandeEssaiTest_CreationOK()
+        public void PostPutDeleteTest()
+        {
+            PostDemandeEssaiTest_CreationOK();
+            PutDemandeEssaiTest_ModificationOK();
+            DeleteDemandeEssaiTest_SuppressionOK();
+        }
+
+        
+        public void PostDemandeEssaiTest_CreationOK()
         {
             // Act
             var result = controller.PostDemandeEssai(demande).Result;
@@ -100,8 +108,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(demande, demRecup.Value, "Demandes pas identiques");
         }
 
-        [TestMethod()]
-        public void __PutDemandeEssaiTest_ModificationOK()
+        public void PutDemandeEssaiTest_ModificationOK()
         {
             // Arrange
             var demIni = controller.GetDemandeEssai(demande.IdDemandeEssai).Result;
@@ -115,8 +122,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsNotNull(demMaj.Value);
             Assert.AreEqual(demIni.Value, demMaj.Value, "demandes pas identiques");
         }
-
-        [TestMethod()]
+        
         public void DeleteDemandeEssaiTest_SuppressionOK()
         {
             // Act

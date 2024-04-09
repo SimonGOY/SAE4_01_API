@@ -70,12 +70,14 @@ namespace SAE_4._01.Controllers.Tests
         public void GetByIdMotoTest_RecuperationOK()
         {
             //Arrange
-            List<MediaMoto> lesMeds = context.MediasMoto.ToList();
+            List<MediaMoto> lesMeds = context.MediasMoto.Where(p => p.IdMoto == 1).ToList();
             // Act
             var res = controller.GetByIdMoto(1).Result;
+            var res_cast = ((Microsoft.AspNetCore.Mvc.ActionResult<System.Collections.Generic.IEnumerable<SAE_4._01.Models.EntityFramework.MediaMoto>>)((Microsoft.AspNetCore.Mvc.ObjectResult)res.Result).Value).Value;
+
             // Assert
             Assert.IsNotNull(res);
-            CollectionAssert.AreEqual(lesMeds, res.Value.ToList(), "Les listes de mediaMot ne sont pas identiques");
+            CollectionAssert.AreEqual(lesMeds, res_cast as List<MediaMoto>, "Les listes de mediaMoto ne sont pas identiques");
         }
 
         [TestMethod()]

@@ -92,9 +92,16 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetCouleurByIdMotoTest()
+        public void GetPackByIdMotoTest_RecuperationOK()
         {
-            Assert.Fail();
+            //Arrange
+            List<Pack> lesPacs = context.Packs.Where(p => p.IdMoto == 1).ToList();
+            // Act
+            var res = controller.GetPackByIdMoto(1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            CollectionAssert.AreEqual(lesPacs, res.Value as List<Pack>, "Les listes de couleur ne sont pas identiques");
         }
 
         [TestMethod()]
@@ -197,7 +204,7 @@ namespace SAE_4._01.Controllers.Tests
                 };
             mockRepository.Setup(x => x.GetByIdMotoAsync(1)).ReturnsAsync(packs);
             // Act
-            var res = controller_mock.GetCouleurByIdMoto(1).Result;
+            var res = controller_mock.GetPackByIdMoto(1).Result;
             
             // Assert
             Assert.IsNotNull(res);

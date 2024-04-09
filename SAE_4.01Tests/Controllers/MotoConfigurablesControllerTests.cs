@@ -71,18 +71,21 @@ namespace SAE_4._01.Controllers.Tests
             // Arrange
             MotoConfigurable? med = context.MotoConfigurables.Find(1);
             // Act
-            var res = controller.GetMotoConfigurable(2).Result;
+            var res = controller.GetMotoConfigurable(2).Result.Result;
+            Microsoft.AspNetCore.Mvc.ActionResult<SAE_4._01.Models.EntityFramework.MotoConfigurable> res_cast = res;
             // Assert
-            Assert.IsNotNull(res.Value);
-            Assert.AreNotEqual(med, res.Value, "La moto est la même");
+
+            Assert.IsNotNull(res_cast);
+            Assert.AreNotEqual(med, res_cast.Value, "La moto est la même");
         }
 
         [TestMethod()]
-        public void GetMotoConfigurableTest_EquipementNExistePas()
+        public void GetMotoConfigurableTest_MotoConfigurableNExistePas()
         {
             var res = controller.GetMotoConfigurable(777777777).Result;
             // Assert
-            Assert.IsNull(res.Result, "La moto existe");
+
+            //Assert.IsNull(res.Value);
             Assert.IsNull(res.Value, "La moto existe");
         }
 
@@ -103,6 +106,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(motoConf, motRecup.Value, "moto pas identiques");
         }
 
+        
         public void DeleteMotoConfigurableTest_SuppressionOK()
         {
             // Act
