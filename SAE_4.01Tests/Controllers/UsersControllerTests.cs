@@ -21,7 +21,7 @@ namespace SAE_4._01.Controllers.Tests
         private UsersController controller;
         private BMWDBContext context;
         private IDataRepository<User> dataRepository;
-        private User userPostRequest;
+        private User user;
         private ClientPostRequest clientPostRequest;
         private Mock<IDataRepository<User>> mockRepository;
         private UsersController controller_mock;
@@ -36,7 +36,7 @@ namespace SAE_4._01.Controllers.Tests
             mockRepository = new Mock<IDataRepository<User>>();
             controller_mock = new UsersController(mockRepository.Object);
 
-            userPostRequest = new User
+            user = new User
             {
                 Id = 666666666,
                 FirstName = "Simon",
@@ -128,40 +128,40 @@ namespace SAE_4._01.Controllers.Tests
             var resultClt = clientController.PostClient(clientPostRequest).Result;
 
             //Act
-            var result = controller.PostUser(userPostRequest).Result;
+            var result = controller.PostUser(user).Result;
             // Assert
-            var usrRecup = controller.GetUserById((int)userPostRequest.Id).Result;
-            usrRecup.Value.Id = (int)userPostRequest.Id;
-            usrRecup.Value.CreatedAt = userPostRequest.CreatedAt;
-            usrRecup.Value.UpdatedAt = userPostRequest.UpdatedAt;
-            usrRecup.Value.LastConnected = userPostRequest.LastConnected;
+            var usrRecup = controller.GetUserById((int)user.Id).Result;
+            usrRecup.Value.Id = (int)user.Id;
+            usrRecup.Value.CreatedAt = user.CreatedAt;
+            usrRecup.Value.UpdatedAt = user.UpdatedAt;
+            usrRecup.Value.LastConnected = user.LastConnected;
 
             //Assert.AreEqual(user, usrRecup.Value, "users pas identiques");
 
-            Assert.AreEqual(userPostRequest.Id, usrRecup.Value.Id, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.FirstName, usrRecup.Value.FirstName, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.LastName, usrRecup.Value.LastName, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.Email, usrRecup.Value.Email, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.Password, usrRecup.Value.Password, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.IsComplete, usrRecup.Value.IsComplete, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.CreatedAt, usrRecup.Value.CreatedAt, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.UpdatedAt, usrRecup.Value.UpdatedAt, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.TypeCompte, usrRecup.Value.TypeCompte, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.DoubleAuth, usrRecup.Value.DoubleAuth, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.LastName, usrRecup.Value.LastName, "telephone pas identiques");
+            Assert.AreEqual(user.Id, usrRecup.Value.Id, "telephone pas identiques");
+            Assert.AreEqual(user.FirstName, usrRecup.Value.FirstName, "telephone pas identiques");
+            Assert.AreEqual(user.LastName, usrRecup.Value.LastName, "telephone pas identiques");
+            Assert.AreEqual(user.Email, usrRecup.Value.Email, "telephone pas identiques");
+            Assert.AreEqual(user.Password, usrRecup.Value.Password, "telephone pas identiques");
+            Assert.AreEqual(user.IsComplete, usrRecup.Value.IsComplete, "telephone pas identiques");
+            Assert.AreEqual(user.CreatedAt, usrRecup.Value.CreatedAt, "telephone pas identiques");
+            Assert.AreEqual(user.UpdatedAt, usrRecup.Value.UpdatedAt, "telephone pas identiques");
+            Assert.AreEqual(user.TypeCompte, usrRecup.Value.TypeCompte, "telephone pas identiques");
+            Assert.AreEqual(user.DoubleAuth, usrRecup.Value.DoubleAuth, "telephone pas identiques");
+            Assert.AreEqual(user.LastName, usrRecup.Value.LastName, "telephone pas identiques");
         }
 
         public void PutUserTest_ModificationOK()
         {
             // Arrange
-            var usrIni = controller.GetUserById((int)userPostRequest.Id).Result;
+            var usrIni = controller.GetUserById((int)user.Id).Result;
             usrIni.Value.UpdatedAt = DateTime.Now;
 
             // Act
-            var res = controller.PutUser((int)userPostRequest.Id, usrIni.Value).Result;
+            var res = controller.PutUser((int)user.Id, usrIni.Value).Result;
 
             // Assert
-            var usrMaj = controller.GetUserById((int)userPostRequest.Id).Result;
+            var usrMaj = controller.GetUserById((int)user.Id).Result;
             Assert.IsNotNull(usrMaj.Value);
 
 
@@ -184,18 +184,18 @@ namespace SAE_4._01.Controllers.Tests
             IDataRepository<Client> clientDataRepository = new ClientManager(context);
             ClientsController clientController = new ClientsController(clientDataRepository);
             // Act
-            var usrSuppr = controller.GetUserById((int)userPostRequest.Id).Result;
+            var usrSuppr = controller.GetUserById((int)user.Id).Result;
             _ = controller.DeleteUser((int)usrSuppr.Value.Id).Result;
 
-            var cltSuppr = clientController.GetClient((int)userPostRequest.IdClient).Result;
+            var cltSuppr = clientController.GetClient((int)user.IdClient).Result;
             _ = clientController.DeleteClient((int)cltSuppr.Value.IdClient).Result;
 
             // Assert
-            var res = controller.GetUserById((int)userPostRequest.Id).Result;
+            var res = controller.GetUserById((int)user.Id).Result;
             Assert.IsNull(res.Value, "user non supprimé");
 
 
-            var cltres = clientController.GetClient((int)userPostRequest.IdClient).Result;
+            var cltres = clientController.GetClient((int)user.IdClient).Result;
             Assert.IsNull(cltres.Value, "client non supprimé");
         }
 
@@ -207,7 +207,7 @@ namespace SAE_4._01.Controllers.Tests
             // Arrange
             var users = new List<User>
                 {
-                    userPostRequest
+                    user
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(users);
             // Act
@@ -222,13 +222,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetUsersTest_RecuperationOK()
         {
             // Arrange
-            mockRepository.Setup(x => x.GetByIdAsync(15)).ReturnsAsync(userPostRequest);
+            mockRepository.Setup(x => x.GetByIdAsync(15)).ReturnsAsync(user);
             // Act
             var res = controller_mock.GetUserById(15).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
-            Assert.AreEqual(userPostRequest, res.Value as User, "Les infoCB n'est pas le même");
+            Assert.AreEqual(user, res.Value as User, "Les infoCB n'est pas le même");
         }
 
         [TestMethod()]
