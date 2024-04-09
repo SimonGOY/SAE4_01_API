@@ -72,19 +72,17 @@ namespace SAE_4._01.Controllers.Tests
             MotoConfigurable? med = context.MotoConfigurables.Find(1);
             // Act
             var res = controller.GetMotoConfigurable(2).Result;
-
             // Assert
             Assert.IsNotNull(res.Value);
             Assert.AreNotEqual(med, res.Value, "La moto est la même");
         }
 
         [TestMethod()]
-        public void GetMotoConfigurableTest_MotoConfigurableNExistePas()
+        public void GetMotoConfigurableTest_EquipementNExistePas()
         {
             var res = controller.GetMotoConfigurable(777777777).Result;
             // Assert
-
-            //Assert.IsNull(res.Value);
+            Assert.IsNull(res.Result, "La moto existe");
             Assert.IsNull(res.Value, "La moto existe");
         }
 
@@ -105,7 +103,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(motoConf, motRecup.Value, "moto pas identiques");
         }
 
-        
         public void DeleteMotoConfigurableTest_SuppressionOK()
         {
             // Act
@@ -143,16 +140,13 @@ namespace SAE_4._01.Controllers.Tests
             mockRepository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(motoConf);
 
             // Act
-            var result = controller_mock.GetMotoConfigurable(1).Result;
-            var objectResult = result.Result as ObjectResult;
-            var value = objectResult.Value.GetType().GetProperty("Value").GetValue(objectResult.Value, null) as MotoConfigurable;
+            var res = controller_mock.GetMotoConfigurable(1).Result;
 
             // Assert
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(objectResult);
-            Assert.IsNotNull(value);
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
 
-            Assert.AreEqual(motoConf, value, "Les objets ne sont pas égaux");
+            Assert.AreEqual(motoConf, res.Value, "Les objets ne sont pas égaux");
         }
 
 
