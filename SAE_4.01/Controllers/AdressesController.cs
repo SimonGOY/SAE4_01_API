@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -71,12 +73,26 @@ namespace SAE_4._01.Controllers
         // POST: api/Adresses
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Adresse>> PostAdresse(Adresse adresse)
+        public async Task<ActionResult<Adresse>> PostAdresse(AdressePostRequest adressePostRequest)
         {
-            if (adresse == null)
+            if (adressePostRequest.NumAdresse == null)
+            {
+                adressePostRequest.NumAdresse = GetMaxId().Result.Value + 1;
+            }
+
+            /*if (adresse == null)
             {
                 return Problem("Entity set 'BMWDBContext.Adresses'  is null.");
-            }
+            }*/
+
+            Adresse adresse = new Adresse
+            {
+                NumAdresse = (int)adressePostRequest.NumAdresse,
+                NomPays = adressePostRequest.NomPays,
+                AdresseAdresse = adressePostRequest.AdresseAdresse,
+                PaysAdresse = adressePostRequest.PaysAdresse
+            };
+
             await dataRepository.AddAsync(adresse);
 
             return CreatedAtAction("GetAdresse", new { id = adresse.NumAdresse }, adresse);
@@ -102,5 +118,35 @@ namespace SAE_4._01.Controllers
         {
             return (_context.Adresses?.Any(e => e.NumAdresse == id)).GetValueOrDefault();
         }
+
+        private async Task<ActionResult<int>> GetMaxId()
+        {
+            ActionResult<IEnumerable<Adresse>> actionResult = await dataRepository.GetAllAsync();
+
+            IEnumerable<Adresse> adresses = actionResult.Value;
+
+            int max = 0;
+
+            foreach (Adresse adresse in adresses)
+            {
+                if (adresse.NumAdresse > max)
+                {
+                    max = (int)adresse.NumAdresse;
+                }
+            }
+
+            return max;
+        }
+    }
+
+    public class AdressePostRequest
+    {
+        public int? NumAdresse { get; set; }
+
+        public string NomPays { get; set; } = null!;
+
+        public string AdresseAdresse { get; set; } = null!;
+
+        public Pays PaysAdresse { get; set; } = null!;
     }
 }

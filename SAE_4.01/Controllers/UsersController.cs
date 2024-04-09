@@ -23,15 +23,9 @@ namespace SAE_4._01.Controllers
 
         private readonly IDataRepository<User> dataRepository;
 
-        private readonly IDataRepository<Client> dataRepositoryClient;
-
-        private readonly IDataRepository<Telephone> dataRepositoryTelephone;
-
-        public UsersController(IDataRepository<User> dataRepo, IDataRepository<Client> dataRepoClient, IDataRepository<Telephone> dataRepoTelephone)
+        public UsersController(IDataRepository<User> dataRepo)
         {
             dataRepository = dataRepo;
-            dataRepositoryClient = dataRepoClient;
-            dataRepositoryTelephone = dataRepoTelephone;
         }
 
         // GET: api/Users
@@ -94,7 +88,7 @@ namespace SAE_4._01.Controllers
 
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        /*[HttpPost]
         public async Task<ActionResult<User>> PostUser([FromBody]UserPostRequest userRequest)
         {
             int? nextId;
@@ -108,66 +102,46 @@ namespace SAE_4._01.Controllers
 
 
 
-            //créer un client pour l'utiliser dans le user qui est créé après
-            var clientResponse = await new ClientsController(dataRepositoryClient).PostClient(new Client
-            {
-                IdClient = null,
-                Civilite = userRequest.Gender,
-                NomClient = userRequest.LastName,
-                PrenomClient = userRequest.FirstName,
-                EmailClient = userRequest.Email,
-                DateNaissanceClient = userRequest.BirthDateClient
-            });
 
-            var client = ((CreatedAtActionResult)clientResponse.Result).Value as Client;
-
-            //créer un tel pour le client
-            var clientResponseTel = await new TelephonesController(dataRepositoryTelephone).PostTelephone(new Telephone
-            {
-                IdClient = (int)client.IdClient,
-                NumTelephone = userRequest.PhoneNumber
-            });
-
-            User user = new User
-            {
-                Id = (int)nextId,
-                FirstName = userRequest.FirstName,
-                Email = userRequest.Email,
-                Password = userRequest.Password,
-                CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now,
-                Civilite = userRequest.Gender,
-                LastName = userRequest.LastName,
-                IdClient = (int)client.IdClient,
-                IsComplete = true,
-                TypeCompte = 2,
-                DoubleAuth = false,
-                LastConnected = DateTime.Now,
-                //ClientUsers = new Client()
-            };
-
-            await dataRepository.AddAsync(user);
-
-
-
-            user.ClientUsers = null; // pour pouvoir renvoyer un json plus petit sinon on reçoit une erreur au lieu du user convertit en json
-
-            return CreatedAtAction("GetUserById", new { id = user.Id }, user);
-        }
+        }*/
 
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        [HttpPost]
+        public async Task<ActionResult<User>> PostUser([FromBody]UserPostRequest userPostRequest)
         {
-            if (user == null)
+            if (userPostRequest.Id == null)
+            {
+                userPostRequest.Id = GetMaxId().Result.Value + 1;
+            }
+
+            User user = new User
+            {
+                Id = (int)userPostRequest.Id,
+                FirstName = userPostRequest.FirstName,
+                Email = userPostRequest.Email,
+                Password = userPostRequest.Password,
+                CreatedAt = userPostRequest.CreatedAt,
+                UpdatedAt = userPostRequest.UpdatedAt,
+                Civilite = userPostRequest.Civilite,
+                LastName = userPostRequest.LastName,
+                IdClient = userPostRequest.IdClient,
+                IsComplete = userPostRequest.IsComplete,
+                TypeCompte = userPostRequest.TypeCompte,
+                DoubleAuth = userPostRequest.DoubleAuth,
+                LastConnected = userPostRequest.LastConnected
+                //ClientUsers = new Client()
+            };
+
+            /*if (user == null)
             {
                 return Problem("Entity set 'BMWDBContext.Users'  is null.");
-            }
+            }*/
+
             await dataRepository.AddAsync(user);
 
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
-        }*/
+        }
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
@@ -222,15 +196,13 @@ namespace SAE_4._01.Controllers
 
         public string Password { get; set; } = null!;
 
-        public string Gender { get; set; } = null!;
-
-        public DateTime BirthDateClient { get; set; }
-
-        public string PhoneNumber { get; set; } = null!;
+        public string Civilite { get; set; } = null!;
 
         public DateTime CreatedAt { get; set; }
 
         public DateTime UpdatedAt { get; set; }
+
+        public int IdClient { get; set; }
 
         public bool IsComplete { get; set; }
 

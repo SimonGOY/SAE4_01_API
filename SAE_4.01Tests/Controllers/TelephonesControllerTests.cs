@@ -19,7 +19,7 @@ namespace SAE_4._01.Controllers.Tests
         private TelephonesController controller;
         private BMWDBContext context;
         private IDataRepository<Telephone> dataRepository;
-        private Telephone telephone;
+        private TelephonePostRequest telephone;
         private Mock<IDataRepository<Telephone>> mockRepository;
         private TelephonesController controller_mock;
 
@@ -34,7 +34,7 @@ namespace SAE_4._01.Controllers.Tests
             mockRepository = new Mock<IDataRepository<Telephone>>();
             controller_mock = new TelephonesController(mockRepository.Object);
 
-            telephone = new Telephone
+            telephone = new TelephonePostRequest
             {
                 Id = 666666666,
                 IdClient = 1,

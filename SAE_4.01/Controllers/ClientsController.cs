@@ -52,7 +52,7 @@ namespace SAE_4._01.Controllers
 
         // POST: api/Clients
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        /*[HttpPost]
         public async Task<ActionResult<Client>> PostClient([FromBody] Client clientRequest)
         {
             int? nextId = null;
@@ -92,24 +92,41 @@ namespace SAE_4._01.Controllers
             }
 
             return CreatedAtAction("GetClient", new { id = client.IdClient }, client);
-        }
+        }*/
 
         // POST: api/Clients
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPost]
-        public async Task<ActionResult<Client>> PostClient(Client client)
+        [HttpPost]
+        public async Task<ActionResult<Client>> PostClient(ClientPostRequest clientPostRequest)
         {
+            if (clientPostRequest.IdClient == null)
+            {
+                clientPostRequest.IdClient = GetMaxId().Result.Value + 1;
+            }
 
-            if (client == null)
+            Client client = new Client
+            {
+                IdClient = (int)clientPostRequest.IdClient,
+                NumAdresse = clientPostRequest.NumAdresse,
+                Civilite = clientPostRequest.Civilite,
+                NomClient = clientPostRequest.NomClient,
+                PrenomClient = clientPostRequest.PrenomClient,
+                DateNaissanceClient = clientPostRequest.DateNaissanceClient,
+                EmailClient = clientPostRequest.EmailClient
+                //AdresseClient = new Adresse()
+            };
+
+            /*if (client == null)
             {
                 return Problem("Entity set 'BMWDBContext.Clients'  is null.");
-            }
+            }*/
+
             await dataRepository.AddAsync(client);
 
             return CreatedAtAction("GetClient", new { id = client.IdClient }, client);
 
 
-        }*/
+        }
 
         // PUT: api/Clients/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -193,20 +210,18 @@ namespace SAE_4._01.Controllers
 
     public class ClientPostRequest
     {
+        public int? IdClient { get; set; }
+
+        public int NumAdresse { get; set; }
+
         public string Civilite { get; set; } = null!;
 
         public string NomClient { get; set; } = null!;
 
         public string PrenomClient { get; set; } = null!;
 
-        public string EmailClient { get; set; } = null!;
-
         public DateTime DateNaissanceClient { get; set; }
 
-        //public int IdClient { get; set; }
-
-        //public int NumAdresse { get; set; }
-
-        //public DateTime DateNaissanceClient { get; set; }
+        public string EmailClient { get; set; } = null!;
     }
 }

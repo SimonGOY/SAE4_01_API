@@ -71,7 +71,7 @@ namespace SAE_4._01.Controllers
 
         // POST: api/Clients
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
+        /*[HttpPost]
         public async Task<ActionResult<Telephone>> PostTelephone([FromBody] Telephone phoneRequest)
         {
             int nextId;
@@ -116,21 +116,37 @@ namespace SAE_4._01.Controllers
             await dataRepository.AddAsync(telephone);
 
             return CreatedAtAction("GetTelephone", new { id = telephone.Id }, telephone);
-        }
+        }*/
 
         // POST: api/Telephones
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPost]
-        public async Task<ActionResult<Telephone>> PostTelephone(Telephone telephone)
+        [HttpPost]
+        public async Task<ActionResult<Telephone>> PostTelephone(TelephonePostRequest telephonePostRequest)
         {
-            if (telephone == null)
+            if (telephonePostRequest.Id == null)
+            {
+                telephonePostRequest.Id = GetMaxId().Result.Value + 1;
+            }
+
+            /*if (telephone == null)
             {
                 return Problem("Entity set 'BMWDBContext.Telephones'  is null.");
-            }
+            }*/
+
+            Telephone telephone = new Telephone
+            {
+                Id = (int)telephonePostRequest.Id,
+                IdClient = telephonePostRequest.IdClient,
+                NumTelephone = telephonePostRequest.NumTelephone,
+                Type = telephonePostRequest.Type,
+                Fonction = telephonePostRequest.Fonction
+                //ClientTelephone = new Client()
+            };
+
             await dataRepository.AddAsync(telephone);
 
             return CreatedAtAction("GetTelephone", new { id = telephone.Id }, telephone);
-        }*/
+        }
 
         // DELETE: api/Telephones/5
         [HttpDelete("{id}")]
@@ -173,7 +189,7 @@ namespace SAE_4._01.Controllers
         }
     }
 
-    public class PhonePostRequest
+    public class TelephonePostRequest
     {
         public int? Id { get; set; }
 
