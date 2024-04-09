@@ -163,5 +163,77 @@ namespace SAE_4._01.Controllers.Tests
             var resMoto = controllerMoto.GetMotoDisponible(motoDispo.IdMotoDisponible).Result;
             Assert.IsNull(res.Value, "moto non supprimé");
         }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetReservationsTest_RecuperationOK()
+        {
+            // Arrange
+            var reservations = new List<Reservation>
+                {
+                    reservation
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(reservations);
+            // Act
+            var res = controller_mock.GetReservations().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(reservations, res.Value as IEnumerable<Reservation>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetReservationTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(reservation);
+
+            // Act
+            var res = controller_mock.GetReservation(1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+
+            Assert.AreEqual(reservation, res.Value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetReservationTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetReservation(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+
+        [TestMethod()]
+        public void Moq_PostReservationTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostReservation(reservation).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Reservation>), "Pas un ActionResult<Reservation>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Reservation), "Pas une Reservation");
+            reservation.IdReservation = ((Reservation)result.Value).IdReservation;
+            Assert.AreEqual(reservation, (Reservation)result.Value, "Reservation pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteReservationTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(reservation);
+
+            // Act
+            var actionResult = controller_mock.DeleteReservation(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
+        }
     }
 }

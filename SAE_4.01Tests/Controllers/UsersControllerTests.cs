@@ -196,7 +196,7 @@ namespace SAE_4._01.Controllers.Tests
         // ---------------------------------------- Tests Moq ----------------------------------------
 
         [TestMethod()]
-        public void Moq_GetLesUsersTest_RecuperationOK()
+        public void Moq_GetUsersTest_RecuperationOK()
         {
             // Arrange
             var users = new List<User>
@@ -213,25 +213,62 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetUsersTest_RecuperationOK()
+        public void Moq_GetUserByIdTest_RecuperationOK()
         {
             // Arrange
-            mockRepository.Setup(x => x.GetByIdAsync(15)).ReturnsAsync(user);
+            mockRepository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(user);
+
             // Act
-            var res = controller_mock.GetUserById(15).Result;
+            var res = controller_mock.GetUserById(1).Result;
+
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
-            Assert.AreEqual(user, res.Value as User, "Les infoCB n'est pas le même");
+
+            Assert.AreEqual(user, res.Value, "Les objets ne sont pas égaux");
         }
 
+
         [TestMethod()]
-        public void Moq_GetUsersTest_RecuperationNonOK()
+        public void Moq_GetUserByIdTest_RecuperationFailed()
         {
             // Act
             var res = controller_mock.GetUserById(0).Result;
             // Assert
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+
+        [TestMethod()]
+        public void Moq_PostUserTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostUser(userPostRequest).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<User>), "Pas un ActionResult<User>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.AreEqual(user.Id, ((User)result.Value).Id, "telephone pas identiques");
+            Assert.AreEqual(user.FirstName, ((User)result.Value).FirstName, "telephone pas identiques");
+            Assert.AreEqual(user.LastName, ((User)result.Value).LastName, "telephone pas identiques");
+            Assert.AreEqual(user.Email, ((User)result.Value).Email, "telephone pas identiques");
+            Assert.AreEqual(user.Password, ((User)result.Value).Password, "telephone pas identiques");
+            Assert.AreEqual(user.IsComplete, ((User)result.Value).IsComplete, "telephone pas identiques");
+            Assert.AreEqual(user.TypeCompte, ((User)result.Value).TypeCompte, "telephone pas identiques");
+            Assert.AreEqual(user.DoubleAuth, ((User)result.Value).DoubleAuth, "telephone pas identiques");
+            Assert.AreEqual(user.LastName, ((User)result.Value).LastName, "telephone pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteUserTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(user);
+
+            // Act
+            var actionResult = controller_mock.DeleteUser(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
         }
     }
 }

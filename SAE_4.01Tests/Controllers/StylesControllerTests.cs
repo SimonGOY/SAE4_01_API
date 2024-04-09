@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SAE_4._01.Controllers;
@@ -6,6 +7,7 @@ using SAE_4._01.Models.DataManager;
 using SAE_4._01.Models.EntityFramework;
 using SAE_4._01.Models.Repository;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -143,6 +145,78 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetStyle(style.IdStyle).Result;
             Assert.IsNull(res.Value, "style non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetSpecifiesTest_RecuperationOK()
+        {
+            // Arrange
+            var styles = new List<Style>
+                {
+                    style
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(styles);
+            // Act
+            var res = controller_mock.GetStyles().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(styles, res.Value as IEnumerable<Style>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetProfessionnelTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(style);
+
+            // Act
+            var res = controller_mock.GetStyle(1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+
+            Assert.AreEqual(style, res.Value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetProfessionnelTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetStyle(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+
+        [TestMethod()]
+        public void Moq_PostSpecifieTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostStyle(style).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Style>), "Pas un ActionResult<Style>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Style), "Pas une Style");
+            style.IdStyle = ((Style)result.Value).IdStyle;
+            Assert.AreEqual(style, (Style)result.Value, "Style pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteSpecifieTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(style);
+
+            // Act
+            var actionResult = controller_mock.DeleteStyle(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
         }
     }
 }

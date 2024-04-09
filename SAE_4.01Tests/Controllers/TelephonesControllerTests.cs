@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SAE_4._01.Controllers;
@@ -88,7 +90,7 @@ namespace SAE_4._01.Controllers.Tests
             var res = controller.GetTelephone(136).Result;
             // Assert
             Assert.IsNotNull(res.Value);
-            Assert.AreNotEqual(tel, res.Value, "La taille est la même");
+            Assert.AreNotEqual(tel, res.Value, "La telephone est la même");
         }
 
         [TestMethod()]
@@ -152,6 +154,81 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetTelephone((int)telephone.Id).Result;
             Assert.IsNull(res.Value, "telephone non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetTelephonesTest_RecuperationOK()
+        {
+            // Arrange
+            var telephones = new List<Telephone>
+                {
+                    telephone
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(telephones);
+            // Act
+            var res = controller_mock.GetTelephones().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(telephones, res.Value as IEnumerable<Telephone>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetTelephoneTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(telephone);
+
+            // Act
+            var res = controller_mock.GetTelephone(1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+
+            Assert.AreEqual(telephone, res.Value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetTelephoneTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetTelephone(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+
+        [TestMethod()]
+        public void Moq_PostTelephoneTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostTelephone(telephonePostRequest).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Telephone>), "Pas un ActionResult<Telephone>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Telephone), "Pas une Telephone");
+            Assert.AreEqual(telephone.Id, ((Telephone)result.Value).Id, "telephone pas identiques");
+            Assert.AreEqual(telephone.IdClient, ((Telephone)result.Value).IdClient, "telephone pas identiques");
+            Assert.AreEqual(telephone.NumTelephone, ((Telephone)result.Value).NumTelephone, "telephone pas identiques");
+            Assert.AreEqual(telephone.Type, ((Telephone)result.Value).Type, "telephone pas identiques");
+            Assert.AreEqual(telephone.Fonction, ((Telephone)result.Value).Fonction, "telephone pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteTelephoneTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(telephone);
+
+            // Act
+            var actionResult = controller_mock.DeleteTelephone(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SAE_4._01.Controllers;
@@ -104,7 +105,6 @@ namespace SAE_4._01.Controllers.Tests
             seCompose.IdOption = comRecup.Value.IdOption;
             Assert.AreEqual(seCompose, comRecup.Value, "SECOMPOSE pas identiques");
         }
-
         public void DeleteSeComposeTest_SuppressionOK()
         {
             // Act
@@ -114,6 +114,78 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetByIds(seCompose.IdPack, seCompose.IdOption).Result;
             Assert.IsNull(res.Value, "prefere non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetSeComposesTest_RecuperationOK()
+        {
+            // Arrange
+            var seComposent = new List<SeCompose>
+                {
+                    seCompose
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(seComposent);
+            // Act
+            var res = controller_mock.GetSeComposes().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(seComposent, res.Value as IEnumerable<SeCompose>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetByIdsTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetBy2CompositeKeysAsync(1,1)).ReturnsAsync(seCompose);
+
+            // Act
+            var res = controller_mock.GetByIds(1,1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+
+            Assert.AreEqual(seCompose, res.Value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetByIdsTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetByIds(0,0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+
+        [TestMethod()]
+        public void Moq_PostSeComposeTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostSeCompose(seCompose).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<SeCompose>), "Pas un ActionResult<SeCompose>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(SeCompose), "Pas une SeCompose");
+            seCompose.IdPack = ((SeCompose)result.Value).IdPack;
+            Assert.AreEqual(seCompose, (SeCompose)result.Value, "SeCompose pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteSeComposeTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetBy2CompositeKeysAsync(1,1).Result).Returns(seCompose);
+
+            // Act
+            var actionResult = controller_mock.DeleteSeCompose(1,1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
         }
     }
 }

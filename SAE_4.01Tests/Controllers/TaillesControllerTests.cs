@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SAE_4._01.Controllers;
@@ -132,6 +133,78 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetTaille(taille.IdTaille).Result;
             Assert.IsNull(res.Value, "taille non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetTaillesTest_RecuperationOK()
+        {
+            // Arrange
+            var tailles = new List<Taille>
+                {
+                    taille
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(tailles);
+            // Act
+            var res = controller_mock.GetTailles().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(tailles, res.Value as IEnumerable<Taille>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetTailleTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(taille);
+
+            // Act
+            var res = controller_mock.GetTaille(1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+
+            Assert.AreEqual(taille, res.Value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetTailleTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetTaille(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+
+        [TestMethod()]
+        public void Moq_PostTailleTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostTaille(taille).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Taille>), "Pas un ActionResult<Taille>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Taille), "Pas une Taille");
+            taille.IdTaille = ((Taille)result.Value).IdTaille;
+            Assert.AreEqual(taille, (Taille)result.Value, "Taille pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteTailleTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(taille);
+
+            // Act
+            var actionResult = controller_mock.DeleteTaille(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
         }
     }
 }

@@ -33,7 +33,7 @@ namespace SAE_4._01.Controllers.Tests
             dataRepository = new AccessoireManager(context);
             controller = new AccessoiresController(dataRepository);
             mockRepository = new Mock<IDataRepository<Accessoire>>();
-            controller_mock= new AccessoiresController(mockRepository.Object);
+            controller_mock = new AccessoiresController(mockRepository.Object);
 
             accessoire = new Accessoire
             {
@@ -42,7 +42,7 @@ namespace SAE_4._01.Controllers.Tests
                 IdCatAcc = 1,
                 NomAccessoire = "Piece Test",
                 PrixAccessoire = 200,
-                DetailAccessoire ="C'est une pièce de test quoi",
+                DetailAccessoire = "C'est une pièce de test quoi",
                 PhotoAccessoire = "latavernedutesteur.files.wordpress.com/2017/11/testss.png"
             };
         }
@@ -180,7 +180,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
         }
 
-        
+
 
 
         [TestMethod()]
@@ -204,18 +204,18 @@ namespace SAE_4._01.Controllers.Tests
         [TestMethod()]
         public void Moq_PostAccessoireTest()
         {
-        // Act
-        var actionResult = controller_mock.PostAccessoire(accessoire).Result;
-        // Assert
-        Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Accessoire>), "Pas un ActionResult<Accessoire>");
-        Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
-        var result = actionResult.Result as CreatedAtActionResult;
-        Assert.IsInstanceOfType(result.Value, typeof(Accessoire), "Pas un Accessoire");
-        accessoire.IdAccessoire = ((Accessoire) result.Value).IdAccessoire;
-        Assert.AreEqual(accessoire, (Accessoire) result.Value, "Accessoires pas identiques");
+            // Act
+            var actionResult = controller_mock.PostAccessoire(accessoire).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Accessoire>), "Pas un ActionResult<Accessoire>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Accessoire), "Pas un Accessoire");
+            accessoire.IdAccessoire = ((Accessoire)result.Value).IdAccessoire;
+            Assert.AreEqual(accessoire, (Accessoire)result.Value, "Accessoires pas identiques");
         }
 
-    [TestMethod]
+        [TestMethod]
         public void Moq_DeleteAccessoireTest_RecuperationOK()
         {
             // Arrange
@@ -225,6 +225,25 @@ namespace SAE_4._01.Controllers.Tests
             var actionResult = controller_mock.DeleteAccessoire(1).Result;
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
+        }
+
+
+        [TestMethod]
+        public void Moq_PutAccessoireTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(accessoire);
+            var init = controller_mock.GetAccessoire(1).Result;
+            init.Value.DetailAccessoire = "Détails";
+
+            // Act
+            var res = controller_mock.PutAccessoire(1, init.Value).Result;
+            var maj = controller_mock.GetAccessoire(1).Result;
+
+            // Assert
+
+            Assert.IsNotNull(maj.Value);
+            Assert.AreEqual(init.Value, maj.Value, "Valeurs pas identiques");
         }
     }
 }

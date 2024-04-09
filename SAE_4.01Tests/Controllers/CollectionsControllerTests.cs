@@ -198,5 +198,23 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
+
+        [TestMethod]
+        public void Moq_PutCollectionTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(collection);
+            var init = controller.GetCollection(1).Result;
+            init.Value.NomCollection = "COLLEC CLONE N°" + 2;
+
+            // Act
+            var res = controller.PutCollection(1, init.Value).Result;
+            var maj = controller.GetCollection(1).Result;
+
+            // Assert
+
+            Assert.IsNotNull(maj.Value);
+            Assert.AreEqual(init.Value, maj.Value, "Valeurs pas identiques");
+        }
     }
 }

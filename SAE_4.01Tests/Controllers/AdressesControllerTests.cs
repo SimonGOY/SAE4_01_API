@@ -209,5 +209,23 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
+
+        [TestMethod]
+        public void Moq_PutAdresseTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(adresse);
+            var init = controller.GetAdresse(1).Result;
+            init.Value.AdresseAdresse = "Adresse";
+
+            // Act
+            var res = controller.PutAdresse(1, init.Value).Result;
+            var maj = controller.GetAdresse(1).Result;
+
+            // Assert
+
+            Assert.IsNotNull(maj.Value);
+            Assert.AreEqual(init.Value, maj.Value, "Valeurs pas identiques");
+        }
     }
 }
