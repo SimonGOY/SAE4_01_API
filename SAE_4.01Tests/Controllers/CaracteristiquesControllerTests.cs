@@ -177,7 +177,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_PostAdresseTest()
+        public void Moq_PostCaracteristiqueTest()
         {
             // Act
             var actionResult = controller_mock.PostCaracteristique(caracteristique).Result;
@@ -207,12 +207,12 @@ namespace SAE_4._01.Controllers.Tests
         {
             // Arrange
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(caracteristique);
-            var init = controller.GetCaracteristique(1).Result;
+            var init = controller_mock.GetCaracteristique(1).Result;
             init.Value.NomCaracteristique = "CAR CLONE N°" + 2;
 
             // Act
-            var res = controller.PutCaracteristique(1, init.Value).Result;
-            var maj = controller.GetCaracteristique(1).Result;
+            var res = controller_mock.PutCaracteristique(1, init.Value).Result;
+            var maj = controller_mock.GetCaracteristique(1).Result;
 
             // Assert
 

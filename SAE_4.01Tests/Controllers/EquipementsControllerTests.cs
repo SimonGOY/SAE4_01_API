@@ -206,5 +206,24 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
+
+        [TestMethod]
+        public void Moq_PutEquipementTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(equipement);
+            var init = controller_mock.GetEquipement(1).Result;
+            init.Value.PrixEquipement = 4.50f;
+
+
+            // Act
+            var res = controller_mock.PutEquipement(equipement.IdEquipement, init.Value).Result;
+            var maj = controller_mock.GetEquipement(1).Result;
+
+            // Assert
+
+            Assert.IsNotNull(maj.Value);
+            Assert.AreEqual(init.Value, maj.Value, "Valeurs pas identiques");
+        }
     }
 }

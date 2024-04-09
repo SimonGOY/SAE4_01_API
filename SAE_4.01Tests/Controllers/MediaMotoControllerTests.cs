@@ -226,5 +226,24 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
+
+        [TestMethod]
+        public void Moq_PutMediaTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(mediaMoto);
+            var init = controller_mock.GetMedia(1).Result;
+            init.Value.LienMedia = "nintendo-town.fr/wp-content/uploads/2018/09/Professeur_Layton_et_l_Etrange_Village.jpg";
+
+
+            // Act
+            var res = controller_mock.PutMedia(mediaMoto.IdMediaMoto, init.Value).Result;
+            var maj = controller_mock.GetMedia(1).Result;
+
+            // Assert
+
+            Assert.IsNotNull(maj.Value);
+            Assert.AreEqual(init.Value, maj.Value, "Valeurs pas identiques");
+        }
     }
 }

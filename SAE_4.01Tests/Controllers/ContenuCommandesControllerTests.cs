@@ -213,7 +213,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod]
-        public void Moq_PutContactInfoTest()
+        public void Moq_PutContenuCommandeTest()
         {
             // Arrange
             mockRepository.Setup(x => x.GetBy4CompositeKeysAsync(1,1,1,1).Result).Returns(contenuCommande);
@@ -222,8 +222,8 @@ namespace SAE_4._01.Controllers.Tests
 
 
             // Act
-            var res = controller.PutContenuCommande(contenuCommande.IdCommande, contenuCommande.IdEquipement, contenuCommande.IdTaille, contenuCommande.IdColoris, init.Value).Result;
-            var maj = controller.GetByIds(1, 1, 1, 1).Result;
+            var res = controller_mock.PutContenuCommande(contenuCommande.IdCommande, contenuCommande.IdEquipement, contenuCommande.IdTaille, contenuCommande.IdColoris, init.Value).Result;
+            var maj = controller_mock.GetByIds(1, 1, 1, 1).Result;
 
             // Assert
 

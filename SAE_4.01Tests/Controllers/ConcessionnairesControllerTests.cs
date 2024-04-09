@@ -210,12 +210,12 @@ namespace SAE_4._01.Controllers.Tests
         {
             // Arrange
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(concessionnaire);
-            var init = controller.GetConcessionnaire(1).Result;
+            var init = controller_mock.GetConcessionnaire(1).Result;
             init.Value.EmailConcessionnaire = "crash.motorad@gmail.gov";
 
             // Act
-            var res = controller.PutConcessionnaire(1, init.Value).Result;
-            var maj = controller.GetConcessionnaire(1).Result;
+            var res = controller_mock.PutConcessionnaire(1, init.Value).Result;
+            var maj = controller_mock.GetConcessionnaire(1).Result;
 
             // Assert
 

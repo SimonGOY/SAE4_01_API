@@ -231,5 +231,24 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
         }
+
+        [TestMethod]
+        public void Moq_PutPackTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(pack);
+            var init = controller_mock.GetPack(1).Result;
+            init.Value.PrixPack = 100;
+
+
+            // Act
+            var res = controller_mock.PutPack(pack.IdPack, init.Value).Result;
+            var maj = controller_mock.GetPack(1).Result;
+
+            // Assert
+
+            Assert.IsNotNull(maj.Value);
+            Assert.AreEqual(init.Value, maj.Value, "Valeurs pas identiques");
+        }
     }
 }

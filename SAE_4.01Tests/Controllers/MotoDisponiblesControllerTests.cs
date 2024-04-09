@@ -82,7 +82,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void PostDeleteTest()
+        public void PostPutDeleteTest()
         {
             PostMotoDisponibleTest_CreationOK();
             PutMotoDisponibleTest_ModificationOK();
@@ -194,6 +194,25 @@ namespace SAE_4._01.Controllers.Tests
             var actionResult = controller_mock.DeleteMotoDisponible(1).Result;
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
+        }
+
+        [TestMethod]
+        public void Moq_PutPackTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(motoDispo);
+            var init = controller_mock.GetMotoDisponible(1).Result;
+            init.Value.PrixMotoDisponible = 4.50f;
+
+
+            // Act
+            var res = controller_mock.PutMotoDisponible(motoDispo.IdMotoDisponible, init.Value).Result;
+            var maj = controller_mock.GetMotoDisponible(1).Result;
+
+            // Assert
+
+            Assert.IsNotNull(maj.Value);
+            Assert.AreEqual(init.Value, maj.Value, "Valeurs pas identiques");
         }
     }
 }

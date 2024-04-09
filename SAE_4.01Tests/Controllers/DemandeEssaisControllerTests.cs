@@ -195,5 +195,24 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
+
+        [TestMethod]
+        public void Moq_PutDemandeEssaiTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(demande);
+            var init = controller_mock.GetDemandeEssai(1).Result;
+            init.Value.DescriptifDemandeEssai = "J'aimerais essayer parce que j'ai envie";
+
+
+            // Act
+            var res = controller_mock.PutDemandeEssai(demande.IdDemandeEssai, init.Value).Result;
+            var maj = controller_mock.GetDemandeEssai(1).Result;
+
+            // Assert
+
+            Assert.IsNotNull(maj.Value);
+            Assert.AreEqual(init.Value, maj.Value, "Valeurs pas identiques");
+        }
     }
 }

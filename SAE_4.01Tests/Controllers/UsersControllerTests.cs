@@ -249,7 +249,7 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_PostUserTest()
         {
             // Act
-            var actionResult = controller_mock.PostUser(userPostRequest).Result;
+            var actionResult = controller_mock.PostUser(user).Result;
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(ActionResult<User>), "Pas un ActionResult<User>");
             Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
@@ -275,6 +275,23 @@ namespace SAE_4._01.Controllers.Tests
             var actionResult = controller_mock.DeleteUser(1).Result;
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
+        }
+
+        [TestMethod]
+        public void Moq_PutUserTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(user);
+            var init = controller_mock.GetUserById(1).Result;
+            init.Value.UpdatedAt = DateTime.Now;
+
+            // Act
+            var res = controller_mock.PutUser(user.Id, init.Value).Result;
+            var maj = controller_mock.GetUserById(1).Result;
+
+            // Assert
+            Assert.IsNotNull(maj.Value);
+            Assert.AreEqual(init.Value, maj.Value, "Valeurs pas identiques");
         }
     }
 }

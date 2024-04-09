@@ -262,12 +262,12 @@ namespace SAE_4._01.Controllers.Tests
         {
             // Arrange
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(client);
-            var init = controller.GetClient(1).Result;
+            var init = controller_mock.GetClient(1).Result;
             init.Value.NomClient = "CLIENT CLONE N°" + 2;
 
             // Act
-            var res = controller.PutClient(1, init.Value).Result;
-            var maj = controller.GetClient(1).Result;
+            var res = controller_mock.PutClient(1, init.Value).Result;
+            var maj = controller_mock.GetClient(1).Result;
 
             // Assert
 
