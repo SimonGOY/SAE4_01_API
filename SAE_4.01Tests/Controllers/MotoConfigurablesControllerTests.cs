@@ -71,12 +71,11 @@ namespace SAE_4._01.Controllers.Tests
             // Arrange
             MotoConfigurable? med = context.MotoConfigurables.Find(1);
             // Act
-            var res = controller.GetMotoConfigurable(2).Result.Result;
-            Microsoft.AspNetCore.Mvc.ActionResult<SAE_4._01.Models.EntityFramework.MotoConfigurable> res_cast = res;
-            // Assert
+            var res = controller.GetMotoConfigurable(2).Result;
 
-            Assert.IsNotNull(res_cast);
-            Assert.AreNotEqual(med, res_cast.Value, "La moto est la même");
+            // Assert
+            Assert.IsNotNull(res.Value);
+            Assert.AreNotEqual(med, res.Value, "La moto est la même");
         }
 
         [TestMethod()]
