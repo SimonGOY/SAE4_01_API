@@ -9,6 +9,7 @@ using SAE_4._01.Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -234,6 +235,25 @@ namespace SAE_4._01.Controllers.Tests
             var actionResult = controller_mock.DeleteReservation(1).Result;
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
+        }
+
+        [TestMethod]
+        public void Moq_PutReservationTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(reservation);
+            var init = controller_mock.GetReservation(1).Result;
+            init.Value.FinancementReservation = "Crédit";
+
+
+            // Act
+            var res = controller_mock.PutReservation(reservation.IdReservation, init.Value).Result;
+            var maj = controller_mock.GetReservation(1).Result;
+
+            // Assert
+
+            Assert.IsNotNull(maj.Value);
+            Assert.AreEqual(init.Value, maj.Value, "Valeurs pas identiques");
         }
     }
 }

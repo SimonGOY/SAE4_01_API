@@ -91,7 +91,6 @@ namespace SAE_4._01.Controllers.Tests
         {
             PostCategorieAccessoireTest_CreationOK();
             //Ne peut pas etre modifier du fait de sa configuration
-            //PutCategorieAccessoireTest_ModificationOK();
             DeleteCategorieAccessoireTest_SuppressionOK();
         }
 

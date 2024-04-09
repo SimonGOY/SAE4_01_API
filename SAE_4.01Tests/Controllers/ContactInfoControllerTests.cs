@@ -206,12 +206,12 @@ namespace SAE_4._01.Controllers.Tests
         {
             // Arrange
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(contactInfo);
-            var init = controller.GetContactInfo(1).Result;
+            var init = controller_mock.GetContactInfo(1).Result;
             init.Value.NomContact = "Beethoven";
 
             // Act
-            var res = controller.PutContactInfo(1, init.Value).Result;
-            var maj = controller.GetContactInfo(1).Result;
+            var res = controller_mock.PutContactInfo(1, init.Value).Result;
+            var maj = controller_mock.GetContactInfo(1).Result;
 
             // Assert
 

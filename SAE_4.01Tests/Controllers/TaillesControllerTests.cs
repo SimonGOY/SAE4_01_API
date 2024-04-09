@@ -89,7 +89,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void PostUpdateDelete()
+        public void PostPutDelete()
         {
             PostTailleTest_CreationOK();
             PutTailleTest_ModificationOK();
@@ -205,6 +205,24 @@ namespace SAE_4._01.Controllers.Tests
             var actionResult = controller_mock.DeleteTaille(1).Result;
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
+        }
+
+        [TestMethod]
+        public void Moq_PutTailleTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(taille);
+            var init = controller_mock.GetTaille(1).Result;
+            init.Value.DescTaille = "nom";
+
+
+            // Act
+            var res = controller_mock.PutTaille(taille.IdTaille, init.Value).Result;
+            var maj = controller_mock.GetTaille(1).Result;
+
+            // Assert
+            Assert.IsNotNull(maj.Value);
+            Assert.AreEqual(init.Value, maj.Value, "Valeurs pas identiques");
         }
     }
 }

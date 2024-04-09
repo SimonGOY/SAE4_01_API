@@ -204,12 +204,12 @@ namespace SAE_4._01.Controllers.Tests
         {
             // Arrange
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(collection);
-            var init = controller.GetCollection(1).Result;
+            var init = controller_mock.GetCollection(1).Result;
             init.Value.NomCollection = "COLLEC CLONE N°" + 2;
 
             // Act
-            var res = controller.PutCollection(1, init.Value).Result;
-            var maj = controller.GetCollection(1).Result;
+            var res = controller_mock.PutCollection(1, init.Value).Result;
+            var maj = controller_mock.GetCollection(1).Result;
 
             // Assert
 

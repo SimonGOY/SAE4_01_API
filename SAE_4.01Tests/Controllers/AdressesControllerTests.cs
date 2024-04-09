@@ -215,12 +215,12 @@ namespace SAE_4._01.Controllers.Tests
         {
             // Arrange
             mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(adresse);
-            var init = controller.GetAdresse(1).Result;
+            var init = controller_mock.GetAdresse(1).Result;
             init.Value.AdresseAdresse = "Adresse";
 
             // Act
-            var res = controller.PutAdresse(1, init.Value).Result;
-            var maj = controller.GetAdresse(1).Result;
+            var res = controller_mock.PutAdresse(1, init.Value).Result;
+            var maj = controller_mock.GetAdresse(1).Result;
 
             // Assert
 

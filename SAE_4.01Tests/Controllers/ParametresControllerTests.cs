@@ -204,5 +204,24 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
         }
+
+        [TestMethod]
+        public void Moq_PutParametreTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByNomAsync("oui").Result).Returns(parametre);
+            var init = controller_mock.GetParametre("oui").Result;
+            init.Value.Description = "non";
+
+
+            // Act
+            var res = controller_mock.PutParametre(parametre.NomParametre, init.Value).Result;
+            var maj = controller_mock.GetParametre("oui").Result;
+
+            // Assert
+
+            Assert.IsNotNull(maj.Value);
+            Assert.AreEqual(init.Value, maj.Value, "Valeurs pas identiques");
+        }
     }
 }

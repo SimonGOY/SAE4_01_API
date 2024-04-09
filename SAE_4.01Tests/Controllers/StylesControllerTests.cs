@@ -102,7 +102,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void PostUpdateDelete()
+        public void PostPutDelete()
         {
             PostStyleTest_CreationOK();
             PutStyleTest_ModificationOK();
@@ -217,6 +217,24 @@ namespace SAE_4._01.Controllers.Tests
             var actionResult = controller_mock.DeleteStyle(1).Result;
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
+        }
+
+        [TestMethod]
+        public void Moq_PutStockTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(style);
+            var init = controller_mock.GetStyle(1).Result;
+            init.Value.PhotoMoto = "nom";
+
+
+            // Act
+            var res = controller_mock.PutStyle(style.IdStyle, init.Value).Result;
+            var maj = controller_mock.GetStyle(1).Result;
+
+            // Assert
+            Assert.IsNotNull(maj.Value);
+            Assert.AreEqual(init.Value, maj.Value, "Valeurs pas identiques");
         }
     }
 }
