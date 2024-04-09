@@ -19,6 +19,7 @@ namespace SAE_4._01.Controllers.Tests
         private AdressesController controller;
         private BMWDBContext context;
         private IDataRepository<Adresse> dataRepository;
+        private AdressePostRequest adressePostRequest;
         private Adresse adresse;
         private Mock<IDataRepository<Adresse>> mockRepository;
         private AdressesController controller_mock;
@@ -33,11 +34,18 @@ namespace SAE_4._01.Controllers.Tests
             mockRepository = new Mock<IDataRepository<Adresse>>();
             controller_mock = new AdressesController(mockRepository.Object);
 
-            adresse = new Adresse
+            adressePostRequest = new AdressePostRequest
             {
                 NumAdresse = 666666666,
                 NomPays = "France",
                 AdresseAdresse = "42 rue du Test",
+            };
+
+            adresse = new Adresse
+            {
+                NumAdresse = 666666666,
+                NomPays = "France",
+                AdresseAdresse = "42 rue du Test"
             };
         }
 
@@ -99,37 +107,39 @@ namespace SAE_4._01.Controllers.Tests
         {
 
             //Act
-            var result = controller.PostAdresse(adresse).Result;
+            var result = controller.PostAdresse(adressePostRequest).Result;
             // Assert
-            var adrRecup = controller.GetAdresse(adresse.NumAdresse).Result;
+            var adrRecup = controller.GetAdresse((int)adresse.NumAdresse).Result;
             adresse.NumAdresse = adrRecup.Value.NumAdresse;
-            Assert.AreEqual(adresse, adrRecup.Value, "Accessoires pas identiques");
+            var var1 = adresse;
+            var var2 = adrRecup.Value;
+            Assert.AreEqual(adresse, adrRecup.Value, "Adresses pas identiques");
         }
 
         public void PutAdresseTest_ModificationOK()
         {
             // Arrange
-            var adrIni = controller.GetAdresse(adresse.NumAdresse).Result;
+            var adrIni = controller.GetAdresse((int)adresse.NumAdresse).Result;
             adrIni.Value.AdresseAdresse = "Adresse";
 
             // Act
-            var res = controller.PutAdresse(adresse.NumAdresse, adrIni.Value).Result;
+            var res = controller.PutAdresse((int)adresse.NumAdresse, adrIni.Value).Result;
 
             // Assert
-            var adrMaj = controller.GetAdresse(adresse.NumAdresse).Result;
+            var adrMaj = controller.GetAdresse((int)adresse.NumAdresse).Result;
             Assert.IsNotNull(adrMaj.Value);
-            Assert.AreEqual(adrIni.Value, adrMaj.Value, "Accessoire pas identiques");
+            Assert.AreEqual(adrIni.Value, adrMaj.Value, "Adresses pas identiques");
         }
 
         public void DeleteAdresseTest_SuppressionOK()
         {
 
             // Act
-            var adrSuppr = controller.GetAdresse(adresse.NumAdresse).Result;
+            var adrSuppr = controller.GetAdresse((int)adresse.NumAdresse).Result;
             _ = controller.DeleteAdresse(adrSuppr.Value.NumAdresse).Result;
 
             // Assert
-            var res = controller.GetAdresse(adresse.NumAdresse).Result;
+            var res = controller.GetAdresse((int)adresse.NumAdresse).Result;
             Assert.IsNull(res.Value, "adresse non supprimé");
         }
 
@@ -141,7 +151,7 @@ namespace SAE_4._01.Controllers.Tests
             // Arrange
             var adresses = new List<Adresse>
                 {
-                    adresse
+                    controller.GetAdresse((int)adresse.NumAdresse).Result.Value
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(adresses);
             // Act
@@ -178,7 +188,7 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_PostAdresseTest()
         {
             // Act
-            var actionResult = controller_mock.PostAdresse(adresse).Result;
+            var actionResult = controller_mock.PostAdresse(adressePostRequest).Result;
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Adresse>), "Pas un ActionResult<Adresse>");
             Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");

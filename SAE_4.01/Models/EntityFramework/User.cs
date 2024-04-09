@@ -53,5 +53,27 @@ namespace SAE_4._01.Models.EntityFramework
         [ForeignKey(nameof(IdClient))]
         [InverseProperty(nameof(Client.UsersClient))]
         public virtual Client ClientUsers { get; set; } = null!;
+
+    }
+
+    public partial class User
+    {
+        public override bool Equals(object? obj)
+        {
+            return obj is User user &&
+                   this.Id == user.Id &&
+                   this.FirstName == user.FirstName &&
+                   this.Email == user.Email &&
+                   this.Password == user.Password &&
+                   this.CreatedAt == user.CreatedAt &&
+                   this.UpdatedAt == user.UpdatedAt &&
+                   this.Civilite == user.Civilite &&
+                   this.LastName == user.LastName &&
+                   this.IdClient == user.IdClient &&
+                   this.IsComplete == user.IsComplete &&
+                   this.TypeCompte == user.TypeCompte &&
+                   this.DoubleAuth == user.DoubleAuth &&
+                   this.LastConnected == user.LastConnected;
+        }
     }
 }

@@ -47,7 +47,6 @@ namespace SAE_4._01.Controllers
         public async Task<IActionResult> Register([FromBody] RegisterRequest registerRequest)
         {
             //créer adresse
-
             var payss = await dataRepositoryPays.GetAllAsync();
 
             var adresseResponse = await new AdressesController(dataRepositoryAdresse).PostAdresse(new AdressePostRequest
@@ -59,7 +58,7 @@ namespace SAE_4._01.Controllers
 
             var adresse = ((CreatedAtActionResult)adresseResponse.Result).Value as Adresse;
 
-            //créer user
+            //créer client
             var clientResponse = await new ClientsController(dataRepositoryClient).PostClient(new ClientPostRequest
             {
                 NumAdresse = 100,

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SAE_4._01.Models.EntityFramework
 {
     [Table("t_e_adresse_adr")]
-    public class Adresse
+    public partial class Adresse
     {
         [Key]
         [Column("adr_num")]
@@ -26,5 +26,16 @@ namespace SAE_4._01.Models.EntityFramework
 
         [InverseProperty(nameof(Client.AdresseClient))]
         public virtual ICollection<Client>? ClientAdresse { get; set; }
+    }
+
+    public partial class Adresse
+    {
+        public override bool Equals(object? obj)
+        {
+            return obj is Adresse adresse &&
+                   this.NumAdresse == adresse.NumAdresse &&
+                   this.NomPays == adresse.NomPays &&
+                   this.AdresseAdresse == adresse.AdresseAdresse;
+        }
     }
 }

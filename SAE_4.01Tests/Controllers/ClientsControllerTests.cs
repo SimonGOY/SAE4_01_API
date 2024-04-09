@@ -20,8 +20,8 @@ namespace SAE_4._01.Controllers.Tests
         private ClientsController controller;
         private BMWDBContext context;
         private IDataRepository<Client> dataRepository;
+        private ClientPostRequest clientPostRequest;
         private Client client;
-        private ClientPostRequest client_post;
         private Mock<IDataRepository<Client>> mockRepository;
         private ClientsController controller_mock;
 
@@ -35,6 +35,17 @@ namespace SAE_4._01.Controllers.Tests
             mockRepository = new Mock<IDataRepository<Client>>();
             controller_mock = new ClientsController(mockRepository.Object);
 
+            clientPostRequest = new ClientPostRequest
+            {
+                IdClient = 666666666,
+                NumAdresse = 1,
+                Civilite = "M.",
+                NomClient = "BASTARD",
+                PrenomClient = "Quentin",
+                DateNaissanceClient = new DateTime(2004, 2, 18),
+                EmailClient = "qbastard99@gmail.com"
+            };
+
             client = new Client
             {
                 IdClient = 666666666,
@@ -45,6 +56,7 @@ namespace SAE_4._01.Controllers.Tests
                 DateNaissanceClient = new DateTime(2004, 2, 18),
                 EmailClient = "qbastard99@gmail.com"
             };
+
 
             /*client_post = new ClientPostRequest
             {
@@ -116,7 +128,7 @@ namespace SAE_4._01.Controllers.Tests
         {
             
             //Act
-            var result = controller.PostClient(client).Result;
+            var result = controller.PostClient(clientPostRequest).Result;
             // Assert
             var cltRecup = controller.GetClient((int)client.IdClient).Result;
             client.IdClient = cltRecup.Value.IdClient;
@@ -218,7 +230,7 @@ namespace SAE_4._01.Controllers.Tests
                     client
                 };
             mockRepository.Setup(x => x.GetAllAsync().Result).Returns(liste);
-            var actionResult = controller_mock.PostClient(client).Result;
+            var actionResult = controller_mock.PostClient(clientPostRequest).Result;
             
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Client>), "Pas un ActionResult<Client>");
@@ -226,11 +238,11 @@ namespace SAE_4._01.Controllers.Tests
             var result = actionResult.Result as CreatedAtActionResult;
             Assert.IsInstanceOfType(result.Value, typeof(Client), "Pas une Client");
             client.IdClient = ((Client)result.Value).IdClient;
-            Assert.AreEqual(client_post.EmailClient, ((Client)result.Value).EmailClient, "Email pas identiques");
-            Assert.AreEqual(client_post.NomClient, ((Client)result.Value).NomClient, "Nom pas identiques");
-            Assert.AreEqual(client_post.PrenomClient, ((Client)result.Value).PrenomClient, "PrenomClient pas identiques");
-            Assert.AreEqual(client_post.Civilite, ((Client)result.Value).Civilite, "Civilite pas identiques");
-            Assert.AreEqual(client_post.DateNaissanceClient, ((Client)result.Value).DateNaissanceClient, "DateNaissanceClient pas identiques");
+            Assert.AreEqual(client.EmailClient, ((Client)result.Value).EmailClient, "Email pas identiques");
+            Assert.AreEqual(client.NomClient, ((Client)result.Value).NomClient, "Nom pas identiques");
+            Assert.AreEqual(client.PrenomClient, ((Client)result.Value).PrenomClient, "PrenomClient pas identiques");
+            Assert.AreEqual(client.Civilite, ((Client)result.Value).Civilite, "Civilite pas identiques");
+            Assert.AreEqual(client.DateNaissanceClient, ((Client)result.Value).DateNaissanceClient, "DateNaissanceClient pas identiques");
         }
 
         [TestMethod]

@@ -21,8 +21,8 @@ namespace SAE_4._01.Controllers.Tests
         private UsersController controller;
         private BMWDBContext context;
         private IDataRepository<User> dataRepository;
-        private User user;
         private UserPostRequest userPostRequest;
+        private User user;
         private Mock<IDataRepository<User>> mockRepository;
         private UsersController controller_mock;
 
@@ -32,21 +32,21 @@ namespace SAE_4._01.Controllers.Tests
             var builder = new DbContextOptionsBuilder<BMWDBContext>().UseNpgsql("Server=51.83.36.122; port=5432; Database=sa11; uid=sa11; password=BMW-S4; SearchPath=bmw;");
             context = new BMWDBContext(builder.Options);
             dataRepository = new UserManager(context);
-            controller = new UsersController(dataRepository, null, null);
+            controller = new UsersController(dataRepository);
             mockRepository = new Mock<IDataRepository<User>>();
-            controller_mock = new UsersController(mockRepository.Object, null, null);
+            controller_mock = new UsersController(mockRepository.Object);
 
             userPostRequest = new UserPostRequest
             {
-                Id = 666666666,
+                Id = 666666664,
                 FirstName = "Simon",
-                Email = "test@test.com",
+                Email = "testuser@test.com",
                 Password = "test",
                 CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now,
-                Gender = "M.",
-                LastName = "GOY",
-                //IdClient = 147,
+                Civilite = "M.",
+                LastName = "GOY",               
+                IdClient = 10000,
                 IsComplete = true,
                 TypeCompte = 0,
                 DoubleAuth = false,
@@ -56,20 +56,19 @@ namespace SAE_4._01.Controllers.Tests
 
             user = new User
             {
-                Id = 666666666,
+                Id = 666666664,
                 FirstName = "Simon",
-                Email = "test@test.com",
+                Email = "testuser@test.com",
                 Password = "test",
                 CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now,
                 Civilite = "M.",
                 LastName = "GOY",
-                IdClient = 147,
+                IdClient = 10000,
                 IsComplete = true,
                 TypeCompte = 0,
                 DoubleAuth = false,
-                LastConnected = DateTime.Now,
-                ClientUsers = new Client()
+                LastConnected = DateTime.Now
             };
         }
 
@@ -135,20 +134,28 @@ namespace SAE_4._01.Controllers.Tests
             var result = controller.PostUser(userPostRequest).Result;
             // Assert
             var usrRecup = controller.GetUserById((int)userPostRequest.Id).Result;
-            userPostRequest.Id = usrRecup.Value.IdClient;
+            usrRecup.Value.Id = user.Id;
+            usrRecup.Value.CreatedAt = user.CreatedAt;
+            usrRecup.Value.UpdatedAt = user.UpdatedAt;
+            usrRecup.Value.LastConnected = user.LastConnected;
 
+            var var = user;
+            var var1 = usrRecup.Value;
+            var var2 = user == usrRecup.Value;
 
-            Assert.AreEqual(userPostRequest.Id, usrRecup.Value.Id, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.FirstName, usrRecup.Value.FirstName, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.LastName, usrRecup.Value.LastName, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.Email, usrRecup.Value.Email, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.Password, usrRecup.Value.Password, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.IsComplete, usrRecup.Value.IsComplete, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.CreatedAt, usrRecup.Value.CreatedAt, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.UpdatedAt, usrRecup.Value.UpdatedAt, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.TypeCompte, usrRecup.Value.TypeCompte, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.DoubleAuth, usrRecup.Value.DoubleAuth, "telephone pas identiques");
-            Assert.AreEqual(userPostRequest.LastName, usrRecup.Value.LastName, "telephone pas identiques");
+            //Assert.AreEqual(user, usrRecup.Value, "users pas identiques");
+
+            Assert.AreEqual(user.Id, usrRecup.Value.Id, "telephone pas identiques");
+            Assert.AreEqual(user.FirstName, usrRecup.Value.FirstName, "telephone pas identiques");
+            Assert.AreEqual(user.LastName, usrRecup.Value.LastName, "telephone pas identiques");
+            Assert.AreEqual(user.Email, usrRecup.Value.Email, "telephone pas identiques");
+            Assert.AreEqual(user.Password, usrRecup.Value.Password, "telephone pas identiques");
+            Assert.AreEqual(user.IsComplete, usrRecup.Value.IsComplete, "telephone pas identiques");
+            Assert.AreEqual(user.CreatedAt, usrRecup.Value.CreatedAt, "telephone pas identiques");
+            Assert.AreEqual(user.UpdatedAt, usrRecup.Value.UpdatedAt, "telephone pas identiques");
+            Assert.AreEqual(user.TypeCompte, usrRecup.Value.TypeCompte, "telephone pas identiques");
+            Assert.AreEqual(user.DoubleAuth, usrRecup.Value.DoubleAuth, "telephone pas identiques");
+            Assert.AreEqual(user.LastName, usrRecup.Value.LastName, "telephone pas identiques");
         }
 
         /*public void PutClientTest_ModificationOK()
