@@ -200,5 +200,23 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
+
+        [TestMethod]
+        public void Moq_PutContactInfoTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(contactInfo);
+            var init = controller.GetContactInfo(1).Result;
+            init.Value.NomContact = "Beethoven";
+
+            // Act
+            var res = controller.PutContactInfo(1, init.Value).Result;
+            var maj = controller.GetContactInfo(1).Result;
+
+            // Assert
+
+            Assert.IsNotNull(maj.Value);
+            Assert.AreEqual(init.Value, maj.Value, "Valeurs pas identiques");
+        }
     }
 }

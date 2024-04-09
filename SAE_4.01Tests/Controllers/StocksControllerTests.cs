@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SAE_4._01.Controllers;
@@ -63,7 +64,7 @@ namespace SAE_4._01.Controllers.Tests
             var res = controller.GetByIds(1, 1, 17).Result;
             // Assert
             Assert.IsNotNull(res.Value);
-            Assert.AreEqual(sto, res.Value, "Le specifie n'est pas le même");
+            Assert.AreEqual(sto, res.Value, "Le stock n'est pas le même");
         }
 
         [TestMethod()]
@@ -75,7 +76,7 @@ namespace SAE_4._01.Controllers.Tests
             var res = controller.GetByIds(1, 1, 18).Result;
             // Assert
             Assert.IsNotNull(res.Value);
-            Assert.AreNotEqual(spe, res.Value, "Le specifie est le même");
+            Assert.AreNotEqual(spe, res.Value, "Le stock est le même");
         }
 
         [TestMethod()]
@@ -83,8 +84,8 @@ namespace SAE_4._01.Controllers.Tests
         {
             var res = controller.GetByIds(1, 777777777, 1).Result;
             // Assert
-            Assert.IsNull(res.Result, "Le specifie existe");
-            Assert.IsNull(res.Value, "Le specifie existe");
+            Assert.IsNull(res.Result, "Le stock existe");
+            Assert.IsNull(res.Value, "Le stock existe");
         }
 
         [TestMethod()]
@@ -129,7 +130,81 @@ namespace SAE_4._01.Controllers.Tests
 
             // Assert
             var res = controller.GetByIds(stock.IdEquipement, stock.IdTaille, stock.IdColoris).Result;
-            Assert.IsNull(res.Value, "specifie non supprimé");
+            Assert.IsNull(res.Value, "stock non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetSpecifiesTest_RecuperationOK()
+        {
+            // Arrange
+            var stocks = new List<Stock>
+                {
+                    stock
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(stocks);
+            // Act
+            var res = controller_mock.GetStocks().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(stocks, res.Value as IEnumerable<Stock>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetProfessionnelTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetBy3CompositeKeysAsync(1, 1, 1)).ReturnsAsync(stock);
+
+            // Act
+            var res = controller_mock.GetByIds(1, 1, 1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+
+            Assert.AreEqual(stock, res.Value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetProfessionnelTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetByIds(0, 0, 0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+
+        [TestMethod()]
+        public void Moq_PostSpecifieTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostStock(stock).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Stock>), "Pas un ActionResult<Stock>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Stock), "Pas une Stock");
+            stock.IdColoris = ((Stock)result.Value).IdColoris;
+            stock.IdTaille = ((Stock)result.Value).IdTaille;
+            stock.IdEquipement = ((Stock)result.Value).IdEquipement;
+            Assert.AreEqual(stock, (Stock)result.Value, "Stock pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteSpecifieTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetBy3CompositeKeysAsync(1, 1, 1).Result).Returns(stock);
+
+            // Act
+            var actionResult = controller_mock.DeleteStock(1, 1,1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
         }
     }
 }

@@ -211,5 +211,24 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult"); // Test du type de retour
         }
+
+        [TestMethod]
+        public void Moq_PutContactInfoTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetBy4CompositeKeysAsync(1,1,1,1).Result).Returns(contenuCommande);
+            var init = controller_mock.GetByIds(1,1, 1, 1).Result;
+            init.Value.Quantite = 6;
+
+
+            // Act
+            var res = controller.PutContenuCommande(contenuCommande.IdCommande, contenuCommande.IdEquipement, contenuCommande.IdTaille, contenuCommande.IdColoris, init.Value).Result;
+            var maj = controller.GetByIds(1, 1, 1, 1).Result;
+
+            // Assert
+
+            Assert.IsNotNull(maj.Value);
+            Assert.AreEqual(init.Value, maj.Value, "Valeurs pas identiques");
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SAE_4._01.Controllers;
@@ -113,6 +114,78 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetByIds(specifie.IdOption, specifie.IdMoto).Result;
             Assert.IsNull(res.Value, "specifie non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetSpecifiesTest_RecuperationOK()
+        {
+            // Arrange
+            var specifient = new List<Specifie>
+                {
+                    specifie
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(specifient);
+            // Act
+            var res = controller_mock.GetSpecifies().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(specifient, res.Value as IEnumerable<Specifie>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetProfessionnelTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetBy2CompositeKeysAsync(1, 1)).ReturnsAsync(specifie);
+
+            // Act
+            var res = controller_mock.GetByIds(1, 1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+
+            Assert.AreEqual(specifie, res.Value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetProfessionnelTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetByIds(0, 0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+
+        [TestMethod()]
+        public void Moq_PostSpecifieTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostSpecifie(specifie).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Specifie>), "Pas un ActionResult<Specifie>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Specifie), "Pas une Specifie");
+            specifie.IdMoto = ((Specifie)result.Value).IdMoto;
+            Assert.AreEqual(specifie, (Specifie)result.Value, "Specifie pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteSpecifieTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetBy2CompositeKeysAsync(1, 1).Result).Returns(specifie);
+
+            // Act
+            var actionResult = controller_mock.DeleteSpecifie(1, 1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
         }
     }
 }

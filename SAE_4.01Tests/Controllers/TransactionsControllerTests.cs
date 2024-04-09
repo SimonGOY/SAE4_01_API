@@ -118,7 +118,7 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var traMaj = controller.GetTransaction(transaction.IdTransaction).Result;
             Assert.IsNotNull(traMaj.Value);
-            Assert.AreEqual(traIni.Value, traMaj.Value, "telephone pas identiques");
+            Assert.AreEqual(traIni.Value, traMaj.Value, "transaction pas identiques");
         }
 
         public void DeleteTransactionTest_SuppressionOK()
@@ -130,6 +130,77 @@ namespace SAE_4._01.Controllers.Tests
             // Assert
             var res = controller.GetTransaction(transaction.IdTransaction).Result;
             Assert.IsNull(res.Value, "transaction non supprimé");
+        }
+
+        // ---------------------------------------- Tests Moq ----------------------------------------
+
+        [TestMethod()]
+        public void Moq_GetTransactionsTest_RecuperationOK()
+        {
+            // Arrange
+            var transactions = new List<Transaction>
+                {
+                    transaction
+                };
+            mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(transactions);
+            // Act
+            var res = controller_mock.GetTransactions().Result;
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(transactions, res.Value as IEnumerable<Transaction>, "La liste n'est pas le même");
+        }
+
+        [TestMethod()]
+        public void Moq_GetTransactionTest_RecuperationOK()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(transaction);
+
+            // Act
+            var res = controller_mock.GetTransaction(1).Result;
+
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+
+            Assert.AreEqual(transaction, res.Value, "Les objets ne sont pas égaux");
+        }
+
+
+        [TestMethod()]
+        public void Moq_GetTransactionTest_RecuperationFailed()
+        {
+            // Act
+            var res = controller_mock.GetTransaction(0).Result;
+            // Assert
+            Assert.IsInstanceOfType(res.Result, typeof(NotFoundResult));
+        }
+
+
+        [TestMethod()]
+        public void Moq_PostTransactionTest()
+        {
+            // Act
+            var actionResult = controller_mock.PostTransaction(transaction).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(ActionResult<Transaction>), "Pas un ActionResult<Transaction>");
+            Assert.IsInstanceOfType(actionResult.Result, typeof(CreatedAtActionResult), "Pas un CreatedAtActionResult");
+            var result = actionResult.Result as CreatedAtActionResult;
+            Assert.IsInstanceOfType(result.Value, typeof(Transaction), "Pas une Transaction");
+            Assert.AreEqual(transaction, (Transaction)result.Value, "Transaction pas identiques");
+        }
+
+        [TestMethod]
+        public void Moq_DeleteTransactionTest()
+        {
+            // Arrange
+            mockRepository.Setup(x => x.GetByIdAsync(1).Result).Returns(transaction);
+
+            // Act
+            var actionResult = controller_mock.DeleteTransaction(1).Result;
+            // Assert
+            Assert.IsInstanceOfType(actionResult, typeof(NoContentResult), "Pas un NoContentResult");
         }
     }
 }

@@ -188,9 +188,21 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void Moq_GetByIdCouleurTest_RecuperationFailed()
-        {
-            Assert.Fail(); // Faire get by id couleur
+        public void Moq_GetByIdCouleurTest_RecuperationOk()
+        { 
+            // Arrange
+            var packs = new List<Pack>
+                {
+                    pack
+                };
+            mockRepository.Setup(x => x.GetByIdMotoAsync(1)).ReturnsAsync(packs);
+            // Act
+            var res = controller_mock.GetCouleurByIdMoto(1).Result;
+            
+            // Assert
+            Assert.IsNotNull(res);
+            Assert.IsNotNull(res.Value);
+            Assert.AreEqual(packs, res.Value as IEnumerable<Pack>, "La liste n'est pas le même");
         }
 
 
