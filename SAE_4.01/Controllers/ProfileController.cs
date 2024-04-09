@@ -30,9 +30,9 @@ namespace SAE_4._01.Controllers
             this.dataRepositoryTelephone = dataRepoTelephone;
         }
 
-        [HttpPost]
+        [HttpGet("{clientID}")]
         [AllowAnonymous]
-        public async Task<string> GetProfileInfos([FromBody] ProfileRequest profileRequest)
+        public async Task<string> GetProfileInfos(int clientID)
         {
             var telephonesResult = await dataRepositoryTelephone.GetAllAsync();
 
@@ -40,7 +40,7 @@ namespace SAE_4._01.Controllers
 
             foreach (Telephone telephone in telephones)
             {
-                if(telephone.IdClient == profileRequest.ClientID)
+                if(telephone.IdClient == clientID)
                 {
                     return telephone.NumTelephone;
                 }
@@ -48,10 +48,5 @@ namespace SAE_4._01.Controllers
 
             return null;
         }
-    }
-
-    public class ProfileRequest
-    {
-        public int ClientID { get; set; }
     }
 }
