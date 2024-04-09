@@ -71,19 +71,8 @@ namespace SAE_4._01.Controllers
 
             var client = ((CreatedAtActionResult)clientResponse.Result).Value as Client;
 
-            //créer tel
-            var telephoneResponse = await new TelephonesController(dataRepositoryTelephone).PostTelephone(new TelephonePostRequest
-            {
-                IdClient = (int)client.IdClient,
-                NumTelephone = registerRequest.PhoneNumber,
-                Type = "Mobile",
-                Fonction = "Privé"
-            });
-
-            var telephone = ((CreatedAtActionResult)telephoneResponse.Result).Value as Telephone;
-
             //créer user
-            var userResponse = await new UsersController(dataRepositoryUser).PostUser(new UserPostRequest
+            var userResponse = await new UsersController(dataRepositoryUser).PostUser(new User
             {
                 FirstName = registerRequest.FirstName,
                 LastName = registerRequest.LastName,
@@ -100,6 +89,22 @@ namespace SAE_4._01.Controllers
             });
 
             var user = ((CreatedAtActionResult)userResponse.Result).Value as User;
+
+
+            //créer tel
+            var telephoneResponse = await new TelephonesController(dataRepositoryTelephone).PostTelephone(new TelephonePostRequest
+            {
+                IdClient = (int)client.IdClient,
+                NumTelephone = registerRequest.PhoneNumber,
+                Type = "Mobile",
+                Fonction = "Privé"
+            });
+
+            var telephone = ((CreatedAtActionResult)telephoneResponse.Result).Value as Telephone;
+
+            telephone.ClientTelephone = client;
+
+            await new TelephonesController(dataRepositoryTelephone).PutTelephone(telephone.Id, telephone);
 
             user.ClientUsers = null;
 

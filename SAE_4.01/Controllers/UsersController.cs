@@ -108,7 +108,7 @@ namespace SAE_4._01.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser([FromBody]UserPostRequest userPostRequest)
+        public async Task<ActionResult<User>> PostUser([FromBody]User userPostRequest)
         {
             if (userPostRequest.Id == null)
             {
@@ -184,7 +184,7 @@ namespace SAE_4._01.Controllers
         }
     }
 
-    public class UserPostRequest
+    /*public class UserPostRequest
     {
         public int? Id { get; set; }
 
@@ -211,5 +211,5 @@ namespace SAE_4._01.Controllers
         public bool DoubleAuth { get; set; }
 
         public DateTime LastConnected { get; set; }
-    }
+    }*/
 }

@@ -21,8 +21,8 @@ namespace SAE_4._01.Controllers.Tests
         private UsersController controller;
         private BMWDBContext context;
         private IDataRepository<User> dataRepository;
-        private UserPostRequest userPostRequest;
         private User user;
+        private ClientPostRequest clientPostRequest;
         private Mock<IDataRepository<User>> mockRepository;
         private UsersController controller_mock;
 
@@ -36,9 +36,9 @@ namespace SAE_4._01.Controllers.Tests
             mockRepository = new Mock<IDataRepository<User>>();
             controller_mock = new UsersController(mockRepository.Object);
 
-            userPostRequest = new UserPostRequest
+            user = new User
             {
-                Id = 666666664,
+                Id = 666666666,
                 FirstName = "Simon",
                 Email = "testuser@test.com",
                 Password = "test",
@@ -46,7 +46,7 @@ namespace SAE_4._01.Controllers.Tests
                 UpdatedAt = DateTime.Now,
                 Civilite = "M.",
                 LastName = "GOY",               
-                IdClient = 10000,
+                IdClient = 888888888,
                 IsComplete = true,
                 TypeCompte = 0,
                 DoubleAuth = false,
@@ -54,21 +54,15 @@ namespace SAE_4._01.Controllers.Tests
                 //ClientUsers = new Client()
             };
 
-            user = new User
+            clientPostRequest = new ClientPostRequest
             {
-                Id = 666666664,
-                FirstName = "Simon",
-                Email = "testuser@test.com",
-                Password = "test",
-                CreatedAt = DateTime.Now,
-                UpdatedAt = DateTime.Now,
+                IdClient = 888888888,
+                NumAdresse = 1,
                 Civilite = "M.",
-                LastName = "GOY",
-                IdClient = 10000,
-                IsComplete = true,
-                TypeCompte = 0,
-                DoubleAuth = false,
-                LastConnected = DateTime.Now
+                NomClient = "GOY",
+                PrenomClient = "Simon",
+                DateNaissanceClient = new DateTime(2004, 2, 18),
+                EmailClient = "testuser@test.com"
             };
         }
 
@@ -122,26 +116,25 @@ namespace SAE_4._01.Controllers.Tests
         public void PostPutDeleteTest()
         {
             PostUserTest_CreationOK();
-            /*PutClientTest_ModificationOK();
-            DeleteClientTest_SuppressionOK();*/
+            PutUserTest_ModificationOK();
+            DeleteUserTest_SuppressionOK();
         }
 
-        [TestMethod()]
         public void PostUserTest_CreationOK()
         {
+            IDataRepository<Client> clientDataRepository = new ClientManager(context);
+            ClientsController clientController = new ClientsController(clientDataRepository);
+
+            var resultClt = clientController.PostClient(clientPostRequest).Result;
 
             //Act
-            var result = controller.PostUser(userPostRequest).Result;
+            var result = controller.PostUser(user).Result;
             // Assert
-            var usrRecup = controller.GetUserById((int)userPostRequest.Id).Result;
-            usrRecup.Value.Id = user.Id;
+            var usrRecup = controller.GetUserById((int)user.Id).Result;
+            usrRecup.Value.Id = (int)user.Id;
             usrRecup.Value.CreatedAt = user.CreatedAt;
             usrRecup.Value.UpdatedAt = user.UpdatedAt;
             usrRecup.Value.LastConnected = user.LastConnected;
-
-            var var = user;
-            var var1 = usrRecup.Value;
-            var var2 = user == usrRecup.Value;
 
             //Assert.AreEqual(user, usrRecup.Value, "users pas identiques");
 
@@ -158,40 +151,53 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(user.LastName, usrRecup.Value.LastName, "telephone pas identiques");
         }
 
-        /*public void PutClientTest_ModificationOK()
+        public void PutUserTest_ModificationOK()
         {
             // Arrange
-            var cltIni = controller.GetClient((int)client.IdClient).Result;
-            cltIni.Value.NomClient = "CLIENT CLONE N°" + 2;
+            var usrIni = controller.GetUserById((int)user.Id).Result;
+            usrIni.Value.UpdatedAt = DateTime.Now;
 
             // Act
-            var res = controller.PutClient((int)client.IdClient, cltIni.Value).Result;
+            var res = controller.PutUser((int)user.Id, usrIni.Value).Result;
 
             // Assert
-            var cltMaj = controller.GetClient((int)client.IdClient).Result;
-            Assert.IsNotNull(cltMaj.Value);
+            var usrMaj = controller.GetUserById((int)user.Id).Result;
+            Assert.IsNotNull(usrMaj.Value);
 
 
-            Assert.AreEqual(cltIni.Value.IdClient, cltMaj.Value.IdClient, "telephone pas identiques");
-            Assert.AreEqual(cltIni.Value.Civilite, cltMaj.Value.Civilite, "telephone pas identiques");
-            Assert.AreEqual(cltIni.Value.NomClient, cltMaj.Value.NomClient, "telephone pas identiques");
-            Assert.AreEqual(cltIni.Value.PrenomClient, cltMaj.Value.PrenomClient, "telephone pas identiques");
-            Assert.AreEqual(cltIni.Value.DateNaissanceClient, cltMaj.Value.DateNaissanceClient, "telephone pas identiques");
-            Assert.AreEqual(cltIni.Value.NumAdresse, cltMaj.Value.NumAdresse, "telephone pas identiques");
-            Assert.AreEqual(cltIni.Value.EmailClient, cltMaj.Value.EmailClient, "telephone pas identiques");
+            Assert.AreEqual(usrIni.Value.Id, usrMaj.Value.Id, "telephone pas identiques");
+            Assert.AreEqual(usrIni.Value.FirstName, usrMaj.Value.FirstName, "telephone pas identiques");
+            Assert.AreEqual(usrIni.Value.LastName, usrMaj.Value.LastName, "telephone pas identiques");
+            Assert.AreEqual(usrIni.Value.Email, usrMaj.Value.Email, "telephone pas identiques");
+            Assert.AreEqual(usrIni.Value.Password, usrMaj.Value.Password, "telephone pas identiques");
+            Assert.AreEqual(usrIni.Value.IsComplete, usrMaj.Value.IsComplete, "telephone pas identiques");
+            Assert.AreEqual(usrIni.Value.CreatedAt, usrMaj.Value.CreatedAt, "telephone pas identiques");
+            Assert.AreEqual(usrIni.Value.UpdatedAt, usrMaj.Value.UpdatedAt, "telephone pas identiques");
+            Assert.AreEqual(usrIni.Value.TypeCompte, usrMaj.Value.TypeCompte, "telephone pas identiques");
+            Assert.AreEqual(usrIni.Value.DoubleAuth, usrMaj.Value.DoubleAuth, "telephone pas identiques");
+            Assert.AreEqual(usrIni.Value.LastName, usrMaj.Value.LastName, "telephone pas identiques");
         }
 
-        public void DeleteClientTest_SuppressionOK()
+        public void DeleteUserTest_SuppressionOK()
         {
-
+            
+            IDataRepository<Client> clientDataRepository = new ClientManager(context);
+            ClientsController clientController = new ClientsController(clientDataRepository);
             // Act
-            var cltSuppr = controller.GetClient((int)client.IdClient).Result;
-            _ = controller.DeleteClient((int)cltSuppr.Value.IdClient).Result;
+            var usrSuppr = controller.GetUserById((int)user.Id).Result;
+            _ = controller.DeleteUser((int)usrSuppr.Value.Id).Result;
+
+            var cltSuppr = clientController.GetClient((int)user.IdClient).Result;
+            _ = clientController.DeleteClient((int)cltSuppr.Value.IdClient).Result;
 
             // Assert
-            var res = controller.GetClient((int)client.IdClient).Result;
-            Assert.IsNull(res.Value, "client non supprimé");
-        }*/
+            var res = controller.GetUserById((int)user.Id).Result;
+            Assert.IsNull(res.Value, "user non supprimé");
+
+
+            var cltres = clientController.GetClient((int)user.IdClient).Result;
+            Assert.IsNull(cltres.Value, "client non supprimé");
+        }
 
         // ---------------------------------------- Tests Moq ----------------------------------------
 
