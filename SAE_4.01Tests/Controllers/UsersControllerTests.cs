@@ -21,9 +21,8 @@ namespace SAE_4._01.Controllers.Tests
         private UsersController controller;
         private BMWDBContext context;
         private IDataRepository<User> dataRepository;
-        private UserPostRequest userPostRequest;
+        private User userPostRequest;
         private ClientPostRequest clientPostRequest;
-        private User user;
         private Mock<IDataRepository<User>> mockRepository;
         private UsersController controller_mock;
 
@@ -37,7 +36,7 @@ namespace SAE_4._01.Controllers.Tests
             mockRepository = new Mock<IDataRepository<User>>();
             controller_mock = new UsersController(mockRepository.Object);
 
-            userPostRequest = new UserPostRequest
+            userPostRequest = new User
             {
                 Id = 666666666,
                 FirstName = "Simon",
@@ -211,7 +210,7 @@ namespace SAE_4._01.Controllers.Tests
             // Arrange
             var users = new List<User>
                 {
-                    user
+                    userPostRequest
                 };
             mockRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(users);
             // Act
@@ -226,13 +225,13 @@ namespace SAE_4._01.Controllers.Tests
         public void Moq_GetUsersTest_RecuperationOK()
         {
             // Arrange
-            mockRepository.Setup(x => x.GetByIdAsync(15)).ReturnsAsync(user);
+            mockRepository.Setup(x => x.GetByIdAsync(15)).ReturnsAsync(userPostRequest);
             // Act
             var res = controller_mock.GetUserById(15).Result;
             // Assert
             Assert.IsNotNull(res);
             Assert.IsNotNull(res.Value);
-            Assert.AreEqual(user, res.Value as User, "Les infoCB n'est pas le même");
+            Assert.AreEqual(userPostRequest, res.Value as User, "Les infoCB n'est pas le même");
         }
 
         [TestMethod()]
