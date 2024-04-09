@@ -134,13 +134,13 @@ namespace SAE_4._01.Controllers.Tests
             client.IdClient = cltRecup.Value.IdClient;
 
 
-            Assert.AreEqual(client.IdClient, cltRecup.Value.IdClient, "telephone pas identiques");
-            Assert.AreEqual(client.Civilite, cltRecup.Value.Civilite, "telephone pas identiques");
-            Assert.AreEqual(client.NomClient, cltRecup.Value.NomClient, "telephone pas identiques");
-            Assert.AreEqual(client.PrenomClient, cltRecup.Value.PrenomClient, "telephone pas identiques");
-            Assert.AreEqual(client.DateNaissanceClient, cltRecup.Value.DateNaissanceClient, "telephone pas identiques");
-            Assert.AreEqual(client.NumAdresse, cltRecup.Value.NumAdresse, "telephone pas identiques");
-            Assert.AreEqual(client.EmailClient, cltRecup.Value.EmailClient, "telephone pas identiques");
+            Assert.AreEqual(clientPostRequest.IdClient, cltRecup.Value.IdClient, "telephone pas identiques");
+            Assert.AreEqual(clientPostRequest.Civilite, cltRecup.Value.Civilite, "telephone pas identiques");
+            Assert.AreEqual(clientPostRequest.NomClient, cltRecup.Value.NomClient, "telephone pas identiques");
+            Assert.AreEqual(clientPostRequest.PrenomClient, cltRecup.Value.PrenomClient, "telephone pas identiques");
+            Assert.AreEqual(clientPostRequest.DateNaissanceClient, cltRecup.Value.DateNaissanceClient, "telephone pas identiques");
+            Assert.AreEqual(clientPostRequest.NumAdresse, cltRecup.Value.NumAdresse, "telephone pas identiques");
+            Assert.AreEqual(clientPostRequest.EmailClient, cltRecup.Value.EmailClient, "telephone pas identiques");
         }
 
         public void PutClientTest_ModificationOK()

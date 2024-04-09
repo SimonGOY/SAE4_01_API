@@ -116,11 +116,11 @@ namespace SAE_4._01.Controllers.Tests
             var telRecup = controller.GetTelephone((int)telephone.Id).Result;
             telephone.Id = telRecup.Value.Id;
             Assert.IsNotNull(telRecup.Value);
-            Assert.AreEqual(telephone.Id, telRecup.Value.Id, "telephone pas identiques");
-            Assert.AreEqual(telephone.IdClient, telRecup.Value.IdClient, "telephone pas identiques");
-            Assert.AreEqual(telephone.NumTelephone, telRecup.Value.NumTelephone, "telephone pas identiques");
-            Assert.AreEqual(telephone.Type, telRecup.Value.Type, "telephone pas identiques");
-            Assert.AreEqual(telephone.Fonction, telRecup.Value.Fonction, "telephone pas identiques");
+            Assert.AreEqual(telephonePostRequest.Id, telRecup.Value.Id, "telephone pas identiques");
+            Assert.AreEqual(telephonePostRequest.IdClient, telRecup.Value.IdClient, "telephone pas identiques");
+            Assert.AreEqual(telephonePostRequest.NumTelephone, telRecup.Value.NumTelephone, "telephone pas identiques");
+            Assert.AreEqual(telephonePostRequest.Type, telRecup.Value.Type, "telephone pas identiques");
+            Assert.AreEqual(telephonePostRequest.Fonction, telRecup.Value.Fonction, "telephone pas identiques");
 
         }
 
