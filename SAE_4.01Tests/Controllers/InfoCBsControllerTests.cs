@@ -81,7 +81,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetInfoCBTest_EquipementNExistePas()
+        public void GetInfoCBTest_InfoCBNExistePas()
         {
             var res = controller.GetInfoCB(777777777).Result;
             // Assert

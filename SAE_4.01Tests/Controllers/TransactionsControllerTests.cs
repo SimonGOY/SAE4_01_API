@@ -68,7 +68,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetTelephoneTest_RecuperationFailed()
+        public void GetTransactionTest_RecuperationFailed()
         {
             // Arrange
             Transaction? tel = context.Transactions.Find(6);
@@ -80,7 +80,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetTelephoneTest_EquipementNExistePas()
+        public void GetTransactionTest_TransactionNExistePas()
         {
             var res = controller.GetTransaction(777777777).Result;
             // Assert

@@ -81,7 +81,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetGammeMotoTest_EquipementNExistePas()
+        public void GetGammeMotoTest_GammeMotoNExistePas()
         {
             var res = controller.GetGammeMoto(777777777).Result;
             // Assert
@@ -94,7 +94,7 @@ namespace SAE_4._01.Controllers.Tests
         public void PostDelete()
         {
             PostGammeMotoTest_CreationOK();
-            DeleteGammeMotoTest();
+            DeleteGammeMotoTest_SuppressionOK();
         }
 
         public void PostGammeMotoTest_CreationOK()
@@ -107,7 +107,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(gammeMoto, gamRecup.Value, "Gammes pas identiques");
         }
 
-        public void DeleteGammeMotoTest()
+        public void DeleteGammeMotoTest_SuppressionOK()
         {
             // Act
             var gamSuppr = controller.GetGammeMoto(gammeMoto.IdGamme).Result;

@@ -78,7 +78,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetEstInclusTest_estInclusNExistePas()
+        public void GetEstInclusTest_EstInclusNExistePas()
         {
             var res = controller.GetByIds(777777777, 1).Result;
             // Assert
