@@ -47,7 +47,7 @@ namespace SAE_4._01.Controllers
         }
 
         [HttpGet("idmoto/{id}")]
-        public async Task<ActionResult<IEnumerable<Pack>>> GetCouleurByIdMoto(int id)
+        public async Task<ActionResult<IEnumerable<Pack>>> GetPackByIdMoto(int id)
         {
 
             var couleur = await dataRepository.GetByIdMotoAsync(id);
