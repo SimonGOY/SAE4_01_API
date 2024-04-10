@@ -31,7 +31,7 @@ namespace SAE_4._01.Controllers
         }
 
         [HttpGet("{clientID}")]
-        [AllowAnonymous]
+        [Authorize(Policy = Policies.Type0)]
         public async Task<string> GetProfileInfos(int clientID)
         {
             var telephonesResult = await dataRepositoryTelephone.GetAllAsync();
