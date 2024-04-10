@@ -94,7 +94,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetTelephoneTest_EquipementNExistePas()
+        public void GetTelephoneTest_TelephoneNExistePas()
         {
             var res = controller.GetTelephone(777777777).Result;
             // Assert
