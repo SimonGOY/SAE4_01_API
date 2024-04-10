@@ -34,7 +34,7 @@ namespace SAE_4._01.Controllers.Tests
             };
         }
 
-        /*[TestMethod()]
+        [TestMethod()]
         public void GetLesPaysTest_RecuperationsOK()
         {
             //Arrange
@@ -71,7 +71,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetPaysTest_EquipementNExistePas()
+        public void GetPaysTest_PaysNExistePas()
         {
             var res = controller.GetPays("pays").Result;
             // Assert
@@ -80,6 +80,14 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
+        public void PostPutDelete()
+        {
+            PostPaysTest_CreationOK();
+            PutPaysTest_ModificationOK();
+            DeletePaysTest_SuppressionOK();
+        }
+
+        
         public void PostPaysTest_CreationOK()
         {
             // Act
@@ -90,7 +98,6 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(pays, payRecup.Value, "pays pas identiques");
         }
 
-        [TestMethod()]
         public void PutPaysTest_ModificationOK()
         {
             // Arrange
@@ -106,16 +113,15 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(payIni.Value, payMaj.Value, "pays pas identiques");
         }
 
-        [TestMethod()]
         public void DeletePaysTest_SuppressionOK()
         {
             // Act
-            var parSuppr = controller.GetPays(pays.NomPays).Result;
+            var paySuppr = controller.GetPays(pays.NomPays).Result;
             _ = controller.DeletePays(pays.NomPays).Result;
 
             // Assert
             var res = controller.GetPays(pays.NomPays).Result;
             Assert.IsNull(res.Value, "pays non supprimé");
-        }*/
+        }
     }
 }

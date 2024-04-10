@@ -56,7 +56,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetByIdPackTest_RecuperationOK()
+        public void GetByIdsTest_RecuperationOK()
         {
             // Arrange
             var com = context.SeComposes.Find(1, 3);
@@ -80,7 +80,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetByIdsTest_estInclusNExistePas()
+        public void GetByIdsTest_SeComposeNExistePas()
         {
             var res = controller.GetByIds(777777777, 1).Result;
             // Assert

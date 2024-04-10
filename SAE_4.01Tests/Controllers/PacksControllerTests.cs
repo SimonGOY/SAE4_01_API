@@ -83,7 +83,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetPackTest_EquipementNExistePas()
+        public void GetPackTest_PackNExistePas()
         {
             var res = controller.GetPack(777777777).Result;
             // Assert

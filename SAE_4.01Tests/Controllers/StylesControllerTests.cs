@@ -87,7 +87,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetParametreTest_EquipementNExistePas()
+        public void GetParametreTest_StyleNExistePas()
         {
             var res = controller.GetStyle(777777777).Result;
             // Assert
@@ -96,9 +96,16 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetCouleurByIdMotoTest()
+        public void GetStyleByIdMotoTest()
         {
+            //Arrange
+            List<Style> lesStys = context.Styles.Where(p => p.IdMoto == 1).ToList();
+            // Act
+            var res = controller.GetStyleByIdMoto(1).Result;
 
+            // Assert
+            Assert.IsNotNull(res);
+            CollectionAssert.AreEqual(lesStys, res.Value as List<Style>, "Les listes de styles ne sont pas identiques");
         }
 
         [TestMethod()]

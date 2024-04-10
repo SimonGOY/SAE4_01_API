@@ -66,7 +66,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetParametreTest_RecuperationFailed()
+        public void GetPriveTest_RecuperationFailed()
         {
             // Arrange
             Prive? pri = context.Prives.Find(42);
@@ -78,7 +78,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetParametreTest_EquipementNExistePas()
+        public void GetPriveTest_PriveNExistePas()
         {
             var res = controller.GetPrive(777777777).Result;
             // Assert

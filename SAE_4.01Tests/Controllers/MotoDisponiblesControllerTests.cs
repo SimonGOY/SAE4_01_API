@@ -61,7 +61,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetMotoConfigurableTest_RecuperationFailed()
+        public void GetMotoDisponibleTest_RecuperationFailed()
         {
             // Arrange
             MotoDisponible? med = context.MotoDisponibles.Find(1);
@@ -73,7 +73,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetMotoConfigurableTest_EquipementNExistePas()
+        public void GetMotoDisponibleTest_MotoDisponibleNExistePas()
         {
             var res = controller.GetMotoDisponible(777777777).Result;
             // Assert

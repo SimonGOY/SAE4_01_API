@@ -69,7 +69,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetMotoConfigurableTest_RecuperationFailed()
+        public void GetOptionTest_RecuperationFailed()
         {
             // Arrange
             Option? opt = context.Options.Find(1);
@@ -81,7 +81,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetMotoConfigurableTest_EquipementNExistePas()
+        public void GetOptionTest_OptionNExistePas()
         {
             var res = controller.GetOption(777777777).Result;
             // Assert

@@ -68,7 +68,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetParametreTest_RecuperationFailed()
+        public void GetProfessionnelTest_RecuperationFailed()
         {
             // Arrange
             Professionnel? pri = context.Professionnels.Find(17);
@@ -80,7 +80,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetParametreTest_EquipementNExistePas()
+        public void GetProfessionnelTest_ProfessionnelNExistePas()
         {
             var res = controller.GetProfessionnel(777777777).Result;
             // Assert
