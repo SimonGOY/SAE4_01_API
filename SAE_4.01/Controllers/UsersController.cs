@@ -55,7 +55,7 @@ namespace SAE_4._01.Controllers
         // GET: api/Users/email/xx@gmail.com
         [HttpGet]
         [Route("email/{email}")]
-        [Authorize(Policy = Policies.Type0)]
+        //[Authorize(Policy = Policies.Type0)] c'est pour vérifier qu'un compte avec une adresse mail existe
         public async Task<ActionResult<bool>> GetIfUserExistsByEmail(string email)
         {
             var usersActionResult = await dataRepository.GetAllAsync();
