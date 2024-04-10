@@ -80,7 +80,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetByIdsTest_estInclusNExistePas()
+        public void GetByIdsTest_StockNExistePas()
         {
             var res = controller.GetByIds(1, 777777777, 1).Result;
             // Assert

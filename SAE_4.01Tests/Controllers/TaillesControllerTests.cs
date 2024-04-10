@@ -80,7 +80,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetTailleTest_EquipementNExistePas()
+        public void GetTailleTest_TailleNExistePas()
         {
             var res = controller.GetTaille(777777777).Result;
             // Assert

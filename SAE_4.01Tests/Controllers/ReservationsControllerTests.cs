@@ -98,7 +98,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetParametreTest_EquipementNExistePas()
+        public void GetReservationTest_ReservationNExistePas()
         {
             var res = controller.GetReservation(777777777).Result;
             // Assert

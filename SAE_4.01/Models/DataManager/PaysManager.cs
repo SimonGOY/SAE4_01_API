@@ -120,9 +120,9 @@ namespace SAE_4._01.Models.DataManager
             throw new NotImplementedException();
         }
 
-        Task<ActionResult<Pays>> IDataRepository<Pays>.GetByNomAsync(string nom)
+        public async Task<ActionResult<Pays>> GetByNomAsync(string nom)
         {
-            throw new NotImplementedException();
+            return await _dbContext.LesPays.FirstOrDefaultAsync(p => p.NomPays == nom);
         }
 
         public Task<ActionResult<Pays>> GetReference(int id)

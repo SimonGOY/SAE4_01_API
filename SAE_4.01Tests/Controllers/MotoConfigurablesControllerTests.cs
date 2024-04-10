@@ -78,7 +78,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetMotoConfigurableTest_EquipementNExistePas()
+        public void GetMotoConfigurableTest_MotoConfigurableNExistePas()
         {
             var res = controller.GetMotoConfigurable(777777777).Result;
             // Assert

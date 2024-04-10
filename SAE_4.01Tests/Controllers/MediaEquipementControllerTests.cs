@@ -55,7 +55,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetMediaTest_RecuperationOK()
+        public void GetMediaEquipementTest_RecuperationOK()
         {
             // Arrange
             MediaEquipement? med = context.MediasEquipement.Find(1);
@@ -81,7 +81,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetInfoCBTest_RecuperationFailed()
+        public void GetMediaEquipementTest_RecuperationFailed()
         {
             // Arrange
             MediaEquipement? med = context.MediasEquipement.Find(1);
@@ -93,7 +93,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetInfoCBTest_EquipementNExistePas()
+        public void GetMediaEquipementTest_MediaEquipementNExistePas()
         {
             var res = controller.GetMedia(777777777).Result;
             // Assert
@@ -104,12 +104,12 @@ namespace SAE_4._01.Controllers.Tests
         [TestMethod()]
         public void PostPutDeleteTest()
         {
-            PostMediaTest_CreationOK();
-            PutMediaTest_ModificationOK();
-            DeleteMediaTest_SuppressionOK();
+            PostMediaEquipementTest_CreationOK();
+            PutMediaEquipementTest_ModificationOK();
+            DeleteMediaEquipementTest_SuppressionOK();
         }
 
-        public void PostMediaTest_CreationOK()
+        public void PostMediaEquipementTest_CreationOK()
         {
             // Act
             var result = controller.PostMedia(mediaEquipement).Result;
@@ -119,7 +119,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(mediaEquipement, medRecup.Value, "medias pas identiques");
         }
 
-        public void PutMediaTest_ModificationOK()
+        public void PutMediaEquipementTest_ModificationOK()
         {
             // Arrange
             var medIni = controller.GetMedia(mediaEquipement.IdMediaEquipement).Result;
@@ -134,7 +134,7 @@ namespace SAE_4._01.Controllers.Tests
             Assert.AreEqual(medIni.Value, medMaj.Value, "medias pas identiques");
         }
 
-        public void DeleteMediaTest_SuppressionOK()
+        public void DeleteMediaEquipementTest_SuppressionOK()
         {
             // Act
             var infSuppr = controller.GetMedia(mediaEquipement.IdMediaEquipement).Result;

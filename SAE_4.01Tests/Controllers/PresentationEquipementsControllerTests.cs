@@ -69,7 +69,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetParametreTest_RecuperationFailed()
+        public void GetPresentationEquipementTest_RecuperationFailed()
         {
             // Arrange
             PresentationEquipement? par = context.PresentationEquipements.Find(2);
@@ -81,7 +81,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetParametreTest_EquipementNExistePas()
+        public void GetPresentationEquipementTest_PresentationEquipementNExistePas()
         {
             var res = controller.GetPresentationEquipement(777777777).Result;
             // Assert

@@ -105,7 +105,7 @@ namespace SAE_4._01.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetMediaMotoTest_EquipementNExistePas()
+        public void GetMediaMotoTest_MediaMotoNExistePas()
         {
             var res = controller.GetMedia(777777777).Result;
             // Assert
